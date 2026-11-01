@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YuChiang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3f8fb;
+      --paper: #fbfdfe;
+      --ink: #3d4b57;
+      --ink-soft: #7d8f9c;
+      --blue: #8fb8d4;
+      --blue-deep: #5f8fb0;
+      --line: #c9dce8;
+      --line-soft: #e2edf3;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 16px;
+      font-family: "Noto Sans TC", "PingFang TC", sans-serif;
+      font-weight: 300;
+      color: var(--ink);
+      background-color: var(--bg);
+      /* 方眼紙般的細線格 */
+      background-image:
+        linear-gradient(var(--line-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      padding: 56px 44px 44px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      text-align: center;
+      animation: fade 1.2s ease-out both;
+    }
+
+    /* 內框細線 */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--line-soft);
+      pointer-events: none;
+    }
+
+    /* 直書小標 */
+    .vertical {
+      position: absolute;
+      top: 28px;
+      right: 22px;
+      writing-mode: vertical-rl;
+      font-family: "Noto Serif TC", serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: var(--blue);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mark {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      border: 1px solid var(--blue);
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .mark::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px dashed var(--line);
+    }
+
+    .mark span {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 34px;
+      color: var(--blue-deep);
+    }
+
+    .hello {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 14px;
+      letter-spacing: 0.35em;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-size: 46px;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .role {
+      margin-top: 10px;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      color: var(--ink-soft);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 34px 0 26px;
+      color: var(--blue);
+      font-family: "Noto Serif TC", serif;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .intro {
+      font-family: "Noto Serif TC", serif;
+      font-size: 15px;
+      line-height: 2.1;
+      color: var(--ink);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .tags li {
+      padding: 6px 16px;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      color: var(--blue-deep);
+      border: 1px solid var(--line);
+      background: transparent;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .tags li:hover {
+      background: #eef5fa;
+      border-color: var(--blue);
+    }
+
+    blockquote {
+      font-family: "Noto Serif TC", serif;
+      font-size: 15px;
+      line-height: 2;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      padding: 4px 0;
+    }
+
+    blockquote small {
+      display: block;
+      margin-top: 6px;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line-soft);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      color: var(--ink-soft);
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 48px 26px 36px; }
+      h1 { font-size: 38px; }
+      .vertical { right: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="vertical">はじめまして</div>
+
+    <div class="mark"><span>Y</span></div>
+    <p class="hello">HELLO, I'M</p>
+    <h1>YuChiang</h1>
+    <p class="role">旅人・攝影・自然探索者</p>
+
+    <div class="divider">關於我</div>
+    <p class="intro">
+      嗨，我是 YuChiang。<br>
+      喜歡背起相機去旅行，走進山林、海邊與陌生的街道，<br>
+      用鏡頭收藏沿途的光與風景。<br>
+      我不甘於平凡，也不想被困在固定的空間裡，<br>
+      世界很大，我想親眼去看看。
+    </p>
+
+    <div class="divider">喜歡的事</div>
+    <ul class="tags">
+      <li>旅行</li>
+      <li>攝影</li>
+      <li>探索自然</li>
+      <li>山與海</li>
+      <li>未知的路</li>
+    </ul>
+
+    <div class="divider">座右銘</div>
+    <blockquote>
+      不被定義，不被拘束，<br>往下一個風景出發。
+      <small>— wander freely, live boldly</small>
+    </blockquote>
+
+    <footer>© 2026 YUCHIANG</footer>
+  </main>
+</body>
+</html>
