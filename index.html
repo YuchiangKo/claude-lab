@@ -3,247 +3,793 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YuChiang</title>
+  <title>YuChiang — Graphic Design Studio</title>
+  <meta name="description" content="YuChiang 平面設計工作室：品牌識別、書籍編排與視覺主視覺設計接案作品集。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f3f8fb;
-      --paper: #fbfdfe;
-      --ink: #3d4b57;
-      --ink-soft: #7d8f9c;
+      --bg-1: #0b1118;
+      --bg-2: #101b26;
+      --bg-3: #16293a;
+      --surface: rgba(255, 255, 255, 0.035);
+      --surface-hover: rgba(255, 255, 255, 0.06);
+      --ink: #e8eff4;
+      --ink-soft: #93a6b5;
+      --ink-faint: #5d7080;
       --blue: #8fb8d4;
+      --blue-bright: #b4d3e8;
       --blue-deep: #5f8fb0;
-      --line: #c9dce8;
-      --line-soft: #e2edf3;
+      --line: rgba(143, 184, 212, 0.18);
+      --line-soft: rgba(143, 184, 212, 0.08);
+      --sans: "Inter", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+      --serif: "Cormorant Garamond", "Noto Serif TC", serif;
+      --max: 1160px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    img, svg, video { max-width: 100%; }
+
     body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 16px;
-      font-family: "Noto Sans TC", "PingFang TC", sans-serif;
+      font-family: var(--sans);
       font-weight: 300;
       color: var(--ink);
-      background-color: var(--bg);
-      /* 方眼紙般的細線格 */
+      background-color: var(--bg-1);
+      background-image:
+        radial-gradient(1200px 700px at 85% -10%, rgba(95, 143, 176, 0.28), transparent 60%),
+        radial-gradient(900px 600px at -10% 40%, rgba(143, 184, 212, 0.10), transparent 60%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* 延續品牌的方眼紙細格，於深色中淡淡浮現 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
       background-image:
         linear-gradient(var(--line-soft) 1px, transparent 1px),
         linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
       background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%);
+      z-index: 0;
     }
 
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ---------- 動畫 ---------- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .reveal { opacity: 0; animation: fadeUp 1s cubic-bezier(.2, .7, .2, 1) forwards; }
+    .d1 { animation-delay: .1s; }
+    .d2 { animation-delay: .25s; }
+    .d3 { animation-delay: .4s; }
+    .d4 { animation-delay: .55s; }
+    .d5 { animation-delay: .7s; }
+    .d6 { animation-delay: .9s; }
+    .d7 { animation-delay: 1.05s; }
+    .d8 { animation-delay: 1.2s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, nav { animation: none !important; opacity: 1 !important; }
+      .mark::after { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- 導覽列 ---------- */
+    nav {
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.2s ease-out both;
+    }
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 88px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mark {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--blue);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .mark::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      border: 1px dashed var(--line);
+      animation: spin 40s linear infinite;
+    }
+    .mark span {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--blue-bright);
+      line-height: 1;
+    }
+    .brand-name {
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+    .brand-name small {
+      display: block;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+    }
+    .nav-links a { transition: color .3s; }
+    .nav-links a:hover { color: var(--ink); }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--blue-bright);
+    }
+    .status i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7fd1a8;
+      box-shadow: 0 0 0 4px rgba(127, 209, 168, 0.15);
+    }
+
+    /* ---------- 英雄區塊 ---------- */
+    .hero {
+      position: relative;
+      padding: 120px 0 140px;
+    }
+    .vertical {
+      position: absolute;
+      top: 128px;
+      right: 32px;
+      writing-mode: vertical-rl;
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.5em;
+      color: var(--ink-faint);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 32px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--blue);
+    }
+    .hero h1 {
+      --h1-size: clamp(42px, 7.2vw, 92px);
+      font-weight: 600;
+      font-size: var(--h1-size);
+      overflow-wrap: break-word;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      max-width: 15ch;
+    }
+    .hero h1 em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--blue-bright);
+    }
+    .hero .sub {
+      margin-top: 32px;
+      max-width: 560px;
+      font-size: clamp(16px, 1.6vw, 18px);
+      line-height: 1.85;
+      color: var(--ink-soft);
+    }
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 48px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 30px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: transform .3s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease, color .3s ease;
+    }
+    .btn svg { width: 16px; height: 16px; transition: transform .3s ease; }
+    .btn:hover svg { transform: translateX(3px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-bright), var(--blue));
+      color: #0b1620;
+      box-shadow: 0 10px 30px -10px rgba(143, 184, 212, 0.55);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px -12px rgba(143, 184, 212, 0.7);
+    }
+    .btn-ghost {
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .btn-ghost:hover {
+      border-color: var(--blue);
+      background: rgba(143, 184, 212, 0.08);
+      transform: translateY(-2px);
+    }
+    .btn:focus-visible, .nav-links a:focus-visible, .card:focus-within {
+      outline: 2px solid var(--blue-bright);
+      outline-offset: 3px;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 56px;
+      margin-top: 88px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .stat b {
+      display: block;
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat span {
+      font-size: 13px;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+    }
+
+    /* ---------- 區段標題 ---------- */
+    .section { padding: 40px 0 140px; }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 18px;
+    }
+    .divider span { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+    .section h2 {
+      font-weight: 600;
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .section h2 em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--blue-bright);
+    }
+    .section-note {
+      max-width: 340px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.8;
+    }
+
+    /* ---------- 作品卡片 ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
     .card {
       position: relative;
-      width: 100%;
-      max-width: 480px;
-      padding: 56px 44px 44px;
-      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      padding: 36px 32px 32px;
+      background: var(--surface);
       border: 1px solid var(--line);
-      text-align: center;
-      animation: fade 1.2s ease-out both;
+      border-radius: 4px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: transform .5s cubic-bezier(.2, .7, .2, 1), background .4s, border-color .4s;
+      overflow: hidden;
+    }
+    /* 品牌的內框細線 */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--line-soft);
+      border-radius: 2px;
+      pointer-events: none;
+      transition: border-color .4s;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      top: -130px;
+      right: -130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(143, 184, 212, 0.22), transparent 70%);
+      opacity: 0;
+      transition: opacity .5s;
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      background: var(--surface-hover);
+      border-color: rgba(143, 184, 212, 0.35);
+    }
+    .card:hover::before { border-color: var(--line); }
+    .card:hover::after { opacity: 1; }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 44px;
+    }
+    .icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--blue-bright);
+      background: rgba(143, 184, 212, 0.06);
+    }
+    .icon svg { width: 26px; height: 26px; }
+    .num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--ink-faint);
+    }
+    .card .cat {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .card .en {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 22px;
+    }
+    .card .concept {
+      font-size: 14.5px;
+      line-height: 1.95;
+      color: var(--ink-soft);
+      flex-grow: 1;
+    }
+    .card .concept strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line-soft);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      list-style: none;
+    }
+    .chips li {
+      padding: 4px 10px;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      color: var(--blue-bright);
+      flex-shrink: 0;
+      transition: background .3s, transform .3s, color .3s;
+    }
+    .card-link svg { width: 14px; height: 14px; }
+    .card:hover .card-link {
+      background: var(--blue);
+      color: #0b1620;
+      transform: rotate(-45deg);
     }
 
-    /* 內框細線 */
-    .card::before {
+    /* ---------- 聯繫 / 頁尾 ---------- */
+    .contact {
+      position: relative;
+      padding: 80px 56px;
+      margin-bottom: 96px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background:
+        radial-gradient(600px 300px at 100% 0%, rgba(143, 184, 212, 0.16), transparent 70%),
+        var(--surface);
+      text-align: center;
+      overflow: hidden;
+    }
+    .contact::before {
       content: "";
       position: absolute;
       inset: 8px;
       border: 1px solid var(--line-soft);
       pointer-events: none;
     }
-
-    /* 直書小標 */
-    .vertical {
-      position: absolute;
-      top: 28px;
-      right: 22px;
-      writing-mode: vertical-rl;
-      font-family: "Noto Serif TC", serif;
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      color: var(--blue);
+    .contact h2 {
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.03em;
+      line-height: 1.2;
     }
-
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .mark {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 28px;
-      border-radius: 50%;
-      border: 1px solid var(--blue);
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .mark::after {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border-radius: 50%;
-      border: 1px dashed var(--line);
-    }
-
-    .mark span {
-      font-family: "Cormorant Garamond", serif;
+    .contact h2 em {
+      font-family: var(--serif);
       font-style: italic;
-      font-size: 34px;
-      color: var(--blue-deep);
-    }
-
-    .hello {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 14px;
-      letter-spacing: 0.35em;
-      color: var(--ink-soft);
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-family: "Cormorant Garamond", serif;
       font-weight: 300;
-      font-size: 46px;
-      letter-spacing: 0.06em;
-      color: var(--ink);
-      line-height: 1.1;
+      color: var(--blue-bright);
     }
-
-    .role {
-      margin-top: 10px;
-      font-size: 13px;
-      letter-spacing: 0.25em;
+    .contact p {
+      margin: 18px auto 36px;
+      max-width: 460px;
       color: var(--ink-soft);
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 34px 0 26px;
-      color: var(--blue);
-      font-family: "Noto Serif TC", serif;
-      font-size: 13px;
-      letter-spacing: 0.3em;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    .intro {
-      font-family: "Noto Serif TC", serif;
       font-size: 15px;
-      line-height: 2.1;
-      color: var(--ink);
+      line-height: 1.85;
     }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      list-style: none;
-    }
-
-    .tags li {
-      padding: 6px 16px;
-      font-size: 14px;
-      letter-spacing: 0.1em;
-      color: var(--blue-deep);
-      border: 1px solid var(--line);
-      background: transparent;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    .tags li:hover {
-      background: #eef5fa;
-      border-color: var(--blue);
-    }
-
-    blockquote {
-      font-family: "Noto Serif TC", serif;
-      font-size: 15px;
-      line-height: 2;
-      letter-spacing: 0.08em;
-      color: var(--ink);
-      padding: 4px 0;
-    }
-
-    blockquote small {
-      display: block;
-      margin-top: 6px;
-      font-family: "Cormorant Garamond", serif;
-      font-style: italic;
-      font-size: 14px;
-      letter-spacing: 0.05em;
-      color: var(--ink-soft);
-    }
+    .contact .cta { justify-content: center; margin-top: 0; }
 
     footer {
-      margin-top: 40px;
-      padding-top: 18px;
+      position: relative;
+      z-index: 1;
       border-top: 1px solid var(--line-soft);
-      font-family: "Cormorant Garamond", serif;
+    }
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 32px;
+      padding-bottom: 40px;
       font-size: 12px;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+    }
+    footer .motto {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      letter-spacing: 0.04em;
       color: var(--ink-soft);
     }
+    footer ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    footer ul a { transition: color .3s; }
+    footer ul a:hover { color: var(--ink); }
 
-    @media (max-width: 480px) {
-      .card { padding: 48px 26px 36px; }
-      h1 { font-size: 38px; }
-      .vertical { right: 14px; }
+    /* ---------- 響應式 ---------- */
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+      .grid .card:last-child { grid-column: 1 / -1; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .vertical { display: none; }
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 0 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .hero { padding: 64px 0 96px; }
+      .stats { gap: 32px; margin-top: 64px; }
+      .grid { grid-template-columns: 1fr; }
+      .grid .card:last-child { grid-column: auto; }
+      .section { padding-bottom: 96px; }
+      .contact { padding: 56px 24px; margin-bottom: 64px; }
+      .btn { width: 100%; }
+      .cta { flex-direction: column; }
+      footer .wrap { flex-direction: column; align-items: flex-start; }
+
+      /* 大標題：手機版為桌面版的 75% */
+      .hero h1 { font-size: calc(var(--h1-size) * 0.75); }
+
+      /* 觸控友善：所有可點擊元素最小 44px */
+      .btn {
+        min-height: 44px;
+        height: auto;
+        padding: 12px 24px;
+        white-space: normal;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+      .brand { min-height: 44px; }
+      .nav-links a,
+      footer ul a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        min-width: 44px;
+      }
+      .status { min-height: 44px; }
+      .card-link { width: 44px; height: 44px; }
+      footer ul { flex-wrap: wrap; gap: 8px 24px; }
+
+      /* 防止任何元素超出螢幕寬度 */
+      .eyebrow { flex-wrap: wrap; max-width: 100%; letter-spacing: 0.2em; }
+      .section-note, .hero .sub, .contact p { max-width: 100%; }
+      .card { padding: 32px 24px 28px; }
+      .card-foot { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 400px) {
+      .wrap { padding: 0 16px; }
+      .contact { padding: 48px 18px; }
+      .stats { gap: 24px 32px; }
+      .brand-name small { letter-spacing: 0.2em; }
+      .status { padding: 7px 12px; font-size: 11px; }
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="vertical">はじめまして</div>
 
-    <div class="mark"><span>Y</span></div>
-    <p class="hello">HELLO, I'M</p>
-    <h1>YuChiang</h1>
-    <p class="role">旅人・攝影・自然探索者</p>
+  <nav>
+    <div class="wrap">
+      <a href="#top" class="brand" aria-label="YuChiang 首頁">
+        <div class="mark"><span>Y</span></div>
+        <div class="brand-name">YuChiang<small>Graphic Design</small></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#work">精選作品</a></li>
+        <li><a href="#contact">合作洽詢</a></li>
+        <li><span class="status"><i></i>2027 Q1 檔期開放中</span></li>
+      </ul>
+    </div>
+  </nav>
 
-    <div class="divider">關於我</div>
-    <p class="intro">
-      嗨，我是 YuChiang。<br>
-      喜歡背起相機去旅行，走進山林、海邊與陌生的街道，<br>
-      用鏡頭收藏沿途的光與風景。<br>
-      我不甘於平凡，也不想被困在固定的空間裡，<br>
-      世界很大，我想親眼去看看。
-    </p>
+  <main id="top">
+    <!-- 英雄區塊 -->
+    <header class="hero">
+      <div class="wrap">
+        <div class="vertical">デザインの旅</div>
 
-    <div class="divider">喜歡的事</div>
-    <ul class="tags">
-      <li>旅行</li>
-      <li>攝影</li>
-      <li>探索自然</li>
-      <li>山與海</li>
-      <li>未知的路</li>
-    </ul>
+        <p class="eyebrow reveal d1">Independent Graphic Designer · Taipei</p>
+        <h1 class="reveal d2">把品牌的故事，<br>設計成<em>看得見的風景。</em></h1>
+        <p class="sub reveal d3">
+          我是 YuChiang，專注於品牌識別、書籍編排與視覺主視覺的獨立平面設計師。
+          從旅途與自然中汲取靈感，以克制的版面與細膩的色彩，
+          為每一個品牌找到它獨有的語言。
+        </p>
+        <div class="cta reveal d4">
+          <a href="#contact" class="btn btn-primary">
+            與我聯繫
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#work" class="btn btn-ghost">觀看作品</a>
+        </div>
 
-    <div class="divider">座右銘</div>
-    <blockquote>
-      不被定義，不被拘束，<br>往下一個風景出發。
-      <small>— wander freely, live boldly</small>
-    </blockquote>
+        <div class="stats reveal d5">
+          <div class="stat"><b>6+</b><span>年設計經驗</span></div>
+          <div class="stat"><b>80+</b><span>完成合作專案</span></div>
+          <div class="stat"><b>12</b><span>國內外設計獎項</span></div>
+        </div>
+      </div>
+    </header>
 
-    <footer>© 2026 YUCHIANG</footer>
+    <!-- 精選作品 -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="reveal d5">
+            <p class="divider">Selected Work <span>/ 03</span></p>
+            <h2>精選<em>作品</em></h2>
+          </div>
+          <p class="section-note reveal d6">每一個專案都從傾聽開始。以下是近期三件代表作，完整案例歡迎來信索取。</p>
+        </div>
+
+        <div class="grid">
+          <!-- 作品 01 -->
+          <article class="card reveal d6">
+            <div class="card-top">
+              <div class="icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 25l8-12 5 7 4-5 9 10z"/>
+                  <circle cx="23" cy="8" r="3"/>
+                </svg>
+              </div>
+              <span class="num">01</span>
+            </div>
+            <p class="cat">Brand Identity</p>
+            <h3>山嵐茶事 品牌識別</h3>
+            <p class="en">Mountain Mist Tea Co.</p>
+            <p class="concept">
+              以「<strong>雲霧繚繞的山稜</strong>」為核心意象，將高山茶園的層疊稜線簡化為一筆連續的線條標誌。
+              色彩取自晨霧與茶湯的淡青、琥珀，讓包裝在貨架上安靜卻令人過目不忘。
+            </p>
+            <div class="card-foot">
+              <ul class="chips"><li>Logo</li><li>包裝</li><li>VI 系統</li></ul>
+              <span class="card-link" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+            </div>
+          </article>
+
+          <!-- 作品 02 -->
+          <article class="card reveal d7">
+            <div class="card-top">
+              <div class="icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8c-3-2-7-3-12-3v20c5 0 9 1 12 3 3-2 7-3 12-3V5c-5 0-9 1-12 3z"/>
+                  <path d="M16 8v20"/>
+                </svg>
+              </div>
+              <span class="num">02</span>
+            </div>
+            <p class="cat">Editorial Design</p>
+            <h3>《潮間帶》攝影集 書籍設計</h3>
+            <p class="en">Intertidal — A Photo Book</p>
+            <p class="concept">
+              以「<strong>潮汐的呼吸節奏</strong>」安排版面，留白如退潮、滿版如漲潮，讓讀者翻頁時感受海浪的起落。
+              選用霧面輕塗紙與手工裸背裝幀，使影像的光影更貼近現場。
+            </p>
+            <div class="card-foot">
+              <ul class="chips"><li>書籍裝幀</li><li>編排</li><li>印刷監製</li></ul>
+              <span class="card-link" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+            </div>
+          </article>
+
+          <!-- 作品 03 -->
+          <article class="card reveal d8">
+            <div class="card-top">
+              <div class="icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 7l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/>
+                  <path d="M12 4v21M20 7v21"/>
+                </svg>
+              </div>
+              <span class="num">03</span>
+            </div>
+            <p class="cat">Key Visual</p>
+            <h3>城市漫遊節 主視覺設計</h3>
+            <p class="en">Wander the City Festival</p>
+            <p class="concept">
+              將城市街道轉化為「<strong>可以被走進的地圖</strong>」，以幾何色塊拼出巷弄與路線，
+              延伸至海報、導覽手冊與街頭旗幟，讓整座城市本身成為活動的展場。
+            </p>
+            <div class="card-foot">
+              <ul class="chips"><li>主視覺</li><li>海報</li><li>環境指標</li></ul>
+              <span class="card-link" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 合作洽詢 -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <p class="divider" style="justify-content:center">Let's Work Together</p>
+          <h2>有一個想法？<br>讓我們一起<em>出發。</em></h2>
+          <p>品牌識別、書籍設計、活動主視覺或長期合作皆歡迎洽詢，通常於 1–2 個工作天內回覆。</p>
+          <div class="cta">
+            <a href="mailto:hello@yuchiang.studio" class="btn btn-primary">
+              hello@yuchiang.studio
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 YuChiang Design Studio. All rights reserved.</span>
+      <span class="motto">— wander freely, design boldly</span>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Behance</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
 </body>
 </html>
