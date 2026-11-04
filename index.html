@@ -3,629 +3,656 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YuChiang — Graphic Design Studio</title>
-  <meta name="description" content="YuChiang 平面設計工作室：品牌識別、書籍編排與視覺主視覺設計接案作品集。">
+  <title>輕飛比價 — 機票價格追蹤</title>
+  <meta name="description" content="輕飛比價：一次比較多個訂票平台的機票價格，追蹤航線價格變化，並直接連到平台下訂。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-1: #0b1118;
-      --bg-2: #101b26;
-      --bg-3: #16293a;
-      --surface: rgba(255, 255, 255, 0.035);
-      --surface-hover: rgba(255, 255, 255, 0.06);
-      --ink: #e8eff4;
-      --ink-soft: #93a6b5;
-      --ink-faint: #5d7080;
-      --blue: #8fb8d4;
-      --blue-bright: #b4d3e8;
-      --blue-deep: #5f8fb0;
-      --line: rgba(143, 184, 212, 0.18);
-      --line-soft: rgba(143, 184, 212, 0.08);
+      /* 商務配色：深藍為主、金色強調 */
+      --navy-900: #081730;
+      --navy-800: #0d2142;
+      --navy-700: #15305b;
+      --bg: #f4f5f8;
+      --surface: #ffffff;
+      --surface-2: #f6f7fa;
+      --ink: #0f1c33;
+      --ink-soft: #4b5872;
+      --ink-faint: #8a93a6;
+      --line: #e2e6ee;
+      --line-strong: #cdd4e0;
+      --accent: #15305b;
+      --accent-strong: #0d2142;
+      --accent-soft: #edf1f8;
+      --gold: #c6a052;
+      --gold-strong: #8a6a1f;
+      --gold-soft: #f7f0df;
+      --gold-line: rgba(198, 160, 82, .45);
+      --good: #1d7a52;
+      --good-soft: #e6f3ec;
+      --bad: #b8443a;
+      --bad-soft: #f9ebea;
+      --shadow: 0 1px 2px rgba(8, 23, 48, .05), 0 6px 20px rgba(8, 23, 48, .06);
+      --shadow-lg: 0 2px 4px rgba(8, 23, 48, .06), 0 18px 40px rgba(8, 23, 48, .16);
+      --radius: 10px;
       --sans: "Inter", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
-      --serif: "Cormorant Garamond", "Noto Serif TC", serif;
-      --max: 1160px;
+      --serif: "Noto Serif TC", "Songti TC", Georgia, serif;
+      --max: 1080px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; overflow-x: hidden; }
-
-    img, svg, video { max-width: 100%; }
-
     body {
       font-family: var(--sans);
-      font-weight: 300;
       color: var(--ink);
-      background-color: var(--bg-1);
-      background-image:
-        radial-gradient(1200px 700px at 85% -10%, rgba(95, 143, 176, 0.28), transparent 60%),
-        radial-gradient(900px 600px at -10% 40%, rgba(143, 184, 212, 0.10), transparent 60%),
-        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
-      background-attachment: fixed;
-      min-height: 100vh;
+      background: var(--bg);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
-
-    /* 延續品牌的方眼紙細格，於深色中淡淡浮現 */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(var(--line-soft) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-      background-size: 28px 28px;
-      mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%);
-      z-index: 0;
-    }
-
     a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; color: inherit; }
+    .num { font-variant-numeric: tabular-nums; }
 
     .wrap {
-      position: relative;
-      z-index: 1;
       width: 100%;
       max-width: var(--max);
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 24px;
     }
 
-    /* ---------- 動畫 ---------- */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .reveal { opacity: 0; animation: fadeUp 1s cubic-bezier(.2, .7, .2, 1) forwards; }
-    .d1 { animation-delay: .1s; }
-    .d2 { animation-delay: .25s; }
-    .d3 { animation-delay: .4s; }
-    .d4 { animation-delay: .55s; }
-    .d5 { animation-delay: .7s; }
-    .d6 { animation-delay: .9s; }
-    .d7 { animation-delay: 1.05s; }
-    .d8 { animation-delay: 1.2s; }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal, nav { animation: none !important; opacity: 1 !important; }
-      .mark::after { animation: none !important; }
       html { scroll-behavior: auto; }
+      * { transition: none !important; }
     }
 
     /* ---------- 導覽列 ---------- */
     nav {
-      position: relative;
-      z-index: 2;
-      animation: fadeIn 1.2s ease-out both;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 23, 48, .96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(198, 160, 82, .25);
+      color: #fff;
     }
     nav .wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 88px;
+      height: 64px;
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: .08em;
     }
-    .mark {
-      position: relative;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--blue);
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #dcbc74, var(--gold) 55%, var(--gold-strong));
+      color: var(--navy-900);
       display: grid;
       place-items: center;
-      flex-shrink: 0;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25);
     }
-    .mark::after {
-      content: "";
-      position: absolute;
-      inset: 4px;
-      border-radius: 50%;
-      border: 1px dashed var(--line);
-      animation: spin 40s linear infinite;
-    }
-    .mark span {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 20px;
-      color: var(--blue-bright);
-      line-height: 1;
-    }
-    .brand-name {
-      font-weight: 600;
-      font-size: 15px;
-      letter-spacing: 0.04em;
-    }
-    .brand-name small {
-      display: block;
-      font-weight: 400;
-      font-size: 10px;
-      letter-spacing: 0.32em;
-      color: var(--ink-faint);
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
+    .brand-mark svg { width: 18px; height: 18px; }
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 36px;
+      gap: 28px;
       list-style: none;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      color: var(--ink-soft);
+      font-size: 14px;
+      letter-spacing: .04em;
+      color: rgba(255, 255, 255, .72);
     }
-    .nav-links a { transition: color .3s; }
-    .nav-links a:hover { color: var(--ink); }
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
-      border: 1px solid var(--line);
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .track-count {
+      display: inline-grid;
+      place-items: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      margin-left: 4px;
       border-radius: 999px;
+      background: var(--gold);
+      color: var(--navy-900);
       font-size: 12px;
-      color: var(--blue-bright);
-    }
-    .status i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #7fd1a8;
-      box-shadow: 0 0 0 4px rgba(127, 209, 168, 0.15);
+      font-weight: 700;
     }
 
-    /* ---------- 英雄區塊 ---------- */
+    /* ---------- 搜尋區 ---------- */
     .hero {
       position: relative;
-      padding: 120px 0 140px;
+      padding: 56px 0 40px;
+      color: #fff;
+      background:
+        radial-gradient(900px 400px at 85% -20%, rgba(198, 160, 82, .18), transparent 60%),
+        linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 70%, var(--navy-700) 100%);
+      border-bottom: 3px solid var(--gold);
     }
-    .vertical {
-      position: absolute;
-      top: 128px;
-      right: 32px;
-      writing-mode: vertical-rl;
-      font-family: var(--serif);
-      font-size: 13px;
-      letter-spacing: 0.5em;
-      color: var(--ink-faint);
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 32px;
-    }
-    .eyebrow::before {
+    /* 細緻的斜紋底紋，增加質感 */
+    .hero::before {
       content: "";
-      width: 36px;
-      height: 1px;
-      background: var(--blue);
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, .025) 0 1px, transparent 1px 14px);
     }
+    .hero .wrap { position: relative; }
     .hero h1 {
-      --h1-size: clamp(42px, 7.2vw, 92px);
-      font-weight: 600;
-      font-size: var(--h1-size);
-      overflow-wrap: break-word;
-      line-height: 1.04;
-      letter-spacing: -0.035em;
-      max-width: 15ch;
-    }
-    .hero h1 em {
       font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      color: var(--blue-bright);
+      font-size: clamp(28px, 4.2vw, 42px);
+      font-weight: 700;
+      letter-spacing: .01em;
+      line-height: 1.3;
     }
-    .hero .sub {
-      margin-top: 32px;
-      max-width: 560px;
-      font-size: clamp(16px, 1.6vw, 18px);
-      line-height: 1.85;
+    .hero h1::after {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 2px;
+      margin-top: 16px;
+      background: var(--gold);
+    }
+    .hero p.lead {
+      margin-top: 14px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 16px;
+    }
+    .search {
+      margin-top: 28px;
+      padding: 22px;
+      background: var(--surface);
+      color: var(--ink);
+      border: 0;
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+    .trip-type {
+      display: inline-flex;
+      padding: 3px;
+      margin-bottom: 16px;
+      background: var(--surface-2);
+      border-radius: 999px;
+    }
+    .trip-type label {
+      position: relative;
+      cursor: pointer;
+    }
+    .trip-type input { position: absolute; opacity: 0; pointer-events: none; }
+    .trip-type span {
+      display: block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 14px;
       color: var(--ink-soft);
     }
-    .cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 48px;
+    .trip-type input:checked + span {
+      background: var(--surface);
+      color: var(--ink);
+      font-weight: 500;
+      box-shadow: 0 1px 3px rgba(20, 33, 43, .1);
     }
+    .trip-type input:checked + span { background: var(--navy-800); color: #fff; }
+    .trip-type input:focus-visible + span { outline: 2px solid var(--gold); }
+
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr 1fr 1fr 0.8fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+    .field select:focus,
+    .field input:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px var(--gold-soft); }
+    .field select,
+    .field input {
+      width: 100%;
+      height: 48px;
+      padding: 0 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      background: var(--surface);
+      font-size: 15px;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%238796a2' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+      padding-right: 32px;
+    }
+    .field input:disabled { background: var(--surface-2); color: var(--ink-faint); }
+    .swap {
+      width: 40px;
+      height: 48px;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      background: var(--surface);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: var(--ink-soft);
+    }
+    .swap:hover { color: var(--gold-strong); border-color: var(--gold); }
+    .swap svg { width: 18px; height: 18px; }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      min-height: 54px;
-      padding: 0 30px;
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: transform .3s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease, color .3s ease;
-    }
-    .btn svg { width: 16px; height: 16px; transition: transform .3s ease; }
-    .btn:hover svg { transform: translateX(3px); }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--blue-bright), var(--blue));
-      color: #0b1620;
-      box-shadow: 0 10px 30px -10px rgba(143, 184, 212, 0.55);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px -12px rgba(143, 184, 212, 0.7);
-    }
-    .btn-ghost {
-      border: 1px solid var(--line);
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.02);
-    }
-    .btn-ghost:hover {
-      border-color: var(--blue);
-      background: rgba(143, 184, 212, 0.08);
-      transform: translateY(-2px);
-    }
-    .btn:focus-visible, .nav-links a:focus-visible, .card:focus-within {
-      outline: 2px solid var(--blue-bright);
-      outline-offset: 3px;
-    }
-
-    .stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 56px;
-      margin-top: 88px;
-      padding-top: 32px;
-      border-top: 1px solid var(--line-soft);
-    }
-    .stat b {
-      display: block;
+      gap: 6px;
+      height: 48px;
+      padding: 0 24px;
+      border: 0;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
       font-weight: 600;
-      font-size: 32px;
-      letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
+      font-size: 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      letter-spacing: .04em;
+      transition: background .2s, color .2s, border-color .2s;
     }
-    .stat span {
+    .btn:hover { background: var(--navy-900); }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    /* 主要行動：金色按鈕 */
+    .btn-gold,
+    .field-submit .btn,
+    .offer.is-best .btn {
+      background: linear-gradient(180deg, #d3b066, var(--gold));
+      color: var(--navy-900);
+      box-shadow: 0 4px 14px -6px rgba(163, 129, 47, .7);
+    }
+    .btn-gold:hover,
+    .field-submit .btn:hover,
+    .offer.is-best .btn:hover { background: var(--gold-strong); color: #fff; }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-sm { height: 36px; padding: 0 14px; font-size: 14px; border-radius: 8px; }
+    .btn-line {
+      background: var(--surface);
+      color: var(--accent-strong);
+      border: 1px solid var(--line-strong);
+    }
+    .btn-line:hover { background: var(--accent-soft); border-color: var(--accent); }
+    .btn-line.is-on { background: var(--gold-soft); border-color: var(--gold); color: var(--gold-strong); }
+
+    .notice {
+      margin-top: 14px;
       font-size: 13px;
-      color: var(--ink-faint);
-      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, .55);
     }
 
-    /* ---------- 區段標題 ---------- */
-    .section { padding: 40px 0 140px; }
+    /* ---------- 區段 ---------- */
+    section { padding: 32px 0 40px; }
+    #results { padding-top: 32px; }
     .section-head {
       display: flex;
-      align-items: flex-end;
+      flex-wrap: wrap;
+      align-items: baseline;
       justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 56px;
+      gap: 8px 16px;
+      margin-bottom: 16px;
     }
-    .divider {
+    h2 {
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 18px;
-    }
-    .divider span { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
-    .section h2 {
-      font-weight: 600;
-      font-size: clamp(30px, 4vw, 46px);
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-    }
-    .section h2 em {
+      gap: 12px;
       font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--blue-bright);
-    }
-    .section-note {
-      max-width: 340px;
-      font-size: 14px;
-      color: var(--ink-soft);
-      line-height: 1.8;
-    }
-
-    /* ---------- 作品卡片 ---------- */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      padding: 36px 32px 32px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      transition: transform .5s cubic-bezier(.2, .7, .2, 1), background .4s, border-color .4s;
-      overflow: hidden;
-    }
-    /* 品牌的內框細線 */
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border: 1px solid var(--line-soft);
-      border-radius: 2px;
-      pointer-events: none;
-      transition: border-color .4s;
-    }
-    .card::after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      top: -130px;
-      right: -130px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(143, 184, 212, 0.22), transparent 70%);
-      opacity: 0;
-      transition: opacity .5s;
-      pointer-events: none;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      background: var(--surface-hover);
-      border-color: rgba(143, 184, 212, 0.35);
-    }
-    .card:hover::before { border-color: var(--line); }
-    .card:hover::after { opacity: 1; }
-
-    .card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 44px;
-    }
-    .icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      color: var(--blue-bright);
-      background: rgba(143, 184, 212, 0.06);
-    }
-    .icon svg { width: 26px; height: 26px; }
-    .num {
-      font-family: var(--serif);
-      font-style: italic;
       font-size: 22px;
-      color: var(--ink-faint);
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--navy-800);
     }
-    .card .cat {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 12px;
+    h2::before {
+      content: "";
+      width: 4px;
+      height: 20px;
+      background: var(--gold);
     }
-    .card h3 {
-      font-weight: 600;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-      line-height: 1.35;
-      margin-bottom: 6px;
-    }
-    .card .en {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 16px;
-      color: var(--ink-soft);
-      margin-bottom: 22px;
-    }
-    .card .concept {
-      font-size: 14.5px;
-      line-height: 1.95;
-      color: var(--ink-soft);
-      flex-grow: 1;
-    }
-    .card .concept strong {
-      font-weight: 500;
-      color: var(--ink);
-    }
-    .card-foot {
+    .muted { color: var(--ink-soft); font-size: 14px; }
+
+    /* ---------- 結果摘要 ---------- */
+    .summary {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-top: 32px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line-soft);
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
     }
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
+    .summary .route { font-size: 18px; font-weight: 700; color: var(--navy-800); }
+    .summary .meta { font-size: 14px; color: var(--ink-soft); }
+    .summary .low { color: var(--gold-strong); font-weight: 700; }
+
+    /* 日期價格條 */
+    .dates {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
       gap: 6px;
-      list-style: none;
+      margin-bottom: 12px;
     }
-    .chips li {
-      padding: 4px 10px;
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      color: var(--ink-soft);
-      border: 1px solid var(--line-soft);
-      border-radius: 999px;
-    }
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+    .date-btn {
+      padding: 10px 4px;
       border: 1px solid var(--line);
-      color: var(--blue-bright);
-      flex-shrink: 0;
-      transition: background .3s, transform .3s, color .3s;
-    }
-    .card-link svg { width: 14px; height: 14px; }
-    .card:hover .card-link {
-      background: var(--blue);
-      color: #0b1620;
-      transform: rotate(-45deg);
-    }
-
-    /* ---------- 聯繫 / 頁尾 ---------- */
-    .contact {
-      position: relative;
-      padding: 80px 56px;
-      margin-bottom: 96px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      background:
-        radial-gradient(600px 300px at 100% 0%, rgba(143, 184, 212, 0.16), transparent 70%),
-        var(--surface);
+      border-radius: 10px;
+      background: var(--surface);
+      cursor: pointer;
       text-align: center;
-      overflow: hidden;
+      transition: border-color .2s;
     }
-    .contact::before {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border: 1px solid var(--line-soft);
-      pointer-events: none;
-    }
-    .contact h2 {
-      font-weight: 600;
-      font-size: clamp(28px, 4vw, 44px);
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-    }
-    .contact h2 em {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--blue-bright);
-    }
-    .contact p {
-      margin: 18px auto 36px;
-      max-width: 460px;
-      color: var(--ink-soft);
-      font-size: 15px;
-      line-height: 1.85;
-    }
-    .contact .cta { justify-content: center; margin-top: 0; }
+    .date-btn:hover { border-color: var(--gold); }
+    .date-btn small { display: block; font-size: 12px; color: var(--ink-faint); }
+    .date-btn b { display: block; font-size: 14px; font-weight: 600; margin-top: 2px; color: var(--navy-800); }
+    .date-btn.is-active { border-color: var(--navy-800); background: var(--navy-800); }
+    .date-btn.is-active small { color: rgba(255, 255, 255, .7); }
+    .date-btn.is-active b { color: #fff; }
+    .date-btn.is-cheapest b { color: var(--gold-strong); }
+    .date-btn.is-active.is-cheapest b { color: var(--gold); }
+    .date-btn.is-cheapest small::after { content: " · 最低"; color: var(--gold-strong); font-weight: 600; }
+    .date-btn.is-active.is-cheapest small::after { color: var(--gold); }
 
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--line-soft);
-    }
-    footer .wrap {
+    /* 排序與篩選 */
+    .toolbar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding-top: 32px;
-      padding-bottom: 40px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      color: var(--ink-faint);
+      gap: 10px;
+      margin-bottom: 12px;
     }
-    footer .motto {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 15px;
-      letter-spacing: 0.04em;
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      height: 34px;
+      padding: 0 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: 13px;
       color: var(--ink-soft);
+      cursor: pointer;
     }
-    footer ul {
-      display: flex;
-      gap: 24px;
+    .chip:hover { border-color: var(--navy-700); color: var(--navy-800); }
+    .chip.is-on { background: var(--navy-800); color: #fff; border-color: var(--navy-800); box-shadow: inset 0 -2px 0 var(--gold); }
+    .check {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      cursor: pointer;
+    }
+    .check input { width: 16px; height: 16px; accent-color: var(--navy-800); }
+
+    /* ---------- 航班列表 ---------- */
+    .flights { display: grid; gap: 10px; }
+    .flight {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .flight:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+    .flight[open] { border-color: var(--gold); box-shadow: var(--shadow); }
+    .flight summary {
       list-style: none;
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 20px;
+      cursor: pointer;
     }
-    footer ul a { transition: color .3s; }
-    footer ul a:hover { color: var(--ink); }
+    .flight summary::-webkit-details-marker { display: none; }
+    .airline { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .airline-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .airline-name { font-weight: 600; font-size: 15px; }
+    .airline-type { font-size: 12px; color: var(--ink-faint); }
+    .legs { display: grid; gap: 8px; }
+    .leg {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+    .leg-tag {
+      grid-column: 1 / -1;
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-bottom: -6px;
+    }
+    .time b { display: block; font-size: 17px; font-weight: 600; line-height: 1.2; }
+    .time small { font-size: 12px; color: var(--ink-faint); }
+    .time.end { text-align: right; }
+    .path { text-align: center; font-size: 12px; color: var(--ink-faint); }
+    .path .bar {
+      position: relative;
+      height: 1px;
+      background: var(--line-strong);
+      margin: 4px 0;
+    }
+    .path .bar i {
+      position: absolute;
+      top: -3px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1.5px solid var(--ink-faint);
+      left: calc(50% - 3.5px);
+    }
+    .path .direct { color: var(--good); }
+    .price-box { text-align: right; }
+    .price-box .from { font-size: 12px; color: var(--ink-faint); }
+    .price-box .price { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: var(--navy-800); }
+    .price-box .total { font-size: 12px; color: var(--ink-soft); }
+    .price-box .compare {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--accent-strong);
+      font-weight: 500;
+    }
+    .price-box .compare svg { width: 14px; height: 14px; transition: transform .2s; }
+    .flight[open] .compare svg { transform: rotate(180deg); }
+    .badge {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--gold-soft);
+      color: var(--gold-strong);
+      border: 1px solid var(--gold-line);
+      margin-left: 6px;
+      vertical-align: 2px;
+    }
+
+    /* 各平台報價 */
+    .offers {
+      border-top: 1px solid var(--line);
+      background: var(--surface-2);
+      padding: 8px 20px 14px;
+    }
+    .offer {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .offer:last-child { border-bottom: 0; }
+    .offer-name { font-weight: 500; font-size: 15px; }
+    .offer-name small { display: block; font-size: 12px; color: var(--ink-faint); font-weight: 400; }
+    .offer-price { text-align: right; }
+    .offer-price b { font-size: 17px; font-weight: 600; }
+    .offer-price small { display: block; font-size: 12px; color: var(--ink-faint); }
+    .offer.is-best .offer-price b { color: var(--gold-strong); }
+
+    .empty {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--ink-soft);
+      background: var(--surface);
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+    }
+
+    /* ---------- 熱門航線 ---------- */
+    .popular {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .dest {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      text-align: left;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .dest { position: relative; overflow: hidden; }
+    .dest::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    .dest:hover { border-color: var(--line-strong); box-shadow: var(--shadow); transform: translateY(-2px); }
+    .dest:hover::after { transform: scaleX(1); }
+    .dest .code { font-size: 12px; color: var(--gold-strong); font-weight: 600; letter-spacing: .1em; }
+    .dest .city { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--navy-800); margin: 2px 0 10px; }
+    .dest .from { font-size: 12px; color: var(--ink-faint); }
+    .dest .price { font-size: 20px; font-weight: 700; color: var(--navy-800); }
+
+    /* ---------- 我的追蹤 ---------- */
+    .tracks { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+    .track {
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .track-top { display: flex; justify-content: space-between; gap: 12px; }
+    .track { border-top: 3px solid var(--navy-800); }
+    .track .route { font-weight: 700; font-size: 16px; color: var(--navy-800); }
+    .track .meta { font-size: 13px; color: var(--ink-faint); }
+    .track .now { font-size: 22px; font-weight: 700; text-align: right; color: var(--navy-800); }
+    .trend {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .trend.down { background: var(--good-soft); color: var(--good); }
+    .trend.up { background: var(--bad-soft); color: var(--bad); }
+    .trend.flat { background: var(--surface-2); color: var(--ink-soft); }
+    .track-actions { display: flex; gap: 8px; margin-top: 14px; }
+    .track-actions .btn { flex: 1; }
+    .track.is-expired { opacity: .6; }
+    .tracks .empty { grid-column: 1 / -1; }
+
+    /* ---------- 頁尾 ---------- */
+    footer {
+      margin-top: 24px;
+      border-top: 3px solid var(--gold);
+      background: var(--navy-900);
+    }
+    footer .wrap {
+      padding-top: 28px;
+      padding-bottom: 36px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .6);
+      line-height: 1.8;
+    }
 
     /* ---------- 響應式 ---------- */
-    @media (max-width: 980px) {
-      .grid { grid-template-columns: 1fr 1fr; }
-      .grid .card:last-child { grid-column: 1 / -1; }
-      .section-head { flex-direction: column; align-items: flex-start; }
-      .vertical { display: none; }
+    @media (max-width: 960px) {
+      .fields { grid-template-columns: 1fr auto 1fr; }
+      .fields .field-date, .fields .field-pax { grid-column: span 1; }
+      .fields .field-depart { grid-column: 1 / 2; }
+      .fields .field-return { grid-column: 2 / 4; }
+      .fields .field-pax { grid-column: 1 / 2; }
+      .fields .field-submit { grid-column: 2 / 4; }
+      .fields .field-submit .btn { width: 100%; }
+      .popular { grid-template-columns: repeat(2, 1fr); }
+      .flight summary { grid-template-columns: 1fr auto; }
+      .flight .legs { grid-column: 1 / -1; grid-row: 2; }
     }
-    @media (max-width: 720px) {
-      .wrap { padding: 0 20px; }
-      .nav-links li:not(:last-child) { display: none; }
-      .hero { padding: 64px 0 96px; }
-      .stats { gap: 32px; margin-top: 64px; }
-      .grid { grid-template-columns: 1fr; }
-      .grid .card:last-child { grid-column: auto; }
-      .section { padding-bottom: 96px; }
-      .contact { padding: 56px 24px; margin-bottom: 64px; }
-      .btn { width: 100%; }
-      .cta { flex-direction: column; }
-      footer .wrap { flex-direction: column; align-items: flex-start; }
-
-      /* 大標題：手機版為桌面版的 75% */
-      .hero h1 { font-size: calc(var(--h1-size) * 0.75); }
-
-      /* 觸控友善：所有可點擊元素最小 44px */
-      .btn {
-        min-height: 44px;
-        height: auto;
-        padding: 12px 24px;
-        white-space: normal;
-        text-align: center;
-        overflow-wrap: anywhere;
-      }
-      .brand { min-height: 44px; }
-      .nav-links a,
-      footer ul a {
-        display: inline-flex;
-        align-items: center;
-        min-height: 44px;
-        min-width: 44px;
-      }
-      .status { min-height: 44px; }
-      .card-link { width: 44px; height: 44px; }
-      footer ul { flex-wrap: wrap; gap: 8px 24px; }
-
-      /* 防止任何元素超出螢幕寬度 */
-      .eyebrow { flex-wrap: wrap; max-width: 100%; letter-spacing: 0.2em; }
-      .section-note, .hero .sub, .contact p { max-width: 100%; }
-      .card { padding: 32px 24px 28px; }
-      .card-foot { flex-wrap: wrap; }
-    }
-
-    @media (max-width: 400px) {
+    @media (max-width: 640px) {
       .wrap { padding: 0 16px; }
-      .contact { padding: 48px 18px; }
-      .stats { gap: 24px 32px; }
-      .brand-name small { letter-spacing: 0.2em; }
-      .status { padding: 7px 12px; font-size: 11px; }
+      .nav-links { gap: 16px; font-size: 13px; }
+      .nav-links li.hide-sm { display: none; }
+      .hero { padding: 28px 0 20px; }
+      .search { padding: 16px; }
+      .fields .field-depart { grid-column: 1 / -1; }
+      .fields .field-return { grid-column: 1 / -1; }
+      .fields .field-pax { grid-column: 1 / -1; }
+      .fields .field-submit { grid-column: 1 / -1; }
+      .dates { grid-template-columns: repeat(7, minmax(96px, 1fr)); overflow-x: auto; padding-bottom: 4px; }
+      .flight summary { padding: 14px 16px; gap: 14px; }
+      .offers { padding: 6px 16px 12px; }
+      .offer { grid-template-columns: 1fr auto; gap: 8px 12px; }
+      .offer .btn { grid-column: 1 / -1; width: 100%; height: 44px; }
+      .tracks { grid-template-columns: 1fr; }
+      .chip { height: 40px; }
+    }
+    @media (max-width: 380px) {
+      .popular { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -633,163 +660,757 @@
 
   <nav>
     <div class="wrap">
-      <a href="#top" class="brand" aria-label="YuChiang 首頁">
-        <div class="mark"><span>Y</span></div>
-        <div class="brand-name">YuChiang<small>Graphic Design</small></div>
+      <a href="#top" class="brand" aria-label="輕飛比價 首頁">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15.5v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V8.5l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+        </span>
+        輕飛比價
       </a>
       <ul class="nav-links">
-        <li><a href="#work">精選作品</a></li>
-        <li><a href="#contact">合作洽詢</a></li>
-        <li><span class="status"><i></i>2027 Q1 檔期開放中</span></li>
+        <li class="hide-sm"><a href="#results">比價結果</a></li>
+        <li><a href="#popular">熱門航線</a></li>
+        <li><a href="#tracking">我的追蹤<span class="track-count num" id="trackCount">0</span></a></li>
       </ul>
     </div>
   </nav>
 
   <main id="top">
-    <!-- 英雄區塊 -->
+    <!-- 搜尋區 -->
     <header class="hero">
       <div class="wrap">
-        <div class="vertical">デザインの旅</div>
+        <h1>一次比完各大平台，買在最低價。</h1>
+        <p class="lead">選好航線與日期，馬上看到每個航班在各訂票網站的價格，點一下就能前往下訂。</p>
 
-        <p class="eyebrow reveal d1">Independent Graphic Designer · Taipei</p>
-        <h1 class="reveal d2">把品牌的故事，<br>設計成<em>看得見的風景。</em></h1>
-        <p class="sub reveal d3">
-          我是 YuChiang，專注於品牌識別、書籍編排與視覺主視覺的獨立平面設計師。
-          從旅途與自然中汲取靈感，以克制的版面與細膩的色彩，
-          為每一個品牌找到它獨有的語言。
-        </p>
-        <div class="cta reveal d4">
-          <a href="#contact" class="btn btn-primary">
-            與我聯繫
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <a href="#work" class="btn btn-ghost">觀看作品</a>
-        </div>
-
-        <div class="stats reveal d5">
-          <div class="stat"><b>6+</b><span>年設計經驗</span></div>
-          <div class="stat"><b>80+</b><span>完成合作專案</span></div>
-          <div class="stat"><b>12</b><span>國內外設計獎項</span></div>
-        </div>
+        <form class="search" id="searchForm">
+          <div class="trip-type" role="radiogroup" aria-label="行程類型">
+            <label><input type="radio" name="tripType" value="rt" checked><span>來回</span></label>
+            <label><input type="radio" name="tripType" value="ow"><span>單程</span></label>
+          </div>
+          <div class="fields">
+            <div class="field">
+              <label for="fromSelect">出發地</label>
+              <select id="fromSelect"></select>
+            </div>
+            <button type="button" class="swap" id="swapBtn" aria-label="交換出發地與目的地">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg>
+            </button>
+            <div class="field">
+              <label for="toSelect">目的地</label>
+              <select id="toSelect"></select>
+            </div>
+            <div class="field field-date field-depart">
+              <label for="departInput">去程日期</label>
+              <input type="date" id="departInput" required>
+            </div>
+            <div class="field field-date field-return">
+              <label for="returnInput">回程日期</label>
+              <input type="date" id="returnInput">
+            </div>
+            <div class="field field-pax">
+              <label for="paxSelect">乘客</label>
+              <select id="paxSelect">
+                <option value="1">1 位成人</option>
+                <option value="2">2 位成人</option>
+                <option value="3">3 位成人</option>
+                <option value="4">4 位成人</option>
+              </select>
+            </div>
+            <div class="field field-submit">
+              <button type="submit" class="btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                比價
+              </button>
+            </div>
+          </div>
+        </form>
+        <p class="notice">※ 本頁價格為示意資料（經濟艙、每人含稅），實際票價與座位以各訂票網站顯示為準。</p>
       </div>
     </header>
 
-    <!-- 精選作品 -->
-    <section id="work" class="section">
+    <!-- 比價結果 -->
+    <section id="results">
       <div class="wrap">
-        <div class="section-head">
-          <div class="reveal d5">
-            <p class="divider">Selected Work <span>/ 03</span></p>
-            <h2>精選<em>作品</em></h2>
+        <div class="summary">
+          <div>
+            <div class="route" id="summaryRoute"></div>
+            <div class="meta" id="summaryMeta"></div>
           </div>
-          <p class="section-note reveal d6">每一個專案都從傾聽開始。以下是近期三件代表作，完整案例歡迎來信索取。</p>
+          <button type="button" class="btn btn-sm btn-line" id="trackBtn"></button>
         </div>
 
-        <div class="grid">
-          <!-- 作品 01 -->
-          <article class="card reveal d6">
-            <div class="card-top">
-              <div class="icon">
-                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M3 25l8-12 5 7 4-5 9 10z"/>
-                  <circle cx="23" cy="8" r="3"/>
-                </svg>
-              </div>
-              <span class="num">01</span>
-            </div>
-            <p class="cat">Brand Identity</p>
-            <h3>山嵐茶事 品牌識別</h3>
-            <p class="en">Mountain Mist Tea Co.</p>
-            <p class="concept">
-              以「<strong>雲霧繚繞的山稜</strong>」為核心意象，將高山茶園的層疊稜線簡化為一筆連續的線條標誌。
-              色彩取自晨霧與茶湯的淡青、琥珀，讓包裝在貨架上安靜卻令人過目不忘。
-            </p>
-            <div class="card-foot">
-              <ul class="chips"><li>Logo</li><li>包裝</li><li>VI 系統</li></ul>
-              <span class="card-link" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-            </div>
-          </article>
+        <div class="dates" id="dateStrip" aria-label="鄰近日期最低價"></div>
 
-          <!-- 作品 02 -->
-          <article class="card reveal d7">
-            <div class="card-top">
-              <div class="icon">
-                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M16 8c-3-2-7-3-12-3v20c5 0 9 1 12 3 3-2 7-3 12-3V5c-5 0-9 1-12 3z"/>
-                  <path d="M16 8v20"/>
-                </svg>
-              </div>
-              <span class="num">02</span>
-            </div>
-            <p class="cat">Editorial Design</p>
-            <h3>《潮間帶》攝影集 書籍設計</h3>
-            <p class="en">Intertidal — A Photo Book</p>
-            <p class="concept">
-              以「<strong>潮汐的呼吸節奏</strong>」安排版面，留白如退潮、滿版如漲潮，讓讀者翻頁時感受海浪的起落。
-              選用霧面輕塗紙與手工裸背裝幀，使影像的光影更貼近現場。
-            </p>
-            <div class="card-foot">
-              <ul class="chips"><li>書籍裝幀</li><li>編排</li><li>印刷監製</li></ul>
-              <span class="card-link" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-            </div>
-          </article>
-
-          <!-- 作品 03 -->
-          <article class="card reveal d8">
-            <div class="card-top">
-              <div class="icon">
-                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 7l8-3 8 3 8-3v21l-8 3-8-3-8 3z"/>
-                  <path d="M12 4v21M20 7v21"/>
-                </svg>
-              </div>
-              <span class="num">03</span>
-            </div>
-            <p class="cat">Key Visual</p>
-            <h3>城市漫遊節 主視覺設計</h3>
-            <p class="en">Wander the City Festival</p>
-            <p class="concept">
-              將城市街道轉化為「<strong>可以被走進的地圖</strong>」，以幾何色塊拼出巷弄與路線，
-              延伸至海報、導覽手冊與街頭旗幟，讓整座城市本身成為活動的展場。
-            </p>
-            <div class="card-foot">
-              <ul class="chips"><li>主視覺</li><li>海報</li><li>環境指標</li></ul>
-              <span class="card-link" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-            </div>
-          </article>
+        <div class="toolbar">
+          <div class="chips" role="group" aria-label="排序方式">
+            <button type="button" class="chip is-on" data-sort="price">價格最低</button>
+            <button type="button" class="chip" data-sort="time">最早出發</button>
+            <button type="button" class="chip" data-sort="duration">飛行時間最短</button>
+          </div>
+          <label class="check"><input type="checkbox" id="directOnly">只看直飛</label>
         </div>
+
+        <div class="flights" id="flightList"></div>
       </div>
     </section>
 
-    <!-- 合作洽詢 -->
-    <section id="contact">
+    <!-- 熱門航線 -->
+    <section id="popular">
       <div class="wrap">
-        <div class="contact">
-          <p class="divider" style="justify-content:center">Let's Work Together</p>
-          <h2>有一個想法？<br>讓我們一起<em>出發。</em></h2>
-          <p>品牌識別、書籍設計、活動主視覺或長期合作皆歡迎洽詢，通常於 1–2 個工作天內回覆。</p>
-          <div class="cta">
-            <a href="mailto:hello@yuchiang.studio" class="btn btn-primary">
-              hello@yuchiang.studio
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </a>
-          </div>
+        <div class="section-head">
+          <h2>熱門航線最低價</h2>
+          <span class="muted" id="popularNote"></span>
         </div>
+        <div class="popular" id="popularGrid"></div>
+      </div>
+    </section>
+
+    <!-- 我的追蹤 -->
+    <section id="tracking">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>我的追蹤</h2>
+          <span class="muted">儲存在這台裝置的瀏覽器中，每次開啟會更新最新價格</span>
+        </div>
+        <div class="tracks" id="trackList"></div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>© 2026 YuChiang Design Studio. All rights reserved.</span>
-      <span class="motto">— wander freely, design boldly</span>
-      <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Behance</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
+      © 2026 輕飛比價。本站僅提供價格比較與外部連結，不販售機票；
+      點擊「前往訂購」會開啟該平台的搜尋結果頁，請於該網站確認最終價格、行李規定與退改條款後再下訂。
     </div>
   </footer>
 
+  <script>
+    /* ========== 基本資料 ========== */
+
+    // 機場資料
+    const airports = {
+      TPE: { city: '台北', name: '桃園' },
+      KHH: { city: '高雄', name: '小港' },
+      RMQ: { city: '台中', name: '清泉崗' },
+      NRT: { city: '東京', name: '成田' },
+      KIX: { city: '大阪', name: '關西' },
+      ICN: { city: '首爾', name: '仁川' },
+      FUK: { city: '福岡', name: '福岡' },
+      OKA: { city: '沖繩', name: '那霸' },
+      HKG: { city: '香港', name: '赤鱲角' },
+      BKK: { city: '曼谷', name: '蘇凡納布' },
+      SIN: { city: '新加坡', name: '樟宜' }
+    };
+    const originCodes = ['TPE', 'KHH', 'RMQ'];
+
+    // 航空公司（type：fsc 傳統航空、lcc 廉價航空）
+    const airlines = {
+      CI: { name: '中華航空', type: 'fsc', color: '#c8456b' },
+      BR: { name: '長榮航空', type: 'fsc', color: '#2f7d4f' },
+      JX: { name: '星宇航空', type: 'fsc', color: '#8a7350' },
+      IT: { name: '台灣虎航', type: 'lcc', color: '#e0832b' },
+      MM: { name: '樂桃航空', type: 'lcc', color: '#c24f9b' },
+      TR: { name: '酷航', type: 'lcc', color: '#d9a400' },
+      KE: { name: '大韓航空', type: 'fsc', color: '#3a7fc1' },
+      TW: { name: '德威航空', type: 'lcc', color: '#c7372f' },
+      CX: { name: '國泰航空', type: 'fsc', color: '#106b63' },
+      TG: { name: '泰國航空', type: 'fsc', color: '#6b3d8f' },
+      SQ: { name: '新加坡航空', type: 'fsc', color: '#1d3f78' }
+    };
+
+    // 目的地：基本來回票價、飛行分鐘數、常見航空公司
+    const destinations = {
+      NRT: { base: 9800, minutes: 195, airlines: ['CI', 'BR', 'JX', 'IT', 'MM', 'TR'] },
+      KIX: { base: 9200, minutes: 170, airlines: ['CI', 'BR', 'JX', 'IT', 'MM'] },
+      ICN: { base: 8200, minutes: 150, airlines: ['CI', 'BR', 'KE', 'TW', 'IT'] },
+      FUK: { base: 8600, minutes: 140, airlines: ['CI', 'BR', 'JX', 'IT'] },
+      OKA: { base: 6800, minutes: 85, airlines: ['CI', 'BR', 'MM', 'IT'] },
+      HKG: { base: 6200, minutes: 110, airlines: ['CI', 'BR', 'CX', 'JX'] },
+      BKK: { base: 8800, minutes: 235, airlines: ['CI', 'BR', 'TG', 'JX', 'IT'] },
+      SIN: { base: 10500, minutes: 280, airlines: ['CI', 'BR', 'SQ', 'JX', 'TR'] }
+    };
+    const originFactor = { TPE: 1, KHH: 1.08, RMQ: 1.12 };
+
+    /* ========== 日期工具 ========== */
+
+    // 以本地時間輸出 YYYY-MM-DD，避免時區造成日期偏移
+    function toDateKey(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+    function parseDateKey(key) {
+      const [y, m, d] = key.split('-').map(Number);
+      return new Date(y, m - 1, d);
+    }
+    function addDays(key, days) {
+      const date = parseDateKey(key);
+      date.setDate(date.getDate() + days);
+      return toDateKey(date);
+    }
+    function diffDays(fromKey, toKey) {
+      return Math.round((parseDateKey(toKey) - parseDateKey(fromKey)) / 86400000);
+    }
+    const weekNames = ['日', '一', '二', '三', '四', '五', '六'];
+    function formatDate(key) {
+      const date = parseDateKey(key);
+      return `${date.getMonth() + 1}/${date.getDate()}（${weekNames[date.getDay()]}）`;
+    }
+    const todayKey = toDateKey(new Date());
+
+    /* ========== 示意價格產生器 ========== */
+
+    // 字串雜湊 + 可重現亂數：同樣的查詢條件在同一天會得到相同結果
+    function hashString(text) {
+      let h = 2166136261;
+      for (let i = 0; i < text.length; i++) {
+        h ^= text.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return h >>> 0;
+    }
+    function createRandom(seedText) {
+      let a = hashString(seedText);
+      return function () {
+        a = (a + 0x6D2B79F5) | 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    function roundPrice(value) {
+      return Math.round(value / 10) * 10;
+    }
+
+    // 依日期與距今天數調整價格：週末較貴、越接近出發越貴
+    function dateFactor(departKey) {
+      const day = parseDateKey(departKey).getDay();
+      const weekend = (day === 5 || day === 6 || day === 0) ? 1.12 : 1;
+      const daysLeft = diffDays(todayKey, departKey);
+      const urgency = daysLeft < 7 ? 1.35 : daysLeft < 21 ? 1.15 : daysLeft > 120 ? 1.05 : 1;
+      return weekend * urgency;
+    }
+
+    // 時間與時長格式
+    function formatClock(minutes) {
+      const m = ((minutes % 1440) + 1440) % 1440;
+      return `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+    }
+    function formatDuration(minutes) {
+      const h = Math.floor(minutes / 60);
+      const m = minutes % 60;
+      return m ? `${h} 小時 ${m} 分` : `${h} 小時`;
+    }
+
+    // 產生單一航段
+    function createLeg(rand, from, to, baseMinutes, stops) {
+      const depart = 360 + Math.floor(rand() * 64) * 15; // 06:00～21:45
+      const duration = baseMinutes + Math.round(rand() * 3) * 5 + (stops ? 150 + Math.floor(rand() * 8) * 15 : 0);
+      const arrive = depart + duration;
+      return {
+        from, to, stops, depart, duration,
+        arrive,
+        nextDay: arrive >= 1440,
+        via: stops ? ['HKG', 'ICN', 'NRT'].filter(code => code !== to && code !== from)[Math.floor(rand() * 2)] : null
+      };
+    }
+
+    // 依查詢條件產生航班與各平台報價
+    function getFlights(query) {
+      const dest = destinations[query.to] || destinations[query.from];
+      if (!dest || query.from === query.to) return [];
+      const isRoundTrip = query.tripType === 'rt';
+      const flights = [];
+      const staticSeed = `${query.from}-${query.to}-${query.depart}-${isRoundTrip ? query.ret : 'ow'}`;
+      const factor = dateFactor(query.depart) * (originFactor[query.from] || originFactor[query.to] || 1.1);
+
+      dest.airlines.forEach((code, index) => {
+        const info = airlines[code];
+        const count = info.type === 'fsc' && index < 2 ? 2 : 1;
+        for (let n = 0; n < count; n++) {
+          const rand = createRandom(`${staticSeed}-${code}-${n}`);
+          const daily = createRandom(`${staticSeed}-${code}-${n}-${todayKey}`);
+          // 非桃園出發或部分航班為轉機
+          const stops = (query.from !== 'TPE' && query.to !== 'TPE' && rand() > 0.45) || rand() > 0.88 ? 1 : 0;
+          const outbound = createLeg(rand, query.from, query.to, dest.minutes, stops);
+          const inbound = isRoundTrip ? createLeg(rand, query.to, query.from, dest.minutes, stops) : null;
+
+          let price = dest.base * factor * (info.type === 'lcc' ? 0.68 : 1) * (0.9 + rand() * 0.28);
+          if (stops) price *= 0.86;
+          if (!isRoundTrip) price *= 0.6;
+          price *= 1 + (daily() - 0.5) * 0.08; // 每日小幅波動
+
+          const offers = platforms.map(platform => {
+            const r = createRandom(`${staticSeed}-${code}-${n}-${platform.id}-${todayKey}`);
+            return {
+              platform,
+              price: roundPrice(price * (1 + r() * 0.07 - 0.02)),
+              url: platform.buildUrl(query)
+            };
+          }).sort((a, b) => a.price - b.price);
+
+          flights.push({
+            id: `${code}-${n}`,
+            airline: info,
+            airlineCode: code,
+            outbound,
+            inbound,
+            offers,
+            minPrice: offers[0].price,
+            totalMinutes: outbound.duration + (inbound ? inbound.duration : 0)
+          });
+        }
+      });
+      return flights;
+    }
+
+    function lowestPrice(query) {
+      const flights = getFlights(query);
+      return flights.length ? Math.min(...flights.map(f => f.minPrice)) : null;
+    }
+
+    /* ========== 訂票平台與連結 ========== */
+
+    // 每個平台都帶入航線、日期與人數，點擊即開啟該網站的搜尋結果
+    const platforms = [
+      {
+        id: 'skyscanner',
+        name: 'Skyscanner',
+        note: '比價平台',
+        buildUrl(q) {
+          const short = key => key.slice(2).replace(/-/g, '');
+          const path = q.tripType === 'rt' ? `${short(q.depart)}/${short(q.ret)}/` : `${short(q.depart)}/`;
+          return `https://www.skyscanner.com.tw/transport/flights/${q.from.toLowerCase()}/${q.to.toLowerCase()}/${path}?adults=${q.pax}&cabinclass=economy`;
+        }
+      },
+      {
+        id: 'google',
+        name: 'Google 航班',
+        note: '轉往航空公司或代理商',
+        buildUrl(q) {
+          const text = q.tripType === 'rt'
+            ? `Flights from ${q.from} to ${q.to} on ${q.depart} through ${q.ret} for ${q.pax} adults`
+            : `One way flights from ${q.from} to ${q.to} on ${q.depart} for ${q.pax} adults`;
+          return `https://www.google.com/travel/flights?hl=zh-TW&curr=TWD&q=${encodeURIComponent(text)}`;
+        }
+      },
+      {
+        id: 'trip',
+        name: 'Trip.com',
+        note: '線上旅行社',
+        buildUrl(q) {
+          const params = new URLSearchParams({
+            dcity: q.from.toLowerCase(),
+            acity: q.to.toLowerCase(),
+            ddate: q.depart,
+            triptype: q.tripType,
+            class: 'y',
+            quantity: q.pax,
+            locale: 'zh-TW',
+            curr: 'TWD'
+          });
+          if (q.tripType === 'rt') params.set('rdate', q.ret);
+          return `https://tw.trip.com/flights/showfarefirst?${params}`;
+        }
+      },
+      {
+        id: 'kayak',
+        name: 'KAYAK',
+        note: '比價平台',
+        buildUrl(q) {
+          const dates = q.tripType === 'rt' ? `${q.depart}/${q.ret}` : q.depart;
+          return `https://www.kayak.com/flights/${q.from}-${q.to}/${dates}/${q.pax}adults?sort=price_a`;
+        }
+      },
+      {
+        id: 'expedia',
+        name: 'Expedia',
+        note: '線上旅行社',
+        buildUrl(q) {
+          const usDate = key => { const [y, m, d] = key.split('-'); return `${m}/${d}/${y}`; };
+          let url = `https://www.expedia.com/Flights-Search?mode=search&passengers=adults:${q.pax}&options=cabinclass:economy`;
+          url += `&trip=${q.tripType === 'rt' ? 'roundtrip' : 'oneway'}`;
+          url += `&leg1=from:${q.from},to:${q.to},departure:${usDate(q.depart)}TANYT`;
+          if (q.tripType === 'rt') url += `&leg2=from:${q.to},to:${q.from},departure:${usDate(q.ret)}TANYT`;
+          return url;
+        }
+      }
+    ];
+
+    /* ========== 狀態 ========== */
+
+    const state = {
+      query: {
+        from: 'TPE',
+        to: 'NRT',
+        depart: addDays(todayKey, 30),
+        ret: addDays(todayKey, 35),
+        tripType: 'rt',
+        pax: 1
+      },
+      sort: 'price',
+      directOnly: false
+    };
+
+    /* ========== 追蹤清單（localStorage） ========== */
+
+    const storageKey = 'lightFareTracks';
+    function loadTracks() {
+      try {
+        const list = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        // 只保留格式正確的資料
+        return Array.isArray(list) ? list.filter(t =>
+          airports[t.from] && airports[t.to] && /^\d{4}-\d{2}-\d{2}$/.test(t.depart) &&
+          (t.tripType === 'ow' || /^\d{4}-\d{2}-\d{2}$/.test(t.ret)) && Number.isFinite(t.savedPrice)
+        ) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+    function saveTracks(list) {
+      try { localStorage.setItem(storageKey, JSON.stringify(list)); } catch (e) { /* 無法儲存時略過 */ }
+    }
+    let tracks = loadTracks();
+    function trackKey(q) {
+      return `${q.from}-${q.to}-${q.tripType}-${q.depart}-${q.tripType === 'rt' ? q.ret : ''}`;
+    }
+
+    /* ========== 畫面元素 ========== */
+
+    const $ = id => document.getElementById(id);
+    const form = $('searchForm');
+    const fromSelect = $('fromSelect');
+    const toSelect = $('toSelect');
+    const departInput = $('departInput');
+    const returnInput = $('returnInput');
+    const paxSelect = $('paxSelect');
+    const formatPrice = value => `NT$${value.toLocaleString('zh-TW')}`;
+    const placeName = code => `${airports[code].city}（${code}）`;
+
+    // 建立出發地與目的地選單
+    function fillSelect(select, codes) {
+      select.innerHTML = '';
+      codes.forEach(code => {
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = `${airports[code].city}（${code}）`;
+        select.appendChild(option);
+      });
+    }
+    const allCodes = [...originCodes, ...Object.keys(destinations)];
+    fillSelect(fromSelect, allCodes);
+    fillSelect(toSelect, allCodes);
+
+    // 將狀態同步到表單
+    function syncForm() {
+      const q = state.query;
+      fromSelect.value = q.from;
+      toSelect.value = q.to;
+      departInput.value = q.depart;
+      departInput.min = addDays(todayKey, 1);
+      returnInput.value = q.tripType === 'rt' ? q.ret : '';
+      returnInput.min = q.depart;
+      returnInput.disabled = q.tripType === 'ow';
+      returnInput.required = q.tripType === 'rt';
+      paxSelect.value = String(q.pax);
+      form.querySelector(`input[name="tripType"][value="${q.tripType}"]`).checked = true;
+    }
+
+    /* ========== 渲染：比價結果 ========== */
+
+    function renderResults() {
+      const q = state.query;
+      const allFlights = getFlights(q);
+      let flights = state.directOnly ? allFlights.filter(f => f.outbound.stops === 0) : allFlights.slice();
+
+      // 排序
+      const sorters = {
+        price: (a, b) => a.minPrice - b.minPrice,
+        time: (a, b) => a.outbound.depart - b.outbound.depart,
+        duration: (a, b) => a.totalMinutes - b.totalMinutes
+      };
+      flights.sort(sorters[state.sort]);
+
+      // 摘要
+      $('summaryRoute').textContent = `${placeName(q.from)} → ${placeName(q.to)}`;
+      const dateText = q.tripType === 'rt' ? `${formatDate(q.depart)} – ${formatDate(q.ret)} 來回` : `${formatDate(q.depart)} 單程`;
+      const meta = $('summaryMeta');
+      meta.textContent = `${dateText} · ${q.pax} 位成人 · ${allFlights.length} 個航班`;
+      if (allFlights.length) {
+        const low = document.createElement('span');
+        low.className = 'low num';
+        low.textContent = ` · 最低 ${formatPrice(Math.min(...allFlights.map(f => f.minPrice)))}`;
+        meta.appendChild(low);
+      }
+      renderTrackButton();
+      renderDateStrip();
+
+      // 航班列表
+      const list = $('flightList');
+      list.innerHTML = '';
+      if (q.from === q.to) {
+        list.innerHTML = '<div class="empty">出發地與目的地相同，請重新選擇。</div>';
+        return;
+      }
+      if (!flights.length) {
+        list.innerHTML = `<div class="empty">${allFlights.length ? '沒有符合條件的直飛航班，取消「只看直飛」看看其他選擇。' : '目前沒有這條航線的資料，請改選其他城市。'}</div>`;
+        return;
+      }
+      const cheapest = Math.min(...flights.map(f => f.minPrice));
+      flights.forEach(flight => list.appendChild(createFlightCard(flight, flight.minPrice === cheapest)));
+    }
+
+    function legHtml(leg, tag) {
+      const pathText = leg.stops ? `轉機 1 次（${leg.via}）` : '<span class="direct">直飛</span>';
+      return `
+        ${tag ? `<div class="leg-tag">${tag}</div>` : ''}
+        <div class="leg">
+          <div class="time"><b class="num">${formatClock(leg.depart)}</b><small>${leg.from}</small></div>
+          <div class="path">${formatDuration(leg.duration)}<div class="bar">${leg.stops ? '<i></i>' : ''}</div>${pathText}</div>
+          <div class="time end"><b class="num">${formatClock(leg.arrive)}${leg.nextDay ? '<sup>+1</sup>' : ''}</b><small>${leg.to}</small></div>
+        </div>`;
+    }
+
+    function createFlightCard(flight, isCheapest) {
+      const q = state.query;
+      const card = document.createElement('details');
+      card.className = 'flight';
+      const best = flight.offers[0];
+      const total = q.pax > 1 ? `<div class="total num">${q.pax} 人共 ${formatPrice(best.price * q.pax)}</div>` : '';
+
+      card.innerHTML = `
+        <summary>
+          <div class="airline">
+            <span class="airline-logo" style="background:${flight.airline.color}">${flight.airlineCode}</span>
+            <div>
+              <div class="airline-name">${flight.airline.name}</div>
+              <div class="airline-type">${flight.airline.type === 'lcc' ? '廉價航空・行李另計' : '傳統航空・含託運行李'}</div>
+            </div>
+          </div>
+          <div class="legs">
+            ${legHtml(flight.outbound, flight.inbound ? '去程' : '')}
+            ${flight.inbound ? legHtml(flight.inbound, '回程') : ''}
+          </div>
+          <div class="price-box">
+            <div class="from">${best.platform.name} 最低${isCheapest ? '<span class="badge">全場最低</span>' : ''}</div>
+            <div class="price num">${formatPrice(best.price)}</div>
+            ${total}
+            <span class="compare">比較 ${flight.offers.length} 個平台
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+            </span>
+          </div>
+        </summary>
+        <div class="offers">
+          ${flight.offers.map((offer, i) => `
+            <div class="offer ${i === 0 ? 'is-best' : ''}">
+              <div class="offer-name">${offer.platform.name}<small>${offer.platform.note}</small></div>
+              <div class="offer-price">
+                <b class="num">${formatPrice(offer.price)}</b>
+                <small class="num">${i === 0 ? '最便宜' : `貴 ${formatPrice(offer.price - best.price)}`}</small>
+              </div>
+              <a class="btn btn-sm ${i === 0 ? '' : 'btn-line'}" href="${offer.url}" target="_blank" rel="noopener noreferrer">
+                前往訂購
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3L4 12"/></svg>
+              </a>
+            </div>`).join('')}
+        </div>`;
+      return card;
+    }
+
+    // 鄰近 7 天的最低價，方便挑便宜日期
+    function renderDateStrip() {
+      const q = state.query;
+      const strip = $('dateStrip');
+      strip.innerHTML = '';
+      const tripLength = q.tripType === 'rt' ? diffDays(q.depart, q.ret) : 0;
+      const minStart = addDays(todayKey, 1);
+      let start = addDays(q.depart, -3);
+      if (start < minStart) start = minStart;
+
+      const days = [];
+      for (let i = 0; i < 7; i++) {
+        const depart = addDays(start, i);
+        const price = lowestPrice({ ...q, depart, ret: addDays(depart, tripLength) });
+        days.push({ depart, price });
+      }
+      const minPrice = Math.min(...days.map(d => d.price ?? Infinity));
+
+      days.forEach(day => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-btn';
+        if (day.depart === q.depart) btn.classList.add('is-active');
+        if (day.price === minPrice) btn.classList.add('is-cheapest');
+        btn.innerHTML = `<small>${formatDate(day.depart)}</small><b class="num">${day.price ? formatPrice(day.price) : '—'}</b>`;
+        btn.addEventListener('click', () => {
+          state.query.depart = day.depart;
+          state.query.ret = addDays(day.depart, tripLength);
+          syncForm();
+          renderAll();
+        });
+        strip.appendChild(btn);
+      });
+    }
+
+    function renderTrackButton() {
+      const btn = $('trackBtn');
+      const tracked = tracks.some(t => trackKey(t) === trackKey(state.query));
+      btn.classList.toggle('is-on', tracked);
+      btn.textContent = tracked ? '✓ 已追蹤此航線' : '＋ 追蹤此航線價格';
+    }
+
+    /* ========== 渲染：熱門航線 ========== */
+
+    function renderPopular() {
+      const q = state.query;
+      const origin = originCodes.includes(q.from) ? q.from : 'TPE';
+      $('popularNote').textContent = `${airports[origin].city}出發・${formatDate(q.depart)} 起 5 天來回・每人`;
+      const grid = $('popularGrid');
+      grid.innerHTML = '';
+      Object.keys(destinations).forEach(code => {
+        const query = { ...q, from: origin, to: code, tripType: 'rt', ret: addDays(q.depart, 5) };
+        const price = lowestPrice(query);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'dest';
+        btn.innerHTML = `
+          <div class="code">${origin} → ${code}</div>
+          <div class="city">${airports[code].city}</div>
+          <div class="from">最低</div>
+          <div class="price num">${formatPrice(price)}</div>`;
+        btn.addEventListener('click', () => {
+          state.query = query;
+          syncForm();
+          renderAll();
+          $('results').scrollIntoView();
+        });
+        grid.appendChild(btn);
+      });
+    }
+
+    /* ========== 渲染：我的追蹤 ========== */
+
+    function renderTracks() {
+      $('trackCount').textContent = tracks.length;
+      const list = $('trackList');
+      list.innerHTML = '';
+      if (!tracks.length) {
+        list.innerHTML = '<div class="empty">還沒有追蹤的航線。在比價結果點「追蹤此航線價格」，之後回來就能看到價格漲跌。</div>';
+        return;
+      }
+      tracks.forEach(track => {
+        const expired = track.depart <= todayKey;
+        const now = expired ? null : lowestPrice(track);
+        const diff = now === null ? 0 : now - track.savedPrice;
+        const trendClass = diff < 0 ? 'down' : diff > 0 ? 'up' : 'flat';
+        const trendText = expired ? '已過出發日'
+          : diff < 0 ? `↓ 降 ${formatPrice(-diff)}`
+          : diff > 0 ? `↑ 漲 ${formatPrice(diff)}` : '價格持平';
+
+        const card = document.createElement('div');
+        card.className = `track${expired ? ' is-expired' : ''}`;
+        card.innerHTML = `
+          <div class="track-top">
+            <div>
+              <div class="route">${airports[track.from].city} → ${airports[track.to].city}</div>
+              <div class="meta">${track.tripType === 'rt' ? `${formatDate(track.depart)} – ${formatDate(track.ret)}` : `${formatDate(track.depart)} 單程`}</div>
+              <div class="meta num">加入時 ${formatPrice(track.savedPrice)}</div>
+            </div>
+            <div>
+              <div class="now num">${now === null ? '—' : formatPrice(now)}</div>
+              <div style="text-align:right"><span class="trend ${expired ? 'flat' : trendClass}">${trendText}</span></div>
+            </div>
+          </div>
+          <div class="track-actions">
+            <button type="button" class="btn btn-sm" data-action="view" ${expired ? 'disabled' : ''}>查看比價</button>
+            <button type="button" class="btn btn-sm btn-line" data-action="remove">移除</button>
+          </div>`;
+        card.querySelector('[data-action="view"]').addEventListener('click', () => {
+          state.query = { from: track.from, to: track.to, depart: track.depart, ret: track.ret || addDays(track.depart, 5), tripType: track.tripType, pax: track.pax || 1 };
+          syncForm();
+          renderAll();
+          $('results').scrollIntoView();
+        });
+        card.querySelector('[data-action="remove"]').addEventListener('click', () => {
+          tracks = tracks.filter(t => trackKey(t) !== trackKey(track));
+          saveTracks(tracks);
+          renderTracks();
+          renderTrackButton();
+        });
+        list.appendChild(card);
+      });
+    }
+
+    function renderAll() {
+      renderResults();
+      renderPopular();
+      renderTracks();
+    }
+
+    /* ========== 事件 ========== */
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const tripType = form.querySelector('input[name="tripType"]:checked').value;
+      const depart = departInput.value || addDays(todayKey, 30);
+      let ret = returnInput.value || addDays(depart, 5);
+      if (ret < depart) ret = depart;
+      state.query = { from: fromSelect.value, to: toSelect.value, depart, ret, tripType, pax: Number(paxSelect.value) };
+      syncForm();
+      renderAll();
+      $('results').scrollIntoView();
+    });
+
+    form.querySelectorAll('input[name="tripType"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        state.query.tripType = radio.value;
+        syncForm();
+      });
+    });
+
+    departInput.addEventListener('change', () => {
+      if (!departInput.value) return;
+      state.query.depart = departInput.value;
+      if (state.query.ret < departInput.value) state.query.ret = addDays(departInput.value, 5);
+      syncForm();
+    });
+
+    $('swapBtn').addEventListener('click', () => {
+      const from = fromSelect.value;
+      fromSelect.value = toSelect.value;
+      toSelect.value = from;
+    });
+
+    document.querySelectorAll('.chip[data-sort]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        state.sort = chip.dataset.sort;
+        document.querySelectorAll('.chip[data-sort]').forEach(c => c.classList.toggle('is-on', c === chip));
+        renderResults();
+      });
+    });
+
+    $('directOnly').addEventListener('change', event => {
+      state.directOnly = event.target.checked;
+      renderResults();
+    });
+
+    $('trackBtn').addEventListener('click', () => {
+      const q = state.query;
+      const key = trackKey(q);
+      if (tracks.some(t => trackKey(t) === key)) {
+        tracks = tracks.filter(t => trackKey(t) !== key);
+      } else {
+        const price = lowestPrice(q);
+        if (price === null) return;
+        tracks.push({ ...q, savedPrice: price, savedOn: todayKey });
+      }
+      saveTracks(tracks);
+      renderTracks();
+      renderTrackButton();
+    });
+
+    syncForm();
+    renderAll();
+  </script>
 </body>
 </html>
