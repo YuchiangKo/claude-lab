@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 美國期中選舉開票</title>
-  <meta name="description" content="2026 美國期中選舉開票結果、兩黨政見、選民輿論風向與各家媒體報導整理。">
+  <title>2026 九合一選情</title>
+  <meta name="description" content="2026 台灣九合一地方選舉：輿情風向、六都民調走向、候選人資訊與政見整理。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
@@ -14,22 +14,24 @@
       --bg: #f4f5f8;
       --surface: #ffffff;
       --surface-2: #f6f7fa;
-      --ink: #0f1c33;
+      --ink: #1a2233;
       --ink-soft: #4b5872;
       --ink-faint: #8a93a6;
       --line: #e2e6ee;
       --navy: #0d2142;
       /* 政黨配色 */
-      --dem: #2457b3;
-      --dem-soft: #e8eefa;
-      --rep: #c23a3a;
-      --rep-soft: #fbeaea;
-      --ind: #7a6a9e;
-      --pending: #c9ced8;
+      --kmt: #1f5bb5;
+      --kmt-soft: #e7eefa;
+      --dpp: #1b8a4c;
+      --dpp-soft: #e4f4ea;
+      --tpp: #1aa0a8;
+      --ind: #7d8597;
+      --ind-soft: #eef0f4;
+      --undecided: #c9ced8;
       --warn-soft: #fff6e0;
       --warn-line: #e8c46a;
       --shadow: 0 1px 2px rgba(8, 23, 48, .05), 0 6px 20px rgba(8, 23, 48, .06);
-      --radius: 10px;
+      --radius: 12px;
       --sans: "Inter", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
       --serif: "Noto Serif TC", "Songti TC", Georgia, serif;
       --max: 1080px;
@@ -45,463 +47,471 @@
         --ink-faint: #7c869b;
         --line: #26304a;
         --navy: #050a14;
-        --dem: #5b8cf0;
-        --dem-soft: #1a2747;
-        --rep: #ef6b6b;
-        --rep-soft: #3a1c22;
-        --pending: #3a445c;
+        --kmt: #5f95ec;
+        --kmt-soft: #172747;
+        --dpp: #3fbf77;
+        --dpp-soft: #13301f;
+        --ind: #8f97aa;
+        --ind-soft: #222b40;
+        --undecided: #3a445c;
         --warn-soft: #2d2614;
         --warn-line: #8a7230;
         --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .25);
       }
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: var(--sans);
-      color: var(--ink);
+      margin: 0;
       background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
-    a { color: inherit; }
-    .num { font-variant-numeric: tabular-nums; }
-    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    a { color: var(--kmt); }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
 
     /* 頂部導覽 */
-    .topbar {
+    header.top {
       position: sticky; top: 0; z-index: 10;
       background: var(--navy); color: #fff;
-      border-bottom: 3px solid transparent;
-      border-image: linear-gradient(90deg, var(--dem) 50%, var(--rep) 50%) 1;
     }
-    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
     .brand { font-family: var(--serif); font-weight: 700; font-size: 18px; white-space: nowrap; }
-    .nav { display: flex; gap: 20px; font-size: 14px; overflow-x: auto; }
-    .nav a { text-decoration: none; opacity: .8; white-space: nowrap; }
-    .nav a:hover { opacity: 1; }
+    .nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      color: rgba(255,255,255,.8); text-decoration: none; font-size: 14px;
+      padding: 6px 10px; border-radius: 6px; white-space: nowrap;
+    }
+    .nav a:hover { background: rgba(255,255,255,.1); color: #fff; }
 
-    /* 標題區 */
-    .hero { padding: 40px 0 24px; }
-    .live {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 600; color: var(--rep);
-      background: var(--rep-soft); padding: 4px 12px; border-radius: 99px;
-    }
-    .live::before {
-      content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rep);
-      animation: pulse 1.6s infinite;
-    }
-    @keyframes pulse { 50% { opacity: .3; } }
-    @media (prefers-reduced-motion: reduce) { .live::before { animation: none; } }
-    h1 { font-family: var(--serif); font-size: clamp(28px, 5vw, 42px); line-height: 1.25; margin: 14px 0 10px; }
-    .lede { color: var(--ink-soft); max-width: 720px; }
-    .updated { margin-top: 12px; font-size: 13px; color: var(--ink-faint); }
+    /* 主視覺 */
+    .hero { padding: 40px 0 8px; }
+    .eyebrow { color: var(--ink-faint); font-size: 13px; letter-spacing: .08em; font-weight: 600; }
+    h1 { font-family: var(--serif); font-size: clamp(28px, 5vw, 42px); margin: 6px 0 10px; line-height: 1.25; }
+    .lede { color: var(--ink-soft); max-width: 680px; margin: 0; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+    .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+    .stat b { display: block; font-size: 26px; font-variant-numeric: tabular-nums; }
+    .stat span { color: var(--ink-faint); font-size: 13px; }
+
+    section { padding: 36px 0 8px; scroll-margin-top: 64px; }
+    h2 { font-family: var(--serif); font-size: 24px; margin: 0 0 4px; }
+    .sub { color: var(--ink-faint); font-size: 14px; margin: 0 0 18px; }
 
     .notice {
-      margin-top: 20px; padding: 12px 16px; font-size: 14px;
-      background: var(--warn-soft); border: 1px solid var(--warn-line); border-radius: var(--radius);
+      background: var(--warn-soft); border: 1px solid var(--warn-line);
+      border-radius: var(--radius); padding: 12px 16px; font-size: 14px; color: var(--ink-soft);
     }
 
-    /* 區塊 */
-    section { padding: 32px 0; scroll-margin-top: 64px; }
-    h2 { font-family: var(--serif); font-size: 26px; margin-bottom: 6px; }
-    .sub { color: var(--ink-soft); font-size: 15px; margin-bottom: 22px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--line);
-      border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px;
+    /* 輿情風向卡片 */
+    .trends { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .trend { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .trend h3 { margin: 0 0 6px; font-size: 16px; display: flex; gap: 8px; align-items: center; }
+    .trend p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+    .tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--ind-soft); color: var(--ink-soft); white-space: nowrap; }
+
+    /* 縣市切換 */
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .tabs button {
+      font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+      padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line);
+      background: var(--surface); color: var(--ink-soft);
     }
+    .tabs button[aria-selected="true"] { background: var(--navy); color: #fff; border-color: var(--navy); }
 
-    /* 席次總覽 */
-    .chambers { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .chamber h3 { font-size: 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-    .chamber h3 small { font-size: 13px; font-weight: 500; color: var(--ink-faint); }
-    .tally { display: flex; justify-content: space-between; align-items: flex-end; margin: 16px 0 10px; }
-    .tally .side { display: flex; flex-direction: column; }
-    .tally .side.right { align-items: flex-end; }
-    .tally .seats { font-size: 40px; font-weight: 700; line-height: 1; }
-    .tally .party { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
-    .tally .mid { text-align: center; font-size: 13px; color: var(--ink-faint); }
-    .tally .mid b { display: block; font-size: 20px; color: var(--ink-soft); }
-    .dem-text { color: var(--dem); }
-    .rep-text { color: var(--rep); }
+    .race { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .race-head { padding: 18px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+    .race-head h3 { margin: 0; font-family: var(--serif); font-size: 22px; }
+    .race-head p { margin: 0; color: var(--ink-soft); font-size: 14px; }
 
-    .seatbar { position: relative; display: flex; height: 22px; border-radius: 6px; overflow: hidden; background: var(--pending); }
-    .seatbar span { display: block; height: 100%; }
-    .seatbar .d { background: var(--dem); }
-    .seatbar .p { background: var(--pending); }
-    .seatbar .r { background: var(--rep); }
-    .majority {
-      position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink);
+    .duel { display: grid; grid-template-columns: 1fr 1fr; }
+    .cand { padding: 20px; }
+    .cand + .cand { border-left: 1px solid var(--line); }
+    .cand-top { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+    .photo {
+      width: 76px; height: 76px; border-radius: 50%; flex: none; overflow: hidden;
+      display: grid; place-items: center; font-family: var(--serif); font-size: 28px; font-weight: 700; color: #fff;
+      border: 3px solid var(--surface); box-shadow: 0 0 0 2px currentColor;
     }
-    .bar-legend { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-faint); margin-top: 8px; }
-    .verdict {
-      margin-top: 14px; padding: 10px 12px; border-radius: 8px;
-      background: var(--dem-soft); color: var(--dem); font-weight: 600; font-size: 14px;
-    }
-    .before { margin-top: 10px; font-size: 13px; color: var(--ink-soft); }
+    .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .kmt .photo { background: var(--kmt); color: var(--kmt); }
+    .dpp .photo { background: var(--dpp); color: var(--dpp); }
+    .photo .initial { color: #fff; }
+    .cand-name { font-size: 20px; font-weight: 700; margin: 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .num { font-size: 12px; font-weight: 700; border-radius: 6px; padding: 1px 7px; color: #fff; }
+    .kmt .num { background: var(--kmt); }
+    .dpp .num { background: var(--dpp); }
+    .party { font-size: 13px; font-weight: 600; }
+    .kmt .party { color: var(--kmt); }
+    .dpp .party { color: var(--dpp); }
+    .role { color: var(--ink-faint); font-size: 13px; margin: 2px 0 0; }
+    .slogan { font-family: var(--serif); font-size: 15px; padding: 8px 12px; border-radius: 8px; margin: 0 0 12px; }
+    .kmt .slogan { background: var(--kmt-soft); }
+    .dpp .slogan { background: var(--dpp-soft); }
+    .cand ul { margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-soft); }
+    .cand li { margin-bottom: 6px; }
+    .cand .empty { font-size: 13px; color: var(--ink-faint); }
 
-    /* 關鍵選情 */
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-    .filters button {
-      font: inherit; font-size: 14px; cursor: pointer;
-      padding: 6px 14px; border-radius: 99px;
-      border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
-    }
-    .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-    .races { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-    .race { padding: 16px 18px; border-left: 4px solid var(--pending); }
-    .race.win-d { border-left-color: var(--dem); }
-    .race.win-r { border-left-color: var(--rep); }
-    .race .state { display: flex; justify-content: space-between; align-items: center; font-weight: 700; margin-bottom: 8px; }
-    .tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--surface-2); color: var(--ink-soft); }
-    .tag.flip { background: var(--dem-soft); color: var(--dem); }
-    .tag.hold-r { background: var(--rep-soft); color: var(--rep); }
-    .tag.open { background: var(--warn-soft); color: var(--ink); }
-    .cand { display: flex; align-items: center; gap: 8px; font-size: 14px; padding: 3px 0; }
-    .cand .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
-    .cand.winner { font-weight: 700; }
-    .cand.winner::after { content: "✓ 勝選"; margin-left: auto; font-size: 12px; color: var(--ink-soft); font-weight: 600; }
-    .race .note { font-size: 13px; color: var(--ink-faint); margin-top: 6px; }
+    .others { padding: 12px 20px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-faint); background: var(--surface-2); }
 
-    /* 兩黨政見 */
-    .platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .platform h3 { font-size: 18px; padding-bottom: 10px; margin-bottom: 12px; border-bottom: 3px solid; }
-    .platform.d h3 { color: var(--dem); border-color: var(--dem); }
-    .platform.r h3 { color: var(--rep); border-color: var(--rep); }
-    .platform ul { list-style: none; display: grid; gap: 12px; }
-    .platform li b { display: block; font-size: 15px; }
-    .platform li span { font-size: 14px; color: var(--ink-soft); }
-    .quote {
-      margin-top: 16px; padding: 12px 14px; font-size: 14px; border-radius: 8px;
-      background: var(--surface-2); color: var(--ink-soft);
-    }
-    .context { margin-top: 20px; font-size: 14px; color: var(--ink-soft); }
+    /* 民調條圖 */
+    .polls { padding: 20px; border-top: 1px solid var(--line); }
+    .polls h4 { margin: 0 0 4px; font-size: 16px; }
+    .polls .trend-note { margin: 0 0 14px; font-size: 14px; color: var(--ink-soft); }
+    .poll { display: grid; grid-template-columns: 170px 1fr; gap: 12px; align-items: center; margin-bottom: 10px; }
+    .poll-meta { font-size: 13px; line-height: 1.35; }
+    .poll-meta b { display: block; font-size: 14px; }
+    .poll-meta span { color: var(--ink-faint); }
+    .bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; background: var(--undecided); font-size: 12.5px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .bar div { display: flex; align-items: center; padding: 0 8px; white-space: nowrap; min-width: 0; }
+    .bar .b-kmt { background: var(--kmt); }
+    .bar .b-dpp { background: var(--dpp); justify-content: flex-end; }
+    .bar .b-rest { flex: 1; justify-content: center; color: var(--ink-soft); font-weight: 500; }
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--ink-faint); margin-top: 6px; }
+    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
 
-    /* 輿論風向 */
-    .opinion { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .opinion h3 { font-size: 17px; margin-bottom: 14px; }
-    .hbar { margin-bottom: 14px; }
-    .hbar .label { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
-    .hbar .track { height: 12px; border-radius: 6px; background: var(--surface-2); overflow: hidden; }
-    .hbar .fill { height: 100%; background: var(--ink-soft); border-radius: 6px; }
-    .vs { display: flex; height: 26px; border-radius: 6px; overflow: hidden; font-size: 13px; font-weight: 600; color: #fff; margin: 6px 0 4px; }
-    .vs span { display: flex; align-items: center; padding: 0 8px; }
-    .vs .d { background: var(--dem); }
-    .vs .r { background: var(--rep); justify-content: flex-end; }
-    .vs .o { background: var(--pending); flex: 1; }
-    .issue-list { list-style: none; display: grid; gap: 10px; font-size: 14px; }
-    .issue-list li { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
-    .issue-list li:last-child { border-bottom: 0; }
-    .lean { font-weight: 600; white-space: nowrap; }
-    .src { font-size: 12px; color: var(--ink-faint); margin-top: 12px; }
+    /* 其他縣市表格 */
+    .county-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .county { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+    .county h3 { margin: 0 0 8px; font-size: 16px; display: flex; justify-content: space-between; align-items: baseline; }
+    .county h3 small { font-weight: 500; color: var(--ink-faint); font-size: 12.5px; }
+    .county ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { font-size: 13.5px; padding: 3px 10px; border-radius: 99px; background: var(--ind-soft); color: var(--ink-soft); border: 1px solid transparent; }
+    .chip em { font-style: normal; color: var(--ink-faint); margin-right: 4px; font-variant-numeric: tabular-nums; }
+    .chip.kmt { background: var(--kmt-soft); color: var(--kmt); border-color: color-mix(in srgb, var(--kmt) 30%, transparent); font-weight: 600; }
+    .chip.dpp { background: var(--dpp-soft); color: var(--dpp); border-color: color-mix(in srgb, var(--dpp) 30%, transparent); font-weight: 600; }
+    .chip.tpp { color: var(--tpp); border-color: color-mix(in srgb, var(--tpp) 40%, transparent); font-weight: 600; }
+    .county .note { margin: 8px 0 0; font-size: 12.5px; color: var(--ink-faint); }
 
-    .reactions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
-    .reaction .who { font-size: 13px; font-weight: 600; color: var(--ink-faint); margin-bottom: 6px; }
-    .reaction p { font-size: 14px; }
+    .sources { font-size: 13.5px; color: var(--ink-soft); padding-left: 20px; }
+    .sources li { margin-bottom: 4px; word-break: break-all; }
+    footer { padding: 32px 0 48px; color: var(--ink-faint); font-size: 13px; }
 
-    /* 媒體報導 */
-    .news { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-    .news a { text-decoration: none; display: block; height: 100%; transition: transform .15s; }
-    .news a:hover { transform: translateY(-2px); }
-    .news .outlet { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--ink-faint); }
-    .news h3 { font-size: 16px; margin: 6px 0; line-height: 1.45; }
-    .news p { font-size: 14px; color: var(--ink-soft); }
-
-    footer { padding: 32px 0 48px; font-size: 13px; color: var(--ink-faint); border-top: 1px solid var(--line); margin-top: 24px; }
-
-    /* 手機版 */
     @media (max-width: 760px) {
-      .wrap { padding: 0 16px; }
-      .nav { display: none; }
-      .chambers, .platforms, .opinion, .reactions { grid-template-columns: 1fr; }
-      .tally .seats { font-size: 32px; }
-      .news { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .trends, .county-grid { grid-template-columns: 1fr; }
+      .duel { grid-template-columns: 1fr; }
+      .cand + .cand { border-left: 0; border-top: 1px solid var(--line); }
+      .poll { grid-template-columns: 1fr; gap: 4px; }
+      .poll-meta b, .poll-meta span { display: inline; margin-right: 6px; }
+      .brand { font-size: 16px; }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
+  <header class="top">
     <div class="wrap">
-      <div class="brand">2026 期中選舉</div>
+      <div class="brand">2026 九合一選情</div>
       <nav class="nav" aria-label="頁面導覽">
-        <a href="#results">席次</a>
-        <a href="#races">關鍵選情</a>
-        <a href="#platforms">兩黨政見</a>
-        <a href="#opinion">輿論風向</a>
-        <a href="#news">媒體報導</a>
+        <a href="#opinion">輿情風向</a>
+        <a href="#six">六都對決</a>
+        <a href="#counties">其他縣市</a>
+        <a href="#sources">資料來源</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
     <div class="hero">
-      <span class="live">開票中</span>
-      <h1>民主黨同時拿下參眾兩院</h1>
-      <p class="lede">2026 年 11 月 3 日美國期中選舉，民主黨在參議院翻轉 7 席，眾議院也已確定過半，國會控制權將於明年 1 月由共和黨移交民主黨。部分選區仍在計票中。</p>
-      <p class="updated">資料更新時間：2026 年 11 月 4 日（美東時間），依各媒體選後報導整理</p>
-      <div class="notice">
-        各家媒體的席次統計不完全一致，且數字仍在變動。本頁數字標有出處，最終結果請以 AP 與各州官方認證為準。
+      <div class="eyebrow">115 年地方公職人員選舉 · 11 月 28 日投票</div>
+      <h1>九合一選戰倒數，六都誰領先？</h1>
+      <p class="lede">整理六都市長選戰的民調走向、候選人背景與政見，以及其他 16 縣市的參選名單。民調依各機構公布結果呈現，不同機構方法差異大，請看趨勢、勿只看單一數字。</p>
+      <div class="stats">
+        <div class="stat"><b id="countdown">—</b><span>距離投票日</span></div>
+        <div class="stat"><b>22</b><span>縣市長席次</span></div>
+        <div class="stat"><b>81</b><span>位縣市長候選人</span></div>
+        <div class="stat"><b>11/18</b><span>起民調封關</span></div>
       </div>
     </div>
 
-    <!-- 席次總覽 -->
-    <section id="results">
-      <h2>席次總覽</h2>
-      <p class="sub">中間黑線為過半門檻，灰色為尚未判定的席次</p>
-      <div class="chambers" id="chambers"></div>
-    </section>
-
-    <!-- 關鍵選情 -->
-    <section id="races">
-      <h2>參議院關鍵選情</h2>
-      <p class="sub">已判定與仍在計票的重點州</p>
-      <div class="filters" role="group" aria-label="篩選選情">
-        <button type="button" data-filter="all" aria-pressed="true">全部</button>
-        <button type="button" data-filter="flip" aria-pressed="false">民主黨翻盤</button>
-        <button type="button" data-filter="hold" aria-pressed="false">現任黨保住</button>
-        <button type="button" data-filter="open" aria-pressed="false">尚未判定</button>
-      </div>
-      <div class="races" id="raceList"></div>
-    </section>
-
-    <!-- 兩黨政見 -->
-    <section id="platforms">
-      <h2>兩黨競選主軸</h2>
-      <p class="sub">整理自選前報導中兩黨的主要訴求</p>
-      <div class="platforms">
-        <div class="card platform d">
-          <h3>民主黨</h3>
-          <ul>
-            <li><b>生活負擔（affordability）</b><span>以物價、油價、電費等生活成本為核心訴求，主打「讓日子過得下去」。</span></li>
-            <li><b>批評 2025 年減稅法案</b><span>主張該法案主要讓富人受惠，把減稅議題轉為貧富差距議題。</span></li>
-            <li><b>健保</b><span>以醫療費用與健保保障作為主要攻防議題，民調顯示選民在此較信任民主黨。</span></li>
-            <li><b>民主與政府清廉</b><span>強調制衡行政權、打擊政府貪腐。</span></li>
-            <li><b>恢復 SALT 扣除額</b><span>部分溫和派議員主張完整恢復州與地方稅扣除額，以吸引郊區中產選民。</span></li>
-          </ul>
-          <div class="quote">黨內也有不同聲音：眾議員 Tom Suozzi 認為應聚焦經濟，但坦言民主黨「品牌形象一團亂」。</div>
-        </div>
-        <div class="card platform r">
-          <h3>共和黨</h3>
-          <ul>
-            <li><b>「勞動家庭減稅」</b><span>將 2025 年減稅法案重新包裝為「Working Families Tax Cut」，主張能減輕家庭採買與生活開支。</span></li>
-            <li><b>邊境安全</b><span>參議員前往邊境造勢，以強硬移民與邊境政策為主要成績。</span></li>
-            <li><b>移民議題</b><span>出口民調中，移民是共和黨唯一領先民主黨的議題。</span></li>
-            <li><b>主動出擊</b><span>共和黨眾議院競選委員會（NRCC）要求候選人「主動出擊、訊息簡單」。</span></li>
-            <li><b>攻擊民主黨</b><span>將民主黨連結到加稅、補助非法移民與縱容詐領等形象。</span></li>
-          </ul>
-          <div class="quote">選前分析指出，在物價、伊朗戰爭與油價的影響下，減稅議題的效果可能「退居次要」。</div>
-        </div>
-      </div>
-      <p class="context">選舉背景：選前眾議院為共和黨 220 席對民主黨 213 席（2 席出缺），參議院為共和黨 53 席對民主黨 47 席。多數媒體將結果解讀為選民對川普第二任期表現的反彈，尤其是物價、關稅與伊朗戰爭。</p>
-    </section>
-
-    <!-- 輿論風向 -->
     <section id="opinion">
-      <h2>輿論風向</h2>
-      <p class="sub">出口民調：選民在意什麼、比較信任哪一黨</p>
-      <div class="opinion">
-        <div class="card">
-          <h3>選民最重視的議題</h3>
-          <div class="hbar">
-            <div class="label"><span>經濟</span><span class="num">約 39%</span></div>
-            <div class="track"><div class="fill" style="width:39%"></div></div>
-          </div>
-          <div class="hbar">
-            <div class="label"><span>民主制度現況</span><span class="num">約 32%</span></div>
-            <div class="track"><div class="fill" style="width:32%"></div></div>
-          </div>
-          <div class="hbar">
-            <div class="label"><span>對國家走向不滿意（含非常不滿）</span><span class="num">約 75%</span></div>
-            <div class="track"><div class="fill" style="width:75%"></div></div>
-          </div>
-          <p class="src">出處：NBC News 出口民調、CBS News 出口民調。油價、食物、電費與醫療費用也是選民高度關注的項目。</p>
-        </div>
-        <div class="card">
-          <h3>各議題較信任哪一黨</h3>
-          <div class="label" style="display:flex;justify-content:space-between;font-size:14px"><span>移民（唯一由共和黨領先的議題）</span></div>
-          <div class="vs" role="img" aria-label="移民議題：共和黨 44%，民主黨 41%">
-            <span class="d" style="width:41%">民 41%</span>
-            <span class="o"></span>
-            <span class="r" style="width:44%">共 44%</span>
-          </div>
-          <p class="src" style="margin-top:0;margin-bottom:14px">出處：NBC News 出口民調</p>
-          <ul class="issue-list">
-            <li><span>經濟</span><span class="lean dem-text">民主黨小幅領先</span></li>
-            <li><span>政府貪腐</span><span class="lean dem-text">民主黨小幅領先</span></li>
-            <li><span>外交政策</span><span class="lean dem-text">民主黨小幅領先</span></li>
-            <li><span>健保</span><span class="lean dem-text">民主黨明顯領先</span></li>
-            <li><span>跨性別議題</span><span class="lean dem-text">民主黨明顯領先</span></li>
-            <li><span>移民</span><span class="lean rep-text">共和黨領先</span></li>
-          </ul>
-          <p class="src">出處：AP VoteCast、NBC News 出口民調</p>
-        </div>
-      </div>
-
-      <div class="reactions">
-        <div class="card reaction">
-          <div class="who">川普總統</div>
-          <p>在 Truth Social 表示「我不在選票上，如果我在，共和黨會大勝」，但也表示「完全願意接受」結果，並希望與民主黨達成協議，而不是在剩下兩年一直動用否決權。</p>
-        </div>
-        <div class="card reaction">
-          <div class="who">共和黨內部</div>
-          <p>NBC 報導共和黨人原本就預期會輸，但沒想到輸得這麼慘，黨內開始討論是否與川普切割，有人直言「一切都會改變」。</p>
-        </div>
-        <div class="card reaction">
-          <div class="who">分析觀點</div>
-          <p>CBC 分析認為這是選民對川普第二任期的強烈否定，主因是物價沒有如承諾下降，伊朗戰爭與關稅政策更讓情況惡化。</p>
-        </div>
-      </div>
+      <h2>輿情風向</h2>
+      <p class="sub">資料截至 2026 年 11 月 4 日</p>
+      <div class="trends" id="trendList"></div>
     </section>
 
-    <!-- 媒體報導 -->
-    <section id="news">
-      <h2>媒體報導</h2>
-      <p class="sub">點擊前往原文（英文）</p>
-      <div class="news" id="newsList"></div>
+    <section id="six">
+      <h2>六都對決</h2>
+      <p class="sub">候選人號次依中選會抽籤結果；民調排除網路投票與街頭民調</p>
+      <div class="tabs" role="tablist" id="cityTabs"></div>
+      <div id="racePanel"></div>
+    </section>
+
+    <section id="counties">
+      <h2>其他 16 縣市參選名單</h2>
+      <p class="sub">數字為選票號次；藍色為國民黨、綠色為民進黨、青色為民眾黨，灰色為無黨籍或其他政黨</p>
+      <div class="county-grid" id="countyGrid"></div>
+    </section>
+
+    <section id="sources">
+      <h2>資料來源</h2>
+      <div class="notice">本頁為整理性質，並非官方資料。候選人名單以中選會公告為準；民調數字取自各媒體與民調機構公開結果，部分機構未公開樣本數與調查方法。候選人照片自維基百科載入，無照片時以姓氏代替。依《公職人員選舉罷免法》，11 月 18 日起至投票結束前不得發布或引述民調。</div>
+      <ul class="sources">
+        <li><a href="https://www.peopo.org/news/862071" target="_blank" rel="noopener">PeoPo 公民新聞：81 位縣市長候選人號次一覽</a></li>
+        <li><a href="https://news.pts.org.tw/article/801606" target="_blank" rel="noopener">公視新聞：22 縣市長候選人名單</a></li>
+        <li><a href="https://news.tvbs.com.tw/politics/4017384" target="_blank" rel="noopener">TVBS：九合一選舉候選人名單與六都戰況</a></li>
+        <li><a href="https://zh.wikipedia.org/zh-tw/2026年中華民國直轄市長及縣市長選舉民意調查" target="_blank" rel="noopener">維基百科：2026 年直轄市長及縣市長選舉民意調查</a></li>
+        <li><a href="https://udn.com/news/story/124652/9803622" target="_blank" rel="noopener">聯合新聞網：TVBS 台北市長民調（10 月）</a></li>
+        <li><a href="https://www.chinatimes.com/realtimenews/20261102001193-260407" target="_blank" rel="noopener">中時新聞網：台北辯論後民調比較</a></li>
+        <li><a href="https://esg.businesstoday.com.tw/article/category/190807/post/202610130014" target="_blank" rel="noopener">今周刊 ESG：六都候選人永續承諾</a></li>
+        <li><a href="https://event.knews.com.tw/2026election" target="_blank" rel="noopener">知新聞：2026 九合一選舉戰情室</a></li>
+        <li><a href="https://cna.com.tw/news/aloc/202609230224.aspx" target="_blank" rel="noopener">中央社：桃園市長選情</a></li>
+        <li><a href="https://udn.com/news/story/124652/9668749" target="_blank" rel="noopener">聯合新聞網：張善政市政說明會</a></li>
+        <li><a href="https://cna.com.tw/news/aipl/202609200161.aspx" target="_blank" rel="noopener">中央社：台中市長選情</a></li>
+      </ul>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">
-      本頁為非官方整理，資料來源包括 AP、NBC News、CBS News、CNN、Axios、NPR、CNBC、Fox News 與 CBC 的選後報導。各媒體統計時間不同，數字可能有出入，最終結果以各州官方認證為準。
-    </div>
+    <div class="wrap">資料整理至 2026 年 11 月 4 日 · 投票時間 11 月 28 日上午 8 時至下午 4 時</div>
   </footer>
 
   <script>
-    // 席次資料：更新結果時只需修改這裡
-    const chamberData = [
+    // 輿情風向重點
+    const trendItems = [
+      { tag: '台北', title: '蔣萬安領先幅度持續收斂', text: 'TVBS 系列民調中，雙方差距從 5 月下旬的 28 個百分點、10 月初的 8 個百分點，縮小到辯論後（10/31）的 4 個百分點。同一份調查中，47% 認為沈伯洋辯論表現較佳，蔣萬安為 40%。' },
+      { tag: '民調分歧', title: '同一時間、不同機構結果相反', text: '台北辯論後，ETtoday 顯示蔣萬安領先 11 個百分點，台灣韜略策進學會卻顯示沈伯洋領先 17 個百分點；台中的佛光大學與信民協會同週調查方向也相反。機構效應明顯，宜看同一機構的前後變化。' },
+      { tag: '新北・台中', title: '交棒戰呈現拉鋸', text: '新北藍白整合由李四川出線後，與蘇巧慧在多份民調中互有領先；台中盧秀燕任滿，江啟臣與何欣純的未表態比例仍有約兩到三成，選情尚未明朗。' },
+      { tag: '南部', title: '台南、高雄綠營暫居優勢', text: '台南陳亭妃在已公布的民調中都領先謝龍介，且差距逐次擴大；高雄賴瑞隆在 10 月多數民調領先柯志恩，但 ETtoday 調查顯示兩人幾乎持平。' },
+      { tag: '議題', title: '福利政見與氣候韌性成攻防主軸', text: '營養午餐免費、敬老卡加碼、長者健保費補助等福利政見互相較勁；六都 23 位候選人中有 13 位簽署永續韌性城市承諾，李四川與江啟臣未簽。' },
+      { tag: '選戰氛圍', title: '假訊息與網路攻防升溫', text: '媒體報導選舉相關假訊息案件激增，多位候選人公開指控遭網軍攻擊。11 月 18 日起進入民調封關期，之後將無法再看到新的公開民調。' }
+    ];
+
+    // 六都候選人與民調（民調順序：國民黨、民進黨、未表態；null 表示機構未公布）
+    const races = [
       {
-        name: '參議院',
-        source: 'AP 統計',
-        total: 100,
-        majority: 51,
-        dem: 54,
-        rep: 44,
-        verdict: '民主黨已確定取得參議院多數',
-        before: '選前：共和黨 53 席、民主黨 47 席（民主黨淨增 7 席）'
+        id: 'taipei', city: '台北市', summary: '現任市長爭取連任，對上民進黨立委',
+        kmt: { name: '蔣萬安', num: 5, wiki: '蔣萬安', role: '現任台北市長，爭取連任', slogan: '讓每一個人在台北實現自我',
+          points: ['推動公辦都更，南機場單元 4 已完成簽約，將提供幸福住宅', '簽署六都永續韌性城市政策承諾'] },
+        dpp: { name: '沈伯洋', num: 3, wiki: '沈伯洋', role: '民進黨不分區立委', slogan: '縣市好人才，團結拚未來',
+          points: ['制定「台北都市林自治條例」，導入路樹智慧管理並升級涼感地圖', '補助罕病患者家用不斷電系統', '提出「都更陪伴機制」，協助住戶推動都更'] },
+        others: '1 號郭璽（台灣麻將最大黨）、2 號林志成（無黨籍）、4 號蕭文乾（臺灣SoR無法黨）、6 號唐新民（三勢團結促進聯盟）',
+        trendNote: 'TVBS 同一系列差距由 8 縮小為 4 個百分點；辯論後各機構結果分歧最大。',
+        polls: [
+          { org: 'TVBS', date: '10/31', kmt: 46, dpp: 42, und: 12, note: '電話訪問，1,747 份' },
+          { org: 'ETtoday', date: '10/31–11/1', kmt: 52.0, dpp: 40.7, und: 6.9 },
+          { org: '台灣韜略策進學會', date: '10/31–11/1', kmt: 35.3, dpp: 52.6, und: 7.7 },
+          { org: '聯合報', date: '10/20–25', kmt: 41, dpp: 45, und: 13 },
+          { org: 'TVBS', date: '10/3–7', kmt: 49, dpp: 41, und: 11, note: '電話訪問，1,120 份' }
+        ]
       },
       {
-        name: '眾議院',
-        source: 'NBC News 統計',
-        total: 435,
-        majority: 218,
-        dem: 231,
-        rep: 144,
-        verdict: '民主黨已確定取得眾議院多數',
-        before: '選前：共和黨 220 席、民主黨 213 席、出缺 2 席'
+        id: 'newtaipei', city: '新北市', summary: '侯友宜交棒，藍白合推李四川',
+        kmt: { name: '李四川', num: 3, wiki: '李四川', role: '國民黨提名，獲民眾黨支持', slogan: '我就是一個做事的人',
+          points: ['主張 65 歲以上長者健保費由政府負擔', '加強透水與保水設施，提升防洪能力'] },
+        dpp: { name: '蘇巧慧', num: 1, wiki: '蘇巧慧', role: '民進黨立委', slogan: '溫暖 創新 會做事',
+          points: ['推動免費營養午餐等育兒支持', '長輩假牙補助、敬老卡升級', '減輕家庭醫療負擔'] },
+        others: '2 號蘇輝湟（無黨籍）',
+        trendNote: '各機構互有領先，未出現一致趨勢；信民協會調查的未表態比例達三成。',
+        polls: [
+          { org: '信民協會', date: '10/6–8', kmt: 30.0, dpp: 43.1, und: 30.3 },
+          { org: 'TVBS', date: '9/29–10/2', kmt: 42.6, dpp: 35.9, und: null },
+          { org: '山水民調', date: '9/30–10/1', kmt: 34.5, dpp: 39.1, und: null },
+          { org: '鉅聞天下', date: '9/28–10/3', kmt: 45.74, dpp: 45.18, und: 9.08 }
+        ]
+      },
+      {
+        id: 'taoyuan', city: '桃園市', summary: '兩人對決，現任市長爭取連任',
+        kmt: { name: '張善政', num: 2, wiki: '張善政', role: '現任桃園市長，爭取連任', slogan: '一輩子都是做事的人',
+          points: ['投資上百億元興建桃園市立醫院', '堅持不讓 SRF 固體再生燃料廠計畫重啟'] },
+        dpp: { name: '黃世杰', num: 1, wiki: '黃世杰 (政治人物)', role: '前法務部政務次長、前桃園市立委', slogan: null,
+          points: ['推出 1,200 點敬老卡', '強化淹水、火災等災害的第一線應變'] },
+        others: '本屆僅兩人參選',
+        trendNote: '張善政維持領先，但差距由 21 縮小至約 11 個百分點。',
+        polls: [
+          { org: 'ETtoday', date: '10/29–11/1', kmt: 47.4, dpp: 36.0, und: 16.5 },
+          { org: '新台灣國策智庫', date: '9/15–17', kmt: 47.0, dpp: 25.9, und: 27.1 }
+        ]
+      },
+      {
+        id: 'taichung', city: '台中市', summary: '盧秀燕任滿，藍綠立委接班之爭',
+        kmt: { name: '江啟臣', num: 3, wiki: '江啟臣', role: '現任立法院副院長', slogan: '打造臺中旗艦城',
+          points: ['延續盧秀燕市府施政並加碼推動', '提出「貨出去，人進來」的產業與觀光發展方向'] },
+        dpp: { name: '何欣純', num: 1, wiki: '何欣純', role: '台中市第七選區立委', slogan: '讓台中欣欣向榮',
+          points: ['「六星市政」：推動海線、屯區、市區均衡發展', '主張營養午餐免費', '要求明確將普發現金列入政見'] },
+        others: '2 號洪麗華（司法正義黨）',
+        trendNote: '同週的佛光大學與信民協會結果方向相反，未表態仍約兩到三成。',
+        polls: [
+          { org: '佛光大學', date: '10/29–31', kmt: 38.3, dpp: 28.1, und: 18.6 },
+          { org: '信民協會', date: '10/28–30', kmt: 30.4, dpp: 41.1, und: 27.8 },
+          { org: '世新大學', date: '10/15–16', kmt: 39.8, dpp: 28.7, und: 31.5 },
+          { org: '循證民調', date: '10/5–6', kmt: 34.3, dpp: 32.4, und: 32.2 }
+        ]
+      },
+      {
+        id: 'tainan', city: '台南市', summary: '黃偉哲任滿，綠營力保首位女市長',
+        kmt: { name: '謝龍介', num: 2, wiki: '謝龍介', role: '國民黨不分區立委', slogan: '選我市長做4年 讓你懷念40年',
+          points: ['全面清查消防設備採購標案，杜絕回扣', '拆除烏山頭水庫水面光電板'] },
+        dpp: { name: '陳亭妃', num: 3, wiki: '陳亭妃', role: '台南市第三選區立委', slogan: '台南第一女市長',
+          points: ['於偏遠及易成孤島地區建置光電、儲能微電網', '在傳統基礎上注入創新思維，推動城市轉型'] },
+        others: '1 號蕭燐洪（臺灣SoR無法黨）、4 號葉人文（無黨籍）',
+        trendNote: '陳亭妃領先差距由 2 月約 5 個百分點擴大到 10 月約 37 個百分點。',
+        polls: [
+          { org: '新台灣國策智庫', date: '10/13–15', kmt: 22.6, dpp: 59.4, und: 17 },
+          { org: 'TVBS', date: '3/9–12', kmt: 30, dpp: 53, und: 17 },
+          { org: '鉅聞天下', date: '2/23–28', kmt: 40.57, dpp: 45.96, und: null }
+        ]
+      },
+      {
+        id: 'kaohsiung', city: '高雄市', summary: '陳其邁任滿，綠營守城之戰',
+        kmt: { name: '柯志恩', num: 3, wiki: '柯志恩', role: '國民黨不分區立委', slogan: '夢想海港 柯志恩一定成功',
+          points: ['「涼感城市三部曲」：植樹、風廊與遮蔭步道', '建置「高雄滯洪網」與住家防洪升級計畫', '發放「喘息券」，每年提供 48 小時照顧者喘息服務'] },
+        dpp: { name: '賴瑞隆', num: 5, wiki: '賴瑞隆', role: '高雄市第八選區立委', slogan: '信賴高雄 邁向新局',
+          points: ['推動「韌性高雄工程 2.0」，讓公共建設兼具防災功能', '爭取小港機場國內線至捷運站電動步道', '重視 38 區均衡發展'] },
+        others: '1 號張靜（司法改革黨）、2 號王肇民（無黨籍）、4 號洪方隆（無黨籍）',
+        trendNote: '8 月 ETtoday 柯志恩小幅領先，10 月多數民調轉為賴瑞隆領先。',
+        polls: [
+          { org: '聯合報', date: '10/28–31', kmt: 33, dpp: 40, und: 26 },
+          { org: 'ETtoday', date: '10/20–25', kmt: 43.1, dpp: 43.2, und: 13.2 },
+          { org: '鋒燦傳媒', date: '10/16–21', kmt: 27.4, dpp: 47.8, und: 22.4 }
+        ]
       }
     ];
 
-    // 參議院關鍵選情：party 為 d／r／i，status 為 flip／hold／open
-    const raceData = [
-      { state: '德州', status: 'flip', winner: 'd', note: '1988 年以來民主黨首度在德州贏得聯邦參議員選舉',
-        cands: [{ name: 'James Talarico', party: 'd' }, { name: 'Ken Paxton', party: 'r' }] },
-      { state: '緬因州', status: 'flip', winner: 'd', note: '擊敗現任參議員 Susan Collins',
-        cands: [{ name: 'Troy Jackson', party: 'd' }, { name: 'Susan Collins', party: 'r' }] },
-      { state: '俄亥俄州', status: 'flip', winner: 'd', note: '由共和黨翻為民主黨', cands: [] },
-      { state: '愛荷華州', status: 'flip', winner: 'd', note: '由共和黨翻為民主黨', cands: [] },
-      { state: '北卡羅來納州', status: 'flip', winner: 'd', note: '由共和黨翻為民主黨', cands: [] },
-      { state: '南卡羅來納州', status: 'flip', winner: 'd', note: '被視為本次最大爆冷之一', cands: [] },
-      { state: '堪薩斯州', status: 'flip', winner: 'd', note: '被視為本次最大爆冷之一', cands: [] },
-      { state: '密西根州', status: 'hold', winner: 'd', note: '民主黨保住席次',
-        cands: [{ name: 'Abdul El-Sayed', party: 'd' }, { name: 'Mike Rogers', party: 'r' }] },
-      { state: '喬治亞州', status: 'hold', winner: 'd', note: '現任參議員連任',
-        cands: [{ name: 'Jon Ossoff', party: 'd' }] },
-      { state: '內布拉斯加州', status: 'hold', winner: 'r', note: '擊敗無黨籍挑戰者',
-        cands: [{ name: 'Pete Ricketts', party: 'r' }, { name: 'Dan Osborn（無黨籍）', party: 'i' }] },
-      { state: '佛羅里達州', status: 'hold', winner: 'r', note: '共和黨保住席次',
-        cands: [{ name: 'Ashley Moody', party: 'r' }] },
-      { state: '密西西比州', status: 'open', winner: null, note: '雙方差距僅 43 票，仍在計票', cands: [] },
-      { state: '阿拉斯加州', status: 'open', winner: null, note: '仍在計票', cands: [] }
+    // 其他 16 縣市候選人（[號次, 姓名, 政黨代碼, 政黨名稱]）
+    const counties = [
+      { name: '基隆市', list: [[1, '童子瑋', 'dpp'], [2, '魏造文', 'ind'], [3, '謝國樑', 'kmt']] },
+      { name: '新竹市', list: [[1, '高虹安', 'ind'], [2, '何志勇', 'ind'], [3, '莊競程', 'dpp']], note: '現任市長高虹安以無黨籍參選，國民黨未提名並表態支持' },
+      { name: '新竹縣', list: [[1, '鄭朝方', 'dpp'], [2, '徐欣瑩', 'kmt'], [3, '朱定瑀', 'ind']], note: '楊文科任滿' },
+      { name: '苗栗縣', list: [[1, '陳品安', 'dpp'], [2, '鍾東錦', 'kmt']], note: '現任縣長鍾東錦爭取連任' },
+      { name: '彰化縣', list: [[1, '陳素月', 'dpp'], [2, '魏平政', 'kmt'], [3, '邱建富', 'ind'], [4, '陳重嘉', 'ind']], note: '王惠美任滿' },
+      { name: '南投縣', list: [[1, '許淑華', 'kmt'], [2, '溫世政', 'dpp']] },
+      { name: '雲林縣', list: [[1, '吳炳輝', 'ind'], [2, '張嘉郡', 'kmt'], [3, '劉建國', 'dpp'], [4, '林佳瑜', 'ind']], note: '張麗善任滿' },
+      { name: '嘉義縣', list: [[1, '吳品叡', 'ind'], [2, '蔡易餘', 'dpp']], note: '國民黨未提名' },
+      { name: '嘉義市', list: [[1, '王義成', 'ind'], [2, '陳愷璜', 'ind'], [3, '張啓楷', 'tpp'], [4, '王美惠', 'dpp'], [5, '黃宏成台灣阿成世界偉人財神總統', 'ind']], note: '張啓楷為民眾黨籍，藍白共推' },
+      { name: '屏東縣', list: [[1, '蘇清泉', 'kmt'], [2, '周春米', 'dpp']] },
+      { name: '宜蘭縣', list: [[1, '林國漳', 'dpp'], [2, '陳宏毅', 'ind'], [3, '吳宗憲', 'kmt'], [4, '劉燦輝', 'ind'], [5, '楊鉯婷', 'ind']] },
+      { name: '花蓮縣', list: [[1, '魏嘉賢', 'ind'], [2, '張峻', 'ind'], [3, '游淑貞', 'kmt'], [4, '羅佩秦', 'ind']], note: '羅佩秦為台灣工黨推薦；張峻為無黨籍議長' },
+      { name: '台東縣', list: [[1, '李吳穎智', 'ind'], [2, '陳瑩', 'dpp'], [3, '王志偉', 'ind'], [4, '吳秀華', 'kmt']], note: '饒慶鈴任滿' },
+      { name: '澎湖縣', list: [[1, '許智富', 'ind'], [2, '周倪安', 'ind'], [3, '葉竹林', 'ind'], [4, '吳淑瑾', 'dpp'], [5, '陳振中', 'kmt'], [6, '陳盡川', 'ind']], note: '現任縣長陳光復因病不續任，由夫人吳淑瑾參選；周倪安為台聯黨' },
+      { name: '金門縣', list: [[1, '張國威', 'ind'], [2, '李文良', 'ind'], [3, '洪和成', 'ind'], [4, '張火木', 'ind'], [5, '陳玉珍', 'kmt'], [6, '梁文韜', 'ind'], [7, '黃世團', 'ind']], note: '7 人參選，為全台最多' },
+      { name: '連江縣', list: [[1, '王忠銘', 'kmt'], [2, '曹爾元', 'ind']], note: '現任縣長王忠銘爭取連任' }
     ];
 
-    // 媒體報導連結
-    const newsData = [
-      { outlet: 'CBS News', title: '民主黨大勝，同時拿下參眾兩院', desc: '選舉夜即時更新與各州判定結果。', url: 'https://www.cbsnews.com/live-updates/election-day-2026-midterms/' },
-      { outlet: 'CNN', title: '民主黨取得國會控制權', desc: '參議院 7 席翻盤名單與尚未判定的選區。', url: 'https://www.cnn.com/2026/11/04/politics/live-news/midterm-election-congress' },
-      { outlet: 'NBC News', title: '共和黨開始檢討為何輸得這麼慘', desc: '共和黨內部對敗選與川普路線的反思。', url: 'https://www.nbcnews.com/politics/2026-election/republicans-begin-grappling-lost-badly-trump-midterms-rcna607359' },
-      { outlet: 'NBC News', title: '出口民調：許多選民把這次選舉視為對川普的否定', desc: '經濟為首要議題，民主黨在多數議題領先。', url: 'https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045' },
-      { outlet: 'Axios', title: '川普：共和黨輸是因為我不在選票上', desc: '川普的選後回應，以及願意接受結果的表態。', url: 'https://www.axios.com/2026/11/04/trump-republicans-midterms-2026-landslide-blue-wave' },
-      { outlet: 'NPR', title: '民主黨主打生活負擔，選民買單嗎？', desc: '選前分析民主黨的 affordability 策略。', url: 'https://www.npr.org/2026/11/01/nx-s1-6024693/democrats-are-running-on-affordability-are-voters-buying-it' },
-      { outlet: 'Fox News', title: '共和黨參議員赴邊境造勢，主打邊境安全與減稅', desc: '共和黨 2026 年選戰主軸。', url: 'https://www.foxnews.com/politics/republican-senators-hit-border-touting-tougher-security-tax-cuts-2026-kickoff.print' },
-      { outlet: 'PBS / AP', title: 'AP VoteCast：各族群如何投票', desc: '依年齡、性別、族裔等分析投票傾向。', url: 'https://www.pbs.org/newshour/politics/ap-voter-poll-how-key-demographic-groups-voted-in-the-2026-midterms' },
-      { outlet: 'CBC', title: '分析：選民對川普第二任期的否定', desc: '從物價、關稅與伊朗戰爭解讀選舉結果。', url: 'https://www.cbc.ca/news/world/us-midterm-results-analysis-trump-republicans-democrats-9.7408385' }
-    ];
+    const partyLabel = { kmt: '中國國民黨', dpp: '民主進步黨' };
 
-    // 渲染席次總覽
-    function renderChambers() {
-      const container = document.getElementById('chambers');
-      container.innerHTML = chamberData.map(c => {
-        const pending = c.total - c.dem - c.rep;
-        const pct = n => (n / c.total * 100).toFixed(2) + '%';
-        return `
-          <div class="card chamber">
-            <h3>${c.name}<small>${c.source}・過半需 ${c.majority} 席</small></h3>
-            <div class="tally">
-              <div class="side"><span class="seats num dem-text">${c.dem}</span><span class="party">民主黨</span></div>
-              <div class="mid"><b class="num">${pending}</b>尚未判定</div>
-              <div class="side right"><span class="seats num rep-text">${c.rep}</span><span class="party">共和黨</span></div>
+    // 跳脫 HTML 特殊字元
+    const escapeHtml = (str) => String(str).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+    // 投票日倒數
+    function updateCountdown() {
+      const voteDay = new Date('2026-11-28T08:00:00+08:00');
+      const days = Math.ceil((voteDay - Date.now()) / 86400000);
+      document.getElementById('countdown').textContent = days > 0 ? `${days} 天` : '投票日';
+    }
+
+    function renderTrends() {
+      document.getElementById('trendList').innerHTML = trendItems.map((item) => `
+        <article class="trend">
+          <h3><span class="tag">${escapeHtml(item.tag)}</span>${escapeHtml(item.title)}</h3>
+          <p>${escapeHtml(item.text)}</p>
+        </article>`).join('');
+    }
+
+    function candidateHtml(cand, party) {
+      const points = cand.points.length
+        ? `<ul>${cand.points.map((p) => `<li>${escapeHtml(p)}</li>`).join('')}</ul>`
+        : '<p class="empty">政見整理中</p>';
+      return `
+        <div class="cand ${party}">
+          <div class="cand-top">
+            <div class="photo" data-wiki="${escapeHtml(cand.wiki)}"><span class="initial">${escapeHtml(cand.name[0])}</span></div>
+            <div>
+              <p class="cand-name">${escapeHtml(cand.name)} <span class="num">${cand.num} 號</span></p>
+              <div class="party">${partyLabel[party]}</div>
+              <p class="role">${escapeHtml(cand.role)}</p>
             </div>
-            <div class="seatbar" role="img" aria-label="${c.name}：民主黨 ${c.dem} 席，共和黨 ${c.rep} 席，${pending} 席未定">
-              <span class="d" style="width:${pct(c.dem)}"></span>
-              <span class="p" style="width:${pct(pending)}"></span>
-              <span class="r" style="width:${pct(c.rep)}"></span>
-              <i class="majority" style="left:${pct(c.majority)}"></i>
+          </div>
+          ${cand.slogan ? `<p class="slogan">「${escapeHtml(cand.slogan)}」</p>` : ''}
+          ${points}
+        </div>`;
+    }
+
+    function pollHtml(poll, race) {
+      // 未表態比例較小時只顯示數字，避免文字被截斷
+      const rest = poll.und === null ? '' : (poll.und < 10 ? `${poll.und}%` : `未表態 ${poll.und}%`);
+      return `
+        <div class="poll">
+          <div class="poll-meta"><b>${escapeHtml(poll.org)}</b><span>${escapeHtml(poll.date)}${poll.note ? ' · ' + escapeHtml(poll.note) : ''}</span></div>
+          <div class="bar" role="img" aria-label="${escapeHtml(poll.org)}：${race.kmt.name} ${poll.kmt}%，${race.dpp.name} ${poll.dpp}%">
+            <div class="b-kmt" style="width:${poll.kmt}%">${poll.kmt}%</div>
+            <div class="b-rest">${rest}</div>
+            <div class="b-dpp" style="width:${poll.dpp}%">${poll.dpp}%</div>
+          </div>
+        </div>`;
+    }
+
+    function renderRace(id) {
+      const race = races.find((r) => r.id === id);
+      document.querySelectorAll('#cityTabs button').forEach((btn) => btn.setAttribute('aria-selected', btn.dataset.id === id));
+      document.getElementById('racePanel').innerHTML = `
+        <article class="race" role="tabpanel">
+          <div class="race-head"><h3>${race.city}</h3><p>${escapeHtml(race.summary)}</p></div>
+          <div class="duel">${candidateHtml(race.kmt, 'kmt')}${candidateHtml(race.dpp, 'dpp')}</div>
+          <div class="polls">
+            <h4>民調走向</h4>
+            <p class="trend-note">${escapeHtml(race.trendNote)}</p>
+            ${race.polls.map((p) => pollHtml(p, race)).join('')}
+            <div class="legend">
+              <span><i style="background:var(--kmt)"></i>${race.kmt.name}</span>
+              <span><i style="background:var(--dpp)"></i>${race.dpp.name}</span>
+              <span><i style="background:var(--undecided)"></i>其他或未表態</span>
             </div>
-            <div class="bar-legend"><span>0</span><span>過半 ${c.majority}</span><span>${c.total}</span></div>
-            ${c.dem >= c.majority || c.rep >= c.majority ? `<div class="verdict">${c.verdict}</div>` : ''}
-            <p class="before">${c.before}</p>
-          </div>`;
-      }).join('');
+          </div>
+          <div class="others">其他參選人：${escapeHtml(race.others)}</div>
+        </article>`;
+      loadPhotos();
     }
 
-    // 渲染關鍵選情卡片
-    const partyColor = { d: 'var(--dem)', r: 'var(--rep)', i: 'var(--ind)' };
-    const statusLabel = { flip: '民主黨翻盤', hold: '保住席次', open: '尚未判定' };
-
-    function renderRaces(filter = 'all') {
-      const list = document.getElementById('raceList');
-      const items = raceData.filter(r => filter === 'all' || r.status === filter);
-      list.innerHTML = items.map(r => {
-        const winClass = r.winner ? `win-${r.winner}` : '';
-        const tagClass = r.status === 'flip' ? 'flip' : r.status === 'open' ? 'open' : (r.winner === 'r' ? 'hold-r' : '');
-        const cands = r.cands.map(c => `
-          <div class="cand ${c.party === r.winner ? 'winner' : ''}">
-            <span class="dot" style="background:${partyColor[c.party]}"></span>${c.name}
-          </div>`).join('');
-        return `
-          <div class="card race ${winClass}">
-            <div class="state">${r.state}<span class="tag ${tagClass}">${statusLabel[r.status]}</span></div>
-            ${cands}
-            <p class="note">${r.note}</p>
-          </div>`;
-      }).join('');
-    }
-
-    // 渲染媒體報導
-    function renderNews() {
-      document.getElementById('newsList').innerHTML = newsData.map(n => `
-        <a class="card" href="${n.url}" target="_blank" rel="noopener">
-          <div class="outlet">${n.outlet}</div>
-          <h3>${n.title}</h3>
-          <p>${n.desc}</p>
-        </a>`).join('');
-    }
-
-    // 篩選按鈕
-    document.querySelectorAll('.filters button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filters button').forEach(b => b.setAttribute('aria-pressed', 'false'));
-        btn.setAttribute('aria-pressed', 'true');
-        renderRaces(btn.dataset.filter);
+    function renderTabs() {
+      const tabs = document.getElementById('cityTabs');
+      tabs.innerHTML = races.map((r) => `<button role="tab" data-id="${r.id}">${r.city}</button>`).join('');
+      tabs.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (btn) renderRace(btn.dataset.id);
       });
-    });
+    }
 
-    renderChambers();
-    renderRaces();
-    renderNews();
+    function renderCounties() {
+      document.getElementById('countyGrid').innerHTML = counties.map((c) => `
+        <article class="county">
+          <h3>${c.name}<small>${c.list.length} 人參選</small></h3>
+          <ol>${c.list.map(([num, name, party]) => `<li class="chip ${party}"><em>${num}</em>${escapeHtml(name)}</li>`).join('')}</ol>
+          ${c.note ? `<p class="note">${escapeHtml(c.note)}</p>` : ''}
+        </article>`).join('');
+    }
+
+    // 從維基百科載入候選人照片，失敗時保留姓氏頭像
+    const photoCache = new Map();
+    async function fetchPhoto(title) {
+      if (photoCache.has(title)) return photoCache.get(title);
+      const task = fetch(`https://zh.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`)
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => (data && data.type !== 'disambiguation' && data.thumbnail ? data.thumbnail.source : null))
+        .catch(() => null);
+      photoCache.set(title, task);
+      return task;
+    }
+
+    function loadPhotos() {
+      document.querySelectorAll('.photo[data-wiki]').forEach(async (box) => {
+        const src = await fetchPhoto(box.dataset.wiki);
+        if (!src || !box.isConnected) return;
+        const img = new Image();
+        img.alt = box.parentElement.querySelector('.cand-name').firstChild.textContent.trim();
+        img.onload = () => { box.innerHTML = ''; box.appendChild(img); };
+        img.src = src;
+      });
+    }
+
+    updateCountdown();
+    renderTrends();
+    renderTabs();
+    renderRace('taipei');
+    renderCounties();
   </script>
 </body>
 </html>
