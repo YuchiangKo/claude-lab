@@ -3,515 +3,1146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 九合一選情</title>
-  <meta name="description" content="2026 台灣九合一地方選舉：輿情風向、六都民調走向、候選人資訊與政見整理。">
+  <title>F1 新手觀賽站</title>
+  <meta name="description" content="2026 一級方程式賽車：車隊與車手介紹、台灣時間賽程、即時積分榜與新手規則指南。積分與陣容於每站結束後自動更新。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
       /* 基本配色 */
-      --bg: #f4f5f8;
+      --bg: #f3f3f5;
       --surface: #ffffff;
-      --surface-2: #f6f7fa;
-      --ink: #1a2233;
-      --ink-soft: #4b5872;
-      --ink-faint: #8a93a6;
-      --line: #e2e6ee;
-      --navy: #0d2142;
-      /* 政黨配色 */
-      --kmt: #1f5bb5;
-      --kmt-soft: #e7eefa;
-      --dpp: #1b8a4c;
-      --dpp-soft: #e4f4ea;
-      --tpp: #1aa0a8;
-      --ind: #7d8597;
-      --ind-soft: #eef0f4;
-      --undecided: #c9ced8;
+      --surface-2: #f6f6f8;
+      --ink: #15151e;
+      --ink-soft: #4a4a5a;
+      --ink-faint: #8a8a99;
+      --line: #e3e3ea;
+      --accent: #e10600;
+      --accent-soft: #fde8e7;
+      --ok: #1b8a4c;
+      --warn: #b7791f;
       --warn-soft: #fff6e0;
-      --warn-line: #e8c46a;
-      --shadow: 0 1px 2px rgba(8, 23, 48, .05), 0 6px 20px rgba(8, 23, 48, .06);
+      --header: #15151e;
+      --shadow: 0 1px 2px rgba(10, 10, 20, .05), 0 6px 20px rgba(10, 10, 20, .06);
       --radius: 12px;
       --sans: "Inter", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
-      --serif: "Noto Serif TC", "Songti TC", Georgia, serif;
-      --max: 1080px;
+      --max: 1120px;
     }
     /* 深色模式 */
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #0c1220;
-        --surface: #141c2e;
-        --surface-2: #1a2338;
-        --ink: #e8ecf4;
-        --ink-soft: #b0b9cc;
-        --ink-faint: #7c869b;
-        --line: #26304a;
-        --navy: #050a14;
-        --kmt: #5f95ec;
-        --kmt-soft: #172747;
-        --dpp: #3fbf77;
-        --dpp-soft: #13301f;
-        --ind: #8f97aa;
-        --ind-soft: #222b40;
-        --undecided: #3a445c;
+        --bg: #0e0e14;
+        --surface: #17171f;
+        --surface-2: #1e1e28;
+        --ink: #ececf2;
+        --ink-soft: #b4b4c2;
+        --ink-faint: #7d7d8d;
+        --line: #2a2a36;
+        --accent: #ff3b30;
+        --accent-soft: #3a1513;
+        --ok: #3fbf77;
+        --warn: #e0a84a;
         --warn-soft: #2d2614;
-        --warn-line: #8a7230;
+        --header: #08080c;
         --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .25);
       }
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
+    :root[data-theme="dark"] {
+      --bg: #0e0e14; --surface: #17171f; --surface-2: #1e1e28; --ink: #ececf2;
+      --ink-soft: #b4b4c2; --ink-faint: #7d7d8d; --line: #2a2a36; --accent: #ff3b30;
+      --accent-soft: #3a1513; --ok: #3fbf77; --warn: #e0a84a; --warn-soft: #2d2614;
+      --header: #08080c; --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .25);
     }
-    a { color: var(--kmt); }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--sans); line-height: 1.65; font-size: 16px;
+    }
+    a { color: var(--accent); }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
 
-    /* 頂部導覽 */
-    header.top {
-      position: sticky; top: 0; z-index: 10;
-      background: var(--navy); color: #fff;
+    /* 頁首與分頁導覽 */
+    header.top { background: var(--header); color: #fff; position: sticky; top: 0; z-index: 20; }
+    .topBar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0 8px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.15rem; letter-spacing: .02em; }
+    .brand .mark { background: var(--accent); color: #fff; font-style: italic; padding: 2px 8px; border-radius: 4px; font-family: Inter, sans-serif; }
+    .statusPill { font-size: .78rem; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.1); color: #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55vw; }
+    .statusPill.live::before { content: "●"; color: #3fdc7f; margin-right: 6px; }
+    .statusPill.offline::before { content: "●"; color: #e0a84a; margin-right: 6px; }
+    nav.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; padding-bottom: 0; }
+    nav.tabs::-webkit-scrollbar { display: none; }
+    nav.tabs a {
+      color: #c8c8d2; text-decoration: none; padding: 10px 14px; font-weight: 600; font-size: .95rem;
+      white-space: nowrap; border-bottom: 3px solid transparent;
     }
-    .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
-    .brand { font-family: var(--serif); font-weight: 700; font-size: 18px; white-space: nowrap; }
-    .nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
-    .nav::-webkit-scrollbar { display: none; }
-    .nav a {
-      color: rgba(255,255,255,.8); text-decoration: none; font-size: 14px;
-      padding: 6px 10px; border-radius: 6px; white-space: nowrap;
+    nav.tabs a:hover { color: #fff; }
+    nav.tabs a.active { color: #fff; border-bottom-color: var(--accent); }
+
+    main { padding: 24px 0 48px; }
+    section.page { display: none; }
+    section.page.active { display: block; }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.25; margin: 0 0 6px; font-weight: 900; }
+    h2 { font-size: 1.3rem; margin: 32px 0 12px; font-weight: 800; }
+    h3 { font-size: 1.08rem; margin: 0 0 8px; font-weight: 700; }
+    .lead { color: var(--ink-soft); margin: 0 0 20px; }
+    .muted { color: var(--ink-faint); font-size: .85rem; }
+
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+    .grid { display: grid; gap: 16px; }
+    .grid.cols2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid.cols3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+    /* 冠軍橫幅 */
+    .hero {
+      background: linear-gradient(120deg, #15151e 0%, #2a0d0c 60%, #e10600 140%);
+      color: #fff; border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden;
     }
-    .nav a:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .hero .tag { display: inline-block; background: var(--accent); padding: 2px 10px; border-radius: 4px; font-size: .8rem; font-weight: 700; margin-bottom: 8px; }
+    .hero p { color: #e6e6ee; margin: 6px 0 0; }
 
-    /* 主視覺 */
-    .hero { padding: 40px 0 8px; }
-    .eyebrow { color: var(--ink-faint); font-size: 13px; letter-spacing: .08em; font-weight: 600; }
-    h1 { font-family: var(--serif); font-size: clamp(28px, 5vw, 42px); margin: 6px 0 10px; line-height: 1.25; }
-    .lede { color: var(--ink-soft); max-width: 680px; margin: 0; }
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
-    .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
-    .stat b { display: block; font-size: 26px; font-variant-numeric: tabular-nums; }
-    .stat span { color: var(--ink-faint); font-size: 13px; }
+    /* 倒數 */
+    .countdown { display: flex; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
+    .countdown div { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; min-width: 64px; text-align: center; }
+    .countdown b { display: block; font-size: 1.6rem; font-family: Inter, sans-serif; font-variant-numeric: tabular-nums; line-height: 1.2; }
+    .countdown span { font-size: .75rem; color: var(--ink-faint); }
+    .sessionList { list-style: none; padding: 0; margin: 8px 0 0; }
+    .sessionList li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: .92rem; }
+    .sessionList li:last-child { border-bottom: 0; }
+    .sessionList .past { color: var(--ink-faint); text-decoration: line-through; }
 
-    section { padding: 36px 0 8px; scroll-margin-top: 64px; }
-    h2 { font-family: var(--serif); font-size: 24px; margin: 0 0 4px; }
-    .sub { color: var(--ink-faint); font-size: 14px; margin: 0 0 18px; }
+    /* 表格 */
+    .tableWrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+    th, td { padding: 9px 8px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    th { font-size: .78rem; color: var(--ink-faint); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    td.pos { font-weight: 800; width: 36px; font-family: Inter, sans-serif; }
+    .teamDot { display: inline-block; width: 4px; height: 16px; border-radius: 2px; vertical-align: -3px; margin-right: 8px; }
+    .bar { height: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; min-width: 60px; }
+    .bar i { display: block; height: 100%; border-radius: 3px; }
+    tr.done td { color: var(--ink-faint); }
+    tr.nextRace td { background: var(--accent-soft); }
+    .badge { display: inline-block; font-size: .72rem; padding: 1px 8px; border-radius: 999px; font-weight: 700; vertical-align: 1px; }
+    .badge.sprint { background: #fff1d6; color: #9a5b00; }
+    .badge.next { background: var(--accent); color: #fff; }
+    .badge.new { background: #e3f6ea; color: #17733f; }
+    .badge.champ { background: #ffd54a; color: #4a3500; }
 
-    .notice {
-      background: var(--warn-soft); border: 1px solid var(--warn-line);
-      border-radius: var(--radius); padding: 12px 16px; font-size: 14px; color: var(--ink-soft);
-    }
+    /* 車隊卡 */
+    .teamCard { border-top: 5px solid var(--team, #888); display: flex; flex-direction: column; gap: 10px; }
+    .teamCard .meta { font-size: .84rem; color: var(--ink-soft); display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; }
+    .teamCard .meta dt { color: var(--ink-faint); }
+    .teamCard .meta dd { margin: 0; }
+    .drivers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .driver { background: var(--surface-2); border-radius: 10px; padding: 10px; position: relative; }
+    .driver .no { font-family: Inter, sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--team, #888); line-height: 1; }
+    .driver .name { font-weight: 700; margin-top: 4px; }
+    .driver .en { font-size: .78rem; color: var(--ink-faint); }
+    .driver .note { font-size: .76rem; color: var(--warn); margin-top: 4px; }
+    .teamDesc { font-size: .9rem; color: var(--ink-soft); margin: 0; }
 
-    /* 輿情風向卡片 */
-    .trends { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .trend { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .trend h3 { margin: 0 0 6px; font-size: 16px; display: flex; gap: 8px; align-items: center; }
-    .trend p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
-    .tag { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: var(--ind-soft); color: var(--ink-soft); white-space: nowrap; }
+    /* 新聞 */
+    .news { border-left: 4px solid var(--accent); }
+    .news time { font-size: .8rem; color: var(--ink-faint); }
 
-    /* 縣市切換 */
-    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-    .tabs button {
-      font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
-      padding: 8px 16px; border-radius: 99px; border: 1px solid var(--line);
-      background: var(--surface); color: var(--ink-soft);
-    }
-    .tabs button[aria-selected="true"] { background: var(--navy); color: #fff; border-color: var(--navy); }
+    /* 規則區 */
+    .ruleCard ul, .ruleCard ol { padding-left: 20px; margin: 6px 0 0; }
+    .ruleCard li { margin: 4px 0; }
+    .pointsRow { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .pointsRow span { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; font-size: .85rem; }
+    .pointsRow b { font-family: Inter, sans-serif; }
+    .flagList { list-style: none; padding: 0; margin: 0; }
+    .flagList li { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .flagList li:last-child { border-bottom: 0; }
+    .flag { width: 38px; height: 26px; border-radius: 3px; flex: none; border: 1px solid rgba(0,0,0,.15); }
+    .tyre { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border: 5px solid; font-weight: 800; font-size: .75rem; background: #222; color: #fff; margin-right: 8px; flex: none; }
+    .tyreRow { display: flex; align-items: center; padding: 6px 0; }
+    .callout { background: var(--warn-soft); border: 1px solid var(--warn); border-radius: 10px; padding: 12px 14px; font-size: .9rem; }
+    .stepList { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+    .stepList li { counter-increment: step; position: relative; padding: 0 0 14px 44px; }
+    .stepList li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; }
+    dl.glossary { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    dl.glossary div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+    dl.glossary dt { font-weight: 800; }
+    dl.glossary dt small { font-weight: 500; color: var(--ink-faint); margin-left: 6px; }
+    dl.glossary dd { margin: 4px 0 0; color: var(--ink-soft); font-size: .92rem; }
+    .searchBox { width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 1rem; margin-bottom: 14px; font-family: inherit; }
+    .toggle { display: inline-flex; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 3px; margin-bottom: 12px; }
+    .toggle button { border: 0; background: transparent; color: var(--ink-soft); padding: 6px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: inherit; font-size: .92rem; }
+    .toggle button.on { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+    footer { border-top: 1px solid var(--line); padding: 20px 0 32px; color: var(--ink-faint); font-size: .82rem; }
+    button.refresh { border: 1px solid rgba(255,255,255,.25); background: transparent; color: #fff; border-radius: 999px; padding: 4px 10px; cursor: pointer; font-size: .78rem; font-family: inherit; }
 
-    .race { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-    .race-head { padding: 18px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
-    .race-head h3 { margin: 0; font-family: var(--serif); font-size: 22px; }
-    .race-head p { margin: 0; color: var(--ink-soft); font-size: 14px; }
-
-    .duel { display: grid; grid-template-columns: 1fr 1fr; }
-    .cand { padding: 20px; }
-    .cand + .cand { border-left: 1px solid var(--line); }
-    .cand-top { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
-    .photo {
-      width: 76px; height: 76px; border-radius: 50%; flex: none; overflow: hidden;
-      display: grid; place-items: center; font-family: var(--serif); font-size: 28px; font-weight: 700; color: #fff;
-      border: 3px solid var(--surface); box-shadow: 0 0 0 2px currentColor;
-    }
-    .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-    .kmt .photo { background: var(--kmt); color: var(--kmt); }
-    .dpp .photo { background: var(--dpp); color: var(--dpp); }
-    .photo .initial { color: #fff; }
-    .cand-name { font-size: 20px; font-weight: 700; margin: 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-    .num { font-size: 12px; font-weight: 700; border-radius: 6px; padding: 1px 7px; color: #fff; }
-    .kmt .num { background: var(--kmt); }
-    .dpp .num { background: var(--dpp); }
-    .party { font-size: 13px; font-weight: 600; }
-    .kmt .party { color: var(--kmt); }
-    .dpp .party { color: var(--dpp); }
-    .role { color: var(--ink-faint); font-size: 13px; margin: 2px 0 0; }
-    .slogan { font-family: var(--serif); font-size: 15px; padding: 8px 12px; border-radius: 8px; margin: 0 0 12px; }
-    .kmt .slogan { background: var(--kmt-soft); }
-    .dpp .slogan { background: var(--dpp-soft); }
-    .cand ul { margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink-soft); }
-    .cand li { margin-bottom: 6px; }
-    .cand .empty { font-size: 13px; color: var(--ink-faint); }
-
-    .others { padding: 12px 20px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-faint); background: var(--surface-2); }
-
-    /* 民調條圖 */
-    .polls { padding: 20px; border-top: 1px solid var(--line); }
-    .polls h4 { margin: 0 0 4px; font-size: 16px; }
-    .polls .trend-note { margin: 0 0 14px; font-size: 14px; color: var(--ink-soft); }
-    .poll { display: grid; grid-template-columns: 170px 1fr; gap: 12px; align-items: center; margin-bottom: 10px; }
-    .poll-meta { font-size: 13px; line-height: 1.35; }
-    .poll-meta b { display: block; font-size: 14px; }
-    .poll-meta span { color: var(--ink-faint); }
-    .bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; background: var(--undecided); font-size: 12.5px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
-    .bar div { display: flex; align-items: center; padding: 0 8px; white-space: nowrap; min-width: 0; }
-    .bar .b-kmt { background: var(--kmt); }
-    .bar .b-dpp { background: var(--dpp); justify-content: flex-end; }
-    .bar .b-rest { flex: 1; justify-content: center; color: var(--ink-soft); font-weight: 500; }
-    .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--ink-faint); margin-top: 6px; }
-    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
-
-    /* 其他縣市表格 */
-    .county-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .county { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
-    .county h3 { margin: 0 0 8px; font-size: 16px; display: flex; justify-content: space-between; align-items: baseline; }
-    .county h3 small { font-weight: 500; color: var(--ink-faint); font-size: 12.5px; }
-    .county ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-    .chip { font-size: 13.5px; padding: 3px 10px; border-radius: 99px; background: var(--ind-soft); color: var(--ink-soft); border: 1px solid transparent; }
-    .chip em { font-style: normal; color: var(--ink-faint); margin-right: 4px; font-variant-numeric: tabular-nums; }
-    .chip.kmt { background: var(--kmt-soft); color: var(--kmt); border-color: color-mix(in srgb, var(--kmt) 30%, transparent); font-weight: 600; }
-    .chip.dpp { background: var(--dpp-soft); color: var(--dpp); border-color: color-mix(in srgb, var(--dpp) 30%, transparent); font-weight: 600; }
-    .chip.tpp { color: var(--tpp); border-color: color-mix(in srgb, var(--tpp) 40%, transparent); font-weight: 600; }
-    .county .note { margin: 8px 0 0; font-size: 12.5px; color: var(--ink-faint); }
-
-    .sources { font-size: 13.5px; color: var(--ink-soft); padding-left: 20px; }
-    .sources li { margin-bottom: 4px; word-break: break-all; }
-    footer { padding: 32px 0 48px; color: var(--ink-faint); font-size: 13px; }
-
-    @media (max-width: 760px) {
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .trends, .county-grid { grid-template-columns: 1fr; }
-      .duel { grid-template-columns: 1fr; }
-      .cand + .cand { border-left: 0; border-top: 1px solid var(--line); }
-      .poll { grid-template-columns: 1fr; gap: 4px; }
-      .poll-meta b, .poll-meta span { display: inline; margin-right: 6px; }
-      .brand { font-size: 16px; }
+    @media (max-width: 560px) {
+      .drivers { grid-template-columns: 1fr; }
+      .hero { padding: 18px; }
+      .hideSm { display: none; }
+      th, td { padding: 8px 6px; }
     }
   </style>
 </head>
 <body>
   <header class="top">
     <div class="wrap">
-      <div class="brand">2026 九合一選情</div>
-      <nav class="nav" aria-label="頁面導覽">
-        <a href="#opinion">輿情風向</a>
-        <a href="#six">六都對決</a>
-        <a href="#counties">其他縣市</a>
-        <a href="#sources">資料來源</a>
+      <div class="topBar">
+        <div class="brand"><span class="mark">F1</span>新手觀賽站</div>
+        <div style="display:flex;gap:8px;align-items:center;min-width:0">
+          <span id="statusPill" class="statusPill offline">載入中…</span>
+          <button class="refresh" id="refreshBtn" title="重新抓取最新資料">更新</button>
+        </div>
+      </div>
+      <nav class="tabs" id="tabs">
+        <a href="#overview" data-tab="overview">賽況總覽</a>
+        <a href="#teams" data-tab="teams">車隊與車手</a>
+        <a href="#schedule" data-tab="schedule">賽程（台灣時間）</a>
+        <a href="#standings" data-tab="standings">積分榜</a>
+        <a href="#beginner" data-tab="beginner">新手入門</a>
+        <a href="#rules" data-tab="rules">規則詳解</a>
+        <a href="#glossary" data-tab="glossary">術語表</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <div class="hero">
-      <div class="eyebrow">115 年地方公職人員選舉 · 11 月 28 日投票</div>
-      <h1>九合一選戰倒數，六都誰領先？</h1>
-      <p class="lede">整理六都市長選戰的民調走向、候選人背景與政見，以及其他 16 縣市的參選名單。民調依各機構公布結果呈現，不同機構方法差異大，請看趨勢、勿只看單一數字。</p>
-      <div class="stats">
-        <div class="stat"><b id="countdown">—</b><span>距離投票日</span></div>
-        <div class="stat"><b>22</b><span>縣市長席次</span></div>
-        <div class="stat"><b>81</b><span>位縣市長候選人</span></div>
-        <div class="stat"><b>11/18</b><span>起民調封關</span></div>
+    <!-- 賽況總覽 -->
+    <section class="page" id="page-overview">
+      <div class="hero" id="heroBox"></div>
+
+      <div class="grid cols2" style="margin-top:16px">
+        <div class="card" id="nextRaceCard"></div>
+        <div class="card" id="lastRaceCard"></div>
       </div>
-    </div>
 
-    <section id="opinion">
-      <h2>輿情風向</h2>
-      <p class="sub">資料截至 2026 年 11 月 4 日</p>
-      <div class="trends" id="trendList"></div>
+      <h2>積分前段班</h2>
+      <div class="grid cols2">
+        <div class="card"><h3>車手積分 Top 5</h3><div id="miniDrivers"></div></div>
+        <div class="card"><h3>車隊積分 Top 5</h3><div id="miniTeams"></div></div>
+      </div>
+
+      <h2>近期重點消息</h2>
+      <div class="grid cols3" id="newsList"></div>
     </section>
 
-    <section id="six">
-      <h2>六都對決</h2>
-      <p class="sub">候選人號次依中選會抽籤結果；民調排除網路投票與街頭民調</p>
-      <div class="tabs" role="tablist" id="cityTabs"></div>
-      <div id="racePanel"></div>
+    <!-- 車隊與車手 -->
+    <section class="page" id="page-teams">
+      <h1>2026 車隊與車手</h1>
+      <p class="lead">2026 年共有 11 支車隊、22 位正式車手。新加入的凱迪拉克（Cadillac）與由索伯轉型的奧迪（Audi）讓這季格外新鮮。每張卡片上方的色條就是車隊代表色，看比賽時可以靠顏色快速認車。</p>
+      <p class="muted" id="lineupNote"></p>
+      <div class="grid cols2" id="teamGrid"></div>
     </section>
 
-    <section id="counties">
-      <h2>其他 16 縣市參選名單</h2>
-      <p class="sub">數字為選票號次；藍色為國民黨、綠色為民進黨、青色為民眾黨，灰色為無黨籍或其他政黨</p>
-      <div class="county-grid" id="countyGrid"></div>
+    <!-- 賽程 -->
+    <section class="page" id="page-schedule">
+      <h1>2026 賽程表</h1>
+      <p class="lead">所有時間皆已換算為<b>台灣時間（UTC+8）</b>。歐洲站多在台灣晚上 9 點開賽，美洲站則常落在凌晨或清晨。</p>
+      <div class="callout" style="margin-bottom:16px">原訂 24 站，因中東局勢取消巴林與沙烏地阿拉伯兩站，之後巴林站改至馬來西亞雪邦賽道舉行，全年共 23 站。</div>
+      <div class="card tableWrap"><table id="scheduleTable"></table></div>
+      <p class="muted" id="scheduleNote"></p>
     </section>
 
-    <section id="sources">
-      <h2>資料來源</h2>
-      <div class="notice">本頁為整理性質，並非官方資料。候選人名單以中選會公告為準；民調數字取自各媒體與民調機構公開結果，部分機構未公開樣本數與調查方法。候選人照片自維基百科載入，無照片時以姓氏代替。依《公職人員選舉罷免法》，11 月 18 日起至投票結束前不得發布或引述民調。</div>
-      <ul class="sources">
-        <li><a href="https://www.peopo.org/news/862071" target="_blank" rel="noopener">PeoPo 公民新聞：81 位縣市長候選人號次一覽</a></li>
-        <li><a href="https://news.pts.org.tw/article/801606" target="_blank" rel="noopener">公視新聞：22 縣市長候選人名單</a></li>
-        <li><a href="https://news.tvbs.com.tw/politics/4017384" target="_blank" rel="noopener">TVBS：九合一選舉候選人名單與六都戰況</a></li>
-        <li><a href="https://zh.wikipedia.org/zh-tw/2026年中華民國直轄市長及縣市長選舉民意調查" target="_blank" rel="noopener">維基百科：2026 年直轄市長及縣市長選舉民意調查</a></li>
-        <li><a href="https://udn.com/news/story/124652/9803622" target="_blank" rel="noopener">聯合新聞網：TVBS 台北市長民調（10 月）</a></li>
-        <li><a href="https://www.chinatimes.com/realtimenews/20261102001193-260407" target="_blank" rel="noopener">中時新聞網：台北辯論後民調比較</a></li>
-        <li><a href="https://esg.businesstoday.com.tw/article/category/190807/post/202610130014" target="_blank" rel="noopener">今周刊 ESG：六都候選人永續承諾</a></li>
-        <li><a href="https://event.knews.com.tw/2026election" target="_blank" rel="noopener">知新聞：2026 九合一選舉戰情室</a></li>
-        <li><a href="https://cna.com.tw/news/aloc/202609230224.aspx" target="_blank" rel="noopener">中央社：桃園市長選情</a></li>
-        <li><a href="https://udn.com/news/story/124652/9668749" target="_blank" rel="noopener">聯合新聞網：張善政市政說明會</a></li>
-        <li><a href="https://cna.com.tw/news/aipl/202609200161.aspx" target="_blank" rel="noopener">中央社：台中市長選情</a></li>
-      </ul>
+    <!-- 積分榜 -->
+    <section class="page" id="page-standings">
+      <h1>積分榜</h1>
+      <p class="lead" id="standingsLead">每站大獎賽結束後，積分會自動從公開賽事資料庫更新。</p>
+      <div class="toggle" id="standingsToggle">
+        <button class="on" data-view="drivers">車手</button>
+        <button data-view="teams">車隊</button>
+      </div>
+      <div class="card tableWrap"><table id="standingsTable"></table></div>
+    </section>
+
+    <!-- 新手入門 -->
+    <section class="page" id="page-beginner">
+      <h1>五分鐘看懂 F1</h1>
+      <p class="lead">第一次看 F1？先掌握這幾件事，就能跟上 90% 的比賽內容。</p>
+
+      <div class="grid cols2">
+        <div class="card ruleCard">
+          <h3>🏁 F1 在比什麼？</h3>
+          <p>一級方程式（Formula 1）是全球最高等級的單座賽車。每年約 20 多場「大獎賽（Grand Prix）」，每場依名次給分，年底累積最多分的人拿下<b>車手冠軍</b>，兩位車手合計最多分的車隊拿下<b>車隊冠軍</b>。</p>
+          <p>所以 F1 其實同時有兩個冠軍：比的是車手，也是比整個工程團隊。</p>
+        </div>
+        <div class="card ruleCard">
+          <h3>👥 車隊與隊友</h3>
+          <p>每支車隊派兩位車手，開同一款車。因為車子一樣，<b>隊友是你唯一能公平比較的對手</b>，所以隊內對決常常比冠軍爭奪還有看頭。</p>
+          <p>車隊也分「廠隊」（自己做引擎，如法拉利、賓士）與「客戶車隊」（向廠隊購買引擎，如哈斯用法拉利引擎）。</p>
+        </div>
+      </div>
+
+      <h2>一個比賽週末怎麼進行</h2>
+      <div class="grid cols2">
+        <div class="card">
+          <h3>一般週末</h3>
+          <ol class="stepList">
+            <li><b>週五：自由練習 1、2（FP1、FP2）</b><br><span class="muted">各 60 分鐘，車隊調校車子、測試輪胎，不計成績。</span></li>
+            <li><b>週六：自由練習 3（FP3）＋ 排位賽</b><br><span class="muted">排位賽決定週日的起跑順序，跑最快的人拿「桿位」（第一個起跑）。</span></li>
+            <li><b>週日：正賽</b><br><span class="muted">約 305 公里、1.5～2 小時，前 10 名拿積分。</span></li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>衝刺賽週末（Sprint）</h3>
+          <ol class="stepList">
+            <li><b>週五：FP1 ＋ 衝刺排位賽</b><br><span class="muted">只有一節練習，車隊準備時間更少。</span></li>
+            <li><b>週六：衝刺賽 ＋ 正賽排位賽</b><br><span class="muted">衝刺賽約 100 公里、不用進站，前 8 名拿分。</span></li>
+            <li><b>週日：正賽</b><br><span class="muted">和一般週末相同。2026 年共有 6 場衝刺賽週末。</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <h2>積分怎麼算</h2>
+      <div class="grid cols2">
+        <div class="card">
+          <h3>正賽（前 10 名得分）</h3>
+          <div class="pointsRow" id="racePoints"></div>
+        </div>
+        <div class="card">
+          <h3>衝刺賽（前 8 名得分）</h3>
+          <div class="pointsRow" id="sprintPoints"></div>
+          <p class="muted" style="margin-top:10px">自 2025 年起已取消「最快單圈 +1 分」。</p>
+        </div>
+      </div>
+
+      <h2>看比賽必懂的 5 個重點</h2>
+      <div class="grid cols3">
+        <div class="card ruleCard"><h3>1. 起跑位置很重要</h3><p>多數賽道超車不易，排位賽表現往往決定一半的正賽結果。摩納哥這種窄街道賽，甚至幾乎無法超車。</p></div>
+        <div class="card ruleCard"><h3>2. 進站策略</h3><p>乾地正賽至少要用兩種不同配方的輪胎，所以每台車至少進站一次。何時進站、換哪種胎，是車隊戰略師的鬥智。</p></div>
+        <div class="card ruleCard"><h3>3. 安全車＝洗牌時刻</h3><p>發生事故時安全車出動，全場減速、車距被拉近。趁這時進站可以省下大量時間，常常改寫戰局。</p></div>
+        <div class="card ruleCard"><h3>4. 看懂畫面上的資訊</h3><p>畫面左側是即時名次與差距（秒），輪胎圖示顯示目前用的胎種與圈數。紫色計時代表全場最快，綠色是個人最快。</p></div>
+        <div class="card ruleCard"><h3>5. 隊友之爭與車隊指令</h3><p>聽到無線電「讓隊友過」就是車隊指令（Team Order）。為了車隊總分，有時車手必須犧牲自己的名次。</p></div>
+        <div class="card ruleCard"><h3>6. 2026 新規則</h3><p>今年是規則大改的一年：新引擎電力比例大增、可變式空力取代 DRS。詳細請看「規則詳解」分頁。</p></div>
+      </div>
+
+      <h2>在台灣怎麼看</h2>
+      <div class="card ruleCard">
+        <ul>
+          <li><b>官方串流 F1 TV：</b>台灣可訂閱 F1 TV Pro，提供直播與車載鏡頭。</li>
+          <li><b>電視與串流平台：</b>台灣轉播權每年可能變動，建議賽前查詢當季轉播單位。</li>
+          <li><b>時差提醒：</b>歐洲站約晚上 9 點、亞洲站約下午、美洲站多在凌晨，記得看本站「賽程」分頁的台灣時間。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 規則詳解 -->
+    <section class="page" id="page-rules">
+      <h1>規則詳解</h1>
+      <p class="lead">從排位賽到旗號、從輪胎到判罰，一次搞懂比賽中的各種規定。</p>
+
+      <h2>2026 年規則大改</h2>
+      <div class="grid cols2">
+        <div class="card ruleCard">
+          <h3>⚡ 全新動力單元</h3>
+          <ul>
+            <li>電力輸出提升到約 350kW，與內燃機接近 <b>50：50</b>。</li>
+            <li>取消結構複雜的 MGU-H（熱能回收系統）。</li>
+            <li>使用 <b>100% 永續燃料</b>。</li>
+            <li>新廠商加入：奧迪自製引擎、福特與紅牛合作、本田專供奧斯頓馬丁。</li>
+          </ul>
+        </div>
+        <div class="card ruleCard">
+          <h3>🪽 主動式空力取代 DRS</h3>
+          <ul>
+            <li>前、後翼都可以變形：直線時切換為<b>低阻力模式</b>拚極速，彎道時回到<b>高下壓力模式</b>。</li>
+            <li>舊的 DRS（可開啟後翼）走入歷史。</li>
+            <li>新增<b>「超車模式」（Overtake Mode）</b>：在前車 1 秒內時可取得額外電力輔助，幫助超車。</li>
+          </ul>
+        </div>
+        <div class="card ruleCard">
+          <h3>📏 更小、更輕的車</h3>
+          <ul>
+            <li>軸距縮短、車寬變窄，最低重量下修約 30 公斤。</li>
+            <li>底板下壓力減少，希望讓跟車與超車更容易。</li>
+          </ul>
+        </div>
+        <div class="card ruleCard">
+          <h3>🏢 11 支車隊</h3>
+          <ul>
+            <li>凱迪拉克以全新車隊身分加入，是近十年首支新車隊。</li>
+            <li>索伯正式改名為奧迪廠隊。</li>
+            <li>每場起跑車輛從 20 台增加為 22 台。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>排位賽三階段淘汰制</h2>
+      <div class="card ruleCard">
+        <ol>
+          <li><b>Q1（18 分鐘）：</b>22 台車全部出場，最慢的 6 台淘汰，決定第 17～22 名起跑。</li>
+          <li><b>Q2（15 分鐘）：</b>剩餘 16 台再淘汰 6 台，決定第 11～16 名。</li>
+          <li><b>Q3（12 分鐘）：</b>前 10 名爭奪桿位，決定第 1～10 名。</li>
+        </ol>
+        <p class="muted">排位賽中跑出最快單圈的車手稱為「桿位（Pole Position）」。</p>
+      </div>
+
+      <h2>輪胎</h2>
+      <div class="grid cols2">
+        <div class="card">
+          <h3>乾地胎（Pirelli 每站指定三種配方）</h3>
+          <div class="tyreRow"><span class="tyre" style="border-color:#e10600">S</span><div><b>軟胎（紅）</b>：抓地力最強、最快，但磨損最快。</div></div>
+          <div class="tyreRow"><span class="tyre" style="border-color:#ffd12e">M</span><div><b>中性胎（黃）</b>：速度與耐用度取得平衡。</div></div>
+          <div class="tyreRow"><span class="tyre" style="border-color:#f0f0f0">H</span><div><b>硬胎（白）</b>：最耐跑，但需要時間升溫、速度較慢。</div></div>
+          <p class="muted">乾地正賽中，每台車必須使用至少兩種不同配方的乾地胎。</p>
+        </div>
+        <div class="card">
+          <h3>雨胎</h3>
+          <div class="tyreRow"><span class="tyre" style="border-color:#2fb24c">I</span><div><b>半雨胎（綠）</b>：路面潮濕或小雨時使用。</div></div>
+          <div class="tyreRow"><span class="tyre" style="border-color:#1e7bd8">W</span><div><b>全雨胎（藍）</b>：大雨、積水時使用，排水能力最強。</div></div>
+          <p class="muted">使用雨胎時，就不受「兩種乾地胎」規定限制。</p>
+        </div>
+      </div>
+
+      <h2>旗號</h2>
+      <div class="card">
+        <ul class="flagList">
+          <li><span class="flag" style="background:#ffd12e"></span><div><b>黃旗</b>：前方有危險，減速、禁止超車。雙黃旗代表要大幅減速、準備停車。</div></li>
+          <li><span class="flag" style="background:#2fb24c"></span><div><b>綠旗</b>：危險解除，恢復正常比賽。</div></li>
+          <li><span class="flag" style="background:#e10600"></span><div><b>紅旗</b>：比賽中斷，所有車輛慢速回到維修區。</div></li>
+          <li><span class="flag" style="background:#1e7bd8"></span><div><b>藍旗</b>：後方有領先你一圈的車即將追上，必須讓車。</div></li>
+          <li><span class="flag" style="background:linear-gradient(135deg,#111 50%,#fff 50%)"></span><div><b>黑白旗</b>：違反運動精神的警告，相當於「黃牌」。</div></li>
+          <li><span class="flag" style="background:#111"></span><div><b>黑旗</b>：取消資格，必須立即進站退賽。</div></li>
+          <li><span class="flag" style="background:repeating-conic-gradient(#111 0 25%,#fff 0 50%) 0 0/12px 12px"></span><div><b>格子旗</b>：比賽結束。</div></li>
+          <li><span class="flag" style="background:#ffd12e;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;color:#111">SC</span><div><b>安全車（SC）／虛擬安全車（VSC）</b>：SC 會實際上場帶領車隊，VSC 則是全員依規定速度慢行，兩者都禁止超車。</div></li>
+        </ul>
+      </div>
+
+      <h2>常見判罰</h2>
+      <div class="grid cols2">
+        <div class="card ruleCard">
+          <h3>比賽中的處罰</h3>
+          <ul>
+            <li><b>5 秒／10 秒加時：</b>最常見，進站時須先停滿秒數，或賽後直接加到總時間。</li>
+            <li><b>通過維修區（Drive-through）：</b>必須以限速開過維修通道。</li>
+            <li><b>停車再出發（Stop-go）：</b>進站停 10 秒，期間不得作業。</li>
+            <li><b>取消資格：</b>例如賽後技術檢查車重過輕、底板磨損超標。</li>
+          </ul>
+        </div>
+        <div class="card ruleCard">
+          <h3>其他規定</h3>
+          <ul>
+            <li><b>超出賽道界限（Track Limits）：</b>四輪都越過白線且獲利，圈速會被刪除，累犯會被罰。</li>
+            <li><b>罰分制度：</b>12 個月內累積 12 點罰分，將禁賽一場。</li>
+            <li><b>退位處罰：</b>更換超過配額的引擎零件，下一場起跑位置要往後退。</li>
+            <li><b>封閉車廂（Parc Fermé）：</b>排位賽後到正賽前，車輛設定幾乎不能再修改。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>預算上限</h2>
+      <div class="card ruleCard">
+        <p>為了縮小大車隊與小車隊的差距，F1 自 2021 年起實施<b>預算上限（Cost Cap）</b>，限制每支車隊每年在賽車研發與營運上的支出，超支將被罰款或扣分。另外，車隊排名越後面，可以使用的風洞與模擬測試時間越多，這是讓落後車隊追趕的機制。</p>
+      </div>
+    </section>
+
+    <!-- 術語表 -->
+    <section class="page" id="page-glossary">
+      <h1>術語表</h1>
+      <p class="lead">聽到轉播在講什麼聽不懂？在這裡搜尋看看。</p>
+      <input class="searchBox" id="glossarySearch" type="search" placeholder="搜尋術語，例如：桿位、undercut…">
+      <dl class="glossary" id="glossaryList"></dl>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">資料整理至 2026 年 11 月 4 日 · 投票時間 11 月 28 日上午 8 時至下午 4 時</div>
+    <div class="wrap">
+      <p>即時資料來源：<a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener">Jolpica F1 API</a>（Ergast 繼任專案，社群維護的公開 F1 資料庫）。內建備援資料整理自 RaceFans、Formula1.com 等報導，更新至 2026 年 11 月 3 日（墨西哥站後）。</p>
+      <p>本站為非官方愛好者網站，與 Formula 1 及各車隊無關。</p>
+    </div>
   </footer>
 
   <script>
-    // 輿情風向重點
-    const trendItems = [
-      { tag: '台北', title: '蔣萬安領先幅度持續收斂', text: 'TVBS 系列民調中，雙方差距從 5 月下旬的 28 個百分點、10 月初的 8 個百分點，縮小到辯論後（10/31）的 4 個百分點。同一份調查中，47% 認為沈伯洋辯論表現較佳，蔣萬安為 40%。' },
-      { tag: '民調分歧', title: '同一時間、不同機構結果相反', text: '台北辯論後，ETtoday 顯示蔣萬安領先 11 個百分點，台灣韜略策進學會卻顯示沈伯洋領先 17 個百分點；台中的佛光大學與信民協會同週調查方向也相反。機構效應明顯，宜看同一機構的前後變化。' },
-      { tag: '新北・台中', title: '交棒戰呈現拉鋸', text: '新北藍白整合由李四川出線後，與蘇巧慧在多份民調中互有領先；台中盧秀燕任滿，江啟臣與何欣純的未表態比例仍有約兩到三成，選情尚未明朗。' },
-      { tag: '南部', title: '台南、高雄綠營暫居優勢', text: '台南陳亭妃在已公布的民調中都領先謝龍介，且差距逐次擴大；高雄賴瑞隆在 10 月多數民調領先柯志恩，但 ETtoday 調查顯示兩人幾乎持平。' },
-      { tag: '議題', title: '福利政見與氣候韌性成攻防主軸', text: '營養午餐免費、敬老卡加碼、長者健保費補助等福利政見互相較勁；六都 23 位候選人中有 13 位簽署永續韌性城市承諾，李四川與江啟臣未簽。' },
-      { tag: '選戰氛圍', title: '假訊息與網路攻防升溫', text: '媒體報導選舉相關假訊息案件激增，多位候選人公開指控遭網軍攻擊。11 月 18 日起進入民調封關期，之後將無法再看到新的公開民調。' }
-    ];
+    /* ================= 基本設定 ================= */
+    const season = 2026;
+    const apiBase = 'https://api.jolpi.ca/ergast/f1';
+    const cacheKey = 'f1Cache' + season;
+    const autoRefreshMs = 30 * 60 * 1000; // 頁面開著時每 30 分鐘自動重抓
+    const racePointsTable = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
+    const sprintPointsTable = [8, 7, 6, 5, 4, 3, 2, 1];
+    // 內建陣容適用的起始站次（哈斯自第 20 站巴西站起由卡馬拉頂替奧康）
+    // API 的最新正賽站次 >= 此值時，才改用 API 的實際出賽陣容
+    const lineupAsOfRound = 20;
 
-    // 六都候選人與民調（民調順序：國民黨、民進黨、未表態；null 表示機構未公布）
-    const races = [
+    /* ================= 車隊與車手（內建資料） ================= */
+    const teams = [
       {
-        id: 'taipei', city: '台北市', summary: '現任市長爭取連任，對上民進黨立委',
-        kmt: { name: '蔣萬安', num: 5, wiki: '蔣萬安', role: '現任台北市長，爭取連任', slogan: '讓每一個人在台北實現自我',
-          points: ['推動公辦都更，南機場單元 4 已完成簽約，將提供幸福住宅', '簽署六都永續韌性城市政策承諾'] },
-        dpp: { name: '沈伯洋', num: 3, wiki: '沈伯洋', role: '民進黨不分區立委', slogan: '縣市好人才，團結拚未來',
-          points: ['制定「台北都市林自治條例」，導入路樹智慧管理並升級涼感地圖', '補助罕病患者家用不斷電系統', '提出「都更陪伴機制」，協助住戶推動都更'] },
-        others: '1 號郭璽（台灣麻將最大黨）、2 號林志成（無黨籍）、4 號蕭文乾（臺灣SoR無法黨）、6 號唐新民（三勢團結促進聯盟）',
-        trendNote: 'TVBS 同一系列差距由 8 縮小為 4 個百分點；辯論後各機構結果分歧最大。',
-        polls: [
-          { org: 'TVBS', date: '10/31', kmt: 46, dpp: 42, und: 12, note: '電話訪問，1,747 份' },
-          { org: 'ETtoday', date: '10/31–11/1', kmt: 52.0, dpp: 40.7, und: 6.9 },
-          { org: '台灣韜略策進學會', date: '10/31–11/1', kmt: 35.3, dpp: 52.6, und: 7.7 },
-          { org: '聯合報', date: '10/20–25', kmt: 41, dpp: 45, und: 13 },
-          { org: 'TVBS', date: '10/3–7', kmt: 49, dpp: 41, und: 11, note: '電話訪問，1,120 份' }
+        key: 'mercedes', zh: '賓士', en: 'Mercedes-AMG Petronas', color: '#00d2be',
+        base: '英國 布雷克利', principal: 'Toto Wolff', engine: '賓士',
+        desc: '2014～2021 年連霸八屆車隊冠軍的王者。2026 新規則下再度稱霸，安東內利以 20 歲之齡奪下車手冠軍。',
+        drivers: [
+          { family: 'russell', zh: '羅素', en: 'George Russell', no: 63, flag: '🇬🇧' },
+          { family: 'antonelli', zh: '安東內利', en: 'Andrea Kimi Antonelli', no: 12, flag: '🇮🇹', note: '2026 年度車手冠軍' }
         ]
       },
       {
-        id: 'newtaipei', city: '新北市', summary: '侯友宜交棒，藍白合推李四川',
-        kmt: { name: '李四川', num: 3, wiki: '李四川', role: '國民黨提名，獲民眾黨支持', slogan: '我就是一個做事的人',
-          points: ['主張 65 歲以上長者健保費由政府負擔', '加強透水與保水設施，提升防洪能力'] },
-        dpp: { name: '蘇巧慧', num: 1, wiki: '蘇巧慧', role: '民進黨立委', slogan: '溫暖 創新 會做事',
-          points: ['推動免費營養午餐等育兒支持', '長輩假牙補助、敬老卡升級', '減輕家庭醫療負擔'] },
-        others: '2 號蘇輝湟（無黨籍）',
-        trendNote: '各機構互有領先，未出現一致趨勢；信民協會調查的未表態比例達三成。',
-        polls: [
-          { org: '信民協會', date: '10/6–8', kmt: 30.0, dpp: 43.1, und: 30.3 },
-          { org: 'TVBS', date: '9/29–10/2', kmt: 42.6, dpp: 35.9, und: null },
-          { org: '山水民調', date: '9/30–10/1', kmt: 34.5, dpp: 39.1, und: null },
-          { org: '鉅聞天下', date: '9/28–10/3', kmt: 45.74, dpp: 45.18, und: 9.08 }
+        key: 'ferrari', zh: '法拉利', en: 'Scuderia Ferrari HP', color: '#e8002d',
+        base: '義大利 馬拉內羅', principal: 'Frédéric Vasseur', engine: '法拉利',
+        desc: 'F1 歷史最悠久、最多冠軍的車隊，車迷被稱為「Tifosi」。七冠王漢米爾頓與勒克萊爾組成豪華陣容。',
+        drivers: [
+          { family: 'leclerc', zh: '勒克萊爾', en: 'Charles Leclerc', no: 16, flag: '🇲🇨' },
+          { family: 'hamilton', zh: '漢米爾頓', en: 'Lewis Hamilton', no: 44, flag: '🇬🇧' }
         ]
       },
       {
-        id: 'taoyuan', city: '桃園市', summary: '兩人對決，現任市長爭取連任',
-        kmt: { name: '張善政', num: 2, wiki: '張善政', role: '現任桃園市長，爭取連任', slogan: '一輩子都是做事的人',
-          points: ['投資上百億元興建桃園市立醫院', '堅持不讓 SRF 固體再生燃料廠計畫重啟'] },
-        dpp: { name: '黃世杰', num: 1, wiki: '黃世杰 (政治人物)', role: '前法務部政務次長、前桃園市立委', slogan: null,
-          points: ['推出 1,200 點敬老卡', '強化淹水、火災等災害的第一線應變'] },
-        others: '本屆僅兩人參選',
-        trendNote: '張善政維持領先，但差距由 21 縮小至約 11 個百分點。',
-        polls: [
-          { org: 'ETtoday', date: '10/29–11/1', kmt: 47.4, dpp: 36.0, und: 16.5 },
-          { org: '新台灣國策智庫', date: '9/15–17', kmt: 47.0, dpp: 25.9, und: 27.1 }
+        key: 'redBull', zh: '紅牛', en: 'Oracle Red Bull Racing', color: '#3671c6',
+        base: '英國 米爾頓凱恩斯', principal: 'Laurent Mekies', engine: '紅牛福特',
+        desc: '四屆世界冠軍維斯塔潘的車隊。2026 年起首度使用自家與福特合作開發的引擎。',
+        drivers: [
+          { family: 'verstappen', zh: '維斯塔潘', en: 'Max Verstappen', no: 3, flag: '🇳🇱' },
+          { family: 'hadjar', zh: '哈賈爾', en: 'Isack Hadjar', no: 6, flag: '🇫🇷' }
         ]
       },
       {
-        id: 'taichung', city: '台中市', summary: '盧秀燕任滿，藍綠立委接班之爭',
-        kmt: { name: '江啟臣', num: 3, wiki: '江啟臣', role: '現任立法院副院長', slogan: '打造臺中旗艦城',
-          points: ['延續盧秀燕市府施政並加碼推動', '提出「貨出去，人進來」的產業與觀光發展方向'] },
-        dpp: { name: '何欣純', num: 1, wiki: '何欣純', role: '台中市第七選區立委', slogan: '讓台中欣欣向榮',
-          points: ['「六星市政」：推動海線、屯區、市區均衡發展', '主張營養午餐免費', '要求明確將普發現金列入政見'] },
-        others: '2 號洪麗華（司法正義黨）',
-        trendNote: '同週的佛光大學與信民協會結果方向相反，未表態仍約兩到三成。',
-        polls: [
-          { org: '佛光大學', date: '10/29–31', kmt: 38.3, dpp: 28.1, und: 18.6 },
-          { org: '信民協會', date: '10/28–30', kmt: 30.4, dpp: 41.1, und: 27.8 },
-          { org: '世新大學', date: '10/15–16', kmt: 39.8, dpp: 28.7, und: 31.5 },
-          { org: '循證民調', date: '10/5–6', kmt: 34.3, dpp: 32.4, und: 32.2 }
+        key: 'mclaren', zh: '麥拉倫', en: 'McLaren F1 Team', color: '#ff8000',
+        base: '英國 沃金', principal: 'Andrea Stella', engine: '賓士',
+        desc: '2024、2025 年連續兩屆車隊冠軍。諾里斯以 2025 年世界冠軍身分配戴 1 號車。',
+        drivers: [
+          { family: 'norris', zh: '諾里斯', en: 'Lando Norris', no: 1, flag: '🇬🇧' },
+          { family: 'piastri', zh: '皮亞斯特里', en: 'Oscar Piastri', no: 81, flag: '🇦🇺' }
         ]
       },
       {
-        id: 'tainan', city: '台南市', summary: '黃偉哲任滿，綠營力保首位女市長',
-        kmt: { name: '謝龍介', num: 2, wiki: '謝龍介', role: '國民黨不分區立委', slogan: '選我市長做4年 讓你懷念40年',
-          points: ['全面清查消防設備採購標案，杜絕回扣', '拆除烏山頭水庫水面光電板'] },
-        dpp: { name: '陳亭妃', num: 3, wiki: '陳亭妃', role: '台南市第三選區立委', slogan: '台南第一女市長',
-          points: ['於偏遠及易成孤島地區建置光電、儲能微電網', '在傳統基礎上注入創新思維，推動城市轉型'] },
-        others: '1 號蕭燐洪（臺灣SoR無法黨）、4 號葉人文（無黨籍）',
-        trendNote: '陳亭妃領先差距由 2 月約 5 個百分點擴大到 10 月約 37 個百分點。',
-        polls: [
-          { org: '新台灣國策智庫', date: '10/13–15', kmt: 22.6, dpp: 59.4, und: 17 },
-          { org: 'TVBS', date: '3/9–12', kmt: 30, dpp: 53, und: 17 },
-          { org: '鉅聞天下', date: '2/23–28', kmt: 40.57, dpp: 45.96, und: null }
+        key: 'racingBulls', zh: '紅牛二隊', en: 'Visa Cash App Racing Bulls', color: '#6692ff',
+        base: '義大利 法恩札', principal: 'Alan Permane', engine: '紅牛福特',
+        desc: '紅牛的青年培訓車隊，許多明星車手都從這裡起步。',
+        drivers: [
+          { family: 'lawson', zh: '勞森', en: 'Liam Lawson', no: 30, flag: '🇳🇿' },
+          { family: 'lindblad', zh: '林德布拉德', en: 'Arvid Lindblad', no: 41, flag: '🇬🇧', note: '2026 新秀' }
         ]
       },
       {
-        id: 'kaohsiung', city: '高雄市', summary: '陳其邁任滿，綠營守城之戰',
-        kmt: { name: '柯志恩', num: 3, wiki: '柯志恩', role: '國民黨不分區立委', slogan: '夢想海港 柯志恩一定成功',
-          points: ['「涼感城市三部曲」：植樹、風廊與遮蔭步道', '建置「高雄滯洪網」與住家防洪升級計畫', '發放「喘息券」，每年提供 48 小時照顧者喘息服務'] },
-        dpp: { name: '賴瑞隆', num: 5, wiki: '賴瑞隆', role: '高雄市第八選區立委', slogan: '信賴高雄 邁向新局',
-          points: ['推動「韌性高雄工程 2.0」，讓公共建設兼具防災功能', '爭取小港機場國內線至捷運站電動步道', '重視 38 區均衡發展'] },
-        others: '1 號張靜（司法改革黨）、2 號王肇民（無黨籍）、4 號洪方隆（無黨籍）',
-        trendNote: '8 月 ETtoday 柯志恩小幅領先，10 月多數民調轉為賴瑞隆領先。',
-        polls: [
-          { org: '聯合報', date: '10/28–31', kmt: 33, dpp: 40, und: 26 },
-          { org: 'ETtoday', date: '10/20–25', kmt: 43.1, dpp: 43.2, und: 13.2 },
-          { org: '鋒燦傳媒', date: '10/16–21', kmt: 27.4, dpp: 47.8, und: 22.4 }
+        key: 'alpine', zh: '雅爾賓', en: 'BWT Alpine F1 Team', color: '#ff87bc',
+        base: '英國 恩斯通', principal: 'Flavio Briatore（執行顧問）', engine: '賓士',
+        desc: '雷諾旗下車隊，2026 年起改用賓士引擎。',
+        drivers: [
+          { family: 'gasly', zh: '加斯利', en: 'Pierre Gasly', no: 10, flag: '🇫🇷' },
+          { family: 'colapinto', zh: '柯拉品托', en: 'Franco Colapinto', no: 43, flag: '🇦🇷' }
+        ]
+      },
+      {
+        key: 'haas', zh: '哈斯', en: 'MoneyGram Haas F1 Team', color: '#b6babd',
+        base: '美國 坎納波利斯', principal: '小松禮雄 Ayao Komatsu', engine: '法拉利',
+        desc: '唯一的美國籍老牌車隊（2016 年加入），與法拉利技術合作緊密。',
+        drivers: [
+          { family: 'bearman', zh: '貝爾曼', en: 'Oliver Bearman', no: 87, flag: '🇬🇧' },
+          { family: 'camara', zh: '卡馬拉', en: 'Rafael Câmara', no: null, flag: '🇧🇷', note: '巴西站起頂替奧康，F1 首戰', isNew: true }
+        ]
+      },
+      {
+        key: 'audi', zh: '奧迪', en: 'Audi F1 Team', color: '#bb0a30',
+        base: '瑞士 欣維爾', principal: 'Jonathan Wheatley', engine: '奧迪',
+        desc: '收購索伯後於 2026 年以廠隊身分登場，自製引擎。',
+        drivers: [
+          { family: 'hulkenberg', zh: '霍肯伯格', en: 'Nico Hülkenberg', no: 27, flag: '🇩🇪' },
+          { family: 'bortoleto', zh: '波托勒托', en: 'Gabriel Bortoleto', no: 5, flag: '🇧🇷' }
+        ]
+      },
+      {
+        key: 'williams', zh: '威廉斯', en: 'Atlassian Williams Racing', color: '#1868db',
+        base: '英國 格羅夫', principal: 'James Vowles', engine: '賓士',
+        desc: '擁有 9 座車隊冠軍的傳統名門，正在重建中。',
+        drivers: [
+          { family: 'albon', zh: '艾邦', en: 'Alexander Albon', no: 23, flag: '🇹🇭' },
+          { family: 'sainz', zh: '塞恩斯', en: 'Carlos Sainz', no: 55, flag: '🇪🇸' }
+        ]
+      },
+      {
+        key: 'astonMartin', zh: '奧斯頓馬丁', en: 'Aston Martin Aramco', color: '#229971',
+        base: '英國 銀石', principal: 'Adrian Newey', engine: '本田',
+        desc: '傳奇設計師紐維操刀、本田獨家供應引擎，但新規則首年表現不如預期。',
+        drivers: [
+          { family: 'alonso', zh: '阿隆索', en: 'Fernando Alonso', no: 14, flag: '🇪🇸' },
+          { family: 'stroll', zh: '史托爾', en: 'Lance Stroll', no: 18, flag: '🇨🇦' }
+        ]
+      },
+      {
+        key: 'cadillac', zh: '凱迪拉克', en: 'Cadillac F1 Team', color: '#c9a227',
+        base: '美國 印第安納波利斯／英國 銀石', principal: 'Graeme Lowdon', engine: '法拉利',
+        desc: '2026 年全新加入的美國車隊，由兩位經驗豐富的老將坐鎮。',
+        drivers: [
+          { family: 'perez', zh: '裴瑞茲', en: 'Sergio Pérez', no: 11, flag: '🇲🇽' },
+          { family: 'bottas', zh: '博塔斯', en: 'Valtteri Bottas', no: 77, flag: '🇫🇮' }
         ]
       }
     ];
 
-    // 其他 16 縣市候選人（[號次, 姓名, 政黨代碼, 政黨名稱]）
-    const counties = [
-      { name: '基隆市', list: [[1, '童子瑋', 'dpp'], [2, '魏造文', 'ind'], [3, '謝國樑', 'kmt']] },
-      { name: '新竹市', list: [[1, '高虹安', 'ind'], [2, '何志勇', 'ind'], [3, '莊競程', 'dpp']], note: '現任市長高虹安以無黨籍參選，國民黨未提名並表態支持' },
-      { name: '新竹縣', list: [[1, '鄭朝方', 'dpp'], [2, '徐欣瑩', 'kmt'], [3, '朱定瑀', 'ind']], note: '楊文科任滿' },
-      { name: '苗栗縣', list: [[1, '陳品安', 'dpp'], [2, '鍾東錦', 'kmt']], note: '現任縣長鍾東錦爭取連任' },
-      { name: '彰化縣', list: [[1, '陳素月', 'dpp'], [2, '魏平政', 'kmt'], [3, '邱建富', 'ind'], [4, '陳重嘉', 'ind']], note: '王惠美任滿' },
-      { name: '南投縣', list: [[1, '許淑華', 'kmt'], [2, '溫世政', 'dpp']] },
-      { name: '雲林縣', list: [[1, '吳炳輝', 'ind'], [2, '張嘉郡', 'kmt'], [3, '劉建國', 'dpp'], [4, '林佳瑜', 'ind']], note: '張麗善任滿' },
-      { name: '嘉義縣', list: [[1, '吳品叡', 'ind'], [2, '蔡易餘', 'dpp']], note: '國民黨未提名' },
-      { name: '嘉義市', list: [[1, '王義成', 'ind'], [2, '陳愷璜', 'ind'], [3, '張啓楷', 'tpp'], [4, '王美惠', 'dpp'], [5, '黃宏成台灣阿成世界偉人財神總統', 'ind']], note: '張啓楷為民眾黨籍，藍白共推' },
-      { name: '屏東縣', list: [[1, '蘇清泉', 'kmt'], [2, '周春米', 'dpp']] },
-      { name: '宜蘭縣', list: [[1, '林國漳', 'dpp'], [2, '陳宏毅', 'ind'], [3, '吳宗憲', 'kmt'], [4, '劉燦輝', 'ind'], [5, '楊鉯婷', 'ind']] },
-      { name: '花蓮縣', list: [[1, '魏嘉賢', 'ind'], [2, '張峻', 'ind'], [3, '游淑貞', 'kmt'], [4, '羅佩秦', 'ind']], note: '羅佩秦為台灣工黨推薦；張峻為無黨籍議長' },
-      { name: '台東縣', list: [[1, '李吳穎智', 'ind'], [2, '陳瑩', 'dpp'], [3, '王志偉', 'ind'], [4, '吳秀華', 'kmt']], note: '饒慶鈴任滿' },
-      { name: '澎湖縣', list: [[1, '許智富', 'ind'], [2, '周倪安', 'ind'], [3, '葉竹林', 'ind'], [4, '吳淑瑾', 'dpp'], [5, '陳振中', 'kmt'], [6, '陳盡川', 'ind']], note: '現任縣長陳光復因病不續任，由夫人吳淑瑾參選；周倪安為台聯黨' },
-      { name: '金門縣', list: [[1, '張國威', 'ind'], [2, '李文良', 'ind'], [3, '洪和成', 'ind'], [4, '張火木', 'ind'], [5, '陳玉珍', 'kmt'], [6, '梁文韜', 'ind'], [7, '黃世團', 'ind']], note: '7 人參選，為全台最多' },
-      { name: '連江縣', list: [[1, '王忠銘', 'kmt'], [2, '曹爾元', 'ind']], note: '現任縣長王忠銘爭取連任' }
+    // 其他可能出現在積分榜的車手中文名
+    const extraDriverZh = { ocon: '奧康', tsunoda: '角田裕毅', hirakawa: '平川亮' };
+
+    // 國籍對應國旗（API 新車手用）
+    const nationalityFlag = {
+      British: '🇬🇧', Italian: '🇮🇹', Dutch: '🇳🇱', French: '🇫🇷', Monegasque: '🇲🇨', Australian: '🇦🇺',
+      'New Zealander': '🇳🇿', Argentine: '🇦🇷', Argentinian: '🇦🇷', Brazilian: '🇧🇷', German: '🇩🇪', Thai: '🇹🇭',
+      Spanish: '🇪🇸', Canadian: '🇨🇦', Mexican: '🇲🇽', Finnish: '🇫🇮', Japanese: '🇯🇵', American: '🇺🇸',
+      Chinese: '🇨🇳', Danish: '🇩🇰', Estonian: '🇪🇪', Swiss: '🇨🇭', Belgian: '🇧🇪', Polish: '🇵🇱', Indian: '🇮🇳'
+    };
+
+    /* ================= 賽程（內建資料） ================= */
+    // raceUtc 僅剩餘賽事有預定時間；API 連線後會以官方時間取代
+    const fallbackSchedule = [
+      { round: 1, zh: '澳洲大獎賽', circuit: '亞伯特公園', flag: '🇦🇺', dates: '3/6–3/8', raceDate: '2026-03-08' },
+      { round: 2, zh: '中國大獎賽', circuit: '上海國際賽車場', flag: '🇨🇳', dates: '3/13–3/15', raceDate: '2026-03-15', sprint: true },
+      { round: 3, zh: '日本大獎賽', circuit: '鈴鹿賽道', flag: '🇯🇵', dates: '3/27–3/29', raceDate: '2026-03-29' },
+      { round: 4, zh: '邁阿密大獎賽', circuit: '邁阿密國際賽車場', flag: '🇺🇸', dates: '5/1–5/3', raceDate: '2026-05-03', sprint: true },
+      { round: 5, zh: '加拿大大獎賽', circuit: '吉爾維倫紐夫賽道', flag: '🇨🇦', dates: '5/22–5/24', raceDate: '2026-05-24', sprint: true },
+      { round: 6, zh: '摩納哥大獎賽', circuit: '蒙地卡羅街道賽道', flag: '🇲🇨', dates: '6/5–6/7', raceDate: '2026-06-07' },
+      { round: 7, zh: '巴塞隆納大獎賽', circuit: '加泰隆尼亞賽道', flag: '🇪🇸', dates: '6/12–6/14', raceDate: '2026-06-14' },
+      { round: 8, zh: '奧地利大獎賽', circuit: '紅牛賽道', flag: '🇦🇹', dates: '6/26–6/28', raceDate: '2026-06-28' },
+      { round: 9, zh: '英國大獎賽', circuit: '銀石賽道', flag: '🇬🇧', dates: '7/3–7/5', raceDate: '2026-07-05', sprint: true },
+      { round: 10, zh: '比利時大獎賽', circuit: '斯帕賽道', flag: '🇧🇪', dates: '7/17–7/19', raceDate: '2026-07-19' },
+      { round: 11, zh: '匈牙利大獎賽', circuit: '匈牙利賽道', flag: '🇭🇺', dates: '7/24–7/26', raceDate: '2026-07-26' },
+      { round: 12, zh: '荷蘭大獎賽', circuit: '贊德沃特賽道', flag: '🇳🇱', dates: '8/21–8/23', raceDate: '2026-08-23', sprint: true },
+      { round: 13, zh: '義大利大獎賽', circuit: '蒙札賽道', flag: '🇮🇹', dates: '9/4–9/6', raceDate: '2026-09-06' },
+      { round: 14, zh: '西班牙大獎賽', circuit: '馬德里 Madring 賽道', flag: '🇪🇸', dates: '9/11–9/13', raceDate: '2026-09-13' },
+      { round: 15, zh: '亞塞拜然大獎賽', circuit: '巴庫街道賽道', flag: '🇦🇿', dates: '9/24–9/26', raceDate: '2026-09-26' },
+      { round: 16, zh: '巴林大獎賽（移師馬來西亞）', circuit: '雪邦國際賽道', flag: '🇲🇾', dates: '10/2–10/4', raceDate: '2026-10-04' },
+      { round: 17, zh: '新加坡大獎賽', circuit: '濱海灣街道賽道', flag: '🇸🇬', dates: '10/9–10/11', raceDate: '2026-10-11', sprint: true },
+      { round: 18, zh: '美國大獎賽', circuit: '美洲賽道（奧斯汀）', flag: '🇺🇸', dates: '10/23–10/25', raceDate: '2026-10-25' },
+      { round: 19, zh: '墨西哥大獎賽', circuit: '羅德里格斯兄弟賽道', flag: '🇲🇽', dates: '10/30–11/1', raceDate: '2026-11-01' },
+      { round: 20, zh: '聖保羅大獎賽（巴西）', circuit: '英特拉格斯賽道', flag: '🇧🇷', dates: '11/6–11/8', raceDate: '2026-11-08', raceUtc: '2026-11-08T17:00:00Z' },
+      { round: 21, zh: '拉斯維加斯大獎賽', circuit: '拉斯維加斯大道賽道', flag: '🇺🇸', dates: '11/19–11/21', raceDate: '2026-11-21', raceUtc: '2026-11-22T04:00:00Z' },
+      { round: 22, zh: '卡達大獎賽', circuit: '盧賽爾國際賽道', flag: '🇶🇦', dates: '11/27–11/29', raceDate: '2026-11-29', raceUtc: '2026-11-29T16:00:00Z' },
+      { round: 23, zh: '阿布達比大獎賽', circuit: '亞斯碼頭賽道', flag: '🇦🇪', dates: '12/4–12/6', raceDate: '2026-12-06', raceUtc: '2026-12-06T13:00:00Z' }
     ];
 
-    const partyLabel = { kmt: '中國國民黨', dpp: '民主進步黨' };
+    /* ================= 積分與成績（內建備援，墨西哥站後） ================= */
+    const fallbackData = {
+      lastRound: 19,
+      lastRaceName: '墨西哥大獎賽',
+      driverStandings: [
+        ['antonelli', 'Andrea Kimi Antonelli', 'mercedes', 380, 9],
+        ['verstappen', 'Max Verstappen', 'redBull', 261],
+        ['hamilton', 'Lewis Hamilton', 'ferrari', 259],
+        ['russell', 'George Russell', 'mercedes', 250],
+        ['leclerc', 'Charles Leclerc', 'ferrari', 245],
+        ['norris', 'Lando Norris', 'mclaren', 221],
+        ['piastri', 'Oscar Piastri', 'mclaren', 144],
+        ['hadjar', 'Isack Hadjar', 'redBull', 107],
+        ['lawson', 'Liam Lawson', 'racingBulls', 83],
+        ['gasly', 'Pierre Gasly', 'alpine', 42],
+        ['lindblad', 'Arvid Lindblad', 'racingBulls', 38],
+        ['colapinto', 'Franco Colapinto', 'alpine', 27],
+        ['bearman', 'Oliver Bearman', 'haas', 23],
+        ['bortoleto', 'Gabriel Bortoleto', 'audi', 14],
+        ['hulkenberg', 'Nico Hülkenberg', 'audi', 13],
+        ['ocon', 'Esteban Ocon', 'haas', 7],
+        ['alonso', 'Fernando Alonso', 'astonMartin', 7],
+        ['sainz', 'Carlos Sainz', 'williams', 7],
+        ['albon', 'Alexander Albon', 'williams', 5],
+        ['tsunoda', 'Yuki Tsunoda', null, 1],
+        ['hirakawa', 'Ryo Hirakawa', 'haas', 1],
+        ['stroll', 'Lance Stroll', 'astonMartin', 0],
+        ['bottas', 'Valtteri Bottas', 'cadillac', 0],
+        ['perez', 'Sergio Pérez', 'cadillac', 0]
+      ].map(([family, en, teamKey, points, wins]) => ({ family, en, teamKey, points, wins: wins ?? null })),
+      constructorStandings: [
+        ['mercedes', 630], ['ferrari', 504], ['redBull', 382], ['mclaren', 365], ['racingBulls', 108],
+        ['alpine', 69], ['haas', 31], ['audi', 27], ['williams', 12], ['astonMartin', 7], ['cadillac', 0]
+      ].map(([teamKey, points]) => ({ teamKey, points, wins: null })),
+      lastResults: [
+        ['verstappen', 'redBull'], ['hamilton', 'ferrari'], ['antonelli', 'mercedes'], ['leclerc', 'ferrari'],
+        ['norris', 'mclaren'], ['russell', 'mercedes'], ['lawson', 'racingBulls'], ['bortoleto', 'audi'],
+        ['hadjar', 'redBull'], ['hirakawa', 'haas']
+      ].map(([family, teamKey], i) => ({ family, teamKey, pos: i + 1, points: racePointsTable[i] })),
+      winners: { 19: { family: 'verstappen', teamKey: 'redBull' } },
+      schedule: null,
+      lineup: null,
+      isLive: false,
+      fetchedAt: null
+    };
 
-    // 跳脫 HTML 特殊字元
-    const escapeHtml = (str) => String(str).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    /* ================= 近期消息（人工整理） ================= */
+    const newsItems = [
+      { date: '2026-11-03', title: '哈斯確認奧康本季不再回歸，卡馬拉巴西站提前升格', body: '墨西哥站由後備車手平川亮代打後，哈斯宣布奧康 2026 年剩餘賽事不再出賽。現任 F2 積分領先者、法拉利青訓出身的巴西車手卡馬拉，將在主場英特拉格斯完成 F1 首秀，他原本就已確定 2027 年接替奧康。' },
+      { date: '2026-11-01', title: '安東內利墨西哥封王，成為史上最年輕世界冠軍', body: '20 歲 68 天的安東內利以季軍完賽，提前四站鎖定車手冠軍，打破維泰爾保持的最年輕紀錄，也是 1953 年阿斯卡里之後首位義大利籍世界冠軍。本季已拿下 9 場分站冠軍。' },
+      { date: '2026-11-01', title: '維斯塔潘拿下墨西哥站，賓士逼近車隊冠軍', body: '維斯塔潘擊敗漢米爾頓奪冠，躍升車手積分第二。賓士以 126 分領先法拉利，只要巴西站再多拿 3 分就能確定第九座車隊冠軍。' }
+    ];
 
-    // 投票日倒數
-    function updateCountdown() {
-      const voteDay = new Date('2026-11-28T08:00:00+08:00');
-      const days = Math.ceil((voteDay - Date.now()) / 86400000);
-      document.getElementById('countdown').textContent = days > 0 ? `${days} 天` : '投票日';
+    /* ================= 術語表 ================= */
+    const glossary = [
+      ['桿位', 'Pole Position', '排位賽最快，正賽從第一位起跑。'],
+      ['頒獎台', 'Podium', '正賽前三名，會上台領獎、噴香檳。'],
+      ['大獎賽', 'Grand Prix', '一個比賽週末的正式名稱，通常以國家或城市命名。'],
+      ['維修區', 'Pit Lane', '車輛進站換胎、維修的通道，有嚴格速限。'],
+      ['進站', 'Pit Stop', '進維修區換胎，頂尖車隊換四顆胎只要 2 秒多。'],
+      ['Undercut', '提前進站', '比前車早一點進站換新胎，靠新胎速度在對手進站後超越他。'],
+      ['Overcut', '延後進站', '比對手晚進站，利用乾淨空氣跑出快圈，在對手換胎期間取得領先。'],
+      ['尾流', 'Slipstream / Tow', '緊跟前車時空氣阻力變小，直線速度更快，有利超車。'],
+      ['髒空氣', 'Dirty Air', '前車造成的亂流，讓後車下壓力減少、難以緊跟過彎。'],
+      ['下壓力', 'Downforce', '空力套件把車子壓向地面的力量，讓車子過彎更快。'],
+      ['超車模式', 'Overtake Mode', '2026 新制，在前車 1 秒內可獲得額外電力協助超車，取代舊有的 DRS。'],
+      ['DRS', 'Drag Reduction System', '2011～2025 年使用的可開啟後翼系統，2026 年已廢除。'],
+      ['主動式空力', 'Active Aero', '2026 新制，前後翼可在直線低阻力與彎道高下壓力模式間切換。'],
+      ['安全車', 'Safety Car (SC)', '事故時上場帶領車隊減速，全場禁止超車。'],
+      ['虛擬安全車', 'VSC', '不出動實體安全車，所有車手依規定差速慢行。'],
+      ['套圈', 'Lapping', '領先者追上落後一圈的車，被套圈的車需讓車（藍旗）。'],
+      ['DNF', 'Did Not Finish', '未完賽，因故障或事故退賽。'],
+      ['DSQ', 'Disqualified', '取消資格。'],
+      ['封閉車廂', 'Parc Fermé', '排位賽後車輛設定被封存，正賽前不得大改。'],
+      ['輪胎降解', 'Degradation', '輪胎隨圈數磨損、抓地力下降，圈速變慢。'],
+      ['懸崖', 'Tyre Cliff', '輪胎性能突然大幅衰退的時間點。'],
+      ['車隊指令', 'Team Orders', '車隊透過無線電要求車手讓位或維持名次。'],
+      ['外圈／暖胎圈', 'Out Lap', '剛出維修區的那一圈，用來讓輪胎升溫。'],
+      ['飛馳圈', 'Flying Lap', '排位賽中全力衝刺計時的一圈。'],
+      ['紫色區段', 'Purple Sector', '計時畫面中顯示全場最快的分段成績。'],
+      ['頂替車手', 'Reserve Driver', '正式車手因傷病或其他原因無法出賽時上場代打的車手。'],
+      ['廠隊／客戶車隊', 'Works / Customer Team', '自製引擎的車隊稱廠隊；向他隊購買引擎的稱客戶車隊。'],
+      ['預算上限', 'Cost Cap', '限制車隊每年支出的財務規定。'],
+      ['ERS', 'Energy Recovery System', '能量回收系統，把煞車動能轉成電力，2026 年電力比例大幅提升。'],
+      ['大滿貫', 'Grand Slam', '同一場拿到桿位、冠軍、最快單圈且全程領跑。']
+    ];
+
+    /* ================= 工具函式 ================= */
+    const $ = (sel) => document.querySelector(sel);
+    const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const normalizeName = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z]/g, '');
+
+    // 依 familyName 找內建車手資料
+    function findDriverInfo(family) {
+      const key = normalizeName(family);
+      for (const team of teams) {
+        const d = team.drivers.find((x) => x.family === key);
+        if (d) return { ...d, teamKey: team.key };
+      }
+      return null;
+    }
+    function driverZh(family, fallbackEn) {
+      const key = normalizeName(family);
+      const info = findDriverInfo(key);
+      if (info) return info.zh;
+      return extraDriverZh[key] || fallbackEn || family;
+    }
+    const teamByKey = (key) => teams.find((t) => t.key === key);
+
+    // 把 API 的車隊 ID／名稱對應到內建車隊 key
+    function teamKeyFromConstructor(c) {
+      if (!c) return null;
+      const id = (c.constructorId || '').toLowerCase();
+      const name = (c.name || '').toLowerCase();
+      const s = id + ' ' + name;
+      if (/racing_bulls|^rb\b|alphatauri|visa|racing bulls/.test(s) || id === 'rb') return 'racingBulls';
+      if (/red_bull|red bull/.test(s)) return 'redBull';
+      if (/mercedes/.test(s)) return 'mercedes';
+      if (/ferrari/.test(s)) return 'ferrari';
+      if (/mclaren/.test(s)) return 'mclaren';
+      if (/alpine/.test(s)) return 'alpine';
+      if (/haas/.test(s)) return 'haas';
+      if (/audi|sauber/.test(s)) return 'audi';
+      if (/williams/.test(s)) return 'williams';
+      if (/aston/.test(s)) return 'astonMartin';
+      if (/cadillac/.test(s)) return 'cadillac';
+      return null;
     }
 
-    function renderTrends() {
-      document.getElementById('trendList').innerHTML = trendItems.map((item) => `
-        <article class="trend">
-          <h3><span class="tag">${escapeHtml(item.tag)}</span>${escapeHtml(item.title)}</h3>
-          <p>${escapeHtml(item.text)}</p>
-        </article>`).join('');
+    // 台灣時間格式化
+    const twDate = new Intl.DateTimeFormat('zh-TW', { timeZone: 'Asia/Taipei', month: 'numeric', day: 'numeric', weekday: 'short' });
+    const twTime = new Intl.DateTimeFormat('zh-TW', { timeZone: 'Asia/Taipei', hour: '2-digit', minute: '2-digit', hour12: false });
+    const formatTw = (d) => `${twDate.format(d)} ${twTime.format(d)}`;
+    const toDate = (date, time) => new Date(`${date}T${time || '00:00:00Z'}`);
+
+    function teamDot(teamKey) {
+      const t = teamByKey(teamKey);
+      return `<span class="teamDot" style="background:${t ? t.color : '#999'}"></span>`;
+    }
+    function teamName(teamKey, fallback) {
+      const t = teamByKey(teamKey);
+      return t ? t.zh : (fallback || '—');
     }
 
-    function candidateHtml(cand, party) {
-      const points = cand.points.length
-        ? `<ul>${cand.points.map((p) => `<li>${escapeHtml(p)}</li>`).join('')}</ul>`
-        : '<p class="empty">政見整理中</p>';
-      return `
-        <div class="cand ${party}">
-          <div class="cand-top">
-            <div class="photo" data-wiki="${escapeHtml(cand.wiki)}"><span class="initial">${escapeHtml(cand.name[0])}</span></div>
-            <div>
-              <p class="cand-name">${escapeHtml(cand.name)} <span class="num">${cand.num} 號</span></p>
-              <div class="party">${partyLabel[party]}</div>
-              <p class="role">${escapeHtml(cand.role)}</p>
-            </div>
+    /* ================= 資料狀態 ================= */
+    let state = structuredClone(fallbackData);
+
+    function readCache() {
+      try {
+        const raw = localStorage.getItem(cacheKey);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+    function writeCache(data) {
+      try { localStorage.setItem(cacheKey, JSON.stringify(data)); } catch (e) { /* 無法寫入時略過 */ }
+    }
+
+    async function fetchJson(path) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 12000);
+      try {
+        const res = await fetch(`${apiBase}/${path}`, { signal: controller.signal });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return (await res.json()).MRData;
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    // 從 Jolpica API 抓取最新資料並轉成內部格式
+    async function loadLiveData() {
+      const [dsRes, csRes, schedRes, winRes, lastRes] = await Promise.all([
+        fetchJson(`${season}/driverstandings.json?limit=100`),
+        fetchJson(`${season}/constructorstandings.json?limit=100`),
+        fetchJson(`${season}.json?limit=100`),
+        fetchJson(`${season}/results/1.json?limit=100`),
+        fetchJson(`${season}/last/results.json?limit=100`)
+      ]);
+
+      const dsList = dsRes.StandingsTable.StandingsLists[0];
+      const csList = csRes.StandingsTable.StandingsLists[0];
+      if (!dsList || !csList) throw new Error('尚無積分資料');
+
+      const driverStandings = dsList.DriverStandings.map((s) => {
+        const c = s.Constructors[s.Constructors.length - 1];
+        return {
+          family: normalizeName(s.Driver.familyName),
+          en: `${s.Driver.givenName} ${s.Driver.familyName}`,
+          teamKey: teamKeyFromConstructor(c),
+          teamFallback: c ? c.name : null,
+          points: Number(s.points),
+          wins: Number(s.wins)
+        };
+      });
+      const constructorStandings = csList.ConstructorStandings.map((s) => ({
+        teamKey: teamKeyFromConstructor(s.Constructor),
+        teamFallback: s.Constructor.name,
+        points: Number(s.points),
+        wins: Number(s.wins)
+      }));
+
+      const winners = {};
+      for (const race of winRes.RaceTable.Races) {
+        const r = race.Results && race.Results[0];
+        if (r) winners[race.round] = { family: normalizeName(r.Driver.familyName), en: `${r.Driver.givenName} ${r.Driver.familyName}`, teamKey: teamKeyFromConstructor(r.Constructor) };
+      }
+
+      const lastRace = lastRes.RaceTable.Races[0];
+      const lastResults = (lastRace ? lastRace.Results : []).map((r) => ({
+        family: normalizeName(r.Driver.familyName),
+        en: `${r.Driver.givenName} ${r.Driver.familyName}`,
+        teamKey: teamKeyFromConstructor(r.Constructor),
+        pos: Number(r.position),
+        points: Number(r.points),
+        status: r.status
+      }));
+
+      // 季中換過車隊的車手，以最新一站實際出賽的車隊為準
+      for (const d of driverStandings) {
+        const latest = lastResults.find((r) => r.family === d.family);
+        if (latest && latest.teamKey) d.teamKey = latest.teamKey;
+      }
+
+      // 依最新一站正賽的出賽名單建立各隊實際陣容
+      const lineup = {};
+      for (const r of (lastRace ? lastRace.Results : [])) {
+        const key = teamKeyFromConstructor(r.Constructor);
+        if (!key) continue;
+        (lineup[key] = lineup[key] || []).push({
+          family: normalizeName(r.Driver.familyName),
+          en: `${r.Driver.givenName} ${r.Driver.familyName}`,
+          no: Number(r.Driver.permanentNumber || r.number) || null,
+          flag: nationalityFlag[r.Driver.nationality] || '🏁'
+        });
+      }
+
+      const schedule = schedRes.RaceTable.Races.map((r) => ({
+        round: Number(r.round),
+        nameEn: r.raceName,
+        circuitEn: r.Circuit.circuitName,
+        raceUtc: r.time ? `${r.date}T${r.time}` : null,
+        raceDate: r.date,
+        sprint: !!r.Sprint,
+        sessions: [
+          ['自由練習 1', r.FirstPractice], ['自由練習 2', r.SecondPractice], ['自由練習 3', r.ThirdPractice],
+          ['衝刺排位賽', r.SprintQualifying || r.SprintShootout], ['衝刺賽', r.Sprint],
+          ['排位賽', r.Qualifying], ['正賽', { date: r.date, time: r.time }]
+        ].filter(([, s]) => s && s.date).map(([label, s]) => ({ label, utc: `${s.date}T${s.time || '00:00:00Z'}` }))
+          .sort((a, b) => new Date(a.utc) - new Date(b.utc))
+      }));
+
+      return {
+        lastRound: Number(dsList.round),
+        lastRaceName: lastRace ? lastRace.raceName : '',
+        driverStandings, constructorStandings, lastResults, winners, schedule,
+        lineup: lastRace && Number(lastRace.round) >= lineupAsOfRound ? { round: Number(lastRace.round), teams: lineup } : null,
+        isLive: true,
+        fetchedAt: new Date().toISOString()
+      };
+    }
+
+    /* ================= 衍生計算 ================= */
+    // 合併內建賽程與 API 賽程
+    function getSchedule() {
+      return fallbackSchedule.map((f) => {
+        const live = state.schedule && state.schedule.find((s) => s.round === f.round);
+        return { ...f, ...(live ? { raceUtc: live.raceUtc || f.raceUtc, sprint: live.sprint, sessions: live.sessions, raceDate: live.raceDate } : {}) };
+      });
+    }
+    function raceMoment(r) {
+      // 沒有確切時間時，以當地日期晚上當作結束參考
+      return r.raceUtc ? new Date(r.raceUtc) : new Date(`${r.raceDate}T23:59:00Z`);
+    }
+    function remainingPoints(forTeams) {
+      const left = getSchedule().filter((r) => r.round > state.lastRound);
+      const perRace = forTeams ? 25 + 18 : 25;
+      const perSprint = forTeams ? 8 + 7 : 8;
+      return left.reduce((sum, r) => sum + perRace + (r.sprint ? perSprint : 0), 0);
+    }
+    // 取得目前各隊陣容（內建資料或 API 實際出賽名單）
+    function getLineup(team) {
+      const live = state.lineup && state.lineup.teams && state.lineup.teams[team.key];
+      if (!live || !live.length) return team.drivers;
+      return live.map((d) => {
+        const known = team.drivers.find((x) => x.family === d.family);
+        if (known) return { ...known, no: known.no ?? d.no };
+        return { family: d.family, zh: driverZh(d.family, d.en), en: d.en, no: d.no, flag: d.flag, note: `第 ${state.lineup.round} 站起出賽`, isNew: true };
+      });
+    }
+
+    /* ================= 渲染 ================= */
+    function renderStatus() {
+      const pill = $('#statusPill');
+      if (state.isLive) {
+        pill.className = 'statusPill live';
+        const t = new Date(state.fetchedAt);
+        pill.textContent = `即時資料・第 ${state.lastRound} 站後・${twTime.format(t)} 更新`;
+      } else {
+        pill.className = 'statusPill offline';
+        pill.textContent = `內建資料・第 ${state.lastRound} 站後（11/3）`;
+      }
+    }
+
+    function renderHero() {
+      const ds = state.driverStandings;
+      const cs = state.constructorStandings;
+      const leftD = remainingPoints(false);
+      const leftC = remainingPoints(true);
+      const dLead = ds[0].points - (ds[1] ? ds[1].points : 0);
+      const cLead = cs[0].points - (cs[1] ? cs[1].points : 0);
+      const dClinched = dLead > leftD;
+      const cClinched = cLead > leftC;
+      const leader = ds[0];
+      const totalRounds = fallbackSchedule.length;
+      const finished = state.lastRound >= totalRounds;
+
+      $('#heroBox').innerHTML = `
+        <span class="tag">${season} 賽季・已完成 ${state.lastRound} / ${totalRounds} 站</span>
+        <h1>${dClinched ? `🏆 ${escapeHtml(driverZh(leader.family, leader.en))} ${finished ? '奪得' : '已提前鎖定'} ${season} 車手冠軍` : `${escapeHtml(driverZh(leader.family, leader.en))} 領跑車手積分`}</h1>
+        <p>${escapeHtml(teamName(leader.teamKey, leader.teamFallback))}・${leader.points} 分，領先第二名 ${dLead} 分（剩餘最多 ${leftD} 分可爭奪）。</p>
+        <p>車隊積分：${escapeHtml(teamName(cs[0].teamKey, cs[0].teamFallback))} ${cs[0].points} 分，領先 ${cLead} 分${cClinched ? '，<b>已確定奪得車隊冠軍</b>' : `（剩餘最多 ${leftC} 分）`}。</p>`;
+    }
+
+    let countdownTarget = null;
+    function renderNextRace() {
+      const now = new Date();
+      const schedule = getSchedule();
+      const next = schedule.find((r) => raceMoment(r) > now);
+      const box = $('#nextRaceCard');
+      if (!next) {
+        countdownTarget = null;
+        box.innerHTML = '<h3>下一站</h3><p>本賽季已全部結束，明年見！</p>';
+        return;
+      }
+      countdownTarget = next.raceUtc ? new Date(next.raceUtc) : null;
+      const sessions = (next.sessions || []).map((s) => {
+        const d = new Date(s.utc);
+        return `<li class="${d < now ? 'past' : ''}"><span>${s.label}</span><span>${formatTw(d)}</span></li>`;
+      }).join('');
+      box.innerHTML = `
+        <h3>下一站：第 ${next.round} 站 ${next.flag} ${escapeHtml(next.zh)} ${next.sprint ? '<span class="badge sprint">衝刺賽週末</span>' : ''}</h3>
+        <div class="muted">${escapeHtml(next.circuit)}・當地日期 ${next.dates}</div>
+        ${countdownTarget ? `<div class="countdown" id="countdown"></div><div>正賽開跑（台灣時間）：<b>${formatTw(countdownTarget)}</b>${state.schedule ? '' : '<span class="muted">（預定）</span>'}</div>` : ''}
+        ${sessions ? `<ul class="sessionList">${sessions}</ul>` : '<p class="muted">連上即時資料後會顯示練習賽與排位賽的台灣時間。</p>'}`;
+      tickCountdown();
+    }
+    function tickCountdown() {
+      const el = document.getElementById('countdown');
+      if (!el || !countdownTarget) return;
+      let diff = Math.max(0, countdownTarget - new Date());
+      const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+      const h = Math.floor(diff / 3600000); diff -= h * 3600000;
+      const m = Math.floor(diff / 60000); diff -= m * 60000;
+      const s = Math.floor(diff / 1000);
+      const pad = (n) => String(n).padStart(2, '0');
+      el.innerHTML = `<div><b>${d}</b><span>天</span></div><div><b>${pad(h)}</b><span>時</span></div><div><b>${pad(m)}</b><span>分</span></div><div><b>${pad(s)}</b><span>秒</span></div>`;
+    }
+
+    function renderLastRace() {
+      const race = fallbackSchedule.find((r) => r.round === state.lastRound);
+      const rows = state.lastResults.slice(0, 10).map((r) => `
+        <tr><td class="pos">${r.pos}</td><td>${teamDot(r.teamKey)}${escapeHtml(driverZh(r.family, r.en))}</td>
+        <td class="muted">${escapeHtml(teamName(r.teamKey))}</td><td class="num">+${r.points}</td></tr>`).join('');
+      $('#lastRaceCard').innerHTML = `
+        <h3>最新戰報：第 ${state.lastRound} 站 ${race ? race.flag + ' ' + escapeHtml(race.zh) : escapeHtml(state.lastRaceName)}</h3>
+        <div class="tableWrap"><table><thead><tr><th>名次</th><th>車手</th><th>車隊</th><th class="num">積分</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+
+    function renderMiniStandings() {
+      const maxD = state.driverStandings[0].points || 1;
+      $('#miniDrivers').innerHTML = `<table><tbody>${state.driverStandings.slice(0, 5).map((d, i) => `
+        <tr><td class="pos">${i + 1}</td><td>${teamDot(d.teamKey)}${escapeHtml(driverZh(d.family, d.en))}</td>
+        <td style="width:35%"><div class="bar"><i style="width:${d.points / maxD * 100}%;background:${(teamByKey(d.teamKey) || {}).color || '#999'}"></i></div></td>
+        <td class="num"><b>${d.points}</b></td></tr>`).join('')}</tbody></table>`;
+      const maxC = state.constructorStandings[0].points || 1;
+      $('#miniTeams').innerHTML = `<table><tbody>${state.constructorStandings.slice(0, 5).map((c, i) => `
+        <tr><td class="pos">${i + 1}</td><td>${teamDot(c.teamKey)}${escapeHtml(teamName(c.teamKey, c.teamFallback))}</td>
+        <td style="width:35%"><div class="bar"><i style="width:${c.points / maxC * 100}%;background:${(teamByKey(c.teamKey) || {}).color || '#999'}"></i></div></td>
+        <td class="num"><b>${c.points}</b></td></tr>`).join('')}</tbody></table>`;
+    }
+
+    function renderNews() {
+      $('#newsList').innerHTML = newsItems.map((n) => `
+        <article class="card news"><time>${n.date}</time><h3 style="margin-top:4px">${escapeHtml(n.title)}</h3><p class="teamDesc">${escapeHtml(n.body)}</p></article>`).join('');
+    }
+
+    function renderTeams() {
+      const pointsOf = (key) => (state.constructorStandings.find((c) => c.teamKey === key) || {}).points ?? 0;
+      const posOf = (key) => state.constructorStandings.findIndex((c) => c.teamKey === key) + 1;
+      const sorted = [...teams].sort((a, b) => (posOf(a.key) || 99) - (posOf(b.key) || 99));
+      $('#teamGrid').innerHTML = sorted.map((t) => {
+        const drivers = getLineup(t).map((d) => {
+          const st = state.driverStandings.find((s) => s.family === d.family);
+          const isChamp = d.family === state.driverStandings[0].family && (state.driverStandings[0].points - state.driverStandings[1].points) > remainingPoints(false);
+          return `<div class="driver">
+            <div class="no">${d.no ?? '—'}</div>
+            <div class="name">${d.flag || ''} ${escapeHtml(d.zh)} ${isChamp ? '<span class="badge champ">冠軍</span>' : ''}${d.isNew ? '<span class="badge new">新面孔</span>' : ''}</div>
+            <div class="en">${escapeHtml(d.en)}</div>
+            <div class="en">本季 ${st ? st.points : 0} 分${st && st.wins ? `・${st.wins} 勝` : ''}</div>
+            ${d.note ? `<div class="note">${escapeHtml(d.note)}</div>` : ''}
+          </div>`;
+        }).join('');
+        return `<article class="card teamCard" style="--team:${t.color}">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <h3 style="margin:0">${escapeHtml(t.zh)} <span class="muted" style="font-weight:500">${escapeHtml(t.en)}</span></h3>
+            <span class="muted" style="white-space:nowrap">第 ${posOf(t.key) || '—'} 名・${pointsOf(t.key)} 分</span>
           </div>
-          ${cand.slogan ? `<p class="slogan">「${escapeHtml(cand.slogan)}」</p>` : ''}
-          ${points}
-        </div>`;
-    }
-
-    function pollHtml(poll, race) {
-      // 未表態比例較小時只顯示數字，避免文字被截斷
-      const rest = poll.und === null ? '' : (poll.und < 10 ? `${poll.und}%` : `未表態 ${poll.und}%`);
-      return `
-        <div class="poll">
-          <div class="poll-meta"><b>${escapeHtml(poll.org)}</b><span>${escapeHtml(poll.date)}${poll.note ? ' · ' + escapeHtml(poll.note) : ''}</span></div>
-          <div class="bar" role="img" aria-label="${escapeHtml(poll.org)}：${race.kmt.name} ${poll.kmt}%，${race.dpp.name} ${poll.dpp}%">
-            <div class="b-kmt" style="width:${poll.kmt}%">${poll.kmt}%</div>
-            <div class="b-rest">${rest}</div>
-            <div class="b-dpp" style="width:${poll.dpp}%">${poll.dpp}%</div>
-          </div>
-        </div>`;
-    }
-
-    function renderRace(id) {
-      const race = races.find((r) => r.id === id);
-      document.querySelectorAll('#cityTabs button').forEach((btn) => btn.setAttribute('aria-selected', btn.dataset.id === id));
-      document.getElementById('racePanel').innerHTML = `
-        <article class="race" role="tabpanel">
-          <div class="race-head"><h3>${race.city}</h3><p>${escapeHtml(race.summary)}</p></div>
-          <div class="duel">${candidateHtml(race.kmt, 'kmt')}${candidateHtml(race.dpp, 'dpp')}</div>
-          <div class="polls">
-            <h4>民調走向</h4>
-            <p class="trend-note">${escapeHtml(race.trendNote)}</p>
-            ${race.polls.map((p) => pollHtml(p, race)).join('')}
-            <div class="legend">
-              <span><i style="background:var(--kmt)"></i>${race.kmt.name}</span>
-              <span><i style="background:var(--dpp)"></i>${race.dpp.name}</span>
-              <span><i style="background:var(--undecided)"></i>其他或未表態</span>
-            </div>
-          </div>
-          <div class="others">其他參選人：${escapeHtml(race.others)}</div>
+          <p class="teamDesc">${escapeHtml(t.desc)}</p>
+          <dl class="meta"><dt>基地</dt><dd>${escapeHtml(t.base)}</dd><dt>領隊</dt><dd>${escapeHtml(t.principal)}</dd><dt>引擎</dt><dd>${escapeHtml(t.engine)}</dd></dl>
+          <div class="drivers">${drivers}</div>
         </article>`;
-      loadPhotos();
+      }).join('');
+      $('#lineupNote').textContent = state.lineup
+        ? `車手陣容已依第 ${state.lineup.round} 站正賽的實際出賽名單自動更新。`
+        : '車手陣容為最新官方確認名單；每站正賽結束後，若有車手異動會自動依實際出賽名單更新。';
     }
 
-    function renderTabs() {
-      const tabs = document.getElementById('cityTabs');
-      tabs.innerHTML = races.map((r) => `<button role="tab" data-id="${r.id}">${r.city}</button>`).join('');
-      tabs.addEventListener('click', (e) => {
-        const btn = e.target.closest('button');
-        if (btn) renderRace(btn.dataset.id);
-      });
+    function renderSchedule() {
+      const now = new Date();
+      const schedule = getSchedule();
+      const nextRound = (schedule.find((r) => raceMoment(r) > now) || {}).round;
+      const rows = schedule.map((r) => {
+        const done = raceMoment(r) <= now;
+        const w = state.winners[r.round];
+        const raceTime = r.raceUtc ? formatTw(new Date(r.raceUtc)) : '<span class="muted">—</span>';
+        const quali = (r.sessions || []).find((s) => s.label === '排位賽');
+        return `<tr class="${done ? 'done' : ''} ${r.round === nextRound ? 'nextRace' : ''}">
+          <td class="pos">${r.round}</td>
+          <td>${r.flag} ${escapeHtml(r.zh)} ${r.sprint ? '<span class="badge sprint">衝刺</span>' : ''} ${r.round === nextRound ? '<span class="badge next">下一站</span>' : ''}<div class="muted">${escapeHtml(r.circuit)}</div></td>
+          <td>${r.dates}</td>
+          <td class="hideSm">${quali ? formatTw(new Date(quali.utc)) : '<span class="muted">—</span>'}</td>
+          <td><b>${raceTime}</b></td>
+          <td>${w ? teamDot(w.teamKey) + escapeHtml(driverZh(w.family, w.en)) : (done ? '<span class="muted">待更新</span>' : '')}</td>
+        </tr>`;
+      }).join('');
+      $('#scheduleTable').innerHTML = `<thead><tr><th>站</th><th>大獎賽</th><th>當地日期</th><th class="hideSm">排位賽（台灣）</th><th>正賽（台灣）</th><th>冠軍</th></tr></thead><tbody>${rows}</tbody>`;
+      $('#scheduleNote').textContent = state.schedule
+        ? '各節時間來自即時資料庫並已換算為台灣時間。'
+        : '目前使用內建資料：剩餘賽事為預定開賽時間，已完成賽事的時間與歷屆冠軍會在連上即時資料後補齊。';
     }
 
-    function renderCounties() {
-      document.getElementById('countyGrid').innerHTML = counties.map((c) => `
-        <article class="county">
-          <h3>${c.name}<small>${c.list.length} 人參選</small></h3>
-          <ol>${c.list.map(([num, name, party]) => `<li class="chip ${party}"><em>${num}</em>${escapeHtml(name)}</li>`).join('')}</ol>
-          ${c.note ? `<p class="note">${escapeHtml(c.note)}</p>` : ''}
-        </article>`).join('');
+    let standingsView = 'drivers';
+    function renderStandings() {
+      const table = $('#standingsTable');
+      if (standingsView === 'drivers') {
+        const max = state.driverStandings[0].points || 1;
+        table.innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="hideSm">車隊</th><th class="hideSm"></th><th class="num">勝場</th><th class="num">積分</th></tr></thead><tbody>${state.driverStandings.map((d, i) => `
+          <tr><td class="pos">${i + 1}</td>
+          <td>${teamDot(d.teamKey)}<b>${escapeHtml(driverZh(d.family, d.en))}</b> <span class="muted">${escapeHtml(d.en)}</span></td>
+          <td class="hideSm">${escapeHtml(teamName(d.teamKey, d.teamFallback))}</td>
+          <td class="hideSm" style="width:18%"><div class="bar"><i style="width:${d.points / max * 100}%;background:${(teamByKey(d.teamKey) || {}).color || '#999'}"></i></div></td>
+          <td class="num">${d.wins ?? '—'}</td><td class="num"><b>${d.points}</b></td></tr>`).join('')}</tbody>`;
+      } else {
+        const max = state.constructorStandings[0].points || 1;
+        table.innerHTML = `<thead><tr><th>名次</th><th>車隊</th><th class="hideSm"></th><th class="num">勝場</th><th class="num">積分</th></tr></thead><tbody>${state.constructorStandings.map((c, i) => `
+          <tr><td class="pos">${i + 1}</td>
+          <td>${teamDot(c.teamKey)}<b>${escapeHtml(teamName(c.teamKey, c.teamFallback))}</b></td>
+          <td class="hideSm" style="width:30%"><div class="bar"><i style="width:${c.points / max * 100}%;background:${(teamByKey(c.teamKey) || {}).color || '#999'}"></i></div></td>
+          <td class="num">${c.wins ?? '—'}</td><td class="num"><b>${c.points}</b></td></tr>`).join('')}</tbody>`;
+      }
+      $('#standingsLead').textContent = state.isLive
+        ? `第 ${state.lastRound} 站後的即時積分。每站大獎賽結束、官方成績確認後會自動更新。`
+        : `第 ${state.lastRound} 站（墨西哥站）後積分。目前無法連上即時資料庫，顯示內建資料。`;
     }
 
-    // 從維基百科載入候選人照片，失敗時保留姓氏頭像
-    const photoCache = new Map();
-    async function fetchPhoto(title) {
-      if (photoCache.has(title)) return photoCache.get(title);
-      const task = fetch(`https://zh.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`)
-        .then((res) => (res.ok ? res.json() : null))
-        .then((data) => (data && data.type !== 'disambiguation' && data.thumbnail ? data.thumbnail.source : null))
-        .catch(() => null);
-      photoCache.set(title, task);
-      return task;
+    function renderPoints() {
+      $('#racePoints').innerHTML = racePointsTable.map((p, i) => `<span>第 ${i + 1} 名 <b>${p}</b></span>`).join('');
+      $('#sprintPoints').innerHTML = sprintPointsTable.map((p, i) => `<span>第 ${i + 1} 名 <b>${p}</b></span>`).join('');
     }
 
-    function loadPhotos() {
-      document.querySelectorAll('.photo[data-wiki]').forEach(async (box) => {
-        const src = await fetchPhoto(box.dataset.wiki);
-        if (!src || !box.isConnected) return;
-        const img = new Image();
-        img.alt = box.parentElement.querySelector('.cand-name').firstChild.textContent.trim();
-        img.onload = () => { box.innerHTML = ''; box.appendChild(img); };
-        img.src = src;
-      });
+    function renderGlossary(filter = '') {
+      const q = filter.trim().toLowerCase();
+      const items = glossary.filter((g) => !q || g.join(' ').toLowerCase().includes(q));
+      $('#glossaryList').innerHTML = items.length
+        ? items.map(([a, b, c]) => `<div><dt>${escapeHtml(a)}<small>${escapeHtml(b)}</small></dt><dd>${escapeHtml(c)}</dd></div>`).join('')
+        : '<p class="muted">找不到相關術語。</p>';
     }
 
-    updateCountdown();
-    renderTrends();
-    renderTabs();
-    renderRace('taipei');
-    renderCounties();
+    function renderAll() {
+      renderStatus(); renderHero(); renderNextRace(); renderLastRace(); renderMiniStandings();
+      renderTeams(); renderSchedule(); renderStandings();
+    }
+
+    /* ================= 分頁切換 ================= */
+    const tabIds = ['overview', 'teams', 'schedule', 'standings', 'beginner', 'rules', 'glossary'];
+    function showTab() {
+      const id = tabIds.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'overview';
+      document.querySelectorAll('section.page').forEach((s) => s.classList.toggle('active', s.id === 'page-' + id));
+      document.querySelectorAll('nav.tabs a').forEach((a) => a.classList.toggle('active', a.dataset.tab === id));
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener('hashchange', showTab);
+
+    $('#standingsToggle').addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      standingsView = btn.dataset.view;
+      document.querySelectorAll('#standingsToggle button').forEach((b) => b.classList.toggle('on', b === btn));
+      renderStandings();
+    });
+    $('#glossarySearch').addEventListener('input', (e) => renderGlossary(e.target.value));
+
+    /* ================= 自動更新流程 ================= */
+    async function refresh() {
+      const pill = $('#statusPill');
+      pill.textContent = '正在抓取最新資料…';
+      try {
+        const live = await loadLiveData();
+        // 只在資料不比內建資料舊時採用
+        if (live.lastRound >= fallbackData.lastRound) {
+          state = live;
+          writeCache(live);
+        }
+      } catch (err) {
+        console.warn('即時資料抓取失敗，改用快取或內建資料：', err);
+        const cached = readCache();
+        if (cached && cached.lastRound >= fallbackData.lastRound) {
+          state = cached;
+          state.isLive = false;
+        }
+      }
+      renderAll();
+    }
+    $('#refreshBtn').addEventListener('click', refresh);
+
+    // 初始化：先用快取或內建資料立即顯示，再背景抓最新資料
+    (function init() {
+      const cached = readCache();
+      if (cached && cached.lastRound >= fallbackData.lastRound) {
+        state = cached;
+        state.isLive = false;
+      }
+      renderPoints(); renderNews(); renderGlossary(); showTab(); renderAll();
+      refresh();
+      setInterval(refresh, autoRefreshMs);
+      setInterval(tickCountdown, 1000);
+      setInterval(renderNextRace, 60 * 1000);
+    })();
   </script>
 </body>
 </html>
