@@ -52,6 +52,12 @@
       --max: 1680px;
       --gutter: clamp(16px, 3vw, 48px);
       color-scheme: light;
+      /* 速度感背景與計時面板 */
+      --speedLines: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22800%22%20height%3D%22500%22%3E%3Cg%20stroke%3D%22rgba%2821%2C21%2C30%2C0.055%29%22%20stroke-linecap%3D%22round%22%3E%3Cline%20x1%3D%2240%22%20y1%3D%2260%22%20x2%3D%22420%22%20y2%3D%2230%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%22520%22%20y1%3D%2296%22%20x2%3D%22760%22%20y2%3D%2277%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22130%22%20y1%3D%22150%22%20x2%3D%22300%22%20y2%3D%22136%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22360%22%20y1%3D%22190%22%20x2%3D%22700%22%20y2%3D%22163%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%2260%22%20y1%3D%22250%22%20x2%3D%22240%22%20y2%3D%22236%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22300%22%20y1%3D%22300%22%20x2%3D%22560%22%20y2%3D%22279%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22600%22%20y1%3D%22330%22%20x2%3D%22780%22%20y2%3D%22316%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%2220%22%20y1%3D%22380%22%20x2%3D%22380%22%20y2%3D%22351%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%22440%22%20y1%3D%22420%22%20x2%3D%22620%22%20y2%3D%22406%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22160%22%20y1%3D%22470%22%20x2%3D%22520%22%20y2%3D%22441%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22640%22%20y1%3D%2220%22%20x2%3D%22790%22%20y2%3D%228%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22250%22%20y1%3D%2230%22%20x2%3D%22350%22%20y2%3D%2222%22%20stroke-width%3D%221.5%22/%3E%3C/g%3E%3C/svg%3E");
+      --band: rgba(225, 6, 0, .075);
+      --band2: rgba(225, 6, 0, .045);
+      --timerBg: #15151e;
+      --timerInk: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -474,6 +480,49 @@
       .wordmark { font-size: 1.3rem; }
       .logoMark { width: 48px; height: 24px; }
     }
+    /* ================= 速度感視覺 ================= */
+    body { background: var(--bg); }
+    /* 固定在畫面後方的背景：速度線＋右側斜切紅色色帶，不會隨內容捲動 */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        linear-gradient(108deg, transparent 0 70%, var(--band) 70% 76%, transparent 76% 77.2%, var(--band2) 77.2% 78.6%, transparent 78.6%),
+        var(--speedLines) 0 0 / 800px 500px repeat;
+    }
+    header.top, main, footer, noscript { position: relative; z-index: 1; }
+    header.top { position: sticky; z-index: 20; }
+    /* 頁首：底部紅色漸層速度條 */
+    header.top { border-bottom: 0; }
+    header.top::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 35%, transparent 100%); }
+    /* 分頁：目前所在分頁用斜切紅色色塊 */
+    nav.tabs { padding-bottom: 6px; gap: 4px; }
+    nav.tabs a { border-bottom: 0; font-style: italic; letter-spacing: .01em; padding: 8px 16px; }
+    nav.tabs a.active { color: #fff; background: var(--accent); clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); }
+    nav.tabs a:not(.active):hover { color: var(--accent); }
+    /* 頁面大標：斜體＋斜切紅條 */
+    section.page > h1 { font-style: italic; letter-spacing: -.01em; }
+    section.page > h1::before { content: ""; display: inline-block; width: .3em; height: .82em; background: var(--accent); transform: skewX(-14deg); margin-right: .38em; vertical-align: -.04em; }
+    section.page > h2::before, #page-overview > h2::before { content: ""; display: inline-block; width: .5em; height: .2em; background: var(--accent); transform: skewX(-14deg); margin-right: .45em; vertical-align: .22em; }
+    section.page > h2 { font-style: italic; }
+    /* 下一站卡片：右上角斜切速度條紋 */
+    .nextCard { position: relative; overflow: hidden; border-top-width: 0; }
+    .nextCard::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: linear-gradient(90deg, var(--accent), var(--accent) 60%, transparent); }
+    .nextCard::after { content: ""; position: absolute; top: -20px; right: 22%; width: 220px; height: 120px; background: repeating-linear-gradient(108deg, var(--band) 0 10px, transparent 10px 22px); pointer-events: none; }
+    .nextCard > * { position: relative; z-index: 1; }
+    .eyebrow { font-style: italic; letter-spacing: .08em; }
+    /* 倒數：計時螢幕風格的深色斜切方塊 */
+    .countdown { gap: 8px; }
+    .countdown div { background: var(--timerBg); color: var(--timerInk); border: 0; border-radius: 6px; transform: skewX(-8deg); box-shadow: inset 0 -3px 0 var(--accent); }
+    .countdown div > * { display: block; transform: skewX(8deg); }
+    .countdown b { color: var(--timerInk); }
+    .countdown span { color: rgba(255,255,255,.62); }
+    /* 卡片：滑過時微微浮起 */
+    .card { transition: box-shadow .2s ease, transform .2s ease; }
+    .teamCard:hover, .trackCard:hover, .news:hover, .legendCard:hover, .lineageCard:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(10,10,20,.06), 0 12px 28px rgba(10,10,20,.10); }
+    /* 按鈕與切換鈕：斜切造型 */
+    .liveBar button.primary, .toggle button.on { font-style: italic; }
+    .liveBar button.primary { clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); border-radius: 0; padding-left: 18px; padding-right: 18px; }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
   </style>
 </head>
 <body>
