@@ -158,10 +158,19 @@
     .teamCard { border-top: 6px solid var(--team, #888); display: flex; flex-direction: column; gap: 14px; padding: 0; overflow: hidden; }
     .card.teamCard { padding: 0; }
     .teamCard .body { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 12px; }
-    .carPhoto { position: relative; aspect-ratio: 2 / 1; background: var(--surface-2); overflow: hidden; }
-    .carPhoto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carPhoto { position: relative; height: 190px; background: var(--surface-2); overflow: hidden; }
+    .carPhoto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; display: block; }
+    @media (max-width: 600px) { .carPhoto { height: 140px; } }
     .carPhoto figcaption { position: absolute; left: 10px; bottom: 10px; background: rgba(255,255,255,.92); border-radius: 999px; padding: 2px 12px; font-size: .78rem; font-weight: 700; color: var(--ink); }
     .teamHead { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .teamLogo { display: inline-flex; align-items: center; justify-content: center; height: 22px; width: 56px; flex: none; vertical-align: middle; margin-right: 8px; }
+    .teamLogo img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
+    .teamLogo.badge { width: auto; min-width: 34px; padding: 0 6px; border-radius: 5px; color: #fff; font-family: var(--display); font-style: italic; font-weight: 900; font-size: .72rem; letter-spacing: .04em; }
+    .teamLogo.badge:not(.lg) { width: 56px; padding: 0; }
+    .teamLogo.lg { height: auto; width: auto; margin-right: 10px; }
+    .teamLogo.lg img { max-height: 40px; max-width: 150px; width: auto; height: auto; }
+    .teamLogo.lg.badge { width: auto; min-width: 52px; font-size: .95rem; justify-content: center; }
+    .teamHead h3 { display: flex; align-items: center; gap: 4px; }
     .principal { display: flex; align-items: baseline; gap: 10px; background: var(--surface-2); border-left: 4px solid var(--team, #888); border-radius: 8px; padding: 6px 12px; }
     .principal span { font-size: .8rem; color: var(--ink-faint); font-weight: 700; }
     .principal b { font-size: 1.05rem; }
@@ -299,6 +308,24 @@
     .legendCard p { margin: 0 0 6px; font-size: .92rem; color: var(--ink-soft); }
     .legendCard ul { margin: 0; padding-left: 18px; font-size: .88rem; }
     tr.champSelf td { background: #fff8e1; }
+    .safetyList { list-style: none; margin: 0; padding: 0 0 0 4px; border-left: 3px solid var(--line); display: grid; gap: 14px; }
+    .safetyList li { display: grid; grid-template-columns: 74px 1fr; gap: 14px; position: relative; padding-left: 16px; }
+    .safetyList li::before { content: ""; position: absolute; left: -10px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
+    .sYear { font-family: var(--display); font-style: italic; font-weight: 900; font-size: 1.35rem; color: var(--accent); line-height: 1.2; }
+    .sBody { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; box-shadow: var(--shadow); }
+    .sWho { font-weight: 800; font-size: 1.05rem; }
+    .sWho .muted { font-weight: 500; margin-left: 2px; }
+    .sBody p { margin: 4px 0 0; font-size: .93rem; color: var(--ink-soft); }
+    .sChange { background: #f1f7f3; border-radius: 8px; padding: 6px 10px; margin-top: 8px !important; color: var(--ink) !important; }
+    .sChange b { color: var(--ok); margin-right: 8px; font-size: .82rem; }
+    @media (max-width: 600px) { .safetyList li { grid-template-columns: 1fr; gap: 4px; } .sYear { font-size: 1.15rem; } }
+    .ruleArticles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 14px; }
+    .ruleArticle { border-left: 4px solid var(--accent); }
+    .ruleArticle h3 { margin-bottom: 6px; }
+    .ruleArticle p { margin: 0; font-size: .93rem; color: var(--ink-soft); }
+    .artNo { font-family: var(--display); font-style: italic; font-weight: 800; font-size: .82rem; color: var(--accent); letter-spacing: .04em; }
+    .artNote { background: var(--surface-2); border-radius: 8px; padding: 6px 10px; margin-top: 8px !important; color: var(--ink) !important; }
+    .artNote b { color: var(--accent); margin-right: 8px; font-size: .82rem; }
     .lineageGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 16px; }
     .lineageCard { border-top: 5px solid var(--team); }
     .lineageCard p { margin: 10px 0 0; font-size: .9rem; color: var(--ink-soft); }
@@ -327,7 +354,24 @@
     .liveGrid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: start; }
     .mapCard { padding: 12px; position: relative; }
     #liveMap { display: block; width: 100%; height: auto; max-height: 72vh; }
-    #liveMap .outline { fill: none; stroke: #d6d9e1; stroke-width: 14; stroke-linejoin: round; stroke-linecap: round; }
+    #liveMap .outline { fill: none; stroke: #c9ced9; stroke-width: 14; stroke-linejoin: round; stroke-linecap: round; }
+    #liveMap .pitlane { fill: none; stroke: #8fb4e8; stroke-linejoin: round; stroke-linecap: round; }
+    #liveMap .car.inpit circle { fill: #fff !important; stroke-dasharray: 3 2; }
+    #liveMap .car.inpit text { fill: #1e5bb8; }
+    .mapLegend { display: flex; gap: 14px; flex-wrap: wrap; font-size: .8rem; color: var(--ink-faint); padding: 4px 6px 0; }
+    .mapLegend i { display: inline-block; width: 18px; height: 5px; border-radius: 3px; vertical-align: middle; margin-right: 5px; }
+    .mapLegend i.ring { width: 11px; height: 11px; border-radius: 50%; border: 2px dashed #1e5bb8; background: #fff; }
+    .timing tr.out td { color: var(--ink-faint); text-decoration: line-through; }
+    .timing .outTag { font-size: .68rem; font-weight: 800; background: var(--ink-faint); color: #fff; border-radius: 4px; padding: 0 5px; margin-left: 4px; text-decoration: none; display: inline-block; }
+    .timing .pitTag { background: #1e5bb8; }
+    .radioList { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow: auto; }
+    .radioList li { display: grid; grid-template-columns: 34px 58px 1fr; gap: 8px; align-items: start; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: .88rem; }
+    .radioList li.fresh { background: var(--accent-soft); border-radius: 8px; }
+    .radioList button { border: 1px solid var(--line); background: var(--surface); border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: .75rem; }
+    .radioList button.playing { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .radioList .rWho { font-family: var(--display); font-weight: 800; }
+    .radioList .rText { color: var(--ink-soft); }
+    .radioList .rText.none { color: var(--ink-faint); font-style: italic; }
     #liveMap .outlineInner { fill: none; stroke: #ffffff; stroke-width: 6; stroke-linejoin: round; }
     #liveMap .car circle { stroke: #fff; stroke-width: 2.5; }
     #liveMap .car text { font-family: var(--display); font-weight: 800; font-size: 13px; fill: var(--ink); paint-order: stroke; stroke: #fff; stroke-width: 3px; }
@@ -420,10 +464,10 @@
         <a href="#standings" data-tab="standings">積分榜</a>
         <a href="#live" data-tab="live">賽道即時</a>
         <a href="#teams" data-tab="teams">車隊與車手</a>
+        <a href="#history" data-tab="history">歷年大事紀</a>
         <a href="#beginner" data-tab="beginner">新手入門</a>
         <a href="#rules" data-tab="rules">規則詳解</a>
         <a href="#glossary" data-tab="glossary">術語表</a>
-        <a href="#history" data-tab="history">歷年大事紀</a>
       </nav>
     </div>
   </header>
@@ -465,10 +509,11 @@
       <div class="timeRow"><input type="range" id="timeSlider" min="0" max="1" value="0" step="1" disabled aria-label="比賽時間"><span class="lapInfo" id="lapInfo">—</span></div>
       <div class="flagBanner" id="flagBanner"></div>
       <div class="liveGrid">
-        <div class="card mapCard"><svg id="liveMap" viewBox="0 0 100 100" role="img" aria-label="賽道上的車輛位置"></svg><div class="liveMsg" id="liveMsg">選擇一場比賽開始回放。</div></div>
+        <div class="card mapCard"><svg id="liveMap" viewBox="0 0 100 100" role="img" aria-label="賽道上的車輛位置"></svg><div class="mapLegend" id="mapLegend" style="display:none"><span><i style="background:#c9ced9"></i>賽道</span><span><i style="background:#8fb4e8"></i>維修區通道</span><span><i class="ring"></i>正在維修區（PIT）</span><span>停在賽道上超過 20 秒的車會自動隱藏</span></div><div class="liveMsg" id="liveMsg">選擇一場比賽開始回放。</div></div>
         <div class="card tableWrap"><table class="timing" id="timingTable"></table></div>
       </div>
       <div class="grid cols2" style="margin-top:18px">
+        <div class="card"><h3>車隊無線電</h3><p class="muted" style="margin:0 0 6px">隨著比賽時間出現，點 ▶ 播放原始錄音（英文）。</p><ul class="radioList" id="radioList"><li><span></span><span></span><span class="muted">尚無無線電</span></li></ul><audio id="radioAudio" preload="none"></audio></div>
         <div class="card"><h3>賽事管制訊息</h3><ul class="rcList" id="rcList"><li><span>—</span>尚無訊息</li></ul></div>
         <div class="card">
           <h3>資料來源與即時資料說明</h3>
@@ -714,6 +759,31 @@
       <div class="card ruleCard">
         <p>為了縮小大車隊與小車隊的差距，F1 自 2021 年起實施<b>預算上限（Cost Cap）</b>，限制每支車隊每年在賽車研發與營運上的支出，超支將被罰款或扣分。另外，車隊排名越後面，可以使用的風洞與模擬測試時間越多，這是讓落後車隊追趕的機制。</p>
       </div>
+
+      <h2>常見規則條文</h2>
+      <p class="lead">轉播與賽後判罰最常提到的規定，整理成條文式的重點。實際內容以 FIA 每年公布的運動規則（Sporting Regulations）為準。</p>
+      <div class="ruleArticles">
+        <article class="card ruleArticle"><div class="artNo">第 1 條</div><h3>排位賽 107% 規則</h3><p>排位賽第一階段（Q1）成績必須在最快圈速的 107% 以內，才有資格參加正賽。</p><p class="artNote"><b>實務上</b>因故障或天候未能跑出成績時，賽會幹事（Stewards）可視情況特准起跑，通常排在發車格最後。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 2 條</div><h3>超出賽道界限（Track Limits）</h3><p>賽道邊緣以白線為界，車輛四個輪胎都越過白線即視為離開賽道。</p><p class="artNote"><b>實務上</b>排位賽中該圈成績會被刪除；正賽中累計 3 次會出示黑白旗警告，之後再犯會被罰 5 秒，持續違規罰則加重。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 3 條</div><h3>離開賽道並取得優勢</h3><p>超車或防守時離開賽道而獲得持續性優勢（Leaving the track and gaining a lasting advantage）是違規的。</p><p class="artNote"><b>實務上</b>常見處理方式是要求車手把位置讓回去；不讓回就會被罰 5 或 10 秒。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 4 條</div><h3>防守時只能變換一次路線</h3><p>防守的車手在直線上只能變換一次行駛路線，回到原本的超車線時必須留一個車身的空間；煞車區內不得移動路線。</p><p class="artNote"><b>實務上</b>「煞車時移動」（Moving under braking）和「把對手擠出賽道」是最常見的防守違規。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 5 條</div><h3>造成碰撞（Causing a collision）</h3><p>幹事會判斷哪一方「主要或全部」要為碰撞負責。</p><p class="artNote"><b>實務上</b>最常見罰則是 5 秒或 10 秒加時，並記罰分；屬於一般賽車事故（Racing incident）時則不處罰。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 6 條</div><h3>乾地正賽必須使用兩種配方輪胎</h3><p>乾地正賽中，每台車至少要使用兩種不同配方的乾地胎，因此至少要進站一次。</p><p class="artNote"><b>實務上</b>只要比賽中使用過半雨胎或全雨胎，就不受此限制。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 7 條</div><h3>維修區速限</h3><p>維修區通道有速度限制，通常為 80 km/h，部分狹窄的街道賽為 60 km/h。</p><p class="artNote"><b>實務上</b>超速會依超出速度罰款或處以加時；練習賽超速多半只罰款。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 8 條</div><h3>不安全放行（Unsafe Release）</h3><p>車隊放車離開維修區工作位時，若可能與經過的車輛碰撞，就屬於不安全放行。</p><p class="artNote"><b>實務上</b>車隊會被罰款，車手通常會被罰 5 或 10 秒；嚴重者可能被要求停車。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 9 條</div><h3>安全車（SC）規則</h3><p>安全車出動時全場禁止超車，車輛須排成一列跟在安全車後方。</p><p class="artNote"><b>實務上</b>被套圈的車輛可能被允許超越安全車回到領先圈；安全車離場後，從控制線（Control line）起才能超車。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 10 條</div><h3>虛擬安全車（VSC）</h3><p>不出動實體安全車，所有車手須讓每個小段的時間都慢於規定的差距（Delta time）。</p><p class="artNote"><b>實務上</b>開得太快會被罰；VSC 期間進站可以省下大量時間，常是戰略關鍵。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 11 條</div><h3>紅旗暫停</h3><p>紅旗時比賽暫停，所有車輛慢速回到維修區通道排隊。</p><p class="artNote"><b>實務上</b>暫停期間可以免費換胎與小幅維修，因此紅旗常大幅改變戰局；重新開始可能是滾動起跑或靜止起跑。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 12 條</div><h3>藍旗讓車</h3><p>被領先車手追上、即將被套圈時，會看到藍旗，必須盡快讓車。</p><p class="artNote"><b>實務上</b>連續無視 3 次藍旗會被處罰。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 13 條</div><h3>偷跑（Jump start）</h3><p>五盞紅燈熄滅前車輛就開始移動，系統會偵測為偷跑。</p><p class="artNote"><b>實務上</b>依情節輕重通常罰 5 或 10 秒加時，或處以通過維修區（Drive-through）。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 14 條</div><h3>封閉車廂（Parc Fermé）</h3><p>排位賽開始後到正賽前，賽車大部分設定不得修改。</p><p class="artNote"><b>實務上</b>若車隊在封閉車廂期間更換規定以外的零件或設定，該車必須改從維修區出發。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 15 條</div><h3>動力單元配額與退位處罰</h3><p>每位車手一年內各種引擎與能量回收元件都有使用數量上限。</p><p class="artNote"><b>實務上</b>超出配額就要在下一場往後退位；累計退位超過 15 位時，直接從發車格最後出發。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 16 條</div><h3>罰分與禁賽</h3><p>違規除了賽事中的罰則，還可能被記罰分（Penalty points）。</p><p class="artNote"><b>實務上</b>12 個月內累積 12 點罰分，會被禁賽一場。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 17 條</div><h3>比賽距離與時間上限</h3><p>正賽距離為超過 305 公里的最少圈數（Monaco 例外，約 260 公里），比賽進行時間上限 2 小時。</p><p class="artNote"><b>實務上</b>含紅旗暫停在內，整場比賽從起跑起算最長 3 小時。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 18 條</div><h3>提前結束比賽的積分</h3><p>比賽因天候等原因未完成時，依完成的比例給分：未滿 2 圈不給分；未達 25% 只有前 5 名得分；25%～50% 前 9 名得分；50%～75% 前 10 名但分數減少；超過 75% 給全分。</p><p class="artNote"><b>實務上</b>2021 年比利時站只跑了安全車帶領的幾圈就結束，之後才訂出這套分級給分。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 19 條</div><h3>車隊指令（Team Orders）</h3><p>車隊可以透過無線電要求車手讓位或維持名次，自 2011 年起正式合法。</p><p class="artNote"><b>實務上</b>但若影響比賽公平，例如故意製造事故來幫隊友，仍會受到嚴厲處罰。</p></article>
+        <article class="card ruleArticle"><div class="artNo">第 20 條</div><h3>超車模式（Overtake Mode）</h3><p>2026 年起取代 DRS。在偵測點時距離前車 1 秒以內，下一圈可以使用額外的電力輔助超車。</p><p class="artNote"><b>實務上</b>與舊 DRS 不同，它不是打開後翼，而是額外的電力；主動式空力的直線低阻力模式則所有車手都可以使用。</p></article>
+      </div>
     </section>
 
     <!-- 術語表 -->
@@ -730,6 +800,10 @@
 
       <h2 style="margin-top:8px">重要里程碑</h2>
       <ol class="timeline" id="historyTimeline"></ol>
+
+      <h2>安全的演進</h2>
+      <p class="lead">今天 F1 賽車能在 300 km/h 的撞擊中保護車手，是許多車手、工作人員與觀眾用生命換來的。這裡記錄改變 F1 安全規則的關鍵事件，向他們致意。</p>
+      <ol class="safetyList" id="safetyList"></ol>
 
       <h2>車隊演進與易主</h2>
       <p class="lead">現在的 11 支車隊，很多其實是老車隊換了老闆、改了名字。看懂這條血緣，就知道為什麼有些車隊的基地和歷史對不上名字。</p>
@@ -752,6 +826,7 @@
       <p>即時資料來源：<a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener">Jolpica F1 API</a>（Ergast 繼任專案，社群維護的公開 F1 資料庫）。內建備援資料整理自 RaceFans、Formula1.com 等報導，更新至 2026 年 11 月 3 日（墨西哥站後）。</p>
       <p>本站為非官方愛好者網站，與 Formula 1 及各車隊無關。</p>
       <p>賽車與車手照片來自<a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">維基共享資源</a>的自由授權檔案（CC BY、CC BY-SA、OGL），依授權條款標示作者如下；賽道線路資料來自 <a href="https://github.com/bacinger/f1-circuits" target="_blank" rel="noopener">bacinger/f1-circuits</a>（MIT 授權），維修區路線 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap 貢獻者</a>（ODbL）；賽道圈速紀錄、彎道數整理自維基百科。</p>
+      <p>車隊 Logo 取自維基共享資源（公有領域或 CC 授權），為各車隊之註冊商標，僅供辨識用途；Ferrari、Red Bull、Racing Bulls 因無自由授權 Logo，以代表色縮寫標示。</p>
       <details><summary>照片作者與授權清單</summary><ol id="creditList"></ol></details>
     </div>
   </footer>
@@ -791,7 +866,7 @@
       {
         key: 'redBull', short: 'Red Bull', zh: 'Red Bull', en: 'Oracle Red Bull Racing', color: '#3671c6',
         base: '英國 米爾頓凱恩斯', principal: 'Laurent Mekies', engine: 'Red Bull Ford',
-        desc: '四屆世界冠軍 Verstappen 的車隊。2026 年起首度使用自家與 Ford 合作開發的引擎。',
+        desc: '四屆世界冠軍 Verstappen 的車隊。母公司是奧地利的 Red Bull 飲料集團，因此以奧地利國籍參賽、頒獎時演奏奧地利國歌，但工廠與研發基地都在英國 Milton Keynes。2026 年起首度使用自家與 Ford 合作開發的引擎，同樣在 Milton Keynes 打造。',
         drivers: [
           { family: 'verstappen', zh: 'Verstappen', en: 'Max Verstappen', no: 3, flag: '🇳🇱' },
           { family: 'hadjar', zh: 'Hadjar', en: 'Isack Hadjar', no: 6, flag: '🇫🇷' }
@@ -1120,6 +1195,10 @@
     // 2026 每站賽後的累積積分（第 1 站起），連上即時資料後會自動補上新的站次
     const progressionBase = { rounds: 19, drivers: {"russell": [25, 51, 63, 80, 88, 88, 106, 131, 154, 154, 160, 183, 201, 211, 236, 236, 238, 242, 250], "antonelli": [18, 47, 72, 100, 131, 156, 156, 171, 179, 204, 219, 242, 267, 292, 302, 320, 340, 365, 380], "leclerc": [15, 34, 49, 59, 75, 75, 75, 79, 108, 126, 138, 155, 155, 167, 179, 191, 215, 233, 245], "hamilton": [12, 33, 41, 51, 72, 90, 115, 125, 147, 159, 169, 183, 191, 191, 199, 214, 229, 241, 259], "norris": [10, 15, 25, 51, 58, 58, 73, 79, 97, 103, 128, 159, 171, 186, 186, 188, 201, 211, 221], "verstappen": [8, 8, 12, 26, 43, 43, 55, 73, 76, 91, 109, 112, 127, 145, 163, 188, 221, 236, 261], "bearman": [6, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 20, 20, 23, 23, 23], "lindblad": [4, 4, 4, 4, 5, 13, 15, 16, 22, 24, 25, 25, 29, 31, 37, 38, 38, 38, 38], "bortoleto": [2, 2, 2, 2, 2, 2, 2, 2, 6, 10, 10, 10, 10, 10, 10, 10, 10, 10, 14], "gasly": [1, 9, 15, 16, 20, 26, 32, 32, 33, 33, 33, 35, 41, 41, 41, 41, 41, 42, 42], "ocon": [0, 0, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7, 7, 7, 7, 7], "albon": [0, 0, 0, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], "lawson": [0, 8, 10, 10, 16, 26, 30, 32, 41, 41, 45, 51, 51, 59, 59, 65, 75, 77, 83], "colapinto": [0, 1, 1, 7, 15, 15, 16, 16, 18, 19, 19, 19, 21, 27, 27, 27, 27, 27, 27], "sainz": [0, 2, 2, 4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7], "perez": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "hadjar": [0, 4, 4, 4, 14, 29, 37, 45, 55, 63, 71, 71, 71, 71, 86, 96, 97, 105, 107], "piastri": [0, 3, 21, 43, 48, 60, 70, 82, 84, 94, 94, 106, 116, 120, 120, 128, 138, 144, 144], "hulkenberg": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 6, 6, 7, 7, 7, 13, 13, 13], "alonso": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 7, 7, 7, 7], "bottas": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "stroll": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "tsunoda": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1], "hirakawa": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]}, teams: {"mercedes": [43, 98, 135, 180, 219, 244, 262, 302, 333, 358, 379, 425, 468, 503, 538, 556, 578, 607, 630], "ferrari": [27, 67, 90, 110, 147, 165, 190, 204, 255, 285, 307, 338, 346, 358, 378, 405, 444, 474, 504], "mclaren": [10, 18, 46, 94, 106, 118, 143, 161, 181, 197, 222, 265, 287, 306, 306, 316, 339, 355, 365], "redBull": [8, 12, 16, 30, 57, 72, 92, 118, 131, 154, 180, 189, 204, 230, 263, 298, 332, 355, 382], "haas": [6, 17, 18, 18, 19, 21, 21, 21, 21, 21, 21, 21, 21, 21, 27, 27, 30, 30, 31], "racingBulls": [4, 12, 14, 14, 21, 39, 45, 48, 63, 65, 70, 70, 75, 77, 83, 90, 100, 102, 108], "audi": [2, 2, 2, 2, 2, 2, 2, 2, 6, 10, 12, 16, 16, 17, 17, 17, 23, 23, 27], "alpine": [1, 10, 16, 23, 35, 41, 48, 48, 51, 52, 52, 54, 62, 68, 68, 68, 68, 69, 69], "williams": [0, 2, 2, 5, 7, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12], "cadillac": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "astonMartin": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 7, 7, 7, 7]} };
 
+    // 車隊 Logo（維基共享資源，公有領域或 CC 授權；各為該車隊之註冊商標，僅供辨識）
+    const teamLogos = {"mercedes": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Mercedes-AMG_Petronas_F1_Team_logo_%282026%29.svg/120px-Mercedes-AMG_Petronas_F1_Team_logo_%282026%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "mclaren": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/McLaren_logo_%282026%29.svg/500px-McLaren_logo_%282026%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "alpine": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Alpine_F1_Team_Logo.svg/120px-Alpine_F1_Team_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "haas": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/TGR_Haas_F1_Team_Logo_%282026%29.svg/120px-TGR_Haas_F1_Team_Logo_%282026%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "audi": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Audi-Logo_2016.svg/250px-Audi-Logo_2016.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "williams": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Williams_Racing_2022_logo.svg/500px-Williams_Racing_2022_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "astonMartin": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Aston_Martin_F1_Team_logo_2024.jpg/250px-Aston_Martin_F1_Team_logo_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "cadillac": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Cadillac_Formula_1_Team_logo.png/250px-Cadillac_Formula_1_Team_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"};
+    const teamBadge = {"ferrari": "FER", "redBull": "RBR", "racingBulls": "RB"};
+
     /* ================= 工具函式 ================= */
     const $ = (sel) => document.querySelector(sel);
     const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -1216,7 +1295,14 @@
     }
     function teamLabel(teamKey, fallback) {
       const t = teamByKey(teamKey);
-      return escapeHtml(t ? t.short : (fallback || '—'));
+      return t ? `${teamLogo(teamKey)}${escapeHtml(t.short)}` : escapeHtml(fallback || '—');
+    }
+    // 車隊 Logo；沒有 Logo 的車隊顯示代表色縮寫徽章
+    function teamLogo(teamKey, cls) {
+      const t = teamByKey(teamKey);
+      if (!t) return '';
+      if (teamLogos[teamKey]) return `<span class="teamLogo ${cls || ''}"><img src="${teamLogos[teamKey]}" alt="${escapeHtml(t.short)} logo" loading="lazy"></span>`;
+      return `<span class="teamLogo badge ${cls || ''}" style="background:${t.color}" aria-hidden="true">${teamBadge[teamKey] || escapeHtml(t.short.slice(0, 3).toUpperCase())}</span>`;
     }
     function teamName(teamKey, fallback) {
       const t = teamByKey(teamKey);
@@ -1394,7 +1480,7 @@
         return;
       }
       countdownTarget = next.raceUtc ? new Date(next.raceUtc) : null;
-      const sessions = (next.sessions || []).map((s) => {
+      const sessions = [...(next.sessions || [])].reverse().map((s) => {
         const d = new Date(s.utc);
         return `<li data-start="${d.getTime()}" data-end="${d.getTime() + sessionMinutes(s.label) * 60000}"><span class="sName">${sessionLabel(s.label)}</span><span class="sTime">${formatTw(d)}</span><span class="sLeft"></span></li>`;
       }).join('');
@@ -1446,7 +1532,7 @@
           li.classList.add('upcoming');
           const t = splitMs(start - now);
           left.textContent = t.d ? `${t.d} 天 ${pad2(t.h)}:${pad2(t.m)}:${pad2(t.s)}` : `${pad2(t.h)}:${pad2(t.m)}:${pad2(t.s)}`;
-          nextLi = nextLi || li;
+          if (!nextLi || start < Number(nextLi.dataset.start)) nextLi = li;
         }
       });
       list.querySelectorAll('li').forEach((li) => li.classList.toggle('isNext', li === nextLi));
@@ -1462,7 +1548,7 @@
       const race = fallbackSchedule.find((r) => r.round === state.lastRound);
       const rows = state.lastResults.slice(0, 10).map((r) => `
         <tr><td class="pos">${r.pos}</td><td>${teamDot(r.teamKey)}${faceImg(r.family, 'miniFace')}${driverLabel(r.family, r.en)}</td>
-        <td class="hideSm">${teamLabel(r.teamKey)}</td><td class="num">+${r.points}</td></tr>`).join('');
+        <td class="hideSm">${escapeHtml(teamName(r.teamKey))}</td><td class="num">+${r.points}</td></tr>`).join('');
       $('#lastRaceCard').innerHTML = `
         <h3>最新戰報：第 ${state.lastRound} 站 ${race ? race.flag + ' ' + escapeHtml(race.zh) : escapeHtml(state.lastRaceName)}</h3>
         <div class="tableWrap"><table><thead><tr><th>名次</th><th>車手</th><th class="hideSm">車隊</th><th class="num">得分</th></tr></thead><tbody>${rows}</tbody></table></div>`;
@@ -1481,7 +1567,7 @@
       } else {
         const cs = state.constructorStandings;
         $('#miniStandings').innerHTML = `<table><thead><tr><th>名次</th><th>車隊</th><th class="num">積分</th><th class="num">差距</th></tr></thead><tbody>${cs.slice(0, 5).map((c, i) => `
-          <tr><td class="pos">${i + 1}</td><td>${teamDot(c.teamKey)}${teamLabel(c.teamKey, c.teamFallback)}</td>
+          <tr><td class="pos">${i + 1}</td><td>${teamDot(c.teamKey)}${escapeHtml(teamName(c.teamKey, c.teamFallback))}</td>
           <td class="num"><b>${c.points}</b></td><td class="num gapCell">${i ? '−' + (cs[0].points - c.points) : '領先'}</td></tr>`).join('')}</tbody></table>`;
       }
     }
@@ -1532,14 +1618,14 @@
           ${firstCar ? `<figure class="carPhoto" style="margin:0"><img src="${commonsImg(firstCar.car, 960)}" alt="${escapeHtml(t.short)} 2026 年賽車" loading="lazy"><figcaption>${escapeHtml(firstDriver.en)}${firstDriver.no ? ' #' + firstDriver.no : ''}</figcaption></figure>` : ''}
           <div class="body">
             <div class="teamHead">
-              <h3 style="margin:0">${escapeHtml(t.short)}</h3>
+              <h3 style="margin:0">${teamLogo(t.key, 'lg')}${escapeHtml(t.short)}</h3>
               <span class="muted" style="white-space:nowrap">第 ${posOf(t.key) || '—'} 名・${pointsOf(t.key)} 分</span>
             </div>
             <div class="muted" style="margin-top:-8px">${escapeHtml(t.en)}</div>
             <div class="principal"><span>領隊 Team Principal</span><b>${escapeHtml(t.principal)}</b></div>
+            <div class="drivers">${drivers}</div>
             <p class="teamDesc">${escapeHtml(t.desc)}</p>
             <dl class="meta"><dt>基地</dt><dd>${escapeHtml(t.base)}</dd><dt>引擎</dt><dd>${escapeHtml(t.engine)}</dd></dl>
-            <div class="drivers">${drivers}</div>
           </div>
         </article>`;
       }).join('');
@@ -1710,14 +1796,24 @@
     /* ---------- 歷年大事紀 ---------- */
     // 車隊血緣：[車隊 key, [[名稱, 年份], ...], 說明]
     const teamLineage = [["mercedes", [["Tyrrell", "1970–1998"], ["BAR", "1999–2005"], ["Honda", "2006–2008"], ["Brawn GP", "2009"], ["Mercedes", "2010–"]], "Tyrrell 被 British American Tobacco 收購後改名 BAR，之後由 Honda 接手。Honda 在 2008 年底撤出，Ross Brawn 以象徵性價格買下車隊成立 Brawn GP，當年就拿下雙冠，隔年賣給 Mercedes。"], ["redBull", [["Stewart", "1997–1999"], ["Jaguar", "2000–2004"], ["Red Bull", "2005–"]], "Jackie Stewart 父子創立的 Stewart 車隊被 Ford 收購、改用旗下品牌 Jaguar 參賽；2004 年底 Ford 以象徵性的 1 美元賣給 Red Bull。"], ["racingBulls", [["Minardi", "1985–2005"], ["Toro Rosso", "2006–2019"], ["AlphaTauri", "2020–2023"], ["RB", "2024"], ["Racing Bulls", "2025–"]], "義大利小車隊 Minardi 被 Red Bull 收購成為青訓二隊，之後隨著 Red Bull 旗下品牌與冠名贊助多次更名。"], ["astonMartin", [["Jordan", "1991–2005"], ["Midland", "2006"], ["Spyker", "2007"], ["Force India", "2008–2018"], ["Racing Point", "2019–2020"], ["Aston Martin", "2021–"]], "同一支銀石車隊易主多次：Jordan → Midland → Spyker → Force India。2018 年陷入財務危機時由 Lawrence Stroll 財團接手，2021 年改名 Aston Martin。"], ["alpine", [["Toleman", "1981–1985"], ["Benetton", "1986–2001"], ["Renault", "2002–2011"], ["Lotus", "2012–2015"], ["Renault", "2016–2020"], ["Alpine", "2021–"]], "恩斯通車隊從 Toleman 起家；Benetton 時期 Schumacher 拿下兩冠，Renault 時期 Alonso 再拿兩冠；2021 年改用 Renault 旗下跑車品牌 Alpine 的名字。"], ["audi", [["Sauber", "1993–2005"], ["BMW Sauber", "2006–2009"], ["Sauber", "2010–2018"], ["Alfa Romeo", "2019–2023"], ["Kick Sauber", "2024–2025"], ["Audi", "2026–"]], "瑞士 Sauber 車隊曾被 BMW 收購，BMW 退出後回到創辦人手中，之後冠名 Alfa Romeo；Audi 分階段收購後，2026 年以廠隊身分登場。"], ["ferrari", [["Ferrari", "1950–"]], "唯一從 1950 年第一個賽季參賽至今、從未更名的車隊。1969 年起 Fiat 集團入股，至今仍由 Agnelli 家族的集團掌控。"], ["mclaren", [["McLaren", "1966–"]], "紐西蘭車手 Bruce McLaren 創立。1980 年與 Ron Dennis 的 Project Four 合併，開啟 Senna、Prost 的黃金年代。"], ["williams", [["Williams", "1977–"]], "Frank Williams 與 Patrick Head 創立，擁有 9 座車隊冠軍；2020 年 Williams 家族把車隊賣給美國投資公司 Dorilton Capital。"], ["haas", [["Haas", "2016–"]], "美國工具機公司老闆 Gene Haas 創立，2016 年加入 F1，與 Ferrari 技術合作緊密。"], ["cadillac", [["Cadillac", "2026–"]], "由 General Motors 與 TWG Global 支持的美國新車隊，2026 年成為第 11 支車隊。"]];
+    // 安全演進：[年份, 地點, 相關人物, 事件, 帶來的改變]
+    const safetyTimeline = [["1961", "Monza", "Wolfgang von Trips", "義大利站 von Trips 與 Jim Clark 擦撞後衝進觀眾區，車手與 15 名觀眾喪生。", "賽道開始重新規劃觀眾區與護欄，觀眾安全首度成為議題。"], ["1966", "Spa-Francorchamps", "Jackie Stewart", "Stewart 在大雨中失控，被困在浸滿燃油的車裡約 25 分鐘，沒有醫療人員與工具可救援。", "Stewart 從此帶頭推動安全改革：安全帶、全罩式安全帽、賽道醫療中心、護欄與緩衝區。"], ["1970", "Monza", "Jochen Rindt", "Rindt 在排位賽撞上護欄身亡，賽季結束時仍以積分領先，成為史上唯一的「身後世界冠軍」。", "護欄安裝與賽道安全標準逐步提高。"], ["1973", "Zandvoort", "Roger Williamson", "Williamson 翻車起火受困，工作人員沒有防火裝備，只有 David Purley 停車徒手救援，最終仍無法挽回。", "加強賽事工作人員訓練、滅火設備與救援車輛的部署。"], ["1976", "Nürburgring", "Niki Lauda", "Lauda 在全長超過 22 公里的北環賽道撞車起火，嚴重燒傷，救援車輛需要很久才能抵達。", "北環賽道從此退出 F1；防火賽車服與救援時間受到重視。"], ["1977", "Kyalami", "Tom Pryce", "一名工作人員橫越賽道救援時被 Pryce 的車撞上，兩人皆不幸喪生。", "工作人員進入賽道的程序與旗號協調大幅改革。"], ["1978", "Monza", "Ronnie Peterson", "Peterson 在起跑連環事故中受傷，隔天因併發症過世。", "神經外科醫師 Sid Watkins 成為 F1 常駐醫療負責人，醫療車跟隨起跑、醫療直升機待命成為標準。"], ["1982", "Zolder／Montreal", "Gilles Villeneuve、Riccardo Paletti", "Villeneuve 在排位賽高速撞車身亡；同年 Paletti 在起跑時撞上停住的車而喪生。", "1983 年起禁止地面效應裙板、規定平底盤，降低過彎速度。"], ["1985", "—", "碳纖維車身", "1981 年起車隊開始使用碳纖維單體殼，大幅提升車體強度。", "1985 年起賽車必須通過強制正面撞擊測試，之後側面、後方撞擊測試陸續加入。"], ["1994", "Imola", "Roland Ratzenberger、Ayrton Senna", "聖馬利諾大獎賽週末，Ratzenberger 在排位賽、Senna 在正賽相繼喪生。", "維修區速限、更高的駕駛艙側邊保護、賽道彎道改造與更嚴格的撞擊測試接連上路，車手工會 GPDA 也重新成立。"], ["2001", "Melbourne", "工作人員 Graham Beveridge", "兩車碰撞後飛出的輪胎越過護欄，擊中一名賽事工作人員。", "1999 年引入的輪胎固定索（Wheel tether）持續加強，避免輪胎在事故中飛脫。"], ["2003", "—", "HANS 頭頸支撐系統", "高速撞擊時頭部猛烈前甩，容易造成頸椎與顱底骨折。", "HANS 頭頸支撐系統成為強制裝備。"], ["2009", "Hungaroring", "Felipe Massa", "前車掉落的彈簧以高速擊中 Massa 的安全帽，造成頭骨骨折。", "2011 年起安全帽前額加裝 Zylon 防護條，強化抗穿刺能力。"], ["2014", "Suzuka", "Jules Bianchi", "Bianchi 在雨中衝出賽道，撞上正在吊離另一台事故車的工程車，重傷昏迷，2015 年 7 月過世，是 1994 年以來首位因 F1 賽事喪生的車手。", "2015 年推出虛擬安全車（VSC），比賽開始時間也避開黃昏與天黑；並加速封閉式駕駛艙保護的研究，促成 Halo。"], ["2018", "—", "Halo 護頭裝置", "駕駛艙上方加裝鈦合金 Halo，可承受約 12 噸的力量。", "之後在 2018 年 Spa（Leclerc）、2020 年 Bahrain（Grosjean）、2021 年 Monza（Hamilton）、2022 年 Silverstone（Zhou Guanyu）等事故中保護了車手。"], ["2019", "Spa-Francorchamps", "Anthoine Hubert", "F2 車手 Hubert 在 Raidillon 彎的多車事故中喪生。", "Raidillon 彎的緩衝區與碎石區重新設計，並持續檢討高速彎的安全設施。"], ["2020", "Bahrain", "Romain Grosjean", "Grosjean 以約 220 km/h 撞穿護欄，賽車斷成兩截起火，他在火中約 28 秒後自行脫困。", "Halo、防火賽車服與醫療車快速救援證明了價值；之後再強化護欄、油箱與防火手套的規定。"], ["2022", "Silverstone", "Zhou Guanyu", "Zhou 在起跑事故中翻車滑行，翻滾保護架（Roll hoop）損壞，車子卡進護欄與防護網之間。", "2023 年起強化翻滾保護架的設計與撞擊測試標準。"]];
     function renderHistory() {
+      $('#safetyList').innerHTML = safetyTimeline.map(([yr, place, who, what, change]) => `<li>
+        <div class="sYear">${yr}</div>
+        <div class="sBody">
+          <div class="sWho">${escapeHtml(who)}${place !== '—' ? `<span class="muted">・${escapeHtml(place)}</span>` : ''}</div>
+          <p>${escapeHtml(what)}</p>
+          <p class="sChange"><b>帶來的改變</b>${escapeHtml(change)}</p>
+        </div>
+      </li>`).join('');
       $('#lineageGrid').innerHTML = teamLineage.map(([key, chain, note]) => {
         const t = teamByKey(key) || {};
         // 淺色車隊色（如 Haas、Cadillac）改用深色字
         const hex = (t.color || '#888888').slice(1);
         const lum = (0.299 * parseInt(hex.slice(0, 2), 16) + 0.587 * parseInt(hex.slice(2, 4), 16) + 0.114 * parseInt(hex.slice(4, 6), 16)) / 255;
         return `<article class="card lineageCard" style="--team:${t.color || '#888'};--onTeam:${lum > 0.62 ? '#15151e' : '#fff'}">
-          <h3>${escapeHtml(t.short || key)}</h3>
+          <h3 style="display:flex;align-items:center;gap:4px">${teamLogo(key, 'lg')}${escapeHtml(t.short || key)}</h3>
           <ol class="chain">${chain.map(([n, y], i) => `<li class="${i === chain.length - 1 ? 'now' : ''}"><b>${escapeHtml(n)}</b><span>${escapeHtml(y)}</span></li>`).join('')}</ol>
           <p>${escapeHtml(note)}</p>
         </article>`;
@@ -1767,7 +1863,9 @@
     const of1Base = 'https://api.openf1.org/v1';
     const chunkMs = 3 * 60 * 1000; // 位置資料每 3 分鐘抓一批
     const tyreColor = { SOFT: '#e10600', MEDIUM: '#ffd12e', HARD: '#f0f0f0', INTERMEDIATE: '#2fb24c', WET: '#1e7bd8' };
-    const live = { inited: false, sessions: [], session: null, drivers: {}, loc: {}, iv: {}, pos: [], laps: {}, stints: {}, rc: [], chunks: new Set(), loading: new Set(),
+    // 無線電文字稿：{ 錄音網址: '文字' }，有轉好的文字稿時會顯示在錄音旁
+    const radioText = {};
+    const live = { pits: [], radios: [], pitPath: false, redActive: false, inited: false, sessions: [], session: null, drivers: {}, loc: {}, iv: {}, pos: [], laps: {}, stints: {}, rc: [], chunks: new Set(), loading: new Set(),
       t0: 0, t1: 0, t: 0, playing: false, speed: 8, isLive: false, map: null, lastFrame: 0, lastTable: 0, totalLaps: 0, pollTimer: null, reqId: 0 };
     const getToken = () => { try { return sessionStorage.getItem('of1Token') || ''; } catch (e) { return ''; } };
     async function of1(path, tries = 3) {
@@ -1814,7 +1912,7 @@
       pauseLive();
       clearInterval(live.pollTimer);
       const sess = live.sessions.find((x) => x.session_key === key);
-      Object.assign(live, { session: sess, drivers: {}, loc: {}, iv: {}, pos: [], laps: {}, stints: {}, rc: [], chunks: new Set(), loading: new Set(), map: null, totalLaps: 0 });
+      Object.assign(live, { pits: [], radios: [], pitPath: false, redActive: false, session: sess, drivers: {}, loc: {}, iv: {}, pos: [], laps: {}, stints: {}, rc: [], chunks: new Set(), loading: new Set(), map: null, totalLaps: 0 });
       live.isLive = Date.now() < new Date(sess.date_end).getTime() + 30 * 60000;
       $('#modeBadge').textContent = live.isLive ? 'LIVE' : '回放';
       $('#modeBadge').classList.toggle('live', live.isLive);
@@ -1826,6 +1924,10 @@
         const stints = await of1(`stints?session_key=${key}`);
         const pos = await of1(`position?session_key=${key}`);
         const rc = await of1(`race_control?session_key=${key}`);
+        const pits = await of1(`pit?session_key=${key}`);
+        const radios = await of1(`team_radio?session_key=${key}`);
+        live.pits = pits.filter((p) => p.date && p.lap_number > 1).map((p) => ({ n: p.driver_number, ts: Date.parse(p.date), dur: (p.lane_duration || p.pit_duration || 25) * 1000 }));
+        live.radios = radios.map((r) => ({ n: r.driver_number, ts: Date.parse(r.date), url: r.recording_url })).sort((a, b) => a.ts - b.ts);
         if (myReq !== live.reqId) return;
         drivers.forEach((d) => { live.drivers[d.driver_number] = d; });
         laps.forEach((l) => { (live.laps[l.driver_number] = live.laps[l.driver_number] || []).push({ ...l, ts: l.date_start ? Date.parse(l.date_start) : null }); });
@@ -1840,6 +1942,7 @@
         live.totalLaps = Math.max(0, ...laps.map((l) => l.lap_number));
         if (!drivers.length || !lap1.length) { setLiveMsg(live.isLive ? '比賽即將開始或即時資料尚未開放（OpenF1 的即時資料需要付費帳號）。比賽結束後即可回放。' : '這場比賽目前沒有可用的資料。'); return; }
         await buildOutline(key, myReq);
+        await buildPitLane(key, myReq);
         if (myReq !== live.reqId) return;
         const slider = $('#timeSlider');
         slider.max = Math.round((live.t1 - live.t0) / 1000); slider.disabled = false;
@@ -1848,6 +1951,7 @@
         live.t = live.isLive ? Date.now() - 8000 : live.t0;
         await ensureChunks(live.t);
         setLiveMsg('');
+        $('#mapLegend').style.display = live.pitPath ? 'flex' : 'none';
         drawLive(true);
         if (live.isLive) { startLivePolling(); playLive(); }
       } catch (e) {
@@ -1873,6 +1977,55 @@
       svg.setAttribute('viewBox', vb.join(' '));
       svg.innerHTML = `<path class="outline" d="${d}" style="stroke-width:${14 * scale}"/><path class="outlineInner" d="${d}" style="stroke-width:${6 * scale}"/><g id="carLayer"></g>`;
       $('#carLayer').innerHTML = Object.values(live.drivers).map((dr) => `<g class="car" id="car${dr.driver_number}" style="display:none"><circle r="${9 * scale}" fill="#${dr.team_colour || '888'}" style="stroke-width:${2.5 * scale}"/><text x="${12 * scale}" y="${5 * scale}" style="font-size:${13 * scale}px;stroke-width:${3 * scale}px">${escapeHtml(dr.name_acronym)}</text></g>`).join('');
+    }
+
+    // OpenF1 的進站時間接近出站時刻；以「進站時間前 70 秒到後 10 秒、車速低於維修區速限」判定在維修區
+    const pitSpeedMax = 320; // 座標單位為 0.1 公尺，約等於 115 km/h
+    function speedAt(n, t) {
+      const a = carXY(n, t - 500); const b = carXY(n, t + 500);
+      return a && b ? Math.hypot(a[0] - b[0], a[1] - b[1]) : null;
+    }
+    // 用一次實際進站的軌跡畫出維修區通道
+    async function buildPitLane(key, myReq) {
+      if (!live.map) return;
+      const normal = live.pits.filter((p) => p.dur < 60000);
+      const cand = normal[Math.floor(normal.length / 2)];
+      if (!cand) return;
+      try {
+        const raw = (await of1(`location?session_key=${key}&driver_number=${cand.n}&date>${isoMs(cand.ts - 70000)}&date<${isoMs(cand.ts + 12000)}`)).filter((p) => p.x || p.y);
+        if (myReq !== live.reqId || raw.length < 20) return;
+        const pts = raw.map((p) => [Date.parse(p.date), p.x, -p.y]);
+        // 每個點的速度（每秒移動距離）
+        const spd = pts.map((p, i) => {
+          const q = pts[Math.min(pts.length - 1, i + 2)]; const o = pts[Math.max(0, i - 2)];
+          return q[0] === o[0] ? 0 : Math.hypot(q[1] - o[1], q[2] - o[2]) / ((q[0] - o[0]) / 1000);
+        });
+        // 以最慢（停車換胎）的點為中心，往前後延伸到車速超過速限為止
+        let mid = 0; spd.forEach((v, i) => { if (v < spd[mid]) mid = i; });
+        let a = mid, b = mid;
+        while (a > 0 && spd[a - 1] < pitSpeedMax) a--;
+        while (b < spd.length - 1 && spd[b + 1] < pitSpeedMax) b++;
+        const seg = pts.slice(Math.max(0, a - 2), b + 3);
+        if (seg.length < 8) return;
+        const sc = live.map.scale;
+        const d = 'M' + seg.map((p) => `${p[1]} ${p[2]}`).join('L');
+        document.getElementById('carLayer').insertAdjacentHTML('beforebegin', `<path class="pitlane" d="${d}" style="stroke-width:${5 * sc}"/>`);
+        live.pitPath = true;
+      } catch (e) { /* 畫不出維修區時略過 */ }
+    }
+    function inPit(n, t) {
+      if (!live.pits.some((p) => p.n === n && p.dur < 60000 && t >= p.ts - 70000 && t <= p.ts + 10000)) return false;
+      const v = speedAt(n, t);
+      return v !== null && v < pitSpeedMax;
+    }
+    // 停在賽道上超過 20 秒（非紅旗、非進站）視為停車或退賽
+    function isStopped(n, t) {
+      if (t < live.t0 + 150000 || inPit(n, t)) return false;
+      // 紅旗時大家都會停下來；只有在紅旗前就已經停住的車才算停車
+      const since = live.redActive && live.redStart ? Math.min(t - 20000, live.redStart - 5000) : t - 20000;
+      const a = carXY(n, t); const b = carXY(n, since);
+      if (!a || !b) return false;
+      return Math.hypot(a[0] - b[0], a[1] - b[1]) < 60;
     }
 
     async function ensureChunks(t) {
@@ -1932,7 +2085,7 @@
         const lapNo = cur ? cur.lap_number : 0;
         const stint = (live.stints[n] || []).find((st) => lapNo >= st.lap_start && (st.lap_end == null || lapNo <= st.lap_end)) || (live.stints[n] || [])[0];
         const tyreAge = stint ? stint.tyre_age_at_start + Math.max(0, lapNo - stint.lap_start) : null;
-        return { dr, pos: posMap[n] || 99, lapNo, last: prev ? prev.lap_duration : null, gap: iv ? iv.gap : null, int: iv ? iv.int : null, stint, tyreAge, pit: cur && cur.is_pit_out_lap && lapNo > 1 };
+        return { dr, pos: posMap[n] || 99, lapNo, last: prev ? prev.lap_duration : null, gap: iv ? iv.gap : null, int: iv ? iv.int : null, stint, tyreAge, pit: inPit(n, t), out: isStopped(n, t) };
       }).sort((a, b) => a.pos - b.pos);
     }
     function drawLive(force) {
@@ -1946,8 +2099,9 @@
           const g = document.getElementById('car' + n);
           if (!g) return;
           const xy = carXY(Number(n), t);
-          if (!xy) { g.style.display = 'none'; return; }
+          if (!xy || isStopped(Number(n), t)) { g.style.display = 'none'; return; }
           g.style.display = '';
+          g.classList.toggle('inpit', inPit(Number(n), t));
           g.setAttribute('transform', `translate(${xy[0]} ${xy[1]})`);
           if (rows) g.classList.toggle('leader', Number(n) === leader);
         });
@@ -1961,8 +2115,8 @@
       $('#lapInfo').textContent = `第 ${Math.min(Math.max(lead, 0), live.totalLaps || lead)} / ${live.totalLaps || '—'} 圈`;
       $('#timingTable').innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="num">與領先差距</th><th class="num hideSm">與前車</th><th class="num">上一圈</th><th>輪胎</th></tr></thead><tbody>${rows.filter((r) => r.pos < 99).map((r) => {
         const c = r.stint ? (tyreColor[r.stint.compound] || '#999') : '#999';
-        return `<tr><td class="pos">${r.pos}</td>
-          <td class="drv"><span class="teamDot" style="background:#${r.dr.team_colour || '999'}"></span>${escapeHtml(r.dr.name_acronym)} <span class="muted hideSm" style="font-weight:500;font-family:var(--sans)">${escapeHtml(r.dr.last_name || '')}</span>${r.pit ? '<span class="pitTag">PIT</span>' : ''}</td>
+        return `<tr class="${r.out ? 'out' : ''}"><td class="pos">${r.pos}</td>
+          <td class="drv"><span class="teamDot" style="background:#${r.dr.team_colour || '999'}"></span>${escapeHtml(r.dr.name_acronym)} <span class="muted hideSm" style="font-weight:500;font-family:var(--sans)">${escapeHtml(r.dr.last_name || '')}</span>${r.pit ? '<span class="pitTag">PIT</span>' : ''}${r.out ? '<span class="outTag">停車</span>' : ''}</td>
           <td class="num">${r.pos === 1 ? '領先' : fmtGap(r.gap)}</td>
           <td class="num hideSm">${r.pos === 1 ? '—' : fmtGap(r.int)}</td>
           <td class="num">${fmtLap(r.last)}</td>
@@ -1972,14 +2126,51 @@
       const idx = lastBefore(live.rc, live.t);
       const recent = live.rc.slice(0, idx + 1);
       $('#rcList').innerHTML = recent.length ? recent.slice(-12).reverse().map((r) => `<li><span>${r.lap_number ? 'L' + r.lap_number : '—'}</span>${escapeHtml(r.message)}</li>`).join('') : '<li><span>—</span>尚無訊息</li>';
-      const flag = [...recent].reverse().find((r) => ['Flag', 'SafetyCar'].includes(r.category) && (r.scope === 'Track' || r.category === 'SafetyCar' || r.flag === 'RED' || r.flag === 'CHEQUERED'));
+      const flag = [...recent].reverse().find((r) => (['Flag', 'SafetyCar'].includes(r.category) && (r.scope === 'Track' || r.category === 'SafetyCar' || r.flag === 'RED' || r.flag === 'CHEQUERED')) || /RED FLAG|RACE SUSPENDED|SAFETY CAR LIGHTS/i.test(r.message));
+      // 紅旗：有時只出現在文字訊息（RED FLAG），直到出現恢復比賽的訊息為止
+      const isRed = (r) => r.flag === 'RED' || /RED FLAG/i.test(r.message);
+      const isResume = (r) => /RESUME|SAFETY CAR LIGHTS ON|GREEN|TRACK CLEAR|SESSION STARTED/i.test(r.message) || (r.category === 'Flag' && r.flag === 'GREEN');
+      const lastRed = [...recent].reverse().find(isRed);
+      live.redActive = !!lastRed && !recent.some((r) => r.ts > lastRed.ts && isResume(r));
+      live.redStart = live.redActive ? lastRed.ts : 0;
+      renderRadios();
       const banner = $('#flagBanner');
       if (flag) {
-        const cls = flag.flag === 'RED' ? 'red' : /SAFETY CAR|YELLOW|VSC/i.test(flag.message) && !/ENDING|IN THIS LAP|CLEAR/i.test(flag.message) ? 'yellow' : flag.flag === 'GREEN' || /CLEAR/i.test(flag.message) ? 'green' : 'info';
+        const cls = flag.flag === 'RED' || /RED FLAG|SUSPENDED/i.test(flag.message) ? 'red' : /SAFETY CAR|YELLOW|VSC/i.test(flag.message) && !/ENDING|IN THIS LAP|CLEAR/i.test(flag.message) ? 'yellow' : flag.flag === 'GREEN' || /CLEAR/i.test(flag.message) ? 'green' : 'info';
         banner.className = 'flagBanner show ' + cls;
         banner.textContent = `${flag.lap_number ? '第 ' + flag.lap_number + ' 圈・' : ''}${flag.message}`;
       } else banner.className = 'flagBanner';
     }
+    function renderRadios() {
+      const list = $('#radioList');
+      const shown = live.radios.filter((r) => r.ts <= live.t);
+      const sig = shown.length + '|' + (live.session ? live.session.session_key : '');
+      if (list.dataset.sig === sig) return;
+      list.dataset.sig = sig;
+      if (!shown.length) { list.innerHTML = '<li><span></span><span></span><span class="muted">尚無無線電</span></li>'; return; }
+      const audio = $('#radioAudio');
+      list.innerHTML = shown.slice().reverse().map((r, i) => {
+        const dr = live.drivers[r.n] || {};
+        const laps = live.laps[r.n] || [];
+        const li = lastBefore(laps, r.ts, (x) => x.ts ?? Infinity);
+        const lapNo = li >= 0 ? laps[li].lap_number : null;
+        const text = radioText[r.url];
+        return `<li class="${i === 0 && live.t - r.ts < 20000 ? 'fresh' : ''}"><button type="button" data-url="${escapeHtml(r.url)}" class="${audio.src === r.url && !audio.paused ? 'playing' : ''}" aria-label="播放">▶</button>
+          <span><span class="rWho" style="border-left:3px solid #${dr.team_colour || '999'};padding-left:5px">${escapeHtml(dr.name_acronym || r.n)}</span><br><span class="muted">${lapNo ? 'L' + lapNo : ''}</span></span>
+          <span class="rText ${text ? '' : 'none'}">${text ? escapeHtml(text) : '（尚無文字稿，可點 ▶ 收聽）'}</span></li>`;
+      }).join('');
+    }
+    $('#radioList').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-url]');
+      if (!btn) return;
+      const audio = $('#radioAudio');
+      if (audio.src === btn.dataset.url && !audio.paused) { audio.pause(); btn.classList.remove('playing'); return; }
+      document.querySelectorAll('#radioList button.playing').forEach((b) => b.classList.remove('playing'));
+      audio.src = btn.dataset.url;
+      audio.play().then(() => btn.classList.add('playing')).catch(() => {});
+      audio.onended = () => btn.classList.remove('playing');
+    });
+
     function liveLoop(ts) {
       if (!live.playing) return;
       const dt = live.lastFrame ? ts - live.lastFrame : 0;
@@ -2007,6 +2198,9 @@
           pos.forEach((p) => live.pos.push({ ...p, ts: Date.parse(p.date) })); live.pos.sort((a, b) => a.ts - b.ts);
           laps.forEach((l) => { const a = live.laps[l.driver_number] = live.laps[l.driver_number] || []; const i = a.findIndex((x) => x.lap_number === l.lap_number); const v = { ...l, ts: l.date_start ? Date.parse(l.date_start) : null }; if (i >= 0) a[i] = v; else a.push(v); a.sort((x, y) => x.lap_number - y.lap_number); live.totalLaps = Math.max(live.totalLaps, l.lap_number); });
           rc.forEach((r) => { if (!live.rc.some((x) => x.date === r.date && x.message === r.message)) live.rc.push({ ...r, ts: Date.parse(r.date) }); });
+          const [pitNew, radioNew] = [await of1(`pit?session_key=${key}&date>${since}`), await of1(`team_radio?session_key=${key}&date>${since}`)];
+          pitNew.filter((p) => p.date && p.lap_number > 1).forEach((p) => { const ts = Date.parse(p.date); if (!live.pits.some((x) => x.n === p.driver_number && x.ts === ts)) live.pits.push({ n: p.driver_number, ts, dur: (p.lane_duration || p.pit_duration || 25) * 1000 }); });
+          radioNew.forEach((r) => { if (!live.radios.some((x) => x.url === r.recording_url)) live.radios.push({ n: r.driver_number, ts: Date.parse(r.date), url: r.recording_url }); });
           live.t1 = Date.now(); $('#timeSlider').max = Math.round((live.t1 - live.t0) / 1000);
         } catch (e) { if (e.auth) { setLiveMsg('正賽進行中的即時資料需要 OpenF1 付費帳號；比賽結束後即可免費回放。'); clearInterval(live.pollTimer); } }
       }, 5000);
@@ -2031,7 +2225,7 @@
     });
 
     /* ================= 分頁切換 ================= */
-    const tabIds = ['overview', 'schedule', 'standings', 'live', 'teams', 'beginner', 'rules', 'glossary', 'history'];
+    const tabIds = ['overview', 'schedule', 'standings', 'live', 'teams', 'history', 'beginner', 'rules', 'glossary'];
     function showTab() {
       const id = tabIds.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'overview';
       document.querySelectorAll('section.page').forEach((s) => s.classList.toggle('active', s.id === 'page-' + id));
