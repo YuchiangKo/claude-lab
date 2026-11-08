@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lights Out</title>
-  <meta name="description" content="Lights Out：2026 F1 賽況、台灣時間賽程、積分榜、賽道即時位置與正賽回放、車隊車手與歷年大事紀。">
+  <title>Lights Out｜F1 賽程（台灣時間）・積分榜・賽事回顧</title>
+  <meta name="description" content="Lights Out 是中文 F1 觀賽站：2026 一級方程式台灣時間賽程與倒數、車手與車隊積分榜、正賽回放（賽道位置、計時、車隊無線電）、車隊車手介紹、規則與歷年大事紀。">
+  <meta name="keywords" content="F1, 一級方程式, F1 賽程, F1 台灣時間, F1 積分榜, F1 規則, F1 新手, Formula 1, 2026 F1">
+  <link rel="canonical" href="https://yuchiangko.github.io/claude-lab/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#e10600">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lights Out">
+  <meta property="og:title" content="Lights Out｜F1 賽程（台灣時間）・積分榜・賽事回顧">
+  <meta property="og:description" content="2026 F1 台灣時間賽程與倒數、積分榜、正賽回放與車隊無線電、車隊車手介紹與歷年大事紀。">
+  <meta property="og:url" content="https://yuchiangko.github.io/claude-lab/">
+  <meta property="og:image" content="https://yuchiangko.github.io/claude-lab/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="zh_TW">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lights Out｜F1 賽程・積分榜・賽事回顧">
+  <meta name="twitter:description" content="2026 F1 台灣時間賽程、積分榜、正賽回放與車隊無線電。">
+  <meta name="twitter:image" content="https://yuchiangko.github.io/claude-lab/og-image.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-title" content="Lights Out">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Lights Out", "alternateName": "Lights Out F1 觀賽站", "url": "https://yuchiangko.github.io/claude-lab/", "inLanguage": "zh-Hant-TW", "description": "中文 F1 觀賽站：台灣時間賽程、積分榜、正賽回放、車隊車手與規則介紹。"}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 74 36'><g fill='%23e10600'><rect x='0' y='9' width='10' height='3.2' rx='1.6' opacity='.55'/><rect x='3' y='16.4' width='9' height='3.2' rx='1.6' opacity='.8'/><rect x='0' y='23.8' width='10' height='3.2' rx='1.6' opacity='.55'/></g><g transform='skewX(-14) translate(9 0)'><rect x='14' y='3' width='54' height='30' rx='6' fill='%23e10600'/><g fill='none' stroke='%23fff' stroke-width='2.2'><circle cx='23' cy='18' r='3.6'/><circle cx='32' cy='18' r='3.6'/><circle cx='41' cy='18' r='3.6'/><circle cx='50' cy='18' r='3.6'/><circle cx='59' cy='18' r='3.6'/></g></g></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,6 +221,8 @@
 
     /* 新聞 */
     .news { border-left: 5px solid var(--accent); }
+    .newsMeta { display: flex; align-items: center; gap: 8px; }
+    .newsTag { font-size: .74rem; font-weight: 800; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; }
     .news time { font-size: .82rem; color: var(--ink-faint); }
 
     /* 規則區 */
@@ -364,6 +387,11 @@
     .timing tr.out td { color: var(--ink-faint); text-decoration: line-through; }
     .timing .outTag { font-size: .68rem; font-weight: 800; background: var(--ink-faint); color: #fff; border-radius: 4px; padding: 0 5px; margin-left: 4px; text-decoration: none; display: inline-block; }
     .timing .pitTag { background: #1e5bb8; }
+    .timing .finTag { margin-left: 4px; }
+    .battleTag { margin-left: 4px; font-size: .68rem; font-weight: 800; background: var(--accent); color: #fff; border-radius: 4px; padding: 0 5px; font-family: var(--sans); }
+    .timing tr.battle td { background: #fff1f0; }
+    .timing tr.battle td.pos { box-shadow: inset 4px 0 0 var(--accent); }
+    .gapBar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; font-size: .82rem; }
     .radioList { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow: auto; }
     .radioList li { display: grid; grid-template-columns: 34px 58px 1fr; gap: 8px; align-items: start; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: .88rem; }
     .radioList li.fresh { background: var(--accent-soft); border-radius: 8px; }
@@ -462,7 +490,7 @@
         <a href="#overview" data-tab="overview">賽況總覽</a>
         <a href="#schedule" data-tab="schedule">賽程（台灣時間）</a>
         <a href="#standings" data-tab="standings">積分榜</a>
-        <a href="#live" data-tab="live">賽道即時</a>
+        <a href="#live" data-tab="live">賽事回顧</a>
         <a href="#teams" data-tab="teams">車隊與車手</a>
         <a href="#history" data-tab="history">歷年大事紀</a>
         <a href="#beginner" data-tab="beginner">新手入門</a>
@@ -489,14 +517,15 @@
         </div>
       </div>
 
-      <h2>近期重點消息</h2>
+      <h2>近期重點消息與觀賽焦點</h2>
       <div class="grid cols3" id="newsList"></div>
+      <div style="text-align:center;margin-top:16px"><button class="refresh" id="newsMore" style="padding:8px 18px;font-size:.92rem"></button></div>
     </section>
 
     <!-- 賽道即時 -->
     <section class="page" id="page-live">
-      <h1>賽道即時位置</h1>
-      <p class="lead">在賽道圖上看每台車的位置，旁邊是名次、與前車間距、最近一圈圈速和輪胎。正賽進行中會嘗試顯示即時狀況，比賽結束後可以完整回放（僅限正賽）。</p>
+      <h1>賽事回顧</h1>
+      <p class="lead">完整回放 2026 年每一場正賽：在賽道圖上看每台車的位置，旁邊是名次、車距、最近一圈圈速、輪胎與車隊無線電。</p>
       <div class="liveBar">
         <span class="modeBadge" id="modeBadge">回放</span>
         <select id="liveSession" aria-label="選擇比賽"><option>載入賽事清單中…</option></select>
@@ -509,8 +538,11 @@
       <div class="timeRow"><input type="range" id="timeSlider" min="0" max="1" value="0" step="1" disabled aria-label="比賽時間"><span class="lapInfo" id="lapInfo">—</span></div>
       <div class="flagBanner" id="flagBanner"></div>
       <div class="liveGrid">
-        <div class="card mapCard"><svg id="liveMap" viewBox="0 0 100 100" role="img" aria-label="賽道上的車輛位置"></svg><div class="mapLegend" id="mapLegend" style="display:none"><span><i style="background:#c9ced9"></i>賽道</span><span><i style="background:#8fb4e8"></i>維修區通道</span><span><i class="ring"></i>正在維修區（PIT）</span><span>停在賽道上超過 20 秒的車會自動隱藏</span></div><div class="liveMsg" id="liveMsg">選擇一場比賽開始回放。</div></div>
-        <div class="card tableWrap"><table class="timing" id="timingTable"></table></div>
+        <div class="card mapCard"><svg id="liveMap" viewBox="0 0 100 100" role="img" aria-label="賽道上的車輛位置"></svg><div class="mapLegend" id="mapLegend" style="display:none"><span><i style="background:#c9ced9"></i>賽道</span><span><i style="background:#8fb4e8"></i>維修區通道</span><span><i class="ring"></i>正在維修區（PIT）</span><span>🏁 完賽、DNF 退賽的車會自動從賽道上移除</span></div><div class="liveMsg" id="liveMsg">選擇一場比賽開始回放。</div></div>
+        <div class="card tableWrap">
+          <div class="gapBar"><div class="toggle sm" id="gapToggle"><button data-gap="int" class="on">與前車差距</button><button data-gap="gap">與領先差距</button></div><span class="muted"><span class="battleTag" style="margin:0 4px 0 0">纏鬥</span>與前車 1 秒內，進入超車模式範圍</span></div>
+          <table class="timing" id="timingTable"></table>
+        </div>
       </div>
       <div class="grid cols2" style="margin-top:18px">
         <div class="card"><h3>車隊無線電</h3><p class="muted" style="margin:0 0 6px">隨著比賽時間出現，點 ▶ 播放原始錄音。文字稿為賽後以語音辨識（Whisper）自動轉錄的英文原文，可能有誤。</p><ul class="radioList" id="radioList"><li><span></span><span></span><span class="muted">尚無無線電</span></li></ul><audio id="radioAudio" preload="none"></audio></div>
@@ -821,6 +853,7 @@
     </section>
   </main>
 
+  <noscript><div class="wrap" style="padding:20px 0">Lights Out 是中文 F1 觀賽站，提供 2026 一級方程式台灣時間賽程、積分榜、正賽回放、車隊車手介紹與規則說明。請啟用 JavaScript 以瀏覽完整內容。</div></noscript>
   <footer>
     <div class="wrap">
       <p>即時資料來源：<a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener">Jolpica F1 API</a>（Ergast 繼任專案，社群維護的公開 F1 資料庫）。內建備援資料整理自 RaceFans、Formula1.com 等報導，更新至 2026 年 11 月 3 日（墨西哥站後）。</p>
@@ -910,7 +943,7 @@
       },
       {
         key: 'audi', short: 'Audi', zh: 'Audi', en: 'Audi F1 Team', color: '#bb0a30',
-        base: '瑞士 欣維爾', principal: 'Jonathan Wheatley', engine: 'Audi',
+        base: '瑞士 欣維爾', principal: 'Mattia Binotto', engine: 'Audi',
         desc: '收購 Sauber 後於 2026 年以廠隊身分登場，自製引擎。',
         drivers: [
           { family: 'hulkenberg', zh: 'Hülkenberg', en: 'Nico Hülkenberg', no: 27, flag: '🇩🇪' },
@@ -937,7 +970,7 @@
       },
       {
         key: 'cadillac', short: 'Cadillac', zh: 'Cadillac', en: 'Cadillac F1 Team', color: '#c9a227',
-        base: '美國 印第安納波利斯／英國 銀石', principal: 'Graeme Lowdon', engine: 'Ferrari',
+        base: '美國 印第安納波利斯／英國 銀石', principal: 'Marcin Budkowski', engine: 'Ferrari',
         desc: '2026 年全新加入的美國車隊，由兩位經驗豐富的老將坐鎮。',
         drivers: [
           { family: 'perez', zh: 'Pérez', en: 'Sergio Pérez', no: 11, flag: '🇲🇽' },
@@ -1032,10 +1065,104 @@
     };
 
     /* ================= 近期消息（人工整理） ================= */
+    // 近三個月重點消息（人工整理，附原文連結）：[日期, 分類, 標題, 內容, 網址, 來源]
     const newsItems = [
-      { date: '2026-11-03', title: 'Haas 確認 Ocon 本季不再回歸，Câmara 巴西站提前升格', url: 'https://www.planetf1.com/news/haas-camara-ocon-brazil', source: 'PlanetF1', body: '墨西哥站由後備車手 Hirakawa 代打後，Haas 宣布 Ocon 2026 年剩餘賽事不再出賽。現任 F2 積分領先者、Ferrari 青訓出身的巴西車手 Câmara，將在主場英特拉格斯完成 F1 首秀，他原本就已確定 2027 年接替 Ocon。' },
-      { date: '2026-11-01', title: 'Antonelli 墨西哥封王，成為史上最年輕世界冠軍', url: 'https://www.formula1.com/en/latest/article/f1s-youngest-world-champions-as-antonelli-smashes-the-record.4otUr4h4wmWd6VmIEaNjzV', source: 'Formula1.com', body: '20 歲 68 天的 Antonelli 以季軍完賽，提前四站鎖定車手冠軍，打破 Vettel 保持的最年輕紀錄，也是 1953 年 Ascari 之後首位義大利籍世界冠軍。本季已拿下 9 場分站冠軍。' },
-      { date: '2026-11-01', title: 'Verstappen 拿下墨西哥站，Mercedes 逼近車隊冠軍', url: 'https://www.formula1.com/en/latest/article/antonelli-crowned-youngest-ever-f1-champion-as-verstappen-wins-eventful-mexico-city-grand-prix.xpMMeef0KmRURs9IDs3LH', source: 'Formula1.com', body: 'Verstappen 擊敗 Hamilton 奪冠，躍升車手積分第二。Mercedes 以 126 分領先 Ferrari，只要巴西站再多拿 3 分就能確定第九座車隊冠軍。' }
+      {
+            "date": "2026-11-07",
+            "tag": "賽前焦點",
+            "title": "Norris 雨中奪下 São Paulo 站桿位，三連霸 Interlagos 桿位",
+            "body": "排位賽因暴雨中斷超過 1 小時 20 分鐘，Norris 以 1:27.470 擊敗 Mercedes 的 Russell 與 Antonelli，連續第三年在 Interlagos 拿下桿位。不過多位車手因更換動力單元被罰退位，正賽發車順序大洗牌。",
+            "url": "https://www.formula1.com/en/latest/article/norris-beats-russell-to-pole-position-in-dramatic-rain-affected-sao-paolo-qualifying.2V60rhlQjdS5my1uFrOKUH",
+            "source": "Formula1.com"
+      },
+      {
+            "date": "2026-11-07",
+            "tag": "罰則",
+            "title": "Hamilton、Verstappen 罰退到隊尾，Leclerc、Russell 也被罰退位",
+            "body": "Verstappen 更換新的引擎、渦輪與排氣系統被罰退 30 位；Hamilton 先因新引擎罰退 10 位，FP3 故障後 Ferrari 又更換多項動力單元元件，累計退位達 75 位。兩人分別從第 20、21 位起跑。Leclerc 罰退 10 位、Russell 因第六顆引擎罰退 5 位。觀賽重點：兩位冠軍車手能從隊尾追回多少名次——Verstappen 2024 年曾在這裡從第 17 位逆轉奪冠。",
+            "url": "https://racingnews365.com/breaking-lewis-hamilton-charles-leclerc-and-max-verstappen-grid-penalties-confirmed",
+            "source": "RacingNews365"
+      },
+      {
+            "date": "2026-11-03",
+            "tag": "轉會",
+            "title": "Haas 確認 Ocon 本季不再回歸，Câmara 巴西站提前升格",
+            "body": "墨西哥站由後備車手 Hirakawa 代打後，Haas 宣布 Ocon 2026 年剩餘賽事不再出賽。現任 F2 積分領先者、Ferrari 青訓出身的巴西車手 Câmara，將在主場 Interlagos 完成 F1 首秀，他原本就已確定 2027 年接替 Ocon。",
+            "url": "https://www.planetf1.com/news/haas-camara-ocon-brazil",
+            "source": "PlanetF1"
+      },
+      {
+            "date": "2026-11-01",
+            "tag": "冠軍",
+            "title": "Antonelli 墨西哥封王，成為史上最年輕世界冠軍",
+            "body": "20 歲 68 天的 Antonelli 以季軍完賽，提前四站鎖定車手冠軍，打破 Vettel 保持的最年輕紀錄，也是 1953 年 Ascari 之後首位義大利籍世界冠軍。",
+            "url": "https://www.formula1.com/en/latest/article/f1s-youngest-world-champions-as-antonelli-smashes-the-record.4otUr4h4wmWd6VmIEaNjzV",
+            "source": "Formula1.com"
+      },
+      {
+            "date": "2026-11-01",
+            "tag": "賽果",
+            "title": "Verstappen 拿下墨西哥站，Mercedes 逼近車隊冠軍",
+            "body": "Verstappen 在最後幾圈頂住 Hamilton 的攻勢，以 0.799 秒之差奪冠；比賽中 Bottas 撞牆引發紅旗。Mercedes 以 126 分領先 Ferrari，只要巴西站再多拿 3 分就能確定第九座車隊冠軍。",
+            "url": "https://www.formula1.com/en/latest/article/antonelli-crowned-youngest-ever-f1-champion-as-verstappen-wins-eventful-mexico-city-grand-prix.xpMMeef0KmRURs9IDs3LH",
+            "source": "Formula1.com"
+      },
+      {
+            "date": "2026-10-25",
+            "tag": "賽果",
+            "title": "Antonelli 一停策略稱霸美國站，拿下本季第 9 勝",
+            "body": "Antonelli 在 Austin 以一停策略領先完賽，Leclerc 第二、Verstappen 第三，Hamilton 第四、Norris 第五，冠軍之路更加明朗。",
+            "url": "https://www.formula1.com/en/latest/article/antonelli-surges-to-dominant-victory-in-united-states-grand-prix-ahead-of-leclerc-and-verstappen.6kmBQv9FNTW7LzkDj8S34j",
+            "source": "Formula1.com"
+      },
+      {
+            "date": "2026-10-20",
+            "tag": "轉會",
+            "title": "2027 車手市場：已有 19 位確定，剩 3 個席位",
+            "body": "Williams 續留 Albon 與 Sainz、Alpine 確定 Colapinto 與 Gasly、Aston Martin 9 月底宣布 Alonso 與 Stroll 續約、Cadillac 與 Pérez 簽約至 2029 年，Haas 則在 10 月 14 日簽下 Câmara。Mercedes 與 Racing Bulls 尚未正式公布 2027 陣容。",
+            "url": "https://www.gpfans.com/en/f1-news/1091731/f1-grid-2027-october-2026-three-seats-remaining/",
+            "source": "GPFans"
+      },
+      {
+            "date": "2026-10-11",
+            "tag": "賽果",
+            "title": "Verstappen 首度征服新加坡，第 250 場出賽收下生涯第 73 勝",
+            "body": "在過去始終拿不下的濱海灣街道賽，Verstappen 以第 250 場分站賽完成首勝，Leclerc 第二、Antonelli 第三。",
+            "url": "https://www.espn.com/f1/race/_/id/600057445",
+            "source": "ESPN"
+      },
+      {
+            "date": "2026-09-13",
+            "tag": "賽果",
+            "title": "Antonelli 贏得首屆 Madrid 站，VSC 進站成關鍵",
+            "body": "全新 Madring 賽道首次舉辦 F1，Antonelli 把握虛擬安全車時機進站反超，Verstappen 第二、Norris 第三。",
+            "url": "https://www.formulaonehistory.com/2026-spanish-grand-prix/",
+            "source": "Formula One History"
+      },
+      {
+            "date": "2026-09-06",
+            "tag": "賽果",
+            "title": "Antonelli 從第 19 位起跑贏下主場 Monza",
+            "body": "自 1983 年 John Watson 之後，首位從這麼後面的位置起跑奪冠的車手；也是 1966 年 Scarfiotti 之後，首位贏得義大利站的義大利車手。Russell 第二、Verstappen 第三。",
+            "url": "https://www.espn.com/f1/story/_/id/49535228/formula-1-2026-results-kimi-antonelli-lewis-hamilton-george-russell-winners-podium-final-positions-every-race",
+            "source": "ESPN"
+      },
+      {
+            "date": "2026-08-23",
+            "tag": "賽果",
+            "title": "Norris 贏得荷蘭站，Verstappen 主場撞車退賽",
+            "body": "Verstappen 在 Zandvoort 發生嚴重撞擊引發紅旗，Norris 重新開賽後領先 Mercedes 的 Antonelli 與 Russell 完賽，拿下連續第二勝。",
+            "url": "https://www.formula1.com/en/latest/article/norris-wins-dramatic-dutch-grand-prix-from-antonelli-and-russell-as-verstappen-crashes-out.Zn7iYevVGp5eHzFkTEAz7",
+            "source": "Formula1.com"
+      },
+      {
+            "date": "2026-08-12",
+            "tag": "車隊",
+            "title": "Cadillac 撤換領隊，Budkowski 接替 Lowdon",
+            "body": "荷蘭站前，Cadillac 宣布 Graeme Lowdon 卸下領隊職務，由 Marcin Budkowski 帶領車隊完成 2026 賽季。執行長 Dan Towriss 表示，外界傳聞可能讓車隊不穩定，因此做出調整。",
+            "url": "https://www.planetf1.com/news/cadillac-f1-graeme-lowdon-leaves-marcin-budkowski-team-principal",
+            "source": "PlanetF1"
+      }
     ];
 
     /* ================= 術語表 ================= */
@@ -1572,9 +1699,12 @@
       }
     }
 
+    let newsExpanded = false;
     function renderNews() {
-      $('#newsList').innerHTML = newsItems.map((n) => `
-        <article class="card news"><time>${n.date}</time>
+      const shown = newsExpanded ? newsItems : newsItems.slice(0, 6);
+      $('#newsMore').textContent = newsExpanded ? '收合' : `顯示全部 ${newsItems.length} 則（近三個月）`;
+      $('#newsList').innerHTML = shown.map((n) => `
+        <article class="card news"><div class="newsMeta"><span class="newsTag">${escapeHtml(n.tag || '消息')}</span><time>${n.date}</time></div>
           <h3 style="margin-top:4px">${n.url ? `<a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)} ↗</a>` : escapeHtml(n.title)}</h3>
           <p class="teamDesc">${escapeHtml(n.body)}</p>
           ${n.url ? `<p style="margin:10px 0 0"><a class="src" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">閱讀原文：${escapeHtml(n.source || '外部網站')}</a></p>` : ''}
@@ -1902,7 +2032,10 @@
       live.inited = true;
       loadRadioText();
       try {
-        const list = (await of1(`sessions?year=${season}&session_type=Race`)).filter((x) => x.session_name === 'Race' && new Date(x.date_start) < new Date());
+        // OpenF1 仍保留已取消的巴林（4/12）、沙烏地（4/19）場次，只留下與本站賽程日期相符（前後一天內）的比賽
+        const raceDays = fallbackSchedule.map((r) => Date.parse(r.raceDate));
+        const list = (await of1(`sessions?year=${season}&session_type=Race`)).filter((x) => x.session_name === 'Race' && new Date(x.date_start) < new Date()
+          && raceDays.some((d) => Math.abs(Date.parse(x.date_start.slice(0, 10)) - d) <= 86400000));
         live.sessions = list.sort((a, b) => new Date(b.date_start) - new Date(a.date_start));
         const now = Date.now();
         const sel = $('#liveSession');
@@ -2026,6 +2159,35 @@
         live.pitPath = true;
       } catch (e) { /* 畫不出維修區時略過 */ }
     }
+    // 完賽：在方格旗揮出後衝過終點線；之後開回維修區時隱藏車點
+    function finishTime(n) {
+      const cheq = live.rc.find((r) => r.flag === 'CHEQUERED');
+      if (!cheq) return null;
+      const laps = (live.laps[n] || []).filter((l) => l.ts);
+      const last = laps[laps.length - 1];
+      if (!last) return null;
+      const end = last.ts + (last.lap_duration || 0) * 1000;
+      return last.lap_duration && end >= cheq.ts - 2000 ? end : null;
+    }
+    function lastLapEnd(n, t) {
+      const laps = (live.laps[n] || []).filter((l) => l.ts && l.lap_duration && l.ts + l.lap_duration * 1000 <= t);
+      const l = laps[laps.length - 1];
+      return l ? l.ts + l.lap_duration * 1000 : live.t0;
+    }
+    // 狀態：fin＝已完賽、dnf＝中途退賽、run＝比賽中
+    function carStatus(n, t) {
+      const fin = finishTime(n);
+      if (fin && t >= fin) return 'fin';
+      if (t < live.t0 + 150000) return 'run';
+      if (isStopped(n, t)) return 'dnf';
+      // 領先者都已經多跑完一圈以上、這台車卻超過 2.5 分鐘沒有完成新的一圈（紅旗時不判定）
+      if (!live.redActive) {
+        const mine = lastLapEnd(n, t);
+        const lead = Math.max(...Object.keys(live.drivers).map((k) => lastLapEnd(Number(k), t)));
+        if (lead - mine > 150000 && t - mine > 150000) return 'dnf';
+      }
+      return 'run';
+    }
     function inPit(n, t) {
       if (!live.pits.some((p) => p.n === n && p.dur < 60000 && t >= p.ts - 70000 && t <= p.ts + 10000)) return false;
       const v = speedAt(n, t);
@@ -2098,7 +2260,7 @@
         const lapNo = cur ? cur.lap_number : 0;
         const stint = (live.stints[n] || []).find((st) => lapNo >= st.lap_start && (st.lap_end == null || lapNo <= st.lap_end)) || (live.stints[n] || [])[0];
         const tyreAge = stint ? stint.tyre_age_at_start + Math.max(0, lapNo - stint.lap_start) : null;
-        return { dr, pos: posMap[n] || 99, lapNo, last: prev ? prev.lap_duration : null, gap: iv ? iv.gap : null, int: iv ? iv.int : null, stint, tyreAge, pit: inPit(n, t), out: isStopped(n, t) };
+        return { dr, pos: posMap[n] || 99, lapNo, last: prev ? prev.lap_duration : null, gap: iv ? iv.gap : null, int: iv ? iv.int : null, stint, tyreAge, pit: inPit(n, t), status: carStatus(n, t) };
       }).sort((a, b) => a.pos - b.pos);
     }
     function drawLive(force) {
@@ -2112,7 +2274,8 @@
           const g = document.getElementById('car' + n);
           if (!g) return;
           const xy = carXY(Number(n), t);
-          if (!xy || isStopped(Number(n), t)) { g.style.display = 'none'; return; }
+          const st = carStatus(Number(n), t);
+          if (!xy || st === 'dnf' || (st === 'fin' && (isStopped(Number(n), t) || inPit(Number(n), t)))) { g.style.display = 'none'; return; }
           g.style.display = '';
           g.classList.toggle('inpit', inPit(Number(n), t));
           g.setAttribute('transform', `translate(${xy[0]} ${xy[1]})`);
@@ -2126,12 +2289,12 @@
     function renderTiming(rows) {
       const lead = rows[0] ? rows[0].lapNo : 0;
       $('#lapInfo').textContent = `第 ${Math.min(Math.max(lead, 0), live.totalLaps || lead)} / ${live.totalLaps || '—'} 圈`;
-      $('#timingTable').innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="num">與領先差距</th><th class="num hideSm">與前車</th><th class="num">上一圈</th><th>輪胎</th></tr></thead><tbody>${rows.filter((r) => r.pos < 99).map((r) => {
+      $('#timingTable').innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="num">${gapMode === 'int' ? '與前車差距' : '與領先差距'}</th><th class="num">上一圈</th><th>輪胎</th></tr></thead><tbody>${rows.filter((r) => r.pos < 99).map((r) => {
         const c = r.stint ? (tyreColor[r.stint.compound] || '#999') : '#999';
-        return `<tr class="${r.out ? 'out' : ''}"><td class="pos">${r.pos}</td>
-          <td class="drv"><span class="teamDot" style="background:#${r.dr.team_colour || '999'}"></span>${escapeHtml(r.dr.name_acronym)} <span class="muted hideSm" style="font-weight:500;font-family:var(--sans)">${escapeHtml(r.dr.last_name || '')}</span>${r.pit ? '<span class="pitTag">PIT</span>' : ''}${r.out ? '<span class="outTag">停車</span>' : ''}</td>
-          <td class="num">${r.pos === 1 ? '領先' : fmtGap(r.gap)}</td>
-          <td class="num hideSm">${r.pos === 1 ? '—' : fmtGap(r.int)}</td>
+        const battle = gapMode === 'int' && r.pos > 1 && typeof r.int === 'number' && r.int > 0 && r.int < 1 && r.status === 'run';
+        return `<tr class="${r.status === 'dnf' ? 'out' : ''} ${battle ? 'battle' : ''}"><td class="pos">${r.pos}</td>
+          <td class="drv"><span class="teamDot" style="background:#${r.dr.team_colour || '999'}"></span>${escapeHtml(r.dr.name_acronym)} <span class="muted hideSm" style="font-weight:500;font-family:var(--sans)">${escapeHtml(r.dr.last_name || '')}</span>${r.pit && r.status === 'run' ? '<span class="pitTag">PIT</span>' : ''}${r.status === 'dnf' ? '<span class="outTag">DNF</span>' : ''}${r.status === 'fin' ? '<span class="finTag" title="已完賽">🏁</span>' : ''}${battle ? '<span class="battleTag" title="與前車 1 秒內">纏鬥</span>' : ''}</td>
+          <td class="num">${r.pos === 1 ? '領先' : fmtGap(gapMode === 'int' ? r.int : r.gap)}</td>
           <td class="num">${fmtLap(r.last)}</td>
           <td>${r.stint ? `<span class="tyreDot" style="border-color:${c}">${(r.stint.compound || '?')[0]}</span> <span class="muted">${r.tyreAge ?? ''}</span>` : '—'}</td></tr>`;
       }).join('')}</tbody>`;
@@ -2218,6 +2381,14 @@
         } catch (e) { if (e.auth) { setLiveMsg('正賽進行中的即時資料需要 OpenF1 付費帳號；比賽結束後即可免費回放。'); clearInterval(live.pollTimer); } }
       }, 5000);
     }
+    let gapMode = 'int';
+    $('#gapToggle').addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      gapMode = btn.dataset.gap;
+      document.querySelectorAll('#gapToggle button').forEach((b) => b.classList.toggle('on', b === btn));
+      drawLive(true);
+    });
     $('#playBtn').addEventListener('click', () => (live.playing ? pauseLive() : playLive()));
     $('#speedSel').addEventListener('change', (e) => { live.speed = Number(e.target.value); });
     $('#timeSlider').addEventListener('input', async (e) => {
@@ -2257,6 +2428,7 @@
       document.querySelectorAll('#standingsToggle button').forEach((b) => b.classList.toggle('on', b === btn));
       renderStandings();
     });
+    $('#newsMore').addEventListener('click', () => { newsExpanded = !newsExpanded; renderNews(); });
     $('#miniToggle').addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;

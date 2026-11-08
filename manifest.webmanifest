@@ -1,0 +1,16 @@
+{
+  "name": "Lights Out｜F1 觀賽站",
+  "short_name": "Lights Out",
+  "description": "F1 台灣時間賽程、積分榜與賽事回顧",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f9",
+  "theme_color": "#e10600",
+  "lang": "zh-Hant-TW",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
