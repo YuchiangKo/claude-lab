@@ -2,8 +2,13 @@
 車隊無線電轉文字：
 從 OpenF1 取得 2026 年已結束正賽的車隊無線電錄音，用 Whisper（faster-whisper）轉成英文文字，
 存到 data/radioTranscripts.json，網頁的「賽道即時」分頁會讀取這個檔案。
-由 GitHub Actions 定期執行（.github/workflows/transcribeRadio.yml），也可以在本機手動執行。
 錄音檔本身不會存下來，只保留文字。
+
+在本機執行（F1 的錄音伺服器會拒絕雲端機房的下載，所以無法放在 GitHub Actions 上跑）：
+  1. 第一次安裝：python3 -m venv ~/.local/share/lights-out-whisper
+                 ~/.local/share/lights-out-whisper/bin/pip install -r scripts/requirements.txt
+  2. 每場比賽結束後：~/.local/share/lights-out-whisper/bin/python scripts/transcribeRadio.py
+     已轉過的錄音會略過，只處理新的；完成後提交 data/radioTranscripts.json 並推上 GitHub。
 """
 import json
 import os
@@ -47,10 +52,11 @@ def loadExisting():
 
 def saveData(data):
     data['updatedAt'] = datetime.now(timezone.utc).isoformat(timespec='seconds')
-    data['transcripts'] = dict(sorted(data['transcripts'].items()))
+    # 依網址排序後寫入；不替換 data['transcripts'] 本身，避免之後新增的文字稿寫到舊的資料表
+    output = {'updatedAt': data['updatedAt'], 'transcripts': dict(sorted(data['transcripts'].items()))}
     os.makedirs(os.path.dirname(outPath), exist_ok=True)
     with open(outPath, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=1)
+        json.dump(output, f, ensure_ascii=False, indent=1)
         f.write('\n')
 
 

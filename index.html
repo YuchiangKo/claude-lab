@@ -1885,7 +1885,7 @@
     const fmtGap = (v) => v == null ? '—' : typeof v === 'number' ? (v === 0 ? '—' : '+' + v.toFixed(3)) : String(v);
     function setLiveMsg(text) { const m = $('#liveMsg'); m.style.display = text ? 'block' : 'none'; m.textContent = text || ''; }
 
-    // 無線電文字稿由 GitHub Actions 定期以 Whisper 轉錄，存在 data/radioTranscripts.json
+    // 無線電文字稿於賽後在本機以 Whisper 轉錄（scripts/transcribeRadio.py），存在 data/radioTranscripts.json
     async function loadRadioText() {
       try {
         const res = await fetch('data/radioTranscripts.json', { cache: 'no-cache' });
@@ -2170,7 +2170,7 @@
         const text = radioText[r.url];
         return `<li class="${i === 0 && live.t - r.ts < 20000 ? 'fresh' : ''}"><button type="button" data-url="${escapeHtml(r.url)}" class="${audio.src === r.url && !audio.paused ? 'playing' : ''}" aria-label="播放">▶</button>
           <span><span class="rWho" style="border-left:3px solid #${dr.team_colour || '999'};padding-left:5px">${escapeHtml(dr.name_acronym || r.n)}</span><br><span class="muted">${lapNo ? 'L' + lapNo : ''}</span></span>
-          <span class="rText ${text ? '' : 'none'}">${text ? `「${escapeHtml(text)}」` : text === '' ? '（聽不清楚，可點 ▶ 收聽）' : '（文字稿處理中，可點 ▶ 收聽）'}</span></li>`;
+          <span class="rText ${text ? '' : 'none'}">${text ? `「${escapeHtml(text)}」` : text === '' ? '（聽不清楚，可點 ▶ 收聽）' : '（尚無文字稿，可點 ▶ 收聽）'}</span></li>`;
       }).join('');
     }
     $('#radioList').addEventListener('click', (e) => {
