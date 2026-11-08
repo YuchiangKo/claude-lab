@@ -30,6 +30,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Titillium+Web:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script>
+    // 預設深色；使用者選過淺色才切回淺色
+    document.documentElement.dataset.theme = 'dark';
+    try { if (localStorage.getItem('theme') === 'light') delete document.documentElement.dataset.theme; } catch (e) { /* 無法讀取時維持深色 */ }
+  </script>
   <style>
     :root {
       /* 基本配色（亮色主題） */
@@ -523,6 +528,58 @@
     .liveBar button.primary, .toggle button.on { font-style: italic; }
     .liveBar button.primary { clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); border-radius: 0; padding-left: 18px; padding-right: 18px; }
     @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+    /* ================= 深色模式：黑底、白字、紅色邊線 ================= */
+    :root[data-theme="dark"] {
+      --bg: #0a0a0f;
+      --surface: #14141b;
+      --surface-2: #1d1d27;
+      --ink: #f2f2f6;
+      --ink-soft: #c4c4d0;
+      --ink-faint: #8d8d9e;
+      --line: #2a2a37;
+      --accent: #ff2d22;
+      --accent-soft: rgba(255, 45, 34, .16);
+      --ok: #45c47e;
+      --warn: #e6ad4f;
+      --warn-soft: #2a2213;
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.45);
+      --speedLines: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22800%22%20height%3D%22500%22%3E%3Cg%20stroke%3D%22rgba%28255%2C255%2C255%2C0.05%29%22%20stroke-linecap%3D%22round%22%3E%3Cline%20x1%3D%2240%22%20y1%3D%2260%22%20x2%3D%22420%22%20y2%3D%2230%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%22520%22%20y1%3D%2296%22%20x2%3D%22760%22%20y2%3D%2277%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22130%22%20y1%3D%22150%22%20x2%3D%22300%22%20y2%3D%22136%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22360%22%20y1%3D%22190%22%20x2%3D%22700%22%20y2%3D%22163%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%2260%22%20y1%3D%22250%22%20x2%3D%22240%22%20y2%3D%22236%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22300%22%20y1%3D%22300%22%20x2%3D%22560%22%20y2%3D%22279%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22600%22%20y1%3D%22330%22%20x2%3D%22780%22%20y2%3D%22316%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%2220%22%20y1%3D%22380%22%20x2%3D%22380%22%20y2%3D%22351%22%20stroke-width%3D%223%22/%3E%3Cline%20x1%3D%22440%22%20y1%3D%22420%22%20x2%3D%22620%22%20y2%3D%22406%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22160%22%20y1%3D%22470%22%20x2%3D%22520%22%20y2%3D%22441%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22640%22%20y1%3D%2220%22%20x2%3D%22790%22%20y2%3D%228%22%20stroke-width%3D%222%22/%3E%3Cline%20x1%3D%22250%22%20y1%3D%2230%22%20x2%3D%22350%22%20y2%3D%2222%22%20stroke-width%3D%221.5%22/%3E%3C/g%3E%3C/svg%3E");
+      --band: rgba(255, 45, 34, .13);
+      --band2: rgba(255, 45, 34, .07);
+      --timerBg: #000000;
+      color-scheme: dark;
+    }
+    :root[data-theme="dark"] header.top { background: rgba(10,10,15,.92); }
+    :root[data-theme="dark"] .card { border-color: rgba(255,45,34,.28); }
+    :root[data-theme="dark"] .teamCard:hover, :root[data-theme="dark"] .trackCard:hover, :root[data-theme="dark"] .news:hover, :root[data-theme="dark"] .legendCard:hover, :root[data-theme="dark"] .lineageCard:hover { box-shadow: 0 0 0 1px rgba(255,45,34,.5), 0 12px 28px rgba(0,0,0,.6); }
+    :root[data-theme="dark"] .countdown div { box-shadow: inset 0 -3px 0 var(--accent), 0 0 0 1px rgba(255,45,34,.35); }
+    :root[data-theme="dark"] .trackSvg .startDot { stroke: var(--surface); }
+    :root[data-theme="dark"] .champLine { background: rgba(255,213,74,.1); border-color: rgba(255,213,74,.35); }
+    :root[data-theme="dark"] .callout { border-color: #6b5420; }
+    :root[data-theme="dark"] .badge.sprint { background: rgba(255,177,60,.18); color: #ffc36b; }
+    :root[data-theme="dark"] .badge.new { background: rgba(69,196,126,.18); color: #6fdc9d; }
+    :root[data-theme="dark"] .carPhoto figcaption { background: rgba(0,0,0,.72); color: #fff; }
+    :root[data-theme="dark"] .helmet { border-color: var(--surface); }
+    :root[data-theme="dark"] .tCam.black { --c: #0a0a0f; filter: drop-shadow(0 0 1px rgba(255,255,255,.75)); }
+    :root[data-theme="dark"] .sChange { background: rgba(69,196,126,.12); }
+    :root[data-theme="dark"] .timing tr.battle td { background: rgba(255,45,34,.14); }
+    :root[data-theme="dark"] .flagBanner.yellow { background: rgba(255,209,46,.14); border-color: #8a7420; }
+    :root[data-theme="dark"] .flagBanner.red { background: rgba(255,45,34,.18); color: #ff8a83; }
+    :root[data-theme="dark"] .flagBanner.green { background: rgba(69,196,126,.14); border-color: #2f7a50; }
+    :root[data-theme="dark"] #liveMap .outline { stroke: #3a3a4a; }
+    :root[data-theme="dark"] #liveMap .outlineInner { stroke: var(--surface); }
+    :root[data-theme="dark"] #liveMap .car text { stroke: var(--surface); }
+    :root[data-theme="dark"] #liveMap .car circle { stroke: var(--surface); }
+    :root[data-theme="dark"] #liveMap .car.inpit circle { fill: var(--surface) !important; }
+    :root[data-theme="dark"] #liveMap .car.inpit text { fill: #8fb4e8; }
+    :root[data-theme="dark"] .mapLegend i.ring { background: var(--surface); }
+    /* 黑色文字 Logo 在深色底看不到，墊一塊白色底片 */
+    :root[data-theme="dark"] .teamLogo img { background: #fff; border-radius: 4px; padding: 2px 4px; box-sizing: content-box; }
+    :root[data-theme="dark"] .trackLegend i[style*="var(--ink)"] { background: var(--ink) !important; }
+    :root[data-theme="dark"] footer { border-top-color: rgba(255,45,34,.3); }
+    /* 主題切換按鈕 */
+    .themeBtn { display: inline-flex; align-items: center; gap: 5px; }
+    .themeBtn .ico { font-size: .9rem; line-height: 1; }
   </style>
 </head>
 <body>
@@ -532,6 +589,7 @@
         <a class="brand" href="#overview" aria-label="Lights Out 首頁"><svg class="logoMark" viewBox="0 0 74 36" aria-hidden="true"><g fill="#e10600"><rect x="0" y="9" width="10" height="3.2" rx="1.6" opacity=".55"/><rect x="3" y="16.4" width="9" height="3.2" rx="1.6" opacity=".8"/><rect x="0" y="23.8" width="10" height="3.2" rx="1.6" opacity=".55"/></g><g transform="skewX(-14) translate(9 0)"><rect x="14" y="3" width="54" height="30" rx="6" fill="#e10600"/><g fill="none" stroke="#fff" stroke-width="2.2"><circle cx="23" cy="18" r="3.6"/><circle cx="32" cy="18" r="3.6"/><circle cx="41" cy="18" r="3.6"/><circle cx="50" cy="18" r="3.6"/><circle cx="59" cy="18" r="3.6"/></g></g></svg><span class="wordmark">Lights<b>Out</b></span></a>
         <div style="display:flex;gap:8px;align-items:center;min-width:0">
           <span id="statusPill" class="statusPill offline">載入中…</span>
+          <button class="refresh themeBtn" id="themeBtn" type="button" aria-label="切換深色或淺色介面"></button>
           <button class="refresh" id="refreshBtn" title="重新抓取最新資料">更新</button>
         </div>
       </div>
@@ -2531,6 +2589,23 @@
       renderAll();
     }
     $('#refreshBtn').addEventListener('click', refresh);
+
+    /* ================= 深色／淺色切換 ================= */
+    function syncThemeBtn() {
+      const dark = document.documentElement.dataset.theme === 'dark';
+      $('#themeBtn').innerHTML = dark ? '<span class="ico">☀</span>淺色' : '<span class="ico">☾</span>深色';
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', dark ? '#0a0a0f' : '#e10600');
+    }
+    $('#themeBtn').addEventListener('click', () => {
+      const dark = document.documentElement.dataset.theme !== 'dark';
+      if (dark) document.documentElement.dataset.theme = 'dark';
+      else delete document.documentElement.dataset.theme;
+      try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) { /* 無法儲存時略過 */ }
+      syncThemeBtn();
+      renderChart();
+    });
+    syncThemeBtn();
 
     // 初始化：先用快取或內建資料立即顯示，再背景抓最新資料
     (function init() {
