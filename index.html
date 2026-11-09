@@ -397,7 +397,6 @@
     .mapLegend i.ring { width: 11px; height: 11px; border-radius: 50%; border: 2px dashed #1e5bb8; background: #fff; }
     .timing tr.out td { color: var(--ink-faint); text-decoration: line-through; }
     .timing .outTag { font-size: .68rem; font-weight: 800; background: var(--ink-faint); color: #fff; border-radius: 4px; padding: 0 5px; margin-left: 4px; text-decoration: none; display: inline-block; }
-    .timing .pitTag { background: #1e5bb8; }
     .timing .finTag { margin-left: 4px; }
     .battleTag { margin-left: 4px; font-size: .68rem; font-weight: 800; background: var(--accent); color: #fff; border-radius: 4px; padding: 0 5px; font-family: var(--sans); }
     .timing tr.battle td { background: #fff1f0; }
@@ -426,8 +425,15 @@
     .timing td.drv { font-weight: 800; font-family: var(--display); }
     .timing .tyreDot { display: inline-flex; width: 20px; height: 20px; border-radius: 50%; border: 3px solid; align-items: center; justify-content: center; font-size: .62rem; font-weight: 900; background: #222; color: #fff; vertical-align: middle; }
     .timing tr.out td { color: var(--ink-faint); }
-    .timing .pitTag { font-size: .68rem; font-weight: 800; background: var(--ink); color: #fff; border-radius: 4px; padding: 0 5px; margin-left: 4px; }
+    .timing .pitTag { font-size: .68rem; font-weight: 800; background: #1e5bb8; color: #fff; border-radius: 4px; padding: 0 5px; margin-left: 4px; }
     .liveMsg { padding: 30px 16px; text-align: center; color: var(--ink-soft); }
+    /* 直播模式：賽事狀態、剩餘時間與天氣 */
+    .relayInfo { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; margin-bottom: 12px; font-size: .88rem; color: var(--ink-soft); }
+    .relayInfo b { color: var(--ink); font-variant-numeric: tabular-nums; }
+    .relayInfo .rTitle { font-family: var(--display); font-weight: 800; color: var(--ink); font-size: 1rem; }
+    .relayInfo .rClock { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 1.15rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .radioList.noPlay li { grid-template-columns: 0 58px 1fr; }
+    .radioList .rTime { font-variant-numeric: tabular-nums; }
     .rcList { list-style: none; padding: 0; margin: 0; font-size: .85rem; max-height: 220px; overflow: auto; }
     .rcList li { padding: 5px 0; border-bottom: 1px dashed var(--line); display: grid; grid-template-columns: 56px 1fr; gap: 8px; }
     .rcList li span { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
@@ -675,6 +681,7 @@
       </div>
       <div class="timeRow"><input type="range" id="timeSlider" min="0" max="1" value="0" step="1" disabled aria-label="比賽時間"><span class="lapInfo" id="lapInfo">—</span></div>
       <div class="flagBanner" id="flagBanner"></div>
+      <div class="relayInfo" id="relayInfo" hidden></div>
       <div class="liveGrid">
         <div class="card tableWrap">
           <div class="gapBar"><div class="toggle sm" id="gapToggle"><button data-gap="int" class="on">與前車差距</button><button data-gap="gap">與領先差距</button></div><span class="muted"><span class="battleTag" style="margin:0 4px 0 0">纏鬥</span>與前車 1 秒內，進入超車模式範圍</span></div>
@@ -683,11 +690,11 @@
         <div class="card mapCard"><svg id="liveMap" viewBox="0 0 100 100" role="img" aria-label="賽道上的車輛位置"></svg><div class="mapLegend" id="mapLegend" style="display:none"></div><div class="liveMsg" id="liveMsg">選擇一場比賽開始回放。</div></div>
       </div>
       <div class="grid cols2" style="margin-top:18px">
-        <div class="card"><h3>車隊無線電</h3><p class="muted" style="margin:0 0 6px">隨著比賽時間出現，點 ▶ 播放原始錄音。文字稿為賽後以語音辨識（Whisper）自動轉錄的英文原文，可能有誤。</p><ul class="radioList" id="radioList"><li><span></span><span></span><span class="muted">尚無無線電</span></li></ul><audio id="radioAudio" preload="none"></audio></div>
+        <div class="card"><h3>車隊無線電</h3><p class="muted" id="radioNote" style="margin:0 0 6px">隨著比賽時間出現，點 ▶ 播放原始錄音。文字稿為賽後以語音辨識（Whisper）自動轉錄的英文原文，可能有誤。</p><ul class="radioList" id="radioList"><li><span></span><span></span><span class="muted">尚無無線電</span></li></ul><audio id="radioAudio" preload="none"></audio></div>
         <div class="card"><h3>賽事管制訊息</h3><ul class="rcList" id="rcList"><li><span>—</span>尚無訊息</li></ul></div>
         <div class="card">
           <h3>資料來源與即時資料說明</h3>
-          <p class="muted" style="margin:0 0 8px">車輛位置、名次、間距與圈速來自 <a href="https://openf1.org" target="_blank" rel="noopener">OpenF1</a>（非官方、社群維護的公開 F1 資料 API）。比賽結束後的資料免費開放，通常賽後不久即可回放；正賽進行中的「即時」資料，OpenF1 只開放給付費帳號。</p>
+          <p class="muted" id="srcNote" style="margin:0 0 8px">車輛位置、名次、間距與圈速來自 <a href="https://openf1.org" target="_blank" rel="noopener">OpenF1</a>（非官方、社群維護的公開 F1 資料 API）。比賽結束後的資料免費開放，通常賽後不久即可回放；正賽進行中的「即時」資料，OpenF1 只開放給付費帳號。</p>
           <details><summary>我有 OpenF1 付費帳號</summary>
             <p class="muted">貼上 access token 後，正賽進行中就能看到即時位置。token 只會存在這個瀏覽器分頁（sessionStorage），關掉分頁就會清除。</p>
             <div style="display:flex;gap:8px"><input class="searchBox" style="margin:0" id="of1Token" type="password" placeholder="OpenF1 access token"><button class="refresh" id="of1TokenBtn" style="color:var(--ink)">儲存</button></div>
@@ -2185,6 +2192,10 @@
       if (live.inited) return;
       live.inited = true;
       loadRadioText();
+      // 有比賽正在直播（轉送程式運作中）就直接進入直播模式
+      const relayUrl = await findRelayUrl();
+      if (relayUrl && await connectRelay(relayUrl)) return;
+      watchForRelay();
       try {
         // OpenF1 仍保留已取消的巴林（4/12）、沙烏地（4/19）場次，只留下與本站賽程日期相符（前後一天內）的比賽
         const raceDays = fallbackSchedule.map((r) => Date.parse(r.raceDate));
@@ -2278,38 +2289,44 @@
       const d = 'M' + pts.map((p) => `${p.x} ${-p.y}`).join('L') + 'Z';
       const svg = $('#liveMap');
       svg.setAttribute('viewBox', vb.join(' '));
-      svg.innerHTML = `<path class="outline" d="${d}" style="stroke-width:${14 * scale}"/>${sectorLayer(ref, pts, scale) || `<path class="outlineInner" d="${d}" style="stroke-width:${6 * scale}"/>`}<g id="carLayer"></g>`;
+      svg.innerHTML = `<path class="outline" d="${d}" style="stroke-width:${14 * scale}"/>${sectorLayer(pts.map((p) => [p.x, -p.y]), refSectorBounds(ref, pts), scale) || `<path class="outlineInner" d="${d}" style="stroke-width:${6 * scale}"/>`}<g id="carLayer"></g>`;
       $('#carLayer').innerHTML = Object.values(live.drivers).map((dr) => `<g class="car" id="car${dr.driver_number}" style="display:none"><circle r="${9 * scale}" fill="#${dr.team_colour || '888'}" style="stroke-width:${2.5 * scale}"/><text x="${12 * scale}" y="${5 * scale}" style="font-size:${13 * scale}px;stroke-width:${3 * scale}px">${escapeHtml(dr.name_acronym)}</text></g>`).join('');
     }
 
     // 依參考圈的區段秒數，把賽道切成 S1／S2／S3 三段上色，並標出區段分界與起終點線
-    function sectorLayer(ref, pts, scale) {
+    // 回放：依參考圈的區段秒數，找出 S1、S2 結束時對應的座標點
+    function refSectorBounds(ref, pts) {
       const [s1, s2] = [ref.duration_sector_1, ref.duration_sector_2];
-      if (!s1 || !s2 || !ref.ts) return '';
+      if (!s1 || !s2 || !ref.ts) return null;
       const times = pts.map((p) => Date.parse(p.date));
-      const idxAt = (ms) => { let k = times.findIndex((x) => x >= ms); return k < 0 ? times.length - 1 : k; };
-      const b1 = idxAt(ref.ts + s1 * 1000); const b2 = idxAt(ref.ts + (s1 + s2) * 1000);
-      if (!(b1 > 2 && b2 > b1 + 2 && b2 < pts.length - 3)) return '';
-      const xy = (p) => `${p.x} ${-p.y}`;
-      const seg = (a, b) => 'M' + pts.slice(a, b + 1).map(xy).join('L');
+      const idxAt = (ms) => { const k = times.findIndex((x) => x >= ms); return k < 0 ? times.length - 1 : k; };
+      return [idxAt(ref.ts + s1 * 1000), idxAt(ref.ts + (s1 + s2) * 1000)];
+    }
+    // 把賽道切成 S1／S2／S3 三段上色，並標出區段分界與起終點線（xy 為已翻轉 y 軸的座標陣列）
+    function sectorLayer(xy, bounds, scale) {
+      if (!bounds) return '';
+      const [b1, b2] = bounds;
+      if (!(b1 > 2 && b2 > b1 + 2 && b2 < xy.length - 3)) return '';
+      const pt = (p) => `${p[0]} ${p[1]}`;
+      const seg = (a, b) => 'M' + xy.slice(a, b + 1).map(pt).join('L');
       // 第三段接回起點，讓賽道是封閉的
-      const paths = [seg(0, b1), seg(b1, b2), seg(b2, pts.length - 1) + 'L' + xy(pts[0])];
+      const paths = [seg(0, b1), seg(b1, b2), seg(b2, xy.length - 1) + 'L' + pt(xy[0])];
       // 分界線：垂直於行進方向的短線
       const tick = (i, cls) => {
-        const a = pts[Math.max(0, i - 2)], b = pts[Math.min(pts.length - 1, i + 2)];
-        const dx = b.x - a.x, dy = -(b.y - a.y); const len = Math.hypot(dx, dy) || 1;
-        const nx = -dy / len * 13 * scale, ny = dx / len * 13 * scale; const p = pts[i];
-        return `<line class="secTick ${cls}" x1="${p.x + nx}" y1="${-p.y + ny}" x2="${p.x - nx}" y2="${-p.y - ny}" style="stroke-width:${3 * scale}"/>`;
+        const a = xy[Math.max(0, i - 2)], b = xy[Math.min(xy.length - 1, i + 2)];
+        const dx = b[0] - a[0], dy = b[1] - a[1]; const len = Math.hypot(dx, dy) || 1;
+        const nx = -dy / len * 13 * scale, ny = dx / len * 13 * scale; const p = xy[i];
+        return `<line class="secTick ${cls}" x1="${p[0] + nx}" y1="${p[1] + ny}" x2="${p[0] - nx}" y2="${p[1] - ny}" style="stroke-width:${3 * scale}"/>`;
       };
       // 區段名稱放在每段的中間點，往賽道外側偏移，避免壓在賽道上
-      const cx = pts.reduce((v, p) => v + p.x, 0) / pts.length, cy = pts.reduce((v, p) => v - p.y, 0) / pts.length;
+      const cx = xy.reduce((v, p) => v + p[0], 0) / xy.length, cy = xy.reduce((v, p) => v + p[1], 0) / xy.length;
       const label = (a, b, k) => {
-        const p = pts[Math.floor((a + b) / 2)]; const vx = p.x - cx, vy = -p.y - cy; const l = Math.hypot(vx, vy) || 1;
-        return `<text class="secLabel s${k}" x="${p.x + vx / l * 30 * scale}" y="${-p.y + vy / l * 30 * scale}" style="font-size:${20 * scale}px;stroke-width:${5 * scale}px">S${k}</text>`;
+        const p = xy[Math.floor((a + b) / 2)]; const vx = p[0] - cx, vy = p[1] - cy; const l = Math.hypot(vx, vy) || 1;
+        return `<text class="secLabel s${k}" x="${p[0] + vx / l * 30 * scale}" y="${p[1] + vy / l * 30 * scale}" style="font-size:${20 * scale}px;stroke-width:${5 * scale}px">S${k}</text>`;
       };
       return paths.map((p, k) => `<path class="secPath s${k + 1}" d="${p}" style="stroke-width:${6 * scale}"/>`).join('')
         + tick(b1, '') + tick(b2, '') + tick(0, 'finish')
-        + label(0, b1, 1) + label(b1, b2, 2) + label(b2, pts.length - 1, 3);
+        + label(0, b1, 1) + label(b1, b2, 2) + label(b2, xy.length - 1, 3);
     }
     function renderMapLegend() {
       const el = $('#mapLegend');
@@ -2612,13 +2629,224 @@
         } catch (e) { if (e.auth) { setLiveMsg('正賽進行中的即時資料需要 OpenF1 付費帳號；比賽結束後即可免費回放。'); clearInterval(live.pollTimer); } }
       }, 5000);
     }
+    /* ================= 比賽直播模式（接 Mac 上的轉送程式 scripts/liveRelay.mjs） ================= */
+    // 轉送程式啟動時會把網址寫進 data/liveEndpoint.json；本機測試可在網址加上 ?relay=http://localhost:8787
+    const relay = { on: false, es: null, url: null, cars: {}, session: null, outline: null, xy: null, rc: [], radio: [], base: 0, localBase: 0, speed: 1, shown: {}, raf: 0, watchTimer: null, lastMsg: 0 };
+    const sessionZh = { Race: '正賽', Qualifying: '排位賽', Sprint: '衝刺賽', 'Sprint Qualifying': '衝刺排位賽', 'Sprint Shootout': '衝刺排位賽', 'Practice 1': '第一次練習', 'Practice 2': '第二次練習', 'Practice 3': '第三次練習', 'Day 1': '季前測試第一天', 'Day 2': '季前測試第二天', 'Day 3': '季前測試第三天' };
+    const statusZh = { Inactive: '尚未開始', Started: '進行中', Aborted: '暫停中', Finished: '已結束', Finalised: '已結束', Ends: '已結束' };
+    // 賽道狀態代碼：1 淨空、2 黃旗、4 安全車、5 紅旗、6 虛擬安全車、7 虛擬安全車即將結束
+    const trackZh = { 2: ['yellow', '黃旗：前方有狀況，禁止超車'], 4: ['yellow', '安全車出動：全場減速跟車，禁止超車'], 5: ['red', '紅旗：比賽暫停，所有車輛回到維修區'], 6: ['yellow', '虛擬安全車（VSC）：全場限速，禁止超車'], 7: ['yellow', '虛擬安全車即將結束'] };
+    const serverNow = () => relay.base + (Date.now() - relay.localBase) * relay.speed;
+
+    async function findRelayUrl() {
+      const q = new URLSearchParams(location.search).get('relay');
+      if (q) return q.replace(/\/$/, '');
+      try {
+        const res = await fetch('data/liveEndpoint.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) return null;
+        const j = await res.json();
+        return j.url && (!j.expiresAt || Date.parse(j.expiresAt) > Date.now()) ? j.url.replace(/\/$/, '') : null;
+      } catch (e) { return null; }
+    }
+    // 連上轉送程式：8 秒內收到第一份資料就進入直播模式，否則回到一般回放
+    function connectRelay(url) {
+      return new Promise((resolve) => {
+        let es;
+        try { es = new EventSource(url + '/stream'); } catch (e) { resolve(false); return; }
+        const timer = setTimeout(() => { es.close(); resolve(false); }, 8000);
+        es.addEventListener('snapshot', (ev) => {
+          clearTimeout(timer);
+          const first = !relay.on;
+          relay.es = es; relay.url = url;
+          applyRelay(JSON.parse(ev.data), true);
+          if (first) enterRelayMode();
+          resolve(true);
+        });
+        es.addEventListener('update', (ev) => applyRelay(JSON.parse(ev.data), false));
+        es.onerror = () => {
+          if (!relay.on) { clearTimeout(timer); es.close(); resolve(false); return; }
+          // 直播中斷線：EventSource 會自動重連，先提示
+          $('#flagBanner').className = 'flagBanner show info';
+          $('#flagBanner').textContent = '與直播伺服器的連線中斷，正在重新連線…';
+        };
+      });
+    }
+    function applyRelay(msg, full) {
+      relay.base = msg.now; relay.localBase = Date.now(); relay.lastMsg = Date.now();
+      if (msg.speed) relay.speed = msg.speed;
+      if (full) relay.cars = {};
+      if (msg.session) relay.session = msg.session;
+      if (msg.rc) relay.rc = msg.rc;
+      if (msg.radio) relay.radio = msg.radio;
+      (msg.cars || []).forEach((c) => { relay.cars[c.n] = Object.assign(relay.cars[c.n] || {}, c); });
+      if (msg.outline !== undefined && relay.on) buildRelayMap(msg.outline);
+      else if (msg.outline !== undefined) relay.outline = msg.outline;
+      if (relay.on) renderRelay();
+    }
+    function enterRelayMode() {
+      relay.on = true;
+      // 停掉一般回放
+      pauseLive(); clearInterval(live.pollTimer); live.reqId++; live.session = null;
+      clearInterval(relay.watchTimer);
+      $('#modeBadge').textContent = 'LIVE'; $('#modeBadge').classList.add('live');
+      ['#playBtn', '#speedSel', '#lapJump', '#timeSlider'].forEach((id) => { $(id).style.display = 'none'; });
+      $('#relayInfo').hidden = false;
+      $('#radioNote').textContent = '比賽中的無線電由 Whisper 即時轉成英文文字（可能有誤），通常在播出後數十秒內出現。';
+      $('#radioList').classList.add('noPlay');
+      $('#srcNote + details').hidden = true;
+      $('#srcNote').innerHTML = '直播中的名次、差距、圈速、區段、輪胎、天氣、旗號與無線電，來自 F1 官方即時計時資料（livetiming.formula1.com），經由本站的轉送程式即時更新，約有數秒延遲。賽道上的車輛位置是依計時資料推算的，並非實際座標。';
+      setLiveMsg('');
+      buildRelayMap(relay.outline);
+      renderRelay();
+      cancelAnimationFrame(relay.raf);
+      relay.raf = requestAnimationFrame(relayLoop);
+      // 每分鐘確認直播是否已結束（網址被撤下），結束就重新整理回到回放模式
+      relay.watchTimer = setInterval(async () => {
+        if (new URLSearchParams(location.search).get('relay')) return;
+        const url = await findRelayUrl();
+        if (!url) location.reload();
+      }, 60000);
+    }
+    // 還沒開始直播時，每分鐘檢查一次，開始了就自動切換
+    function watchForRelay() {
+      clearInterval(relay.watchTimer);
+      relay.watchTimer = setInterval(async () => {
+        if (relay.on || location.hash !== '#live') return;
+        const url = await findRelayUrl();
+        if (url) connectRelay(url);
+      }, 60000);
+    }
+    function buildRelayMap(o) {
+      relay.outline = o;
+      const svg = $('#liveMap');
+      if (!o || !o.pts || o.pts.length < 20) { svg.innerHTML = ''; relay.xy = null; $('#mapLegend').style.display = 'none'; return; }
+      const xy = relay.xy = o.pts.map(([x, y]) => [x, -y]);
+      const xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]);
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const pad = Math.max(maxX - minX, maxY - minY) * 0.09;
+      const vb = [minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2];
+      const scale = Math.max(vb[2], vb[3]) / 700;
+      relay.scale = scale;
+      const d = 'M' + xy.map((p) => `${p[0]} ${p[1]}`).join('L') + 'Z';
+      const n = xy.length;
+      svg.setAttribute('viewBox', vb.join(' '));
+      svg.innerHTML = `<path class="outline" d="${d}" style="stroke-width:${14 * scale}"/>${sectorLayer(xy, [Math.round(o.sectors[0] * n), Math.round(o.sectors[1] * n)], scale) || `<path class="outlineInner" d="${d}" style="stroke-width:${6 * scale}"/>`}<g id="carLayer"></g>`;
+      relay.shown = {};
+      live.pitPath = false;
+      renderMapLegend();
+      $('#mapLegend').insertAdjacentHTML('beforeend', '<span>📍 車輛位置依計時資料推算，可能與實際位置相差數十公尺</span>');
+    }
+    function relayCarEl(c) {
+      let g = document.getElementById('car' + c.n);
+      const layer = document.getElementById('carLayer');
+      if (!g && layer) {
+        const sc = relay.scale || 1;
+        layer.insertAdjacentHTML('beforeend', `<g class="car" id="car${c.n}" style="display:none"><circle r="${9 * sc}" fill="#${c.col || '888'}" style="stroke-width:${2.5 * sc}"/><text x="${12 * sc}" y="${5 * sc}" style="font-size:${13 * sc}px;stroke-width:${3 * sc}px">${escapeHtml(c.tla)}</text></g>`);
+        g = document.getElementById('car' + c.n);
+      }
+      return g;
+    }
+    // 依轉送程式給的「上次通過的位置＋預估速度」往前推算，但不超過下一個計時點
+    function relayLoop() {
+      if (!relay.on) return;
+      const xy = relay.xy;
+      if (xy) {
+        const n = xy.length; const t = serverNow();
+        const leader = Object.values(relay.cars).find((c) => c.pos === 1);
+        Object.values(relay.cars).forEach((c) => {
+          const g = relayCarEl(c);
+          if (!g) return;
+          const e = c.est;
+          if (!e || c.out) { g.style.display = 'none'; return; }
+          let f;
+          if (e.pit) f = 0;
+          else {
+            const cap = e.cap < e.frac ? e.cap + 1 : e.cap;
+            f = Math.min(e.frac + e.rate * Math.max(0, t - e.ts), cap) % 1;
+            // 新的計時點比畫面上的位置稍微落後時，先停住等它追上，避免車點倒退
+            const prev = relay.shown[c.n];
+            if (prev != null) { const diff = ((f - prev + 1.5) % 1) - 0.5; if (diff < 0 && diff > -0.03) f = prev; }
+          }
+          relay.shown[c.n] = f;
+          const i = f * n; const a = xy[Math.floor(i) % n]; const b = xy[(Math.floor(i) + 1) % n]; const k = i - Math.floor(i);
+          g.style.display = '';
+          g.classList.toggle('inpit', !!e.pit);
+          g.classList.toggle('leader', c === leader);
+          g.setAttribute('transform', `translate(${a[0] + (b[0] - a[0]) * k} ${a[1] + (b[1] - a[1]) * k})`);
+        });
+      }
+      // 剩餘時間每秒更新
+      const clockEl = document.getElementById('relayClock');
+      if (clockEl && relay.session) clockEl.textContent = fmtClock(relayRemain());
+      relay.raf = requestAnimationFrame(relayLoop);
+    }
+    const relayRemain = () => { const s = relay.session; if (!s) return 0; return Math.max(0, s.remainMs - (s.clockRunning ? (Date.now() - relay.localBase) * relay.speed : 0)); };
+    const fmtClock = (ms) => { const sec = Math.floor(ms / 1000); return `${Math.floor(sec / 3600)}:${String(Math.floor(sec / 60) % 60).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`; };
+    const lapSec = (v) => { if (!v) return Infinity; const m = String(v).match(/^(?:(\d+):)?(\d+(?:\.\d+)?)$/); return m ? (Number(m[1] || 0) * 60 + Number(m[2])) : Infinity; };
+    const segClsOf = (code) => segCls[code] || '';
+    function renderRelay() {
+      const s = relay.session || {};
+      const isRace = /Race|Sprint$/.test(s.type || '') || s.name === 'Race' || s.name === 'Sprint';
+      // 上方資訊列：賽事、狀態、剩餘時間、天氣
+      const w = s.weather || {};
+      const rain = Number(w.rain) > 0;
+      $('#relayInfo').innerHTML = `<span class="rTitle">🔴 ${escapeHtml(s.meeting || '')}・${escapeHtml(sessionZh[s.name] || s.name || '')}</span>
+        <span>狀態 <b>${statusZh[s.status] || s.status || '—'}</b></span>
+        <span>剩餘時間 <span class="rClock" id="relayClock">${fmtClock(relayRemain())}</span></span>
+        ${w.air ? `<span>氣溫 <b>${w.air}°C</b></span><span>路溫 <b>${Number(w.track) ? w.track + '°C' : '—'}</b></span><span>濕度 <b>${Math.round(w.hum)}%</b></span><span>風速 <b>${w.wind} m/s</b></span><span>${rain ? '🌧️ <b>下雨中</b>' : '☀️ 無降雨'}</span>` : ''}
+        ${relay.speed > 1 ? `<span class="muted">（重播測試 ${relay.speed} 倍速）</span>` : ''}`;
+      $('#lapInfo').textContent = isRace && s.totalLaps ? `第 ${Math.min(s.lap || 0, s.totalLaps)} / ${s.totalLaps} 圈` : (sessionZh[s.name] || s.name || '—');
+      $('#liveSession').innerHTML = `<option>🔴 直播中・${escapeHtml(s.meeting || '')} ${escapeHtml(sessionZh[s.name] || s.name || '')}</option>`;
+      // 旗號
+      const banner = $('#flagBanner'); const tz = trackZh[s.track];
+      if (tz) { banner.className = 'flagBanner show ' + tz[0]; banner.textContent = tz[1]; } else banner.className = 'flagBanner';
+      renderRelayTiming(isRace);
+      $('#rcList').innerHTML = relay.rc.length ? relay.rc.slice().reverse().slice(0, 15).map((r) => `<li><span>${r.lap ? 'L' + r.lap : '—'}</span>${escapeHtml(r.msg || '')}</li>`).join('') : '<li><span>—</span>尚無訊息</li>';
+      renderRelayRadio();
+    }
+    function renderRelayTiming(isRace) {
+      const cars = Object.values(relay.cars).sort((a, b) => a.pos - b.pos);
+      const allBest = Math.min(...cars.map((c) => lapSec(c.best)));
+      $('#timingTable').innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="num">${gapMode === 'int' ? '與前車差距' : '與領先差距'}</th><th class="num">上一圈</th><th class="num">最快圈</th><th class="sec"><span class="secKey" style="background:var(--sec1)"></span>S1</th><th class="sec"><span class="secKey" style="background:var(--sec2)"></span>S2</th><th class="sec"><span class="secKey" style="background:var(--sec3)"></span>S3</th><th>輪胎</th></tr></thead><tbody>${cars.map((c) => {
+        const iv = parseFloat(String(c.int || '').replace('+', ''));
+        const battle = isRace && gapMode === 'int' && c.pos > 1 && iv > 0 && iv < 1 && !c.out && !c.pit;
+        const gapVal = c.pos === 1 ? (isRace ? '領先' : '—') : ((gapMode === 'int' ? c.int : c.gap) || '—');
+        const tc = tyreColor[c.tyre] || '#999';
+        const secs = (c.sec || []).map((x) => {
+          const v = x.v || x.prev; const old = !x.v && !!x.prev;
+          return `<td class="sec ${old ? 'old' : ''}"><span class="v ${old ? '' : x.ob ? 'ob' : x.pb ? 'pb' : ''}">${v || '—'}</span>${x.segs && x.segs.length ? `<span class="segs">${x.segs.map((code) => `<i class="${segClsOf(code)}"></i>`).join('')}</span>` : ''}</td>`;
+        }).join('') || '<td class="sec">—</td><td class="sec">—</td><td class="sec">—</td>';
+        return `<tr class="${c.out ? 'out' : ''} ${battle ? 'battle' : ''}"><td class="pos">${c.pos < 99 ? c.pos : '—'}</td>
+          <td class="drv"><span class="teamDot" style="background:#${c.col || '999'}"></span>${escapeHtml(c.tla)} <span class="muted hideSm hideMd" style="font-weight:500;font-family:var(--sans)">${escapeHtml(c.name || '')}</span>${c.pit && !c.out ? '<span class="pitTag">PIT</span>' : ''}${c.out ? '<span class="outTag">OUT</span>' : ''}${c.knocked ? '<span class="outTag">淘汰</span>' : ''}${battle ? '<span class="battleTag" title="與前車 1 秒內">纏鬥</span>' : ''}</td>
+          <td class="num">${escapeHtml(String(gapVal))}</td>
+          <td class="num"><span class="${c.last && c.last.ob ? 'ob' : c.last && c.last.pb ? 'pb' : ''}">${escapeHtml((c.last && c.last.v) || '—')}</span></td>
+          <td class="num">${c.best ? (lapSec(c.best) <= allBest ? `<span class="bestPill" title="全場最快圈">${escapeHtml(c.best)}</span>` : escapeHtml(c.best)) : '—'}</td>
+          ${secs}
+          <td>${c.tyre ? `<span class="tyreDot" style="border-color:${tc}">${escapeHtml(c.tyre[0])}</span> <span class="muted">${c.tyreAge ?? ''}</span>` : '—'}</td></tr>`;
+      }).join('')}</tbody>`;
+    }
+    function renderRelayRadio() {
+      const list = $('#radioList');
+      const sig = relay.radio.map((r) => r.utc + (r.text ?? '')).join('|');
+      if (list.dataset.sig === sig) return;
+      list.dataset.sig = sig;
+      if (!relay.radio.length) { list.innerHTML = '<li><span></span><span></span><span class="muted">尚無無線電</span></li>'; return; }
+      list.innerHTML = relay.radio.slice().reverse().map((r, i) => {
+        const c = relay.cars[r.n] || {};
+        const time = new Date(r.utc).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit', hour12: false });
+        return `<li class="${i === 0 ? 'fresh' : ''}"><span></span>
+          <span><span class="rWho" style="border-left:3px solid #${c.col || '999'};padding-left:5px">${escapeHtml(c.tla || r.n)}</span><br><span class="muted rTime">${time}</span></span>
+          <span class="rText ${r.text ? '' : 'none'}">${r.text ? `「${escapeHtml(r.text)}」` : r.text === '' ? '（聽不清楚）' : '轉錄中…'}</span></li>`;
+      }).join('');
+    }
+
     let gapMode = 'int';
     $('#gapToggle').addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
       gapMode = btn.dataset.gap;
       document.querySelectorAll('#gapToggle button').forEach((b) => b.classList.toggle('on', b === btn));
-      drawLive(true);
+      if (relay.on) renderRelay(); else drawLive(true);
     });
     $('#playBtn').addEventListener('click', () => (live.playing ? pauseLive() : playLive()));
     $('#speedSel').addEventListener('change', (e) => { live.speed = Number(e.target.value); });
