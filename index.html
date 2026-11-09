@@ -431,7 +431,35 @@
     .rcList { list-style: none; padding: 0; margin: 0; font-size: .85rem; max-height: 220px; overflow: auto; }
     .rcList li { padding: 5px 0; border-bottom: 1px dashed var(--line); display: grid; grid-template-columns: 56px 1fr; gap: 8px; }
     .rcList li span { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
-    @media (max-width: 1000px) { .liveGrid { grid-template-columns: 1fr; } #liveMap { max-height: 60vh; } }
+    /* 賽道三個計時區段的代表色，以及計時表的區段顏色（紫＝全場最快、綠＝個人最快） */
+    :root { --sec1: #e8002d; --sec2: #1f7ae0; --sec3: #e0a800; --purpleBest: #8e2de2; --greenBest: #13a050; --segYellow: #e6b800; }
+    #liveMap .secPath { fill: none; stroke-linejoin: round; stroke-linecap: butt; }
+    #liveMap .secPath.s1 { stroke: var(--sec1); }
+    #liveMap .secPath.s2 { stroke: var(--sec2); }
+    #liveMap .secPath.s3 { stroke: var(--sec3); }
+    #liveMap .secTick { stroke: var(--ink); stroke-linecap: round; }
+    #liveMap .secTick.finish { stroke-dasharray: 2 2; }
+    #liveMap .secLabel { font-family: var(--display); font-weight: 900; font-style: italic; paint-order: stroke; stroke: #fff; text-anchor: middle; dominant-baseline: central; }
+    #liveMap .secLabel.s1 { fill: var(--sec1); }
+    #liveMap .secLabel.s2 { fill: var(--sec2); }
+    #liveMap .secLabel.s3 { fill: var(--sec3); }
+    .timing th.sec, .timing td.sec { text-align: right; min-width: 58px; }
+    .liveGrid .timing td, .liveGrid .timing th { padding: 6px 6px; }
+    .timing td.sec .v { display: block; font-weight: 700; }
+    .timing td.sec.old .v { opacity: .4; }
+    .timing .ob { color: var(--purpleBest); }
+    .timing .pb { color: var(--greenBest); }
+    .timing .bestPill { display: inline-block; background: var(--purpleBest); color: #fff; border-radius: 999px; padding: 0 7px; font-weight: 700; }
+    .timing .segs { display: flex; gap: 2px; justify-content: flex-end; margin-top: 3px; }
+    .timing .segs i { width: 5px; height: 3px; border-radius: 1px; background: var(--line); }
+    .timing .segs i.y { background: var(--segYellow); }
+    .timing .segs i.g { background: var(--greenBest); }
+    .timing .segs i.p { background: var(--purpleBest); }
+    .timing .segs i.pit { background: #8fb4e8; }
+    .timing th .secKey { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+    .liveGrid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+    @media (max-width: 1640px) { .timing .hideMd { display: none; } }
+    @media (max-width: 1000px) { .liveGrid { grid-template-columns: 1fr; } #liveMap { max-height: 60vh; } .liveGrid .mapCard { order: -1; } }
 
     /* 平板 */
     @media (max-width: 1100px) {
@@ -573,6 +601,9 @@
     :root[data-theme="dark"] #liveMap .car.inpit circle { fill: var(--surface) !important; }
     :root[data-theme="dark"] #liveMap .car.inpit text { fill: #8fb4e8; }
     :root[data-theme="dark"] .mapLegend i.ring { background: var(--surface); }
+    :root[data-theme="dark"] { --sec1: #ff3b5c; --sec2: #4a9dff; --sec3: #ffc93c; --purpleBest: #b77bff; --greenBest: #3ddc84; --segYellow: #ffd23f; }
+    :root[data-theme="dark"] #liveMap .secLabel { stroke: var(--surface); }
+    :root[data-theme="dark"] .timing .bestPill { background: #8e2de2; }
     /* 黑色文字 Logo 在深色底看不到，墊一塊白色底片 */
     :root[data-theme="dark"] .teamLogo img { background: #fff; border-radius: 4px; padding: 2px 4px; box-sizing: content-box; }
     :root[data-theme="dark"] .trackLegend i[style*="var(--ink)"] { background: var(--ink) !important; }
@@ -632,7 +663,7 @@
     <!-- 賽道即時 -->
     <section class="page" id="page-live">
       <h1>賽事回顧</h1>
-      <p class="lead">完整回放 2026 年每一場正賽：在賽道圖上看每台車的位置，旁邊是名次、車距、最近一圈圈速、輪胎與車隊無線電。</p>
+      <p class="lead">完整回放 2026 年每一場正賽：在賽道圖上看每台車的位置，旁邊是名次、車距、圈速、三個區段（S1／S2／S3）的分段時間、輪胎與車隊無線電。</p>
       <div class="liveBar">
         <span class="modeBadge" id="modeBadge">回放</span>
         <select id="liveSession" aria-label="選擇比賽"><option>載入賽事清單中…</option></select>
@@ -645,11 +676,11 @@
       <div class="timeRow"><input type="range" id="timeSlider" min="0" max="1" value="0" step="1" disabled aria-label="比賽時間"><span class="lapInfo" id="lapInfo">—</span></div>
       <div class="flagBanner" id="flagBanner"></div>
       <div class="liveGrid">
-        <div class="card mapCard"><svg id="liveMap" viewBox="0 0 100 100" role="img" aria-label="賽道上的車輛位置"></svg><div class="mapLegend" id="mapLegend" style="display:none"><span><i style="background:#c9ced9"></i>賽道</span><span><i style="background:#8fb4e8"></i>維修區通道</span><span><i class="ring"></i>正在維修區（PIT）</span><span>🏁 完賽、DNF 退賽的車會自動從賽道上移除</span></div><div class="liveMsg" id="liveMsg">選擇一場比賽開始回放。</div></div>
         <div class="card tableWrap">
           <div class="gapBar"><div class="toggle sm" id="gapToggle"><button data-gap="int" class="on">與前車差距</button><button data-gap="gap">與領先差距</button></div><span class="muted"><span class="battleTag" style="margin:0 4px 0 0">纏鬥</span>與前車 1 秒內，進入超車模式範圍</span></div>
           <table class="timing" id="timingTable"></table>
         </div>
+        <div class="card mapCard"><svg id="liveMap" viewBox="0 0 100 100" role="img" aria-label="賽道上的車輛位置"></svg><div class="mapLegend" id="mapLegend" style="display:none"></div><div class="liveMsg" id="liveMsg">選擇一場比賽開始回放。</div></div>
       </div>
       <div class="grid cols2" style="margin-top:18px">
         <div class="card"><h3>車隊無線電</h3><p class="muted" style="margin:0 0 6px">隨著比賽時間出現，點 ▶ 播放原始錄音。文字稿為賽後以語音辨識（Whisper）自動轉錄的英文原文，可能有誤。</p><ul class="radioList" id="radioList"><li><span></span><span></span><span class="muted">尚無無線電</span></li></ul><audio id="radioAudio" preload="none"></audio></div>
@@ -2118,6 +2149,14 @@
       throw new Error('請求過於頻繁');
     }
     const isoMs = (ms) => new Date(ms).toISOString();
+    // 整理一圈的資料：各區段完成的時刻＝圈的起點加上前面區段的累計秒數，用來判斷回放到某一刻時哪些區段已經跑完
+    function prepLap(l) {
+      const ts = l.date_start ? Date.parse(l.date_start) : null;
+      const secs = [l.duration_sector_1, l.duration_sector_2, l.duration_sector_3];
+      let acc = 0;
+      const secEnd = secs.map((v) => { if (ts == null || !v || acc == null) { acc = null; return null; } acc += v; return ts + acc * 1000; });
+      return { ...l, ts, secs, secEnd, end: ts != null && l.lap_duration ? ts + l.lap_duration * 1000 : null };
+    }
     const fmtLap = (sec) => { if (!sec) return '—'; const m = Math.floor(sec / 60); return `${m}:${(sec - m * 60).toFixed(3).padStart(6, '0')}`; };
     const fmtGap = (v) => v == null ? '—' : typeof v === 'number' ? (v === 0 ? '—' : '+' + v.toFixed(3)) : String(v);
     function setLiveMsg(text) { const m = $('#liveMsg'); m.style.display = text ? 'block' : 'none'; m.textContent = text || ''; }
@@ -2155,8 +2194,10 @@
         sel.addEventListener('change', () => loadLiveSession(Number(sel.value)));
         loadLiveSession(live.sessions[0].session_key);
       } catch (e) {
-        $('#liveSession').innerHTML = '<option>無法連上 OpenF1</option>';
-        setLiveMsg('無法連上 OpenF1 公開資料庫，請稍後再試。');
+        // 有比賽正在進行時，OpenF1 會暫停所有免費存取（連過去的比賽也查不到），直到該節賽事結束
+        $('#liveSession').innerHTML = `<option>${e.auth ? '比賽進行中，暫停開放' : '無法連上 OpenF1'}</option>`;
+        setLiveMsg(e.auth ? '目前有 F1 賽事正在進行，OpenF1 在比賽期間只開放付費帳號（包含過去比賽的回放）。這節賽事結束後就會恢復，請稍後再回來看。' : '無法連上 OpenF1 公開資料庫，請稍後再試。');
+        live.inited = false;
       }
     }
 
@@ -2169,7 +2210,7 @@
       live.isLive = Date.now() < new Date(sess.date_end).getTime() + 30 * 60000;
       $('#modeBadge').textContent = live.isLive ? 'LIVE' : '回放';
       $('#modeBadge').classList.toggle('live', live.isLive);
-      $('#liveMap').innerHTML = ''; $('#timingTable').innerHTML = ''; $('#rcList').innerHTML = '';
+      $('#liveMap').innerHTML = ''; $('#mapLegend').style.display = 'none'; $('#timingTable').innerHTML = ''; $('#rcList').innerHTML = '';
       setLiveMsg('載入比賽資料中…');
       try {
         const drivers = await of1(`drivers?session_key=${key}`);
@@ -2183,7 +2224,7 @@
         live.radios = radios.map((r) => ({ n: r.driver_number, ts: Date.parse(r.date), url: r.recording_url })).sort((a, b) => a.ts - b.ts);
         if (myReq !== live.reqId) return;
         drivers.forEach((d) => { live.drivers[d.driver_number] = d; });
-        laps.forEach((l) => { (live.laps[l.driver_number] = live.laps[l.driver_number] || []).push({ ...l, ts: l.date_start ? Date.parse(l.date_start) : null }); });
+        laps.forEach((l) => { (live.laps[l.driver_number] = live.laps[l.driver_number] || []).push(prepLap(l)); });
         Object.values(live.laps).forEach((a) => a.sort((x, y) => x.lap_number - y.lap_number));
         stints.forEach((st) => { (live.stints[st.driver_number] = live.stints[st.driver_number] || []).push(st); });
         live.pos = pos.map((p) => ({ ...p, ts: Date.parse(p.date) })).sort((a, b) => a.ts - b.ts);
@@ -2204,7 +2245,7 @@
         live.t = live.isLive ? Date.now() - 8000 : live.t0;
         await ensureChunks(live.t);
         setLiveMsg('');
-        $('#mapLegend').style.display = live.pitPath ? 'flex' : 'none';
+        if (live.map) renderMapLegend();
         drawLive(true);
         if (live.isLive) { startLivePolling(); playLive(); }
       } catch (e) {
@@ -2221,15 +2262,54 @@
       if (myReq !== live.reqId || pts.length < 20) return;
       const xs = pts.map((p) => p.x); const ys = pts.map((p) => -p.y);
       const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
-      const pad = Math.max(maxX - minX, maxY - minY) * 0.06;
+      // 留白要夠放區段名稱（S1／S2／S3）
+      const pad = Math.max(maxX - minX, maxY - minY) * 0.09;
       const vb = [minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2];
       const scale = Math.max(vb[2], vb[3]) / 700;
       live.map = { vb, scale };
       const d = 'M' + pts.map((p) => `${p.x} ${-p.y}`).join('L') + 'Z';
       const svg = $('#liveMap');
       svg.setAttribute('viewBox', vb.join(' '));
-      svg.innerHTML = `<path class="outline" d="${d}" style="stroke-width:${14 * scale}"/><path class="outlineInner" d="${d}" style="stroke-width:${6 * scale}"/><g id="carLayer"></g>`;
+      svg.innerHTML = `<path class="outline" d="${d}" style="stroke-width:${14 * scale}"/>${sectorLayer(ref, pts, scale) || `<path class="outlineInner" d="${d}" style="stroke-width:${6 * scale}"/>`}<g id="carLayer"></g>`;
       $('#carLayer').innerHTML = Object.values(live.drivers).map((dr) => `<g class="car" id="car${dr.driver_number}" style="display:none"><circle r="${9 * scale}" fill="#${dr.team_colour || '888'}" style="stroke-width:${2.5 * scale}"/><text x="${12 * scale}" y="${5 * scale}" style="font-size:${13 * scale}px;stroke-width:${3 * scale}px">${escapeHtml(dr.name_acronym)}</text></g>`).join('');
+    }
+
+    // 依參考圈的區段秒數，把賽道切成 S1／S2／S3 三段上色，並標出區段分界與起終點線
+    function sectorLayer(ref, pts, scale) {
+      const [s1, s2] = [ref.duration_sector_1, ref.duration_sector_2];
+      if (!s1 || !s2 || !ref.ts) return '';
+      const times = pts.map((p) => Date.parse(p.date));
+      const idxAt = (ms) => { let k = times.findIndex((x) => x >= ms); return k < 0 ? times.length - 1 : k; };
+      const b1 = idxAt(ref.ts + s1 * 1000); const b2 = idxAt(ref.ts + (s1 + s2) * 1000);
+      if (!(b1 > 2 && b2 > b1 + 2 && b2 < pts.length - 3)) return '';
+      const xy = (p) => `${p.x} ${-p.y}`;
+      const seg = (a, b) => 'M' + pts.slice(a, b + 1).map(xy).join('L');
+      // 第三段接回起點，讓賽道是封閉的
+      const paths = [seg(0, b1), seg(b1, b2), seg(b2, pts.length - 1) + 'L' + xy(pts[0])];
+      // 分界線：垂直於行進方向的短線
+      const tick = (i, cls) => {
+        const a = pts[Math.max(0, i - 2)], b = pts[Math.min(pts.length - 1, i + 2)];
+        const dx = b.x - a.x, dy = -(b.y - a.y); const len = Math.hypot(dx, dy) || 1;
+        const nx = -dy / len * 13 * scale, ny = dx / len * 13 * scale; const p = pts[i];
+        return `<line class="secTick ${cls}" x1="${p.x + nx}" y1="${-p.y + ny}" x2="${p.x - nx}" y2="${-p.y - ny}" style="stroke-width:${3 * scale}"/>`;
+      };
+      // 區段名稱放在每段的中間點，往賽道外側偏移，避免壓在賽道上
+      const cx = pts.reduce((v, p) => v + p.x, 0) / pts.length, cy = pts.reduce((v, p) => v - p.y, 0) / pts.length;
+      const label = (a, b, k) => {
+        const p = pts[Math.floor((a + b) / 2)]; const vx = p.x - cx, vy = -p.y - cy; const l = Math.hypot(vx, vy) || 1;
+        return `<text class="secLabel s${k}" x="${p.x + vx / l * 30 * scale}" y="${-p.y + vy / l * 30 * scale}" style="font-size:${20 * scale}px;stroke-width:${5 * scale}px">S${k}</text>`;
+      };
+      return paths.map((p, k) => `<path class="secPath s${k + 1}" d="${p}" style="stroke-width:${6 * scale}"/>`).join('')
+        + tick(b1, '') + tick(b2, '') + tick(0, 'finish')
+        + label(0, b1, 1) + label(b1, b2, 2) + label(b2, pts.length - 1, 3);
+    }
+    function renderMapLegend() {
+      const el = $('#mapLegend');
+      const hasSec = !!document.querySelector('#liveMap .secPath');
+      el.innerHTML = (hasSec ? '<span><i style="background:var(--sec1)"></i>第一區段 S1</span><span><i style="background:var(--sec2)"></i>第二區段 S2</span><span><i style="background:var(--sec3)"></i>第三區段 S3</span>' : '<span><i style="background:#c9ced9"></i>賽道</span>')
+        + (live.pitPath ? '<span><i style="background:#8fb4e8"></i>維修區通道</span><span><i class="ring"></i>正在維修區（PIT）</span>' : '')
+        + '<span>🏁 完賽、DNF 退賽的車會自動從賽道上移除</span>';
+      el.style.display = 'flex';
     }
 
     // OpenF1 的進站時間接近出站時刻；以「進站時間前 70 秒到後 10 秒、車速低於維修區速限」判定在維修區
@@ -2367,7 +2447,7 @@
         const lapNo = cur ? cur.lap_number : 0;
         const stint = (live.stints[n] || []).find((st) => lapNo >= st.lap_start && (st.lap_end == null || lapNo <= st.lap_end)) || (live.stints[n] || [])[0];
         const tyreAge = stint ? stint.tyre_age_at_start + Math.max(0, lapNo - stint.lap_start) : null;
-        return { dr, pos: posMap[n] || 99, lapNo, last: prev ? prev.lap_duration : null, gap: iv ? iv.gap : null, int: iv ? iv.int : null, stint, tyreAge, pit: inPit(n, t), status: carStatus(n, t) };
+        return { dr, cur, prev, pos: posMap[n] || 99, lapNo, last: prev ? prev.lap_duration : null, gap: iv ? iv.gap : null, int: iv ? iv.int : null, stint, tyreAge, pit: inPit(n, t), status: carStatus(n, t) };
       }).sort((a, b) => a.pos - b.pos);
     }
     function drawLive(force) {
@@ -2393,16 +2473,52 @@
       const slider = $('#timeSlider');
       if (document.activeElement !== slider) slider.value = Math.round((t - live.t0) / 1000);
     }
+    // 到時間 t 為止：全場與每位車手的最快區段、最快單圈（只算已經跑完的）
+    function bestsAt(t) {
+      const all = { sec: [Infinity, Infinity, Infinity], lap: Infinity }; const mine = {};
+      Object.entries(live.laps).forEach(([n, laps]) => {
+        const me = mine[n] = { sec: [Infinity, Infinity, Infinity], lap: Infinity };
+        laps.forEach((l) => {
+          (l.secs || []).forEach((v, k) => { if (v && l.secEnd[k] && l.secEnd[k] <= t) { me.sec[k] = Math.min(me.sec[k], v); all.sec[k] = Math.min(all.sec[k], v); } });
+          if (l.lap_duration && l.end && l.end <= t && !l.is_pit_out_lap) { me.lap = Math.min(me.lap, l.lap_duration); all.lap = Math.min(all.lap, l.lap_duration); }
+        });
+      });
+      return { all, mine };
+    }
+    // 紫色＝全場最快、綠色＝個人最快
+    const bestCls = (v, allBest, myBest) => !v ? '' : v <= allBest ? 'ob' : v <= myBest ? 'pb' : '';
+    // OpenF1 小段代碼：2048 黃（未進步）、2049 綠（個人最快）、2051 紫（全場最快）、2064 維修區
+    const segCls = { 2048: 'y', 2049: 'g', 2051: 'p', 2064: 'pit' };
+    // 一位車手某個區段要顯示的格子：本圈已跑完就顯示本圈；本圈還沒跑到就顯示上一圈的（淡色）
+    function sectorCell(r, k, t, b) {
+      const n = r.dr.driver_number;
+      const curStarted = r.cur && r.cur.secEnd && r.cur.secEnd[0] && r.cur.secEnd[0] <= t;
+      let lap = null, old = false;
+      if (r.cur && r.cur.secEnd && r.cur.secEnd[k] && r.cur.secEnd[k] <= t) lap = r.cur;
+      else if (r.prev && r.prev.secs && r.prev.secs[k]) { lap = r.prev; old = curStarted; }
+      if (!lap || !lap.secs[k]) return '<td class="sec"><span class="v muted">—</span></td>';
+      const v = lap.secs[k];
+      const my = (b.mine[n] || { sec: [] }).sec[k];
+      const segs = lap['segments_sector_' + (k + 1)] || [];
+      return `<td class="sec ${old ? 'old' : ''}"><span class="v ${old ? '' : bestCls(v, b.all.sec[k], my)}">${v.toFixed(3)}</span>${segs.length ? `<span class="segs">${segs.map((c) => `<i class="${segCls[c] || ''}"></i>`).join('')}</span>` : ''}</td>`;
+    }
     function renderTiming(rows) {
       const lead = rows[0] ? rows[0].lapNo : 0;
+      const t = live.t;
+      const b = bestsAt(t);
       $('#lapInfo').textContent = `第 ${Math.min(Math.max(lead, 0), live.totalLaps || lead)} / ${live.totalLaps || '—'} 圈`;
-      $('#timingTable').innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="num">${gapMode === 'int' ? '與前車差距' : '與領先差距'}</th><th class="num">上一圈</th><th>輪胎</th></tr></thead><tbody>${rows.filter((r) => r.pos < 99).map((r) => {
+      $('#timingTable').innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="num">${gapMode === 'int' ? '與前車差距' : '與領先差距'}</th><th class="num">上一圈</th><th class="num">最快圈</th><th class="sec"><span class="secKey" style="background:var(--sec1)"></span>S1</th><th class="sec"><span class="secKey" style="background:var(--sec2)"></span>S2</th><th class="sec"><span class="secKey" style="background:var(--sec3)"></span>S3</th><th>輪胎</th></tr></thead><tbody>${rows.filter((r) => r.pos < 99).map((r) => {
         const c = r.stint ? (tyreColor[r.stint.compound] || '#999') : '#999';
         const battle = gapMode === 'int' && r.pos > 1 && typeof r.int === 'number' && r.int > 0 && r.int < 1 && r.status === 'run';
+        const my = b.mine[r.dr.driver_number] || { lap: Infinity };
+        const best = isFinite(my.lap) ? my.lap : null;
+        const lastCls = r.prev && r.prev.is_pit_out_lap ? '' : bestCls(r.last, b.all.lap, my.lap);
         return `<tr class="${r.status === 'dnf' ? 'out' : ''} ${battle ? 'battle' : ''}"><td class="pos">${r.pos}</td>
-          <td class="drv"><span class="teamDot" style="background:#${r.dr.team_colour || '999'}"></span>${escapeHtml(r.dr.name_acronym)} <span class="muted hideSm" style="font-weight:500;font-family:var(--sans)">${escapeHtml(r.dr.last_name || '')}</span>${r.pit && r.status === 'run' ? '<span class="pitTag">PIT</span>' : ''}${r.status === 'dnf' ? '<span class="outTag">DNF</span>' : ''}${r.status === 'fin' ? '<span class="finTag" title="已完賽">🏁</span>' : ''}${battle ? '<span class="battleTag" title="與前車 1 秒內">纏鬥</span>' : ''}</td>
+          <td class="drv"><span class="teamDot" style="background:#${r.dr.team_colour || '999'}"></span>${escapeHtml(r.dr.name_acronym)} <span class="muted hideSm hideMd" style="font-weight:500;font-family:var(--sans)">${escapeHtml(r.dr.last_name || '')}</span>${r.pit && r.status === 'run' ? '<span class="pitTag">PIT</span>' : ''}${r.status === 'dnf' ? '<span class="outTag">DNF</span>' : ''}${r.status === 'fin' ? '<span class="finTag" title="已完賽">🏁</span>' : ''}${battle ? '<span class="battleTag" title="與前車 1 秒內">纏鬥</span>' : ''}</td>
           <td class="num">${r.pos === 1 ? '領先' : fmtGap(gapMode === 'int' ? r.int : r.gap)}</td>
-          <td class="num">${fmtLap(r.last)}</td>
+          <td class="num"><span class="${lastCls}">${fmtLap(r.last)}</span></td>
+          <td class="num">${best && best <= b.all.lap ? `<span class="bestPill" title="全場最快圈">${fmtLap(best)}</span>` : fmtLap(best)}</td>
+          ${[0, 1, 2].map((k) => sectorCell(r, k, t, b)).join('')}
           <td>${r.stint ? `<span class="tyreDot" style="border-color:${c}">${(r.stint.compound || '?')[0]}</span> <span class="muted">${r.tyreAge ?? ''}</span>` : '—'}</td></tr>`;
       }).join('')}</tbody>`;
       // 賽事管制：最新旗號與訊息
@@ -2479,7 +2595,7 @@
           const [loc, iv, pos, laps, rc] = [await of1(`location?session_key=${key}&date>${since}`), await of1(`intervals?session_key=${key}&date>${since}`), await of1(`position?session_key=${key}&date>${since}`), await of1(`laps?session_key=${key}&lap_number>${Math.max(0, live.totalLaps - 2)}`), await of1(`race_control?session_key=${key}&date>${since}`)];
           addLoc(loc); addIv(iv);
           pos.forEach((p) => live.pos.push({ ...p, ts: Date.parse(p.date) })); live.pos.sort((a, b) => a.ts - b.ts);
-          laps.forEach((l) => { const a = live.laps[l.driver_number] = live.laps[l.driver_number] || []; const i = a.findIndex((x) => x.lap_number === l.lap_number); const v = { ...l, ts: l.date_start ? Date.parse(l.date_start) : null }; if (i >= 0) a[i] = v; else a.push(v); a.sort((x, y) => x.lap_number - y.lap_number); live.totalLaps = Math.max(live.totalLaps, l.lap_number); });
+          laps.forEach((l) => { const a = live.laps[l.driver_number] = live.laps[l.driver_number] || []; const i = a.findIndex((x) => x.lap_number === l.lap_number); const v = prepLap(l); if (i >= 0) a[i] = v; else a.push(v); a.sort((x, y) => x.lap_number - y.lap_number); live.totalLaps = Math.max(live.totalLaps, l.lap_number); });
           rc.forEach((r) => { if (!live.rc.some((x) => x.date === r.date && x.message === r.message)) live.rc.push({ ...r, ts: Date.parse(r.date) }); });
           const [pitNew, radioNew] = [await of1(`pit?session_key=${key}&date>${since}`), await of1(`team_radio?session_key=${key}&date>${since}`)];
           pitNew.filter((p) => p.date && p.lap_number > 1).forEach((p) => { const ts = Date.parse(p.date); if (!live.pits.some((x) => x.n === p.driver_number && x.ts === ts)) live.pits.push({ n: p.driver_number, ts, dur: (p.lane_duration || p.pit_duration || 25) * 1000 }); });
