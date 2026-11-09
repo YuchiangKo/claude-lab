@@ -249,6 +249,13 @@
     .flag { width: 42px; height: 28px; border-radius: 3px; flex: none; border: 1px solid rgba(0,0,0,.15); }
     .tyre { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; border: 5px solid; font-weight: 800; font-size: .75rem; background: #222; color: #fff; margin-right: 10px; flex: none; }
     .tyreRow { display: flex; align-items: center; padding: 6px 0; }
+    .calCard { margin-top: 18px; }
+    .calBtns { display: flex; flex-wrap: wrap; gap: 10px; }
+    .calBtn { display: inline-block; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 10px; padding: 9px 16px; font-weight: 700; text-decoration: none; }
+    .calBtn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .calBtn:hover { border-color: var(--accent); }
+    .calHelp { padding-left: 20px; margin: 8px 0 0; }
+    .calHelp li { margin-bottom: 6px; }
     .callout { background: var(--warn-soft); border: 1px solid #e7c27a; border-radius: 12px; padding: 12px 16px; font-size: .95rem; }
     .stepList { counter-reset: step; list-style: none; padding: 0; margin: 0; }
     .stepList li { counter-increment: step; position: relative; padding: 0 0 14px 46px; }
@@ -718,6 +725,25 @@
       <div class="callout" style="margin-bottom:16px">原訂 24 站，因中東局勢取消巴林與沙烏地阿拉伯兩站，之後巴林站改至馬來西亞雪邦賽道舉行，全年共 23 站。</div>
       <div class="card tableWrap"><table id="scheduleTable"></table></div>
       <p class="muted" id="scheduleNote"></p>
+
+      <!-- 2027 賽季行事曆：同一個 .ics 檔，提供訂閱（會自動更新）與下載匯入兩種方式 -->
+      <div class="card calCard" id="calendar2027">
+        <h2 style="margin-top:0">📅 把 2027 賽季加進行事曆</h2>
+        <p class="teamDesc">24 站共 120 節比賽（練習賽、排位賽、衝刺賽、正賽），事件名稱如「巴西大獎賽 正賽」，附賽道地點與當地時間，開賽前 5 分鐘提醒。行事曆會自動依你所在的時區顯示。</p>
+        <p class="callout" style="margin:0 0 14px">官方尚未公布 2027 年各節時間，目前是<b>暫定時間</b>（參考 2026 年同賽道時刻推估）。官方公布後會更新，用「訂閱」加入的行事曆會自動改成正確時間。</p>
+        <div class="calBtns">
+          <a class="calBtn primary" href="webcal://yuchiangko.github.io/claude-lab/calendar/f1-2027.ics">iPhone／Mac 訂閱</a>
+          <a class="calBtn" href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fyuchiangko.github.io%2Fclaude-lab%2Fcalendar%2Ff1-2027.ics" target="_blank" rel="noopener">Google 日曆訂閱（Android）</a>
+          <a class="calBtn" href="calendar/f1-2027.ics">下載 .ics 匯入</a>
+        </div>
+        <details style="margin-top:12px"><summary>訂閱和匯入有什麼不同？</summary>
+          <ul class="teamDesc calHelp">
+            <li><b>訂閱</b>：會多出一個獨立的「F1 2027 賽季」行事曆，時間有變動時自動更新。Mac 訂閱時「位置」選 <b>iCloud</b>，就會同步到 iPhone；並取消勾選「移除：提醒」，才會保留開賽前 5 分鐘提醒。</li>
+            <li><b>下載匯入</b>：iPhone 用 Safari 點按鈕後選「加入全部」，Mac 打開檔案即可，可以<b>自己選要放進哪個行事曆</b>（例如你原本的「參考」分類），提醒也會保留。缺點是時間變動不會自動更新，要重新匯入一次（同一場比賽會直接更新，不會重複）。</li>
+            <li><b>Google 日曆／Android</b>：用上面的 Google 按鈕訂閱，Android 手機上的 Google 日曆會自動同步。Google 不會讀取檔案裡的提醒設定，請在 Google 日曆的這個行事曆設定裡，把「預設通知」改成活動前 5 分鐘。</li>
+          </ul>
+        </details>
+      </div>
 
       <h2>全年賽道一覽</h2>
       <p class="lead">每條賽道都有自己的「長相」：摩納哥蜿蜒狹窄、蒙札幾乎是長直線、鈴鹿是獨一無二的 8 字形。深色為賽道、淺藍為維修區（Pit lane，墨爾本與上海暫無資料）、紅點為線路起點附近，圖面皆為北方朝上。</p>

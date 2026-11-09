@@ -1,0 +1,2652 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Lights Out//F1 Calendar//ZH-TW
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:F1 2027 賽季
+X-WR-CALDESC:F1 2027 賽季全部練習賽、排位賽、衝刺賽與正賽
+ 。由 Lights Out 整理：https://yuchiangko.github.io/claude-lab/
+X-WR-TIMEZONE:Asia/Taipei
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:f1-2027-r01-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270312T123000Z
+DTEND:20270312T133000Z
+SUMMARY:巴林大獎賽 一練
+LOCATION:巴林國際賽道，薩基爾，巴林（Bahrain International Ci
+ rcuit\, Sakhir\, Bahrain）
+DESCRIPTION:第 1 站・巴林大獎賽\n當地時間：2027/3/12（五）1
+ 5:30\n台灣時間：2027/3/12（五）20:30\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴林大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r01-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270312T163000Z
+DTEND:20270312T171500Z
+SUMMARY:巴林大獎賽 衝刺排位賽
+LOCATION:巴林國際賽道，薩基爾，巴林（Bahrain International Ci
+ rcuit\, Sakhir\, Bahrain）
+DESCRIPTION:第 1 站・巴林大獎賽\n當地時間：2027/3/12（五）1
+ 9:30\n台灣時間：2027/3/13（六）00:30\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴林大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r01-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270313T120000Z
+DTEND:20270313T124500Z
+SUMMARY:巴林大獎賽 衝刺賽
+LOCATION:巴林國際賽道，薩基爾，巴林（Bahrain International Ci
+ rcuit\, Sakhir\, Bahrain）
+DESCRIPTION:第 1 站・巴林大獎賽\n當地時間：2027/3/13（六）1
+ 5:00\n台灣時間：2027/3/13（六）20:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴林大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r01-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270313T160000Z
+DTEND:20270313T170000Z
+SUMMARY:巴林大獎賽 排位賽
+LOCATION:巴林國際賽道，薩基爾，巴林（Bahrain International Ci
+ rcuit\, Sakhir\, Bahrain）
+DESCRIPTION:第 1 站・巴林大獎賽\n當地時間：2027/3/13（六）1
+ 9:00\n台灣時間：2027/3/14（日）00:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴林大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r01-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270314T150000Z
+DTEND:20270314T170000Z
+SUMMARY:巴林大獎賽 正賽
+LOCATION:巴林國際賽道，薩基爾，巴林（Bahrain International Ci
+ rcuit\, Sakhir\, Bahrain）
+DESCRIPTION:第 1 站・巴林大獎賽\n當地時間：2027/3/14（日）1
+ 8:00\n台灣時間：2027/3/14（日）23:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴林大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r02-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270319T153000Z
+DTEND:20270319T163000Z
+SUMMARY:沙烏地阿拉伯大獎賽 一練
+LOCATION:吉達濱海賽道，吉達，沙烏地阿拉伯（Jeddah Corniche
+  Circuit\, Jeddah\, Saudi Arabia）
+DESCRIPTION:第 2 站・沙烏地阿拉伯大獎賽\n當地時間：2027/3/
+ 19（五）18:30\n台灣時間：2027/3/19（五）23:30\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:沙烏地阿拉伯大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r02-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270319T190000Z
+DTEND:20270319T200000Z
+SUMMARY:沙烏地阿拉伯大獎賽 二練
+LOCATION:吉達濱海賽道，吉達，沙烏地阿拉伯（Jeddah Corniche
+  Circuit\, Jeddah\, Saudi Arabia）
+DESCRIPTION:第 2 站・沙烏地阿拉伯大獎賽\n當地時間：2027/3/
+ 19（五）22:00\n台灣時間：2027/3/20（六）03:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:沙烏地阿拉伯大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r02-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270320T143000Z
+DTEND:20270320T153000Z
+SUMMARY:沙烏地阿拉伯大獎賽 三練
+LOCATION:吉達濱海賽道，吉達，沙烏地阿拉伯（Jeddah Corniche
+  Circuit\, Jeddah\, Saudi Arabia）
+DESCRIPTION:第 2 站・沙烏地阿拉伯大獎賽\n當地時間：2027/3/
+ 20（六）17:30\n台灣時間：2027/3/20（六）22:30\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:沙烏地阿拉伯大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r02-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270320T180000Z
+DTEND:20270320T190000Z
+SUMMARY:沙烏地阿拉伯大獎賽 排位賽
+LOCATION:吉達濱海賽道，吉達，沙烏地阿拉伯（Jeddah Corniche
+  Circuit\, Jeddah\, Saudi Arabia）
+DESCRIPTION:第 2 站・沙烏地阿拉伯大獎賽\n當地時間：2027/3/
+ 20（六）21:00\n台灣時間：2027/3/21（日）02:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:沙烏地阿拉伯大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r02-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270321T170000Z
+DTEND:20270321T190000Z
+SUMMARY:沙烏地阿拉伯大獎賽 正賽
+LOCATION:吉達濱海賽道，吉達，沙烏地阿拉伯（Jeddah Corniche
+  Circuit\, Jeddah\, Saudi Arabia）
+DESCRIPTION:第 2 站・沙烏地阿拉伯大獎賽\n當地時間：2027/3/
+ 21（日）20:00\n台灣時間：2027/3/22（一）01:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:沙烏地阿拉伯大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r03-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270402T013000Z
+DTEND:20270402T023000Z
+SUMMARY:澳洲大獎賽 一練
+LOCATION:亞伯特公園賽道，墨爾本，澳洲（Albert Park Circuit\,
+  Melbourne\, Australia）
+DESCRIPTION:第 3 站・澳洲大獎賽\n當地時間：2027/4/2（五）12
+ :30\n台灣時間：2027/4/2（五）09:30\n\n⚠️ 官方尚未公布 20
+ 27 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:澳洲大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r03-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270402T053000Z
+DTEND:20270402T061500Z
+SUMMARY:澳洲大獎賽 衝刺排位賽
+LOCATION:亞伯特公園賽道，墨爾本，澳洲（Albert Park Circuit\,
+  Melbourne\, Australia）
+DESCRIPTION:第 3 站・澳洲大獎賽\n當地時間：2027/4/2（五）16
+ :30\n台灣時間：2027/4/2（五）13:30\n\n⚠️ 官方尚未公布 20
+ 27 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:澳洲大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r03-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270403T010000Z
+DTEND:20270403T014500Z
+SUMMARY:澳洲大獎賽 衝刺賽
+LOCATION:亞伯特公園賽道，墨爾本，澳洲（Albert Park Circuit\,
+  Melbourne\, Australia）
+DESCRIPTION:第 3 站・澳洲大獎賽\n當地時間：2027/4/3（六）12
+ :00\n台灣時間：2027/4/3（六）09:00\n\n⚠️ 官方尚未公布 20
+ 27 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:澳洲大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r03-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270403T050000Z
+DTEND:20270403T060000Z
+SUMMARY:澳洲大獎賽 排位賽
+LOCATION:亞伯特公園賽道，墨爾本，澳洲（Albert Park Circuit\,
+  Melbourne\, Australia）
+DESCRIPTION:第 3 站・澳洲大獎賽\n當地時間：2027/4/3（六）16
+ :00\n台灣時間：2027/4/3（六）13:00\n\n⚠️ 官方尚未公布 20
+ 27 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:澳洲大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r03-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270404T050000Z
+DTEND:20270404T070000Z
+SUMMARY:澳洲大獎賽 正賽
+LOCATION:亞伯特公園賽道，墨爾本，澳洲（Albert Park Circuit\,
+  Melbourne\, Australia）
+DESCRIPTION:第 3 站・澳洲大獎賽\n當地時間：2027/4/4（日）15
+ :00\n台灣時間：2027/4/4（日）13:00\n\n⚠️ 官方尚未公布 20
+ 27 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:澳洲大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r04-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270409T023000Z
+DTEND:20270409T033000Z
+SUMMARY:日本大獎賽 一練
+LOCATION:鈴鹿賽道，鈴鹿，日本（Suzuka Circuit\, Suzuka\, Japan
+ ）
+DESCRIPTION:第 4 站・日本大獎賽\n當地時間：2027/4/9（五）11
+ :30\n台灣時間：2027/4/9（五）10:30\n\n⚠️ 官方尚未公布 20
+ 27 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:日本大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r04-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270409T063000Z
+DTEND:20270409T071500Z
+SUMMARY:日本大獎賽 衝刺排位賽
+LOCATION:鈴鹿賽道，鈴鹿，日本（Suzuka Circuit\, Suzuka\, Japan
+ ）
+DESCRIPTION:第 4 站・日本大獎賽\n當地時間：2027/4/9（五）15
+ :30\n台灣時間：2027/4/9（五）14:30\n\n⚠️ 官方尚未公布 20
+ 27 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:日本大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r04-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270410T020000Z
+DTEND:20270410T024500Z
+SUMMARY:日本大獎賽 衝刺賽
+LOCATION:鈴鹿賽道，鈴鹿，日本（Suzuka Circuit\, Suzuka\, Japan
+ ）
+DESCRIPTION:第 4 站・日本大獎賽\n當地時間：2027/4/10（六）1
+ 1:00\n台灣時間：2027/4/10（六）10:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:日本大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r04-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270410T060000Z
+DTEND:20270410T070000Z
+SUMMARY:日本大獎賽 排位賽
+LOCATION:鈴鹿賽道，鈴鹿，日本（Suzuka Circuit\, Suzuka\, Japan
+ ）
+DESCRIPTION:第 4 站・日本大獎賽\n當地時間：2027/4/10（六）1
+ 5:00\n台灣時間：2027/4/10（六）14:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:日本大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r04-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270411T050000Z
+DTEND:20270411T070000Z
+SUMMARY:日本大獎賽 正賽
+LOCATION:鈴鹿賽道，鈴鹿，日本（Suzuka Circuit\, Suzuka\, Japan
+ ）
+DESCRIPTION:第 4 站・日本大獎賽\n當地時間：2027/4/11（日）1
+ 4:00\n台灣時間：2027/4/11（日）13:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:日本大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r05-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270416T053000Z
+DTEND:20270416T063000Z
+SUMMARY:中國大獎賽 一練
+LOCATION:上海國際賽車場，上海，中國（Shanghai International C
+ ircuit\, Shanghai\, China）
+DESCRIPTION:第 5 站・中國大獎賽\n當地時間：2027/4/16（五）1
+ 3:30\n台灣時間：2027/4/16（五）13:30\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:中國大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r05-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270416T090000Z
+DTEND:20270416T100000Z
+SUMMARY:中國大獎賽 二練
+LOCATION:上海國際賽車場，上海，中國（Shanghai International C
+ ircuit\, Shanghai\, China）
+DESCRIPTION:第 5 站・中國大獎賽\n當地時間：2027/4/16（五）1
+ 7:00\n台灣時間：2027/4/16（五）17:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:中國大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r05-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270417T043000Z
+DTEND:20270417T053000Z
+SUMMARY:中國大獎賽 三練
+LOCATION:上海國際賽車場，上海，中國（Shanghai International C
+ ircuit\, Shanghai\, China）
+DESCRIPTION:第 5 站・中國大獎賽\n當地時間：2027/4/17（六）1
+ 2:30\n台灣時間：2027/4/17（六）12:30\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:中國大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r05-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270417T080000Z
+DTEND:20270417T090000Z
+SUMMARY:中國大獎賽 排位賽
+LOCATION:上海國際賽車場，上海，中國（Shanghai International C
+ ircuit\, Shanghai\, China）
+DESCRIPTION:第 5 站・中國大獎賽\n當地時間：2027/4/17（六）1
+ 6:00\n台灣時間：2027/4/17（六）16:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:中國大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r05-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270418T070000Z
+DTEND:20270418T090000Z
+SUMMARY:中國大獎賽 正賽
+LOCATION:上海國際賽車場，上海，中國（Shanghai International C
+ ircuit\, Shanghai\, China）
+DESCRIPTION:第 5 站・中國大獎賽\n當地時間：2027/4/18（日）1
+ 5:00\n台灣時間：2027/4/18（日）15:00\n\n⚠️ 官方尚未公布 
+ 2027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:中國大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r06-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270430T183000Z
+DTEND:20270430T193000Z
+SUMMARY:邁阿密大獎賽 一練
+LOCATION:邁阿密國際賽車場，邁阿密，美國（Miami Internationa
+ l Autodrome\, Miami Gardens\, USA）
+DESCRIPTION:第 6 站・邁阿密大獎賽\n當地時間：2027/4/30（五
+ ）14:30\n台灣時間：2027/5/1（六）02:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:邁阿密大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r06-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270430T220000Z
+DTEND:20270430T230000Z
+SUMMARY:邁阿密大獎賽 二練
+LOCATION:邁阿密國際賽車場，邁阿密，美國（Miami Internationa
+ l Autodrome\, Miami Gardens\, USA）
+DESCRIPTION:第 6 站・邁阿密大獎賽\n當地時間：2027/4/30（五
+ ）18:00\n台灣時間：2027/5/1（六）06:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:邁阿密大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r06-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270501T173000Z
+DTEND:20270501T183000Z
+SUMMARY:邁阿密大獎賽 三練
+LOCATION:邁阿密國際賽車場，邁阿密，美國（Miami Internationa
+ l Autodrome\, Miami Gardens\, USA）
+DESCRIPTION:第 6 站・邁阿密大獎賽\n當地時間：2027/5/1（六
+ ）13:30\n台灣時間：2027/5/2（日）01:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:邁阿密大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r06-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270501T210000Z
+DTEND:20270501T220000Z
+SUMMARY:邁阿密大獎賽 排位賽
+LOCATION:邁阿密國際賽車場，邁阿密，美國（Miami Internationa
+ l Autodrome\, Miami Gardens\, USA）
+DESCRIPTION:第 6 站・邁阿密大獎賽\n當地時間：2027/5/1（六
+ ）17:00\n台灣時間：2027/5/2（日）05:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:邁阿密大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r06-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270502T200000Z
+DTEND:20270502T220000Z
+SUMMARY:邁阿密大獎賽 正賽
+LOCATION:邁阿密國際賽車場，邁阿密，美國（Miami Internationa
+ l Autodrome\, Miami Gardens\, USA）
+DESCRIPTION:第 6 站・邁阿密大獎賽\n當地時間：2027/5/2（日
+ ）16:00\n台灣時間：2027/5/3（一）04:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:邁阿密大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r07-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270521T173000Z
+DTEND:20270521T183000Z
+SUMMARY:加拿大大獎賽 一練
+LOCATION:Gilles Villeneuve 賽道，蒙特婁，加拿大（Circuit Gilles 
+ Villeneuve\, Montreal\, Canada）
+DESCRIPTION:第 7 站・加拿大大獎賽\n當地時間：2027/5/21（五
+ ）13:30\n台灣時間：2027/5/22（六）01:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:加拿大大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r07-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270521T213000Z
+DTEND:20270521T221500Z
+SUMMARY:加拿大大獎賽 衝刺排位賽
+LOCATION:Gilles Villeneuve 賽道，蒙特婁，加拿大（Circuit Gilles 
+ Villeneuve\, Montreal\, Canada）
+DESCRIPTION:第 7 站・加拿大大獎賽\n當地時間：2027/5/21（五
+ ）17:30\n台灣時間：2027/5/22（六）05:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:加拿大大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r07-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270522T170000Z
+DTEND:20270522T174500Z
+SUMMARY:加拿大大獎賽 衝刺賽
+LOCATION:Gilles Villeneuve 賽道，蒙特婁，加拿大（Circuit Gilles 
+ Villeneuve\, Montreal\, Canada）
+DESCRIPTION:第 7 站・加拿大大獎賽\n當地時間：2027/5/22（六
+ ）13:00\n台灣時間：2027/5/23（日）01:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:加拿大大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r07-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270522T210000Z
+DTEND:20270522T220000Z
+SUMMARY:加拿大大獎賽 排位賽
+LOCATION:Gilles Villeneuve 賽道，蒙特婁，加拿大（Circuit Gilles 
+ Villeneuve\, Montreal\, Canada）
+DESCRIPTION:第 7 站・加拿大大獎賽\n當地時間：2027/5/22（六
+ ）17:00\n台灣時間：2027/5/23（日）05:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:加拿大大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r07-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270523T200000Z
+DTEND:20270523T220000Z
+SUMMARY:加拿大大獎賽 正賽
+LOCATION:Gilles Villeneuve 賽道，蒙特婁，加拿大（Circuit Gilles 
+ Villeneuve\, Montreal\, Canada）
+DESCRIPTION:第 7 站・加拿大大獎賽\n當地時間：2027/5/23（日
+ ）16:00\n台灣時間：2027/5/24（一）04:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:加拿大大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r08-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270604T103000Z
+DTEND:20270604T113000Z
+SUMMARY:摩納哥大獎賽 一練
+LOCATION:蒙地卡羅街道賽道，蒙地卡羅，摩納哥（Circuit de M
+ onaco\, Monte Carlo\, Monaco）
+DESCRIPTION:第 8 站・摩納哥大獎賽\n當地時間：2027/6/4（五
+ ）12:30\n台灣時間：2027/6/4（五）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:摩納哥大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r08-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270604T143000Z
+DTEND:20270604T151500Z
+SUMMARY:摩納哥大獎賽 衝刺排位賽
+LOCATION:蒙地卡羅街道賽道，蒙地卡羅，摩納哥（Circuit de M
+ onaco\, Monte Carlo\, Monaco）
+DESCRIPTION:第 8 站・摩納哥大獎賽\n當地時間：2027/6/4（五
+ ）16:30\n台灣時間：2027/6/4（五）22:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:摩納哥大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r08-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270605T100000Z
+DTEND:20270605T104500Z
+SUMMARY:摩納哥大獎賽 衝刺賽
+LOCATION:蒙地卡羅街道賽道，蒙地卡羅，摩納哥（Circuit de M
+ onaco\, Monte Carlo\, Monaco）
+DESCRIPTION:第 8 站・摩納哥大獎賽\n當地時間：2027/6/5（六
+ ）12:00\n台灣時間：2027/6/5（六）18:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:摩納哥大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r08-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270605T140000Z
+DTEND:20270605T150000Z
+SUMMARY:摩納哥大獎賽 排位賽
+LOCATION:蒙地卡羅街道賽道，蒙地卡羅，摩納哥（Circuit de M
+ onaco\, Monte Carlo\, Monaco）
+DESCRIPTION:第 8 站・摩納哥大獎賽\n當地時間：2027/6/5（六
+ ）16:00\n台灣時間：2027/6/5（六）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:摩納哥大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r08-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270606T130000Z
+DTEND:20270606T150000Z
+SUMMARY:摩納哥大獎賽 正賽
+LOCATION:蒙地卡羅街道賽道，蒙地卡羅，摩納哥（Circuit de M
+ onaco\, Monte Carlo\, Monaco）
+DESCRIPTION:第 8 站・摩納哥大獎賽\n當地時間：2027/6/6（日
+ ）15:00\n台灣時間：2027/6/6（日）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:摩納哥大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r09-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270618T123000Z
+DTEND:20270618T133000Z
+SUMMARY:葡萄牙大獎賽 一練
+LOCATION:阿爾加維國際賽道，波爾蒂芒，葡萄牙（Algarve Inte
+ rnational Circuit\, Portimão\, Portugal）
+DESCRIPTION:第 9 站・葡萄牙大獎賽\n當地時間：2027/6/18（五
+ ）13:30\n台灣時間：2027/6/18（五）20:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:葡萄牙大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r09-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270618T160000Z
+DTEND:20270618T170000Z
+SUMMARY:葡萄牙大獎賽 二練
+LOCATION:阿爾加維國際賽道，波爾蒂芒，葡萄牙（Algarve Inte
+ rnational Circuit\, Portimão\, Portugal）
+DESCRIPTION:第 9 站・葡萄牙大獎賽\n當地時間：2027/6/18（五
+ ）17:00\n台灣時間：2027/6/19（六）00:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:葡萄牙大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r09-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270619T113000Z
+DTEND:20270619T123000Z
+SUMMARY:葡萄牙大獎賽 三練
+LOCATION:阿爾加維國際賽道，波爾蒂芒，葡萄牙（Algarve Inte
+ rnational Circuit\, Portimão\, Portugal）
+DESCRIPTION:第 9 站・葡萄牙大獎賽\n當地時間：2027/6/19（六
+ ）12:30\n台灣時間：2027/6/19（六）19:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:葡萄牙大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r09-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270619T150000Z
+DTEND:20270619T160000Z
+SUMMARY:葡萄牙大獎賽 排位賽
+LOCATION:阿爾加維國際賽道，波爾蒂芒，葡萄牙（Algarve Inte
+ rnational Circuit\, Portimão\, Portugal）
+DESCRIPTION:第 9 站・葡萄牙大獎賽\n當地時間：2027/6/19（六
+ ）16:00\n台灣時間：2027/6/19（六）23:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:葡萄牙大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r09-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270620T140000Z
+DTEND:20270620T160000Z
+SUMMARY:葡萄牙大獎賽 正賽
+LOCATION:阿爾加維國際賽道，波爾蒂芒，葡萄牙（Algarve Inte
+ rnational Circuit\, Portimão\, Portugal）
+DESCRIPTION:第 9 站・葡萄牙大獎賽\n當地時間：2027/6/20（日
+ ）15:00\n台灣時間：2027/6/20（日）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:葡萄牙大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r10-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270702T113000Z
+DTEND:20270702T123000Z
+SUMMARY:英國大獎賽 一練
+LOCATION:銀石賽道，銀石，英國（Silverstone Circuit\, Silverstone
+ \, United Kingdom）
+DESCRIPTION:第 10 站・英國大獎賽\n當地時間：2027/7/2（五）1
+ 2:30\n台灣時間：2027/7/2（五）19:30\n\n⚠️ 官方尚未公布 2
+ 027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:英國大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r10-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270702T153000Z
+DTEND:20270702T161500Z
+SUMMARY:英國大獎賽 衝刺排位賽
+LOCATION:銀石賽道，銀石，英國（Silverstone Circuit\, Silverstone
+ \, United Kingdom）
+DESCRIPTION:第 10 站・英國大獎賽\n當地時間：2027/7/2（五）1
+ 6:30\n台灣時間：2027/7/2（五）23:30\n\n⚠️ 官方尚未公布 2
+ 027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:英國大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r10-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270703T110000Z
+DTEND:20270703T114500Z
+SUMMARY:英國大獎賽 衝刺賽
+LOCATION:銀石賽道，銀石，英國（Silverstone Circuit\, Silverstone
+ \, United Kingdom）
+DESCRIPTION:第 10 站・英國大獎賽\n當地時間：2027/7/3（六）1
+ 2:00\n台灣時間：2027/7/3（六）19:00\n\n⚠️ 官方尚未公布 2
+ 027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:英國大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r10-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270703T150000Z
+DTEND:20270703T160000Z
+SUMMARY:英國大獎賽 排位賽
+LOCATION:銀石賽道，銀石，英國（Silverstone Circuit\, Silverstone
+ \, United Kingdom）
+DESCRIPTION:第 10 站・英國大獎賽\n當地時間：2027/7/3（六）1
+ 6:00\n台灣時間：2027/7/3（六）23:00\n\n⚠️ 官方尚未公布 2
+ 027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:英國大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r10-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270704T140000Z
+DTEND:20270704T160000Z
+SUMMARY:英國大獎賽 正賽
+LOCATION:銀石賽道，銀石，英國（Silverstone Circuit\, Silverstone
+ \, United Kingdom）
+DESCRIPTION:第 10 站・英國大獎賽\n當地時間：2027/7/4（日）1
+ 5:00\n台灣時間：2027/7/4（日）22:00\n\n⚠️ 官方尚未公布 2
+ 027 年各節時間，這是暫定時間（參考 2026 年同賽道時刻
+ 推估）。官方公布後會更新；用「訂閱」加入的行事曆
+ 會自動改成正確時間。\n\n賽程與即時資訊：https://yuchiang
+ ko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:英國大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r11-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270709T113000Z
+DTEND:20270709T123000Z
+SUMMARY:奧地利大獎賽 一練
+LOCATION:Red Bull Ring，斯皮爾伯格，奧地利（Red Bull Ring\, Spie
+ lberg\, Austria）
+DESCRIPTION:第 11 站・奧地利大獎賽\n當地時間：2027/7/9（五
+ ）13:30\n台灣時間：2027/7/9（五）19:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:奧地利大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r11-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270709T150000Z
+DTEND:20270709T160000Z
+SUMMARY:奧地利大獎賽 二練
+LOCATION:Red Bull Ring，斯皮爾伯格，奧地利（Red Bull Ring\, Spie
+ lberg\, Austria）
+DESCRIPTION:第 11 站・奧地利大獎賽\n當地時間：2027/7/9（五
+ ）17:00\n台灣時間：2027/7/9（五）23:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:奧地利大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r11-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270710T103000Z
+DTEND:20270710T113000Z
+SUMMARY:奧地利大獎賽 三練
+LOCATION:Red Bull Ring，斯皮爾伯格，奧地利（Red Bull Ring\, Spie
+ lberg\, Austria）
+DESCRIPTION:第 11 站・奧地利大獎賽\n當地時間：2027/7/10（六
+ ）12:30\n台灣時間：2027/7/10（六）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:奧地利大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r11-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270710T140000Z
+DTEND:20270710T150000Z
+SUMMARY:奧地利大獎賽 排位賽
+LOCATION:Red Bull Ring，斯皮爾伯格，奧地利（Red Bull Ring\, Spie
+ lberg\, Austria）
+DESCRIPTION:第 11 站・奧地利大獎賽\n當地時間：2027/7/10（六
+ ）16:00\n台灣時間：2027/7/10（六）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:奧地利大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r11-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270711T130000Z
+DTEND:20270711T150000Z
+SUMMARY:奧地利大獎賽 正賽
+LOCATION:Red Bull Ring，斯皮爾伯格，奧地利（Red Bull Ring\, Spie
+ lberg\, Austria）
+DESCRIPTION:第 11 站・奧地利大獎賽\n當地時間：2027/7/11（日
+ ）15:00\n台灣時間：2027/7/11（日）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:奧地利大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r12-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270723T113000Z
+DTEND:20270723T123000Z
+SUMMARY:比利時大獎賽 一練
+LOCATION:斯帕賽道，斯塔沃洛，比利時（Circuit de Spa-Francorch
+ amps\, Stavelot\, Belgium）
+DESCRIPTION:第 12 站・比利時大獎賽\n當地時間：2027/7/23（五
+ ）13:30\n台灣時間：2027/7/23（五）19:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:比利時大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r12-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270723T150000Z
+DTEND:20270723T160000Z
+SUMMARY:比利時大獎賽 二練
+LOCATION:斯帕賽道，斯塔沃洛，比利時（Circuit de Spa-Francorch
+ amps\, Stavelot\, Belgium）
+DESCRIPTION:第 12 站・比利時大獎賽\n當地時間：2027/7/23（五
+ ）17:00\n台灣時間：2027/7/23（五）23:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:比利時大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r12-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270724T103000Z
+DTEND:20270724T113000Z
+SUMMARY:比利時大獎賽 三練
+LOCATION:斯帕賽道，斯塔沃洛，比利時（Circuit de Spa-Francorch
+ amps\, Stavelot\, Belgium）
+DESCRIPTION:第 12 站・比利時大獎賽\n當地時間：2027/7/24（六
+ ）12:30\n台灣時間：2027/7/24（六）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:比利時大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r12-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270724T140000Z
+DTEND:20270724T150000Z
+SUMMARY:比利時大獎賽 排位賽
+LOCATION:斯帕賽道，斯塔沃洛，比利時（Circuit de Spa-Francorch
+ amps\, Stavelot\, Belgium）
+DESCRIPTION:第 12 站・比利時大獎賽\n當地時間：2027/7/24（六
+ ）16:00\n台灣時間：2027/7/24（六）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:比利時大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r12-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270725T130000Z
+DTEND:20270725T150000Z
+SUMMARY:比利時大獎賽 正賽
+LOCATION:斯帕賽道，斯塔沃洛，比利時（Circuit de Spa-Francorch
+ amps\, Stavelot\, Belgium）
+DESCRIPTION:第 12 站・比利時大獎賽\n當地時間：2027/7/25（日
+ ）15:00\n台灣時間：2027/7/25（日）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:比利時大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r13-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270730T113000Z
+DTEND:20270730T123000Z
+SUMMARY:匈牙利大獎賽 一練
+LOCATION:匈牙利賽道，莫焦羅德，匈牙利（Hungaroring\, Mogyor
+ ód\, Hungary）
+DESCRIPTION:第 13 站・匈牙利大獎賽\n當地時間：2027/7/30（五
+ ）13:30\n台灣時間：2027/7/30（五）19:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:匈牙利大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r13-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270730T150000Z
+DTEND:20270730T160000Z
+SUMMARY:匈牙利大獎賽 二練
+LOCATION:匈牙利賽道，莫焦羅德，匈牙利（Hungaroring\, Mogyor
+ ód\, Hungary）
+DESCRIPTION:第 13 站・匈牙利大獎賽\n當地時間：2027/7/30（五
+ ）17:00\n台灣時間：2027/7/30（五）23:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:匈牙利大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r13-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270731T103000Z
+DTEND:20270731T113000Z
+SUMMARY:匈牙利大獎賽 三練
+LOCATION:匈牙利賽道，莫焦羅德，匈牙利（Hungaroring\, Mogyor
+ ód\, Hungary）
+DESCRIPTION:第 13 站・匈牙利大獎賽\n當地時間：2027/7/31（六
+ ）12:30\n台灣時間：2027/7/31（六）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:匈牙利大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r13-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270731T140000Z
+DTEND:20270731T150000Z
+SUMMARY:匈牙利大獎賽 排位賽
+LOCATION:匈牙利賽道，莫焦羅德，匈牙利（Hungaroring\, Mogyor
+ ód\, Hungary）
+DESCRIPTION:第 13 站・匈牙利大獎賽\n當地時間：2027/7/31（六
+ ）16:00\n台灣時間：2027/7/31（六）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:匈牙利大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r13-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270801T130000Z
+DTEND:20270801T150000Z
+SUMMARY:匈牙利大獎賽 正賽
+LOCATION:匈牙利賽道，莫焦羅德，匈牙利（Hungaroring\, Mogyor
+ ód\, Hungary）
+DESCRIPTION:第 13 站・匈牙利大獎賽\n當地時間：2027/8/1（日
+ ）15:00\n台灣時間：2027/8/1（日）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:匈牙利大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r14-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270903T103000Z
+DTEND:20270903T113000Z
+SUMMARY:義大利大獎賽 一練
+LOCATION:蒙札賽道，蒙札，義大利（Autodromo Nazionale Monza\, Mo
+ nza\, Italy）
+DESCRIPTION:第 14 站・義大利大獎賽\n當地時間：2027/9/3（五
+ ）12:30\n台灣時間：2027/9/3（五）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:義大利大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r14-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270903T143000Z
+DTEND:20270903T151500Z
+SUMMARY:義大利大獎賽 衝刺排位賽
+LOCATION:蒙札賽道，蒙札，義大利（Autodromo Nazionale Monza\, Mo
+ nza\, Italy）
+DESCRIPTION:第 14 站・義大利大獎賽\n當地時間：2027/9/3（五
+ ）16:30\n台灣時間：2027/9/3（五）22:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:義大利大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r14-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270904T100000Z
+DTEND:20270904T104500Z
+SUMMARY:義大利大獎賽 衝刺賽
+LOCATION:蒙札賽道，蒙札，義大利（Autodromo Nazionale Monza\, Mo
+ nza\, Italy）
+DESCRIPTION:第 14 站・義大利大獎賽\n當地時間：2027/9/4（六
+ ）12:00\n台灣時間：2027/9/4（六）18:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:義大利大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r14-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270904T140000Z
+DTEND:20270904T150000Z
+SUMMARY:義大利大獎賽 排位賽
+LOCATION:蒙札賽道，蒙札，義大利（Autodromo Nazionale Monza\, Mo
+ nza\, Italy）
+DESCRIPTION:第 14 站・義大利大獎賽\n當地時間：2027/9/4（六
+ ）16:00\n台灣時間：2027/9/4（六）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:義大利大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r14-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270905T130000Z
+DTEND:20270905T150000Z
+SUMMARY:義大利大獎賽 正賽
+LOCATION:蒙札賽道，蒙札，義大利（Autodromo Nazionale Monza\, Mo
+ nza\, Italy）
+DESCRIPTION:第 14 站・義大利大獎賽\n當地時間：2027/9/5（日
+ ）15:00\n台灣時間：2027/9/5（日）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:義大利大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r15-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270910T113000Z
+DTEND:20270910T123000Z
+SUMMARY:西班牙大獎賽 一練
+LOCATION:馬德里 Madring 賽道，馬德里，西班牙（Madring\, Madri
+ d\, Spain）
+DESCRIPTION:第 15 站・西班牙大獎賽\n當地時間：2027/9/10（五
+ ）13:30\n台灣時間：2027/9/10（五）19:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:西班牙大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r15-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270910T150000Z
+DTEND:20270910T160000Z
+SUMMARY:西班牙大獎賽 二練
+LOCATION:馬德里 Madring 賽道，馬德里，西班牙（Madring\, Madri
+ d\, Spain）
+DESCRIPTION:第 15 站・西班牙大獎賽\n當地時間：2027/9/10（五
+ ）17:00\n台灣時間：2027/9/10（五）23:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:西班牙大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r15-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270911T103000Z
+DTEND:20270911T113000Z
+SUMMARY:西班牙大獎賽 三練
+LOCATION:馬德里 Madring 賽道，馬德里，西班牙（Madring\, Madri
+ d\, Spain）
+DESCRIPTION:第 15 站・西班牙大獎賽\n當地時間：2027/9/11（六
+ ）12:30\n台灣時間：2027/9/11（六）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:西班牙大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r15-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270911T140000Z
+DTEND:20270911T150000Z
+SUMMARY:西班牙大獎賽 排位賽
+LOCATION:馬德里 Madring 賽道，馬德里，西班牙（Madring\, Madri
+ d\, Spain）
+DESCRIPTION:第 15 站・西班牙大獎賽\n當地時間：2027/9/11（六
+ ）16:00\n台灣時間：2027/9/11（六）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:西班牙大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r15-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270912T130000Z
+DTEND:20270912T150000Z
+SUMMARY:西班牙大獎賽 正賽
+LOCATION:馬德里 Madring 賽道，馬德里，西班牙（Madring\, Madri
+ d\, Spain）
+DESCRIPTION:第 15 站・西班牙大獎賽\n當地時間：2027/9/12（日
+ ）15:00\n台灣時間：2027/9/12（日）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:西班牙大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r16-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270924T093000Z
+DTEND:20270924T103000Z
+SUMMARY:亞塞拜然大獎賽 一練
+LOCATION:巴庫街道賽道，巴庫，亞塞拜然（Baku City Circuit\, B
+ aku\, Azerbaijan）
+DESCRIPTION:第 16 站・亞塞拜然大獎賽\n當地時間：2027/9/24（
+ 五）13:30\n台灣時間：2027/9/24（五）17:30\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:亞塞拜然大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r16-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270924T130000Z
+DTEND:20270924T140000Z
+SUMMARY:亞塞拜然大獎賽 二練
+LOCATION:巴庫街道賽道，巴庫，亞塞拜然（Baku City Circuit\, B
+ aku\, Azerbaijan）
+DESCRIPTION:第 16 站・亞塞拜然大獎賽\n當地時間：2027/9/24（
+ 五）17:00\n台灣時間：2027/9/24（五）21:00\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:亞塞拜然大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r16-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270925T083000Z
+DTEND:20270925T093000Z
+SUMMARY:亞塞拜然大獎賽 三練
+LOCATION:巴庫街道賽道，巴庫，亞塞拜然（Baku City Circuit\, B
+ aku\, Azerbaijan）
+DESCRIPTION:第 16 站・亞塞拜然大獎賽\n當地時間：2027/9/25（
+ 六）12:30\n台灣時間：2027/9/25（六）16:30\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:亞塞拜然大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r16-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270925T120000Z
+DTEND:20270925T130000Z
+SUMMARY:亞塞拜然大獎賽 排位賽
+LOCATION:巴庫街道賽道，巴庫，亞塞拜然（Baku City Circuit\, B
+ aku\, Azerbaijan）
+DESCRIPTION:第 16 站・亞塞拜然大獎賽\n當地時間：2027/9/25（
+ 六）16:00\n台灣時間：2027/9/25（六）20:00\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:亞塞拜然大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r16-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20270926T110000Z
+DTEND:20270926T130000Z
+SUMMARY:亞塞拜然大獎賽 正賽
+LOCATION:巴庫街道賽道，巴庫，亞塞拜然（Baku City Circuit\, B
+ aku\, Azerbaijan）
+DESCRIPTION:第 16 站・亞塞拜然大獎賽\n當地時間：2027/9/26（
+ 日）15:00\n台灣時間：2027/9/26（日）19:00\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:亞塞拜然大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r17-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271001T103000Z
+DTEND:20271001T113000Z
+SUMMARY:土耳其大獎賽 一練
+LOCATION:伊斯坦堡公園賽道，伊斯坦堡，土耳其（Istanbul Par
+ k\, Istanbul\, Türkiye）
+DESCRIPTION:第 17 站・土耳其大獎賽\n當地時間：2027/10/1（五
+ ）13:30\n台灣時間：2027/10/1（五）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:土耳其大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r17-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271001T140000Z
+DTEND:20271001T150000Z
+SUMMARY:土耳其大獎賽 二練
+LOCATION:伊斯坦堡公園賽道，伊斯坦堡，土耳其（Istanbul Par
+ k\, Istanbul\, Türkiye）
+DESCRIPTION:第 17 站・土耳其大獎賽\n當地時間：2027/10/1（五
+ ）17:00\n台灣時間：2027/10/1（五）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:土耳其大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r17-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271002T093000Z
+DTEND:20271002T103000Z
+SUMMARY:土耳其大獎賽 三練
+LOCATION:伊斯坦堡公園賽道，伊斯坦堡，土耳其（Istanbul Par
+ k\, Istanbul\, Türkiye）
+DESCRIPTION:第 17 站・土耳其大獎賽\n當地時間：2027/10/2（六
+ ）12:30\n台灣時間：2027/10/2（六）17:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:土耳其大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r17-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271002T130000Z
+DTEND:20271002T140000Z
+SUMMARY:土耳其大獎賽 排位賽
+LOCATION:伊斯坦堡公園賽道，伊斯坦堡，土耳其（Istanbul Par
+ k\, Istanbul\, Türkiye）
+DESCRIPTION:第 17 站・土耳其大獎賽\n當地時間：2027/10/2（六
+ ）16:00\n台灣時間：2027/10/2（六）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:土耳其大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r17-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271003T120000Z
+DTEND:20271003T140000Z
+SUMMARY:土耳其大獎賽 正賽
+LOCATION:伊斯坦堡公園賽道，伊斯坦堡，土耳其（Istanbul Par
+ k\, Istanbul\, Türkiye）
+DESCRIPTION:第 17 站・土耳其大獎賽\n當地時間：2027/10/3（日
+ ）15:00\n台灣時間：2027/10/3（日）20:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:土耳其大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r18-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271008T103000Z
+DTEND:20271008T113000Z
+SUMMARY:新加坡大獎賽 一練
+LOCATION:濱海灣街道賽道，新加坡，新加坡（Marina Bay Street 
+ Circuit\, Singapore\, Singapore）
+DESCRIPTION:第 18 站・新加坡大獎賽\n當地時間：2027/10/8（五
+ ）18:30\n台灣時間：2027/10/8（五）18:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:新加坡大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r18-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271008T140000Z
+DTEND:20271008T150000Z
+SUMMARY:新加坡大獎賽 二練
+LOCATION:濱海灣街道賽道，新加坡，新加坡（Marina Bay Street 
+ Circuit\, Singapore\, Singapore）
+DESCRIPTION:第 18 站・新加坡大獎賽\n當地時間：2027/10/8（五
+ ）22:00\n台灣時間：2027/10/8（五）22:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:新加坡大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r18-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271009T093000Z
+DTEND:20271009T103000Z
+SUMMARY:新加坡大獎賽 三練
+LOCATION:濱海灣街道賽道，新加坡，新加坡（Marina Bay Street 
+ Circuit\, Singapore\, Singapore）
+DESCRIPTION:第 18 站・新加坡大獎賽\n當地時間：2027/10/9（六
+ ）17:30\n台灣時間：2027/10/9（六）17:30\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:新加坡大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r18-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271009T130000Z
+DTEND:20271009T140000Z
+SUMMARY:新加坡大獎賽 排位賽
+LOCATION:濱海灣街道賽道，新加坡，新加坡（Marina Bay Street 
+ Circuit\, Singapore\, Singapore）
+DESCRIPTION:第 18 站・新加坡大獎賽\n當地時間：2027/10/9（六
+ ）21:00\n台灣時間：2027/10/9（六）21:00\n\n⚠️ 官方尚未公
+ 布 2027 年各節時間，這是暫定時間（參考 2026 年同賽道
+ 時刻推估）。官方公布後會更新；用「訂閱」加入的行
+ 事曆會自動改成正確時間。\n\n賽程與即時資訊：https://yu
+ chiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:新加坡大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r18-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271010T120000Z
+DTEND:20271010T140000Z
+SUMMARY:新加坡大獎賽 正賽
+LOCATION:濱海灣街道賽道，新加坡，新加坡（Marina Bay Street 
+ Circuit\, Singapore\, Singapore）
+DESCRIPTION:第 18 站・新加坡大獎賽\n當地時間：2027/10/10（
+ 日）20:00\n台灣時間：2027/10/10（日）20:00\n\n⚠️ 官方尚
+ 未公布 2027 年各節時間，這是暫定時間（參考 2026 年同
+ 賽道時刻推估）。官方公布後會更新；用「訂閱」加入
+ 的行事曆會自動改成正確時間。\n\n賽程與即時資訊：http
+ s://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:新加坡大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r19-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271022T183000Z
+DTEND:20271022T193000Z
+SUMMARY:美國大獎賽 一練
+LOCATION:美洲賽道，奧斯汀，美國（Circuit of the Americas\, Aust
+ in\, USA）
+DESCRIPTION:第 19 站・美國大獎賽\n當地時間：2027/10/22（五
+ ）13:30\n台灣時間：2027/10/23（六）02:30\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:美國大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r19-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271022T220000Z
+DTEND:20271022T230000Z
+SUMMARY:美國大獎賽 二練
+LOCATION:美洲賽道，奧斯汀，美國（Circuit of the Americas\, Aust
+ in\, USA）
+DESCRIPTION:第 19 站・美國大獎賽\n當地時間：2027/10/22（五
+ ）17:00\n台灣時間：2027/10/23（六）06:00\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:美國大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r19-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271023T173000Z
+DTEND:20271023T183000Z
+SUMMARY:美國大獎賽 三練
+LOCATION:美洲賽道，奧斯汀，美國（Circuit of the Americas\, Aust
+ in\, USA）
+DESCRIPTION:第 19 站・美國大獎賽\n當地時間：2027/10/23（六
+ ）12:30\n台灣時間：2027/10/24（日）01:30\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:美國大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r19-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271023T210000Z
+DTEND:20271023T220000Z
+SUMMARY:美國大獎賽 排位賽
+LOCATION:美洲賽道，奧斯汀，美國（Circuit of the Americas\, Aust
+ in\, USA）
+DESCRIPTION:第 19 站・美國大獎賽\n當地時間：2027/10/23（六
+ ）16:00\n台灣時間：2027/10/24（日）05:00\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:美國大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r19-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271024T200000Z
+DTEND:20271024T220000Z
+SUMMARY:美國大獎賽 正賽
+LOCATION:美洲賽道，奧斯汀，美國（Circuit of the Americas\, Aust
+ in\, USA）
+DESCRIPTION:第 19 站・美國大獎賽\n當地時間：2027/10/24（日
+ ）15:00\n台灣時間：2027/10/25（一）04:00\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:美國大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r20-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271029T183000Z
+DTEND:20271029T193000Z
+SUMMARY:墨西哥大獎賽 一練
+LOCATION:羅德里格斯兄弟賽道，墨西哥城，墨西哥（Autódrom
+ o Hermanos Rodríguez\, Mexico City\, Mexico）
+DESCRIPTION:第 20 站・墨西哥大獎賽\n當地時間：2027/10/29（
+ 五）12:30\n台灣時間：2027/10/30（六）02:30\n\n⚠️ 官方尚
+ 未公布 2027 年各節時間，這是暫定時間（參考 2026 年同
+ 賽道時刻推估）。官方公布後會更新；用「訂閱」加入
+ 的行事曆會自動改成正確時間。\n\n賽程與即時資訊：http
+ s://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:墨西哥大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r20-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271029T220000Z
+DTEND:20271029T230000Z
+SUMMARY:墨西哥大獎賽 二練
+LOCATION:羅德里格斯兄弟賽道，墨西哥城，墨西哥（Autódrom
+ o Hermanos Rodríguez\, Mexico City\, Mexico）
+DESCRIPTION:第 20 站・墨西哥大獎賽\n當地時間：2027/10/29（
+ 五）16:00\n台灣時間：2027/10/30（六）06:00\n\n⚠️ 官方尚
+ 未公布 2027 年各節時間，這是暫定時間（參考 2026 年同
+ 賽道時刻推估）。官方公布後會更新；用「訂閱」加入
+ 的行事曆會自動改成正確時間。\n\n賽程與即時資訊：http
+ s://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:墨西哥大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r20-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271030T173000Z
+DTEND:20271030T183000Z
+SUMMARY:墨西哥大獎賽 三練
+LOCATION:羅德里格斯兄弟賽道，墨西哥城，墨西哥（Autódrom
+ o Hermanos Rodríguez\, Mexico City\, Mexico）
+DESCRIPTION:第 20 站・墨西哥大獎賽\n當地時間：2027/10/30（
+ 六）11:30\n台灣時間：2027/10/31（日）01:30\n\n⚠️ 官方尚
+ 未公布 2027 年各節時間，這是暫定時間（參考 2026 年同
+ 賽道時刻推估）。官方公布後會更新；用「訂閱」加入
+ 的行事曆會自動改成正確時間。\n\n賽程與即時資訊：http
+ s://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:墨西哥大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r20-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271030T210000Z
+DTEND:20271030T220000Z
+SUMMARY:墨西哥大獎賽 排位賽
+LOCATION:羅德里格斯兄弟賽道，墨西哥城，墨西哥（Autódrom
+ o Hermanos Rodríguez\, Mexico City\, Mexico）
+DESCRIPTION:第 20 站・墨西哥大獎賽\n當地時間：2027/10/30（
+ 六）15:00\n台灣時間：2027/10/31（日）05:00\n\n⚠️ 官方尚
+ 未公布 2027 年各節時間，這是暫定時間（參考 2026 年同
+ 賽道時刻推估）。官方公布後會更新；用「訂閱」加入
+ 的行事曆會自動改成正確時間。\n\n賽程與即時資訊：http
+ s://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:墨西哥大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r20-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271031T200000Z
+DTEND:20271031T220000Z
+SUMMARY:墨西哥大獎賽 正賽
+LOCATION:羅德里格斯兄弟賽道，墨西哥城，墨西哥（Autódrom
+ o Hermanos Rodríguez\, Mexico City\, Mexico）
+DESCRIPTION:第 20 站・墨西哥大獎賽\n當地時間：2027/10/31（
+ 日）14:00\n台灣時間：2027/11/1（一）04:00\n\n⚠️ 官方尚未
+ 公布 2027 年各節時間，這是暫定時間（參考 2026 年同賽
+ 道時刻推估）。官方公布後會更新；用「訂閱」加入的
+ 行事曆會自動改成正確時間。\n\n賽程與即時資訊：https:/
+ /yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:墨西哥大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r21-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271105T143000Z
+DTEND:20271105T153000Z
+SUMMARY:巴西大獎賽 一練
+LOCATION:英特拉格斯賽道，聖保羅，巴西（Autódromo José Carl
+ os Pace (Interlagos)\, São Paulo\, Brazil）
+DESCRIPTION:第 21 站・巴西大獎賽\n當地時間：2027/11/5（五）
+ 11:30\n台灣時間：2027/11/5（五）22:30\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴西大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r21-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271105T183000Z
+DTEND:20271105T191500Z
+SUMMARY:巴西大獎賽 衝刺排位賽
+LOCATION:英特拉格斯賽道，聖保羅，巴西（Autódromo José Carl
+ os Pace (Interlagos)\, São Paulo\, Brazil）
+DESCRIPTION:第 21 站・巴西大獎賽\n當地時間：2027/11/5（五）
+ 15:30\n台灣時間：2027/11/6（六）02:30\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴西大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r21-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271106T140000Z
+DTEND:20271106T144500Z
+SUMMARY:巴西大獎賽 衝刺賽
+LOCATION:英特拉格斯賽道，聖保羅，巴西（Autódromo José Carl
+ os Pace (Interlagos)\, São Paulo\, Brazil）
+DESCRIPTION:第 21 站・巴西大獎賽\n當地時間：2027/11/6（六）
+ 11:00\n台灣時間：2027/11/6（六）22:00\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴西大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r21-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271106T180000Z
+DTEND:20271106T190000Z
+SUMMARY:巴西大獎賽 排位賽
+LOCATION:英特拉格斯賽道，聖保羅，巴西（Autódromo José Carl
+ os Pace (Interlagos)\, São Paulo\, Brazil）
+DESCRIPTION:第 21 站・巴西大獎賽\n當地時間：2027/11/6（六）
+ 15:00\n台灣時間：2027/11/7（日）02:00\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴西大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r21-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271107T170000Z
+DTEND:20271107T190000Z
+SUMMARY:巴西大獎賽 正賽
+LOCATION:英特拉格斯賽道，聖保羅，巴西（Autódromo José Carl
+ os Pace (Interlagos)\, São Paulo\, Brazil）
+DESCRIPTION:第 21 站・巴西大獎賽\n當地時間：2027/11/7（日）
+ 14:00\n台灣時間：2027/11/8（一）01:00\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:巴西大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r22-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271119T023000Z
+DTEND:20271119T033000Z
+SUMMARY:拉斯維加斯大獎賽 一練
+LOCATION:拉斯維加斯大道賽道，拉斯維加斯，美國（Las Vegas
+  Strip Circuit\, Las Vegas\, USA）
+DESCRIPTION:第 22 站・拉斯維加斯大獎賽\n當地時間：2027/11/1
+ 8（四）18:30\n台灣時間：2027/11/19（五）10:30\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:拉斯維加斯大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r22-fp2@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271119T060000Z
+DTEND:20271119T070000Z
+SUMMARY:拉斯維加斯大獎賽 二練
+LOCATION:拉斯維加斯大道賽道，拉斯維加斯，美國（Las Vegas
+  Strip Circuit\, Las Vegas\, USA）
+DESCRIPTION:第 22 站・拉斯維加斯大獎賽\n當地時間：2027/11/1
+ 8（四）22:00\n台灣時間：2027/11/19（五）14:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:拉斯維加斯大獎賽 二練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r22-fp3@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271120T013000Z
+DTEND:20271120T023000Z
+SUMMARY:拉斯維加斯大獎賽 三練
+LOCATION:拉斯維加斯大道賽道，拉斯維加斯，美國（Las Vegas
+  Strip Circuit\, Las Vegas\, USA）
+DESCRIPTION:第 22 站・拉斯維加斯大獎賽\n當地時間：2027/11/1
+ 9（五）17:30\n台灣時間：2027/11/20（六）09:30\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:拉斯維加斯大獎賽 三練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r22-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271120T050000Z
+DTEND:20271120T060000Z
+SUMMARY:拉斯維加斯大獎賽 排位賽
+LOCATION:拉斯維加斯大道賽道，拉斯維加斯，美國（Las Vegas
+  Strip Circuit\, Las Vegas\, USA）
+DESCRIPTION:第 22 站・拉斯維加斯大獎賽\n當地時間：2027/11/1
+ 9（五）21:00\n台灣時間：2027/11/20（六）13:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:拉斯維加斯大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r22-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271121T040000Z
+DTEND:20271121T060000Z
+SUMMARY:拉斯維加斯大獎賽 正賽
+LOCATION:拉斯維加斯大道賽道，拉斯維加斯，美國（Las Vegas
+  Strip Circuit\, Las Vegas\, USA）
+DESCRIPTION:第 22 站・拉斯維加斯大獎賽\n當地時間：2027/11/2
+ 0（六）20:00\n台灣時間：2027/11/21（日）12:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:拉斯維加斯大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r23-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271203T133000Z
+DTEND:20271203T143000Z
+SUMMARY:卡達大獎賽 一練
+LOCATION:盧賽爾國際賽道，盧賽爾，卡達（Lusail International 
+ Circuit\, Lusail\, Qatar）
+DESCRIPTION:第 23 站・卡達大獎賽\n當地時間：2027/12/3（五）
+ 16:30\n台灣時間：2027/12/3（五）21:30\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:卡達大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r23-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271203T173000Z
+DTEND:20271203T181500Z
+SUMMARY:卡達大獎賽 衝刺排位賽
+LOCATION:盧賽爾國際賽道，盧賽爾，卡達（Lusail International 
+ Circuit\, Lusail\, Qatar）
+DESCRIPTION:第 23 站・卡達大獎賽\n當地時間：2027/12/3（五）
+ 20:30\n台灣時間：2027/12/4（六）01:30\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:卡達大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r23-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271204T130000Z
+DTEND:20271204T134500Z
+SUMMARY:卡達大獎賽 衝刺賽
+LOCATION:盧賽爾國際賽道，盧賽爾，卡達（Lusail International 
+ Circuit\, Lusail\, Qatar）
+DESCRIPTION:第 23 站・卡達大獎賽\n當地時間：2027/12/4（六）
+ 16:00\n台灣時間：2027/12/4（六）21:00\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:卡達大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r23-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271204T170000Z
+DTEND:20271204T180000Z
+SUMMARY:卡達大獎賽 排位賽
+LOCATION:盧賽爾國際賽道，盧賽爾，卡達（Lusail International 
+ Circuit\, Lusail\, Qatar）
+DESCRIPTION:第 23 站・卡達大獎賽\n當地時間：2027/12/4（六）
+ 20:00\n台灣時間：2027/12/5（日）01:00\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:卡達大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r23-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271205T160000Z
+DTEND:20271205T180000Z
+SUMMARY:卡達大獎賽 正賽
+LOCATION:盧賽爾國際賽道，盧賽爾，卡達（Lusail International 
+ Circuit\, Lusail\, Qatar）
+DESCRIPTION:第 23 站・卡達大獎賽\n當地時間：2027/12/5（日）
+ 19:00\n台灣時間：2027/12/6（一）00:00\n\n⚠️ 官方尚未公布
+  2027 年各節時間，這是暫定時間（參考 2026 年同賽道時
+ 刻推估）。官方公布後會更新；用「訂閱」加入的行事
+ 曆會自動改成正確時間。\n\n賽程與即時資訊：https://yuchi
+ angko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:卡達大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r24-fp1@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271210T103000Z
+DTEND:20271210T113000Z
+SUMMARY:阿布達比大獎賽 一練
+LOCATION:亞斯碼頭賽道，阿布達比，阿拉伯聯合大公國（Yas
+  Marina Circuit\, Abu Dhabi\, UAE）
+DESCRIPTION:第 24 站・阿布達比大獎賽\n當地時間：2027/12/10
+ （五）14:30\n台灣時間：2027/12/10（五）18:30\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:阿布達比大獎賽 一練 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r24-sprintQuali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271210T143000Z
+DTEND:20271210T151500Z
+SUMMARY:阿布達比大獎賽 衝刺排位賽
+LOCATION:亞斯碼頭賽道，阿布達比，阿拉伯聯合大公國（Yas
+  Marina Circuit\, Abu Dhabi\, UAE）
+DESCRIPTION:第 24 站・阿布達比大獎賽\n當地時間：2027/12/10
+ （五）18:30\n台灣時間：2027/12/10（五）22:30\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:阿布達比大獎賽 衝刺排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r24-sprint@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271211T100000Z
+DTEND:20271211T104500Z
+SUMMARY:阿布達比大獎賽 衝刺賽
+LOCATION:亞斯碼頭賽道，阿布達比，阿拉伯聯合大公國（Yas
+  Marina Circuit\, Abu Dhabi\, UAE）
+DESCRIPTION:第 24 站・阿布達比大獎賽\n當地時間：2027/12/11
+ （六）14:00\n台灣時間：2027/12/11（六）18:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:阿布達比大獎賽 衝刺賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r24-quali@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271211T140000Z
+DTEND:20271211T150000Z
+SUMMARY:阿布達比大獎賽 排位賽
+LOCATION:亞斯碼頭賽道，阿布達比，阿拉伯聯合大公國（Yas
+  Marina Circuit\, Abu Dhabi\, UAE）
+DESCRIPTION:第 24 站・阿布達比大獎賽\n當地時間：2027/12/11
+ （六）18:00\n台灣時間：2027/12/11（六）22:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:阿布達比大獎賽 排位賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:f1-2027-r24-race@yuchiangko.github.io
+DTSTAMP:20261109T133513Z
+DTSTART:20271212T130000Z
+DTEND:20271212T150000Z
+SUMMARY:阿布達比大獎賽 正賽
+LOCATION:亞斯碼頭賽道，阿布達比，阿拉伯聯合大公國（Yas
+  Marina Circuit\, Abu Dhabi\, UAE）
+DESCRIPTION:第 24 站・阿布達比大獎賽\n當地時間：2027/12/12
+ （日）17:00\n台灣時間：2027/12/12（日）21:00\n\n⚠️ 官方
+ 尚未公布 2027 年各節時間，這是暫定時間（參考 2026 年
+ 同賽道時刻推估）。官方公布後會更新；用「訂閱」加
+ 入的行事曆會自動改成正確時間。\n\n賽程與即時資訊：h
+ ttps://yuchiangko.github.io/claude-lab/#schedule
+URL:https://yuchiangko.github.io/claude-lab/#schedule
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:阿布達比大獎賽 正賽 即將開始
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+END:VCALENDAR

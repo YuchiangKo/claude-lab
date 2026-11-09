@@ -24,6 +24,18 @@ python3 -m http.server 8000   # 再開啟 http://localhost:8000
 - **積分榜**：網頁會自動從公開 API 抓取，不需手動更新。
 - **新聞**（`newsItems`）：人工整理，每則都要附原文連結，只寫報導中查證過的事實。
 
+## 2027 賽季行事曆
+
+「賽程」分頁提供 2027 行事曆的訂閱（webcal／Google）與下載（.ics），三個按鈕都指向同一個檔案 `calendar/f1-2027.ics`，由 `scripts/buildCalendar.mjs` 產生：
+
+```bash
+node scripts/buildCalendar.mjs
+```
+
+- 目前各節時間是**暫定**（官方未公布）：用各賽道 2026 年正賽當地時刻，依固定週末時程推算其他各節。
+- 官方公布時間後：在腳本中該站填入 `sessions`（當地時間）並設 `confirmed: true`，重跑腳本後提交 `calendar/f1-2027.ics`。全部確認後拿掉 `index.html` 裡 `#calendar2027` 的「暫定時間」提示。
+- 事件 UID 固定，訂閱者會自動更新；匯入者重新匯入會覆蓋原事件，不會重複。
+
 ## 每場正賽結束後
 
 1. 確認 OpenF1 已恢復（不再回 401）。
