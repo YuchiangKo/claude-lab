@@ -381,6 +381,9 @@
     .news h3 a { color: inherit; text-decoration: none; }
     .news h3 a:hover { color: var(--accent); text-decoration: underline; }
     .news .src { font-size: .8rem; font-weight: 700; }
+    /* 輕鬆看 F1：專題與花絮，用藍色邊框和正式新聞區隔 */
+    .news.feature { border-left-color: var(--sec2); }
+    .news.feature .newsTag { background: color-mix(in srgb, var(--sec2) 14%, transparent); color: var(--sec2); }
 
     /* 賽道即時／回放 */
     .liveBar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 14px; }
@@ -671,6 +674,10 @@
       <h2>近期重點消息與觀賽焦點</h2>
       <div class="grid cols3" id="newsList"></div>
       <div style="text-align:center;margin-top:16px"><button class="refresh" id="newsMore" style="padding:8px 18px;font-size:.92rem"></button></div>
+
+      <h2>輕鬆看 F1：專題與花絮</h2>
+      <p class="lead">比賽以外的 F1：車手專題、遊戲挑戰、幕後花絮與無線電精華，適合賽與賽之間輕鬆看看。</p>
+      <div class="grid cols3" id="featureList"></div>
     </section>
 
     <!-- 賽道即時 -->
@@ -1238,6 +1245,38 @@
     /* ================= 近期消息（人工整理） ================= */
     // 近三個月重點消息（人工整理，附原文連結）：[日期, 分類, 標題, 內容, 網址, 來源]
     const newsItems = [
+      {
+            "date": "2026-11-12",
+            "tag": "轉會",
+            "title": "Racing Bulls 確定 2027 年續用 Lawson 與 Lindblad",
+            "body": "Racing Bulls 宣布 Lawson 與新秀 Lindblad 兩人 2027 年繼續搭檔，2027 車手市場又少一個懸念。Red Bull 顧問 Marko 先前在媒體上力挺青訓車手 Tsolov，但領隊 Permane 與 Red Bull 領隊 Mekies 認為 Lawson 值得再一年機會。Lawson 本季 20 站中有 15 站拿分。",
+            "url": "https://racingnews365.com/liam-lawson-finally-learns-racing-bulls-fate-as-2027-f1-line-up-confirmed",
+            "source": "RacingNews365"
+      },
+      {
+            "date": "2026-11-11",
+            "tag": "車隊",
+            "title": "Verstappen 抱怨賽車「開起來是場災難」，仍拿下連續第八次頒獎台",
+            "body": "巴西站未播出的無線電顯示，Verstappen 第 26 圈抱怨高速彎「幾乎無法轉向」，賽後說自己「85% 的比賽都開著一台壞掉的車」。即使如此，他仍從第 21 位追到亞軍，從 9 月義大利站起已連續八場站上頒獎台。長年搭檔的工程師 Lambiase 將轉往 McLaren，接手的 Tom Hart 拉斯維加斯站會繼續坐鎮。",
+            "url": "https://www.planetf1.com/news/max-verstappen-brazilian-grand-prix-2026-team-radio",
+            "source": "PlanetF1"
+      },
+      {
+            "date": "2026-11-09",
+            "tag": "車隊",
+            "title": "Hamilton 與 Leclerc 經領隊調解，表示風波已經過去",
+            "body": "墨西哥站 Leclerc 的激進超車間接讓 Verstappen 奪冠，Hamilton 賽前批評隊友「不成功便成仁」的心態。Ferrari 領隊 Vasseur 在巴西站週四晚間找兩人會談，Hamilton 說：「一切都好，我們就往前看。」正賽兩人再度近身纏鬥，但這次互相留了空間。",
+            "url": "https://www.planetf1.com/news/lewis-hamilton-ferrari-dispute-f1-2026-brazilian-grand-prix",
+            "source": "PlanetF1"
+      },
+      {
+            "date": "2026-11-08",
+            "tag": "賽前焦點",
+            "title": "剩三站的看點：車手亞軍三人只差 18 分",
+            "body": "兩項冠軍都已確定，接下來看亞軍之爭：Verstappen 279 分、Russell 262 分、Hamilton 261 分，Leclerc 249 分也還有機會。車隊方面 Ferrari 領先 Red Bull 95 分，McLaren 只落後 Red Bull 17 分，第三名之爭值得關注。",
+            "url": "https://www.crash.net/f1/news/1110014/1/new-f1-championship-standings-after-brazil-grand-prix",
+            "source": "Crash.net"
+      },
       {
             "date": "2026-11-08",
             "tag": "賽果",
@@ -1860,36 +1899,74 @@
         <div class="tableWrap"><table><thead><tr><th>名次</th><th>車手</th><th class="hideSm">車隊</th><th class="num">得分</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     }
 
-    // 首頁積分前五名：顯示與領先者的差距，比長條圖更容易讀出競爭態勢
+    // 積分差距文字：落後幾分，同分時直接標示
+    function pointGap(ahead, mine) {
+      return ahead === mine ? '同分' : '−' + (ahead - mine);
+    }
+
+    // 首頁積分前五名：同時顯示落後榜首與落後前一名，差距大時也看得出相鄰名次的纏鬥
     let miniView = 'drivers';
     function renderMiniStandings() {
       const ds = state.driverStandings;
       const champ = ds[1] && (ds[0].points - ds[1].points) > remainingPoints(false);
       if (miniView === 'drivers') {
         $('#miniStandings').innerHTML = `${champ ? `<div class="champLine">🏆 ${driverLabel(ds[0].family, ds[0].en)} 已鎖定 ${season} 車手冠軍</div>` : ''}
-          <table><thead><tr><th>名次</th><th>車手</th><th class="num">積分</th><th class="num">差距</th></tr></thead><tbody>${ds.slice(0, 5).map((d, i) => `
+          <table><thead><tr><th>名次</th><th>車手</th><th class="num">積分</th><th class="num">落後榜首</th><th class="num">落後前一名</th></tr></thead><tbody>${ds.slice(0, 5).map((d, i) => `
           <tr><td class="pos">${i + 1}</td><td>${teamDot(d.teamKey)}${faceImg(d.family, 'miniFace')}${driverLabel(d.family, d.en)}</td>
-          <td class="num"><b>${d.points}</b></td><td class="num gapCell">${i ? '−' + (ds[0].points - d.points) : '領先'}</td></tr>`).join('')}</tbody></table>`;
+          <td class="num"><b>${d.points}</b></td><td class="num gapCell">${i ? pointGap(ds[0].points, d.points) : '領先'}</td><td class="num gapCell">${i ? pointGap(ds[i - 1].points, d.points) : '—'}</td></tr>`).join('')}</tbody></table>`;
       } else {
         const cs = state.constructorStandings;
         // 領先差距超過剩餘場次可拿的最高積分（兩車一、二名），即數學上確定車隊冠軍
         const teamChamp = cs[1] && (cs[0].points - cs[1].points) > remainingPoints(true);
-        $('#miniStandings').innerHTML = `${teamChamp ? `<div class="champLine">🏆 ${escapeHtml(teamName(cs[0].teamKey, cs[0].teamFallback))} 已鎖定 ${season} 車隊冠軍</div>` : ''}<table><thead><tr><th>名次</th><th>車隊</th><th class="num">積分</th><th class="num">差距</th></tr></thead><tbody>${cs.slice(0, 5).map((c, i) => `
+        $('#miniStandings').innerHTML = `${teamChamp ? `<div class="champLine">🏆 ${escapeHtml(teamName(cs[0].teamKey, cs[0].teamFallback))} 已鎖定 ${season} 車隊冠軍</div>` : ''}<table><thead><tr><th>名次</th><th>車隊</th><th class="num">積分</th><th class="num">落後榜首</th><th class="num">落後前一名</th></tr></thead><tbody>${cs.slice(0, 5).map((c, i) => `
           <tr><td class="pos">${i + 1}</td><td>${teamDot(c.teamKey)}${escapeHtml(teamName(c.teamKey, c.teamFallback))}</td>
-          <td class="num"><b>${c.points}</b></td><td class="num gapCell">${i ? '−' + (cs[0].points - c.points) : '領先'}</td></tr>`).join('')}</tbody></table>`;
+          <td class="num"><b>${c.points}</b></td><td class="num gapCell">${i ? pointGap(cs[0].points, c.points) : '領先'}</td><td class="num gapCell">${i ? pointGap(cs[i - 1].points, c.points) : '—'}</td></tr>`).join('')}</tbody></table>`;
       }
     }
 
+    // 輕鬆看 F1：專題、遊戲挑戰、花絮（人工整理，附原文連結；不放感情八卦）
+    const featureItems = [
+      {
+            "date": "2026-11-12",
+            "tag": "遊戲挑戰",
+            "title": "隊友和好後同框：Hamilton 與 Leclerc 玩「比大比小」",
+            "body": "物流公司 CEVA Logistics 的新影片，讓 Hamilton 與 Leclerc 猜各種物流數字比題目給的數字大還是小，可以跟著一起猜，看誰比較準。墨西哥站風波後，兩人難得放鬆同框。",
+            "url": "https://www.f1-fansite.com/f1-videos/ferrari-drivers-hamilton-and-leclerc-play-more-or-less-challenge/",
+            "source": "F1-Fansite"
+      },
+      {
+            "date": "2026-11-10",
+            "tag": "車手專題",
+            "title": "Ricciardo 回顧生涯經典時刻",
+            "body": "2024 年最後一場比賽後少見的露面，Ricciardo 坐下來重看自己生涯最經典的超車與最爆笑的片段，一起重溫他的招牌時刻。影片長約 19 分鐘。",
+            "url": "https://www.formula1.com/en/video/daniel-ricciardo-reacts-to-best-career-moments.1881492096415907689",
+            "source": "Formula1.com"
+      },
+      {
+            "date": "2026-11-09",
+            "tag": "無線電精華",
+            "title": "F1 官方巴西站無線電精華",
+            "body": "F1 官方整理的巴西站車隊無線電精選。想看文字稿，可以到本站「賽事回顧」分頁播放巴西站。",
+            "url": "https://www.formula1.com/en/video/radio-rewind-2026-sao-paulo-grand-prix.1881401346064983920",
+            "source": "Formula1.com"
+      }
+    ];
+
     let newsExpanded = false;
-    function renderNews() {
-      const shown = newsExpanded ? newsItems : newsItems.slice(0, 6);
-      $('#newsMore').textContent = newsExpanded ? '收合' : `顯示全部 ${newsItems.length} 則（近三個月）`;
-      $('#newsList').innerHTML = shown.map((n) => `
-        <article class="card news"><div class="newsMeta"><span class="newsTag">${escapeHtml(n.tag || '消息')}</span><time>${n.date}</time></div>
+    function newsCard(n, extraClass = '') {
+      return `
+        <article class="card news${extraClass}"><div class="newsMeta"><span class="newsTag">${escapeHtml(n.tag || '消息')}</span><time>${n.date}</time></div>
           <h3 style="margin-top:4px">${n.url ? `<a href="${escapeHtml(n.url)}" target="_blank" rel="noopener">${escapeHtml(n.title)} ↗</a>` : escapeHtml(n.title)}</h3>
           <p class="teamDesc">${escapeHtml(n.body)}</p>
           ${n.url ? `<p style="margin:10px 0 0"><a class="src" href="${escapeHtml(n.url)}" target="_blank" rel="noopener">閱讀原文：${escapeHtml(n.source || '外部網站')}</a></p>` : ''}
-        </article>`).join('');
+        </article>`;
+    }
+
+    function renderNews() {
+      const shown = newsExpanded ? newsItems : newsItems.slice(0, 6);
+      $('#newsMore').textContent = newsExpanded ? '收合' : `顯示全部 ${newsItems.length} 則（近三個月）`;
+      $('#newsList').innerHTML = shown.map((n) => newsCard(n)).join('');
+      $('#featureList').innerHTML = featureItems.map((n) => newsCard(n, ' feature')).join('');
     }
 
     function renderTeams() {
@@ -1990,21 +2067,21 @@
       const table = $('#standingsTable');
       if (standingsView === 'drivers') {
         const ds = state.driverStandings;
-        table.innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="hideSm">車隊</th><th class="num">勝場</th><th class="num">積分</th><th class="num">落後榜首</th><th class="num hideSm">落後前一名</th></tr></thead><tbody>${ds.map((d, i) => `
+        table.innerHTML = `<thead><tr><th>名次</th><th>車手</th><th class="hideSm">車隊</th><th class="num">勝場</th><th class="num">積分</th><th class="num">落後榜首</th><th class="num">落後前一名</th></tr></thead><tbody>${ds.map((d, i) => `
           <tr><td class="pos">${i + 1}</td>
           <td>${teamDot(d.teamKey)}${faceImg(d.family, 'miniFace')}<b>${driverLabel(d.family, d.en)}</b></td>
           <td class="hideSm">${teamLabel(d.teamKey, d.teamFallback)}</td>
           <td class="num">${d.wins ?? '—'}</td><td class="num"><b>${d.points}</b></td>
-          <td class="num gapCell">${i ? '−' + (ds[0].points - d.points) : '—'}</td>
-          <td class="num gapCell hideSm">${i ? '−' + (ds[i - 1].points - d.points) : '—'}</td></tr>`).join('')}</tbody>`;
+          <td class="num gapCell">${i ? pointGap(ds[0].points, d.points) : '—'}</td>
+          <td class="num gapCell">${i ? pointGap(ds[i - 1].points, d.points) : '—'}</td></tr>`).join('')}</tbody>`;
       } else {
         const cs = state.constructorStandings;
-        table.innerHTML = `<thead><tr><th>名次</th><th>車隊</th><th class="num">勝場</th><th class="num">積分</th><th class="num">落後榜首</th><th class="num hideSm">落後前一名</th></tr></thead><tbody>${cs.map((c, i) => `
+        table.innerHTML = `<thead><tr><th>名次</th><th>車隊</th><th class="num">勝場</th><th class="num">積分</th><th class="num">落後榜首</th><th class="num">落後前一名</th></tr></thead><tbody>${cs.map((c, i) => `
           <tr><td class="pos">${i + 1}</td>
           <td>${teamDot(c.teamKey)}<b>${teamLabel(c.teamKey, c.teamFallback)}</b></td>
           <td class="num">${c.wins ?? '—'}</td><td class="num"><b>${c.points}</b></td>
-          <td class="num gapCell">${i ? '−' + (cs[0].points - c.points) : '—'}</td>
-          <td class="num gapCell hideSm">${i ? '−' + (cs[i - 1].points - c.points) : '—'}</td></tr>`).join('')}</tbody>`;
+          <td class="num gapCell">${i ? pointGap(cs[0].points, c.points) : '—'}</td>
+          <td class="num gapCell">${i ? pointGap(cs[i - 1].points, c.points) : '—'}</td></tr>`).join('')}</tbody>`;
       }
       $('#standingsLead').textContent = state.isLive
         ? `第 ${state.lastRound} 站後的即時積分。每站大獎賽結束、官方成績確認後會自動更新。`
