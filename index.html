@@ -1095,7 +1095,7 @@
       {
         key: 'racingBulls', short: 'Racing Bulls', zh: 'Racing Bulls', en: 'Visa Cash App Racing Bulls', color: '#6692ff',
         base: '義大利 法恩札', principal: 'Alan Permane', engine: 'Red Bull Ford',
-        desc: 'Red Bull 的青年培訓車隊，許多明星車手都從這裡起步。',
+        desc: 'Red Bull 的青年培訓車隊，許多明星車手都從這裡起步。2027 年確定續用 Lawson 與 Lindblad。',
         drivers: [
           { family: 'lawson', zh: 'Lawson', en: 'Liam Lawson', no: 30, flag: '🇳🇿' },
           { family: 'lindblad', zh: 'Lindblad', en: 'Arvid Lindblad', no: 41, flag: '🇬🇧', note: '2026 新秀' }
@@ -1113,16 +1113,16 @@
       {
         key: 'haas', short: 'Haas', zh: 'Haas', en: 'MoneyGram Haas F1 Team', color: '#b6babd',
         base: '美國 坎納波利斯', principal: '小松禮雄 Ayao Komatsu', engine: 'Ferrari',
-        desc: '唯一的美國籍老牌車隊（2016 年加入），與 Ferrari 技術合作緊密。',
+        desc: '唯一的美國籍老牌車隊（2016 年加入），與 Ferrari 技術合作緊密。Ocon 墨西哥站後離隊，2027 年起已與 F2 積分領先者 Câmara 簽下多年合約。',
         drivers: [
           { family: 'bearman', zh: 'Bearman', en: 'Oliver Bearman', no: 87, flag: '🇬🇧' },
-          { family: 'camara', zh: 'Câmara', en: 'Rafael Câmara', no: null, flag: '🇧🇷', note: '巴西站起頂替 Ocon，F1 首戰', isNew: true }
+          { family: 'camara', zh: 'Câmara', en: 'Rafael Câmara', no: null, flag: '🇧🇷', note: '巴西站完成 F1 首秀，2027 年起正式車手', isNew: true }
         ]
       },
       {
         key: 'audi', short: 'Audi', zh: 'Audi', en: 'Audi F1 Team', color: '#bb0a30',
         base: '瑞士 欣維爾', principal: 'Mattia Binotto', engine: 'Audi',
-        desc: '收購 Sauber 後於 2026 年以廠隊身分登場，自製引擎。',
+        desc: '收購 Sauber 後於 2026 年以廠隊身分登場，自製引擎。聖保羅站排位第二排起跑，是本季最佳排位。',
         drivers: [
           { family: 'hulkenberg', zh: 'Hülkenberg', en: 'Nico Hülkenberg', no: 27, flag: '🇩🇪' },
           { family: 'bortoleto', zh: 'Bortoleto', en: 'Gabriel Bortoleto', no: 5, flag: '🇧🇷' }
@@ -1196,26 +1196,26 @@
       { round: 23, zh: '阿布達比大獎賽', circuit: '亞斯碼頭賽道', flag: '🇦🇪', dates: '12/4–12/6', raceDate: '2026-12-06', raceUtc: '2026-12-06T13:00:00Z' }
     ];
 
-    /* ================= 積分與成績（內建備援，墨西哥站後） ================= */
+    /* ================= 積分與成績（內建備援，聖保羅站後） ================= */
     const fallbackData = {
-      lastRound: 19,
-      lastRaceName: '墨西哥大獎賽',
+      lastRound: 20,
+      lastRaceName: '聖保羅大獎賽（巴西）',
       driverStandings: [
-        ['antonelli', 'Andrea Kimi Antonelli', 'mercedes', 380, 9],
-        ['verstappen', 'Max Verstappen', 'redBull', 261],
-        ['hamilton', 'Lewis Hamilton', 'ferrari', 259],
-        ['russell', 'George Russell', 'mercedes', 250],
-        ['leclerc', 'Charles Leclerc', 'ferrari', 245],
-        ['norris', 'Lando Norris', 'mclaren', 221],
-        ['piastri', 'Oscar Piastri', 'mclaren', 144],
-        ['hadjar', 'Isack Hadjar', 'redBull', 107],
-        ['lawson', 'Liam Lawson', 'racingBulls', 83],
+        ['antonelli', 'Andrea Kimi Antonelli', 'mercedes', 390, 9],
+        ['verstappen', 'Max Verstappen', 'redBull', 279],
+        ['russell', 'George Russell', 'mercedes', 262],
+        ['hamilton', 'Lewis Hamilton', 'ferrari', 261],
+        ['leclerc', 'Charles Leclerc', 'ferrari', 249],
+        ['norris', 'Lando Norris', 'mclaren', 246],
+        ['piastri', 'Oscar Piastri', 'mclaren', 152],
+        ['hadjar', 'Isack Hadjar', 'redBull', 122],
+        ['lawson', 'Liam Lawson', 'racingBulls', 89],
         ['gasly', 'Pierre Gasly', 'alpine', 42],
         ['lindblad', 'Arvid Lindblad', 'racingBulls', 38],
         ['colapinto', 'Franco Colapinto', 'alpine', 27],
         ['bearman', 'Oliver Bearman', 'haas', 23],
         ['bortoleto', 'Gabriel Bortoleto', 'audi', 14],
-        ['hulkenberg', 'Nico Hülkenberg', 'audi', 13],
+        ['hulkenberg', 'Nico Hülkenberg', 'audi', 14],
         ['ocon', 'Esteban Ocon', 'haas', 7],
         ['alonso', 'Fernando Alonso', 'astonMartin', 7],
         ['sainz', 'Carlos Sainz', 'williams', 7],
@@ -1224,18 +1224,19 @@
         ['hirakawa', 'Ryo Hirakawa', 'haas', 1],
         ['stroll', 'Lance Stroll', 'astonMartin', 0],
         ['bottas', 'Valtteri Bottas', 'cadillac', 0],
-        ['perez', 'Sergio Pérez', 'cadillac', 0]
+        ['perez', 'Sergio Pérez', 'cadillac', 0],
+        ['camara', 'Rafael Câmara', 'haas', 0]
       ].map(([family, en, teamKey, points, wins]) => ({ family, en, teamKey, points, wins: wins ?? null })),
       constructorStandings: [
-        ['mercedes', 630], ['ferrari', 504], ['redBull', 382], ['mclaren', 365], ['racingBulls', 108],
-        ['alpine', 69], ['haas', 31], ['audi', 27], ['williams', 12], ['astonMartin', 7], ['cadillac', 0]
+        ['mercedes', 652], ['ferrari', 510], ['redBull', 415], ['mclaren', 398], ['racingBulls', 114],
+        ['alpine', 69], ['haas', 31], ['audi', 28], ['williams', 12], ['astonMartin', 7], ['cadillac', 0]
       ].map(([teamKey, points]) => ({ teamKey, points, wins: null })),
       lastResults: [
-        ['verstappen', 'redBull'], ['hamilton', 'ferrari'], ['antonelli', 'mercedes'], ['leclerc', 'ferrari'],
-        ['norris', 'mclaren'], ['russell', 'mercedes'], ['lawson', 'racingBulls'], ['bortoleto', 'audi'],
-        ['hadjar', 'redBull'], ['hirakawa', 'haas']
+        ['norris', 'mclaren'], ['verstappen', 'redBull'], ['hadjar', 'redBull'], ['russell', 'mercedes'],
+        ['antonelli', 'mercedes'], ['piastri', 'mclaren'], ['lawson', 'racingBulls'], ['leclerc', 'ferrari'],
+        ['hamilton', 'ferrari'], ['hulkenberg', 'audi']
       ].map(([family, teamKey], i) => ({ family, teamKey, pos: i + 1, points: racePointsTable[i] })),
-      winners: { 19: { family: 'verstappen', teamKey: 'redBull' } },
+      winners: { 19: { family: 'verstappen', teamKey: 'redBull' }, 20: { family: 'norris', teamKey: 'mclaren' } },
       schedule: null,
       lineup: null,
       isLive: false,
@@ -1245,6 +1246,54 @@
     /* ================= 近期消息（人工整理） ================= */
     // 近三個月重點消息（人工整理，附原文連結）：[日期, 分類, 標題, 內容, 網址, 來源]
     const newsItems = [
+      {
+            "date": "2026-11-14",
+            "tag": "冠軍",
+            "title": "Antonelli 獲義大利總統接見，邀請他來看 2027 蒙札站",
+            "body": "新科世界冠軍 Antonelli 週五在羅馬總統府與義大利總統 Mattarella 會面，並邀請總統到 2027 年義大利大獎賽觀賽。他在墨西哥站封王，是 1953 年 Ascari 之後首位義大利籍車手冠軍，結束長達 73 年的等待。",
+            "url": "https://grandepremio.com/en/f1/f1-today-daily-mail-boycotts-final-races-as-fia-faces-backlash-and-f1-considers-cost-cap-reform/",
+            "source": "Grande Prêmio"
+      },
+      {
+            "date": "2026-11-14",
+            "tag": "冠軍",
+            "title": "Wolff：Antonelli 拿下五連勝時，就知道他會奪冠",
+            "body": "Antonelli 在中國、日本、邁阿密、加拿大、摩納哥連拿五勝，摩納哥站後領先 Hamilton 66 分。Mercedes 領隊 Wolff 說：「只要我們給他一台好車，他就會贏得冠軍。」Antonelli 以 20 歲 2 個月 7 天封王，比 Vettel 2010 年的紀錄年輕超過三歲，封王時已有 9 勝，其他車手都不超過 3 勝。",
+            "url": "https://racingnews365.com/toto-wolff-reveals-when-he-knew-kimi-antonelli-would-win-2026-f1-title",
+            "source": "RacingNews365"
+      },
+      {
+            "date": "2026-11-14",
+            "tag": "場外",
+            "title": "FIA 禁止 Daily Mail 記者進入圍場，報社抵制最後三站",
+            "body": "Daily Mail 的 F1 記者 McEvoy 在墨西哥站後撰文評論 Leclerc 與 Hamilton 的碰撞，FIA 隨後撤銷他本季剩餘賽事的採訪證。FIA 表示採訪證「由 FIA 全權決定，可隨時撤銷」。Daily Mail 宣布不採訪拉斯維加斯、卡達、阿布達比三站，前 F1 總裁 Ecclestone 批評這個決定「完全瘋了」。McEvoy 2027 年可恢復採訪。",
+            "url": "https://motorsportweek.com/2026/11/14/fia-confirm-f1-ban-for-daily-mail-journalist-over-ferrari-spat",
+            "source": "Motorsport Week"
+      },
+      {
+            "date": "2026-11-14",
+            "tag": "規則",
+            "title": "F1 考慮讓落後車隊多花錢追趕，11/16 開會討論",
+            "body": "有提案仿照動力單元的追趕機制（ADUO），讓成績落後的車隊在預算上限之外多一些開發額度，Williams 領隊 Vowles 是主要推手。F1 委員會 11 月 16 日開會，目前尚未通過任何改變。",
+            "url": "https://grandepremio.com/en/f1/f1-today-daily-mail-boycotts-final-races-as-fia-faces-backlash-and-f1-considers-cost-cap-reform/",
+            "source": "Grande Prêmio"
+      },
+      {
+            "date": "2026-11-13",
+            "tag": "車隊",
+            "title": "Haas 最後三站人選未定：Câmara 可能跑拉斯維加斯，Hirakawa 洽談回歸",
+            "body": "Câmara 巴西站完成 F1 首秀，排位第 13、受惠其他車手罰退從第 11 位起跑，最後完賽第 20。據報導 Haas 正與 Hirakawa 洽談卡達與阿布達比兩站，因為 Câmara 要回 F2 爭奪年度冠軍，但車隊尚未正式宣布。",
+            "url": "https://thejudge13.com/2026/11/13/haas-consider-hirakawa-return-as-camaras-f1-debut-reshapes-final-races-of-2026/",
+            "source": "TheJudge13"
+      },
+      {
+            "date": "2026-11-13",
+            "tag": "賽前焦點",
+            "title": "拉斯維加斯站看點：Audi 帶著本季最佳排位前進賭城",
+            "body": "拉斯維加斯站在週六晚上 8 點（台灣時間週日中午 12 點）開賽，全長 6.201 公里、50 圈，1.1 公里的大道直線最高時速可達 360 公里。Audi 在聖保羅站拿下本季最佳排位（第二排起跑），車隊榜只落後第七名 3 分；Hülkenberg 過去兩年在這裡都有拿分。",
+            "url": "https://www.audif1.com/en/news/2026/las-vegas-grand-prix-under-the-bright-lights",
+            "source": "Audi F1"
+      },
       {
             "date": "2026-11-12",
             "tag": "轉會",
@@ -1372,14 +1421,6 @@
             "body": "Verstappen 在 Zandvoort 發生嚴重撞擊引發紅旗，Norris 重新開賽後領先 Mercedes 的 Antonelli 與 Russell 完賽，拿下連續第二勝。",
             "url": "https://www.formula1.com/en/latest/article/norris-wins-dramatic-dutch-grand-prix-from-antonelli-and-russell-as-verstappen-crashes-out.Zn7iYevVGp5eHzFkTEAz7",
             "source": "Formula1.com"
-      },
-      {
-            "date": "2026-08-12",
-            "tag": "車隊",
-            "title": "Cadillac 撤換領隊，Budkowski 接替 Lowdon",
-            "body": "荷蘭站前，Cadillac 宣布 Graeme Lowdon 卸下領隊職務，由 Marcin Budkowski 帶領車隊完成 2026 賽季。執行長 Dan Towriss 表示，外界傳聞可能讓車隊不穩定，因此做出調整。",
-            "url": "https://www.planetf1.com/news/cadillac-f1-graeme-lowdon-leaves-marcin-budkowski-team-principal",
-            "source": "PlanetF1"
       }
     ];
 
@@ -1809,7 +1850,7 @@
         pill.textContent = `即時資料・第 ${state.lastRound} 站後・${twTime.format(t)} 更新`;
       } else {
         pill.className = 'statusPill offline';
-        pill.textContent = `內建資料・第 ${state.lastRound} 站後（11/3）`;
+        pill.textContent = `內建資料・第 ${state.lastRound} 站後（11/9）`;
       }
     }
 
